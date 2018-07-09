@@ -1,0 +1,4 @@
+ *.pyx
+ /dist/
+ /*.egg-info
+ .DS_Store
