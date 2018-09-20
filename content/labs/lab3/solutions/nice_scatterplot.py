@@ -6,8 +6,8 @@ def nice_scatterplot(x, y, title):
     fig, ax = plt.subplots(1,1, figsize=(8,5)) # Create figure object
 
     # set axes limits to make the scale nice
-    ax.set_xlim(np.min(x), np.max(x) + 1)
-    ax.set_ylim(np.min(y), np.max(y) + 1)
+    ax.set_xlim(np.min(x)-1, np.max(x) + 1)
+    ax.set_ylim(np.min(y)-1, np.max(y) + 1)
 
     # adjust size of tickmarks in axes
     ax.tick_params(labelsize = f_size)
@@ -28,4 +28,5 @@ def nice_scatterplot(x, y, title):
     
     return ax
 
+nice_scatterplot(x_train, y_train, 'hello nice plot')
 
