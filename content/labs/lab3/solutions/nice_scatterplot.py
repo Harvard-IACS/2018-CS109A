@@ -12,6 +12,9 @@ def nice_scatterplot(x, y, title):
     # adjust size of tickmarks in axes
     ax.tick_params(labelsize = f_size)
     
+    # remove tick labels
+    #ax.tick_params(labelbottom=False, bottom=False)
+    
     # adjust size of axis label
     ax.set_xlabel(r'$x$', fontsize = f_size)
     ax.set_ylabel(r'$y$', fontsize = f_size)
@@ -29,4 +32,3 @@ def nice_scatterplot(x, y, title):
     return ax
 
 nice_scatterplot(x_train, y_train, 'hello nice plot')
-
