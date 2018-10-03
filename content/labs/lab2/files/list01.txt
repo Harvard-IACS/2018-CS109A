@@ -59,7 +59,6 @@
 /book/show/168668.Catch_22
 /book/show/18490.Frankenstein
 /book/show/77203.The_Kite_Runner
-/book/show/234225.Dune
 /book/show/5043.The_Pillars_of_the_Earth
 /book/show/149267.The_Stand
 /book/show/3636.The_Giver
@@ -81,6 +80,7 @@
 /book/show/252577.Angela_s_Ashes
 /book/show/227463.A_Clockwork_Orange
 /book/show/4934.The_Brothers_Karamazov
+/book/show/234225.Dune
 /book/show/18660669-vampire-academy
 /book/show/7244.The_Poisonwood_Bible
 /book/show/52036.Siddhartha
