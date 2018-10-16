@@ -13261,6 +13261,7 @@ a.anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<p>The dataset can be downloaded from <a href="https://drive.google.com/open?id=0B28c493CP9GtRHFVM0U0SVI2Yms">https://drive.google.com/open?id=0B28c493CP9GtRHFVM0U0SVI2Yms</a></p>
 <p>Our goal, as in lecture, will be to predict taxi fares based on various other features of the ride.</p>
 <p>For descriptions of what the columns mean, see <a href="http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml">http://www.nyc.gov/html/tlc/html/about/trip_record_data.shtml</a> and data dictionaries there.</p>
 
@@ -15130,7 +15131,7 @@ Drumroll please...
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[31]:</div>
+<div class="prompt input_prompt">In&nbsp;[36]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">cross_validate_general</span><span class="p">(</span><span class="n">train_model</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_splits</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
@@ -15161,13 +15162,16 @@ Drumroll please...
 <span class="k">def</span> <span class="nf">train_lasso</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
     <span class="k">return</span> <span class="n">Lasso</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;alpha&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
     
+<span class="k">def</span> <span class="nf">train_KNN</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">KNeighborsRegressor</span><span class="p">(</span><span class="n">n_neighbors</span><span class="o">=</span><span class="n">params</span><span class="p">[</span><span class="s1">&#39;n_neighbors&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 
 <span class="n">X</span> <span class="o">=</span> <span class="n">train</span><span class="p">[</span><span class="n">all_predictors</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">train</span><span class="o">.</span><span class="n">Fare_amount</span><span class="o">.</span><span class="n">values</span>
 
-<span class="n">params</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="n">alpha</span><span class="p">}</span> <span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="p">[</span><span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">]]</span>
+<span class="n">params</span> <span class="o">=</span> <span class="p">[{</span><span class="s1">&#39;alpha&#39;</span><span class="p">:</span> <span class="n">alpha</span><span class="p">}</span> <span class="k">for</span> <span class="n">alpha</span> <span class="ow">in</span> <span class="p">[</span><span class="o">.</span><span class="mi">001</span><span class="p">,</span> <span class="o">.</span><span class="mi">01</span><span class="p">,</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">10.</span><span class="p">]]</span>
 <span class="n">cv_results</span> <span class="o">=</span> <span class="n">cross_validate_general</span><span class="p">(</span>
     <span class="n">train_model</span><span class="o">=</span><span class="n">train_lasso</span><span class="p">,</span>
+<span class="c1">#     train_model=train_KNN,</span>
     <span class="n">X</span><span class="o">=</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">,</span>
     <span class="n">n_splits</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
 
@@ -15185,7 +15189,19 @@ Drumroll please...
 
 <div class="output_area">
 
-    <div class="prompt output_prompt">Out[31]:</div>
+    <div class="prompt"></div>
+
+
+<div class="output_subarea output_stream output_stderr output_text">
+<pre>/Users/kcarnold/anaconda3/envs/py36/lib/python3.6/site-packages/sklearn/linear_model/coordinate_descent.py:491: ConvergenceWarning: Objective did not converge. You might want to increase the number of iterations. Fitting data with very small alpha may cause precision problems.
+  ConvergenceWarning)
+</pre>
+</div>
+</div>
+
+<div class="output_area">
+
+    <div class="prompt output_prompt">Out[36]:</div>
 
 
 
@@ -15219,17 +15235,27 @@ Drumroll please...
   </thead>
   <tbody>
     <tr>
-      <th>0.1</th>
+      <th>0.001</th>
+      <td>0.844636</td>
+      <td>0.031926</td>
+    </tr>
+    <tr>
+      <th>0.010</th>
+      <td>0.844776</td>
+      <td>0.031824</td>
+    </tr>
+    <tr>
+      <th>0.100</th>
       <td>0.844775</td>
       <td>0.031353</td>
     </tr>
     <tr>
-      <th>1.0</th>
+      <th>1.000</th>
       <td>0.813970</td>
       <td>0.026487</td>
     </tr>
     <tr>
-      <th>10.0</th>
+      <th>10.000</th>
       <td>-0.001185</td>
       <td>0.001649</td>
     </tr>
@@ -15246,7 +15272,7 @@ Drumroll please...
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In&nbsp;[32]:</div>
+<div class="prompt input_prompt">In&nbsp;[37]:</div>
 <div class="inner_cell">
     <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="n">best_alpha</span> <span class="o">=</span> <span class="n">agg_cv_results</span><span class="p">[</span><span class="s1">&#39;mean&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">idxmax</span><span class="p">()</span>
@@ -15272,7 +15298,7 @@ Drumroll please...
 
 
 <div class="output_subarea output_stream output_stdout output_text">
-<pre>Best alpha was 0.1, with estimated R^2 of 0.845.
+<pre>Best alpha was 0.01, with estimated R^2 of 0.845.
 Training this on all data gives a test R^2 of 0.803
 </pre>
 </div>
@@ -15378,10 +15404,10 @@ Training this on all data gives a test R^2 of 0.803
   <tbody>
     <tr>
       <th>0.1</th>
-      <td>0.003266</td>
-      <td>0.000358</td>
-      <td>0.000361</td>
-      <td>0.000062</td>
+      <td>0.002758</td>
+      <td>0.000181</td>
+      <td>0.000329</td>
+      <td>0.000071</td>
       <td>{'alpha': 0.1}</td>
       <td>0.848971</td>
       <td>0.852551</td>
@@ -15399,10 +15425,10 @@ Training this on all data gives a test R^2 of 0.803
     </tr>
     <tr>
       <th>1.0</th>
-      <td>0.003307</td>
-      <td>0.000465</td>
-      <td>0.000416</td>
-      <td>0.000087</td>
+      <td>0.002498</td>
+      <td>0.000339</td>
+      <td>0.000279</td>
+      <td>0.000051</td>
       <td>{'alpha': 1.0}</td>
       <td>0.815950</td>
       <td>0.819903</td>
@@ -15420,10 +15446,10 @@ Training this on all data gives a test R^2 of 0.803
     </tr>
     <tr>
       <th>10.0</th>
-      <td>0.002045</td>
-      <td>0.000293</td>
-      <td>0.000298</td>
-      <td>0.000066</td>
+      <td>0.001751</td>
+      <td>0.000142</td>
+      <td>0.000266</td>
+      <td>0.000034</td>
       <td>{'alpha': 10.0}</td>
       <td>-0.000373</td>
       <td>-0.000410</td>
@@ -15483,6 +15509,18 @@ Training this on all data gives a test R^2 of 0.803
 </div>
 </div>
 
+</div></section></section><section><section>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<h1 id="Homework-Critique">Homework Critique<a class="anchor-link" href="#Homework-Critique">&#182;</a></h1><ul>
+<li>Good <strong>visuals</strong> "don't make me think".</li>
+<li>Good <strong>written analysis</strong> <em>interprets</em> (doesn't just describe) and <em>connects the data with the real world</em>.</li>
+<li>Good <strong>code</strong> is easy to change without making mistakes, which lets you iterate faster.</li>
+</ul>
+
+</div>
+</div>
 </div></section></section>
 </div>
 </div>
