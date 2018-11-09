@@ -1,5 +1,4 @@
 <style>
-blockquote { background: #AEDE94; }
 h1 { 
     padding-top: 25px;
     padding-bottom: 25px;
@@ -30,9 +29,8 @@ div.theme {
 	padding: 0.5em;
 	font-size: 18pt;
 }
-div.gc { 
+div.gc, blockquote:only-child {
 	background-color: #AEDE94;
-	border-color: #E9967A; 	 
 	border-left: 5px solid #800080; 
 	padding: 0.5em;
 	font-size: 12pt;
