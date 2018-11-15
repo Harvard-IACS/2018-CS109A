@@ -1,4 +1,4 @@
-# Make this code iterative!!
+
 # number of hidden nodes
 H =  100
 # input dimension
@@ -39,5 +39,3 @@ model3.add(layers.Dense(H,
 # layer 10 - output
 model3.add(layers.Dense(1, 
                 activation='linear')) 
-
-

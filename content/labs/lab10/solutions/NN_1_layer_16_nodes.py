@@ -1,3 +1,4 @@
+
 H = 40 # number of nodes in the layer
 input_dim = 1 # input dimension: just x
 
