@@ -1,12 +1,21 @@
 SITE_NAME = '2018-CS109A'
 
-AUTHOR = ''
+COURSE_NAME = 'CS109A'
 
-SITEURL = ''
+AUTHOR = 'Pavlos Protopapas, Kevin Rader'
 
-GITHUB = ''
+SITEURL = 'https://harvard-iacs.github.io/2018-CS109A'
+
+GITHUB = 'https://github.com/Harvard-IACS/2018-CS109A'
 
 COLOR = '#A51C30'
+
+MENUITEMS = [
+    ('Syllabus', 'pages/syllabus.html'),
+    ('Schedule', 'pages/schedule.html'),
+    ('Materials', 'pages/materials.html')
+]
+
 
 NAVBAR_LINKS = []
 
@@ -61,3 +70,12 @@ DATEISH_PROPERTIES = ['due']
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
+import re
+
+JINJA_FILTERS = {
+    'original_content': lambda x: re.search(r"content/.*", x).group(0)
+}
+
+USE_FOLDER_AS_CATEGORY = False
+
+IGNORE_FILES = ['README.md']

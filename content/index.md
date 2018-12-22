@@ -1,3 +1,9 @@
-Title: Home
-Date: 2018-07-09
+Title: CS109A: Introduction to  Data Science
+Date: 2018-12-09
 save_as: index.html
+
+### Fall 2018
+
+#### Instructors
+* Pavlos Protopapas
+* Kevin Rader
