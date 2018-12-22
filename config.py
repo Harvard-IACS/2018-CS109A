@@ -1,6 +1,6 @@
 SITE_NAME = '2018-CS109A'
 
-COURSE_NAME = 'CS109A'
+COURSE_NAME = 'CS109A: Introduction to  Data Science'
 
 AUTHOR = 'Pavlos Protopapas, Kevin Rader'
 
