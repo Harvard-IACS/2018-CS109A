@@ -1,0 +1,7 @@
+fig, ax = plt.subplots(1, 1, figsize=FIG_SIZE)
+ax.plot(np.sqrt(model2_history.history['loss']), 'r')
+ax.plot(np.sqrt(model2_history.history['val_loss']), 'b' ,label='Val')
+ax.set_xlabel(r'Epoch', fontsize=FONT_SIZE)
+ax.set_ylabel(r'Loss', fontsize=FONT_SIZE)
+ax.legend()
+ax.tick_params(labelsize=LABEL_SIZE)

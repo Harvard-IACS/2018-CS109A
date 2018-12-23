@@ -1,6 +1,6 @@
 SITE_NAME = '2018-CS109A'
 
-COURSE_NAME = 'CS109A: Introduction to  Data Science'
+COURSE_NAME = 'CS109A'
 
 AUTHOR = 'Pavlos Protopapas, Kevin Rader'
 
@@ -17,7 +17,6 @@ MENUITEMS = [
 ]
 
 
-NAVBAR_LINKS = []
 
 PATH = 'content'
 
@@ -47,11 +46,15 @@ CATEGORIES_SAVE_AS = ''
 
 ARCHIVES_SAVE_AS = ''
 
-TAGS_SAVE_AS = ''
+ARTICLE_SAVE_AS = '{category}/{slug}/index.html'
 
-ARTICLE_SAVE_AS = '{category}/{slug}.html'
+ARTICLE_URL = '{category}/{slug}/'
 
 AUTHOR_URL = ''
+
+AUTHOR_SAVE_AS = ''
+
+INDEX_SAVE_AS = 'pages/materials.html'
 
 THEME_STATIC_DIR = 'style'
 
@@ -59,16 +62,18 @@ DELETE_OUTPUT_DIRECTORY = True
 
 MARKUP = ['md', 'ipynb']
 
-PLUGIN_PATHS = ['./plugins']
+PLUGIN_PATHS = ['plugins']
 
-PLUGINS = ['ipynb.markup', 'dateish']
+PLUGINS = ['ipynb.markup', 'tipue_search']
 
 IGNORE_FILES = ['.ipynb_checkpoints']
 
-DATEISH_PROPERTIES = ['due']
-
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
+
+STATIC_PATHS = ['lectures', 'labs', 'homeworks', 'sections', 'wiki', 'images', 'projects', 'slides', 'data']
+
+DIRECT_TEMPLATES = ['index', 'category', 'tags', 'search']
 
 import re
 
