@@ -8,9 +8,9 @@ Tags: Introduction
 
 ### Slides
 
-- [PDF]({attach}presentation/lecture0.pdf)
+- [PDF]({attach}presentation/Lecture0_Introduction.pdf)
 
 
 ### Notebooks
 
-- [Examples]({filename}notebook/lecture0_notebook.ipynb)
+- [Examples]({filename}notes/Lecture0_Notebook.ipynb)

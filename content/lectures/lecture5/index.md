@@ -1,13 +1,19 @@
-Title: Lecture 5: Pandas and Data Scraping
+Title: Lecture 5: Multiple Linear Regression
 Category: lectures
 Slug: lecture5
 Author: Pavlos Protopapas
 Date: 2018-04-25
-Tags: Pandas, Data Scraping, Beautiful Soup
-
+Tags: Multiple Linear Regression, Regression, Model Selection, Polynomial Regression, Qualitative Predictors, Collinearity, Hypothesis Testing
 
 ### Slides
 
-- [PDF]({attach}presentation/Lecture5_Regressionb.pdf)
+- [PDF]({attach}presentation/Lecture5_MultiRegression.pdf)
+- [PPTX]({attach}presentation/Lecture5_MultiRegression.pptx)
+
+### Notebooks
+
+- [Examples]({filename}notebook/Exercise_Lecture4.ipynb)
+
+
 
 

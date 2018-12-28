@@ -3,14 +3,15 @@ Category: lectures
 Slug: lecture2
 Author: Pavlos Protopapas
 Date: 2018-04-25
-Tags: Data Engineering
+Tags: Data Engineering, Grammar of Data
 
 
 ### Slides
 
 - [PDF]({attach}presentation/lecture2.pdf)
+- [PPTX]({attach}presentation/lecture2.pptx)
 
 
 ### Notebooks
 
-- [Examples]({filename}notebook/lecture2_notebook.ipynb)
+- [Examples]({filename}notebook/grammarofdata.ipynb)
