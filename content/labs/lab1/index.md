@@ -13,5 +13,5 @@ Tags: Introductions
 
 ### Notebooks
 
-- [Lab]({attach}/lab1.ipynb)
-- [Lab with solutions]({attach}/lab1_solutions.ipynb)
+- [Lab]({filename}/lab1.ipynb)
+- [Lab with solutions]({filename}/lab1_solutions.ipynb)
