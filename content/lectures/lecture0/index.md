@@ -13,4 +13,4 @@ Tags: Introduction
 
 ### Notebooks
 
-- [Adversarial Examples]({filename}notebook/lecture0_notebook.ipynb)
+- [Examples]({filename}notebook/lecture0_notebook.ipynb)
