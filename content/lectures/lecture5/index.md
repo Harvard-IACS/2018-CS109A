@@ -2,7 +2,7 @@ Title: Lecture 5: Multiple Linear Regression
 Category: lectures
 Slug: lecture5
 Author: Pavlos Protopapas
-Date: 2018-04-25
+Date: 2018-09-24
 Tags: Multiple Linear Regression, Regression, Model Selection, Polynomial Regression, Qualitative Predictors, Collinearity, Hypothesis Testing
 
 ### Slides
@@ -13,7 +13,3 @@ Tags: Multiple Linear Regression, Regression, Model Selection, Polynomial Regres
 ### Notebooks
 
 - [Examples]({filename}notebook/Exercise_Lecture4.ipynb)
-
-
-
-

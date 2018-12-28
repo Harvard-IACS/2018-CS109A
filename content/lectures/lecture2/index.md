@@ -2,7 +2,7 @@ Title: Lecture 2: Data Engineering
 Category: lectures
 Slug: lecture2
 Author: Pavlos Protopapas
-Date: 2018-04-25
+Date: 2018-09-12
 Tags: Data Engineering, Grammar of Data
 
 

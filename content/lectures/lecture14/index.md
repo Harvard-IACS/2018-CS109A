@@ -2,8 +2,8 @@ Title: Lecture 14: Discrimant Analysiss
 Category: lectures
 Slug: lecture14
 Author: Pavlos Protopapas
-Date: 2018-04-25
-Tags: 
+Date: 2018-10-29
+Tags:
 
 
 ### Slides
@@ -11,7 +11,5 @@ Tags:
 - [PDF]({attach}presentation/Lecture14_Discrimant_Analysis.pdf)
 - [PPTX]({attach}presentation/Lecture14_Discrimant_Analysis.pptx)
 
-### Notes 
+### Notes
 - [Examples]({filename}notebook/Lecture14_Notebook.ipynb)
-
-

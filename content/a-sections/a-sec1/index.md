@@ -1,6 +1,6 @@
-Title: Lecture 0: First Lecture
+Title: Advanced Section 1: First Lecture
 Category: lectures
-Slug: lecture0
+Slug: a-sec1
 Author: Pavlos Protopapas
 Date: 2018-09-05
 Tags: Introduction

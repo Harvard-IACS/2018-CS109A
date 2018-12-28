@@ -2,8 +2,8 @@ Title: Lecture 16: Regression Trees Bagging RF
 Category: lectures
 Slug: lecture16
 Author: Pavlos Protopapas
-Date: 2018-04-25
-Tags: 
+Date: 2018-11-05
+Tags:
 
 
 ### Slides
@@ -11,7 +11,5 @@ Tags:
 - [PDF]({attach}presentation/Lecture16_BaggingRF.pdf)
 - [PPTX]({attach}presentation/Lecture16_BaggingRF.pptx)
 
-### Notes 
+### Notes
 %- [Examples]({filename}notebook/Lecture14_Notebook.ipynb)
-
-

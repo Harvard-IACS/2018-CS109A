@@ -2,7 +2,7 @@ Title: Lecture 1: Data, Summaries, and Visuals
 Category: lectures
 Slug: lecture1
 Author: Pavlos Protopapas
-Date: 2018-04-25
+Date: 2018-09-10
 Tags: Statistcis, Introduction
 
 

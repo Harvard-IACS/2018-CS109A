@@ -1,9 +1,9 @@
-Title: Lecture 8: PCA
+Title: Lecture 8:  High Dimensionality & PCA
 Category: lectures
 Slug: lecture8
 Author: Pavlos Protopapas
-Date: 2018-04-25
-Tags: 
+Date: 2018-10-03
+Tags:
 
 
 ### Slides
@@ -11,7 +11,5 @@ Tags:
 - [PDF]({attach}presentation/Lecture8_PCA.pdf)
 - [PPTX]({attach}presentation/Lecture7_PCA.pptx)
 
-### Notes 
+### Notes
 - [Examples]({filename}notebook/Exercise_Lecture4.ipynb)
-
-

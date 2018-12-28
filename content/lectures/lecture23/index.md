@@ -2,8 +2,8 @@ Title: Lecture 23: AB testing
 Category: lectures
 Slug: lecture23
 Author: Pavlos Protopapas
-Date: 2018-04-25
-Tags: 
+Date: 2018-12-03
+Tags:
 
 
 ### Slides
@@ -11,7 +11,5 @@ Tags:
 - [PDF]({attach}presentation/Lecture23_ABTesting.pdf)
 - [PPTX]({attach}presentation/Lecture23_ABTesting.pptx)
 
-### Notes 
+### Notes
 - [Examples]({filename}notebook/Lecture23_Notebook.ipynb)
-
-
