@@ -1,6 +1,6 @@
 Title: Lecture 0: First Lecture
 Category: lectures
-Slug: lecture23
+Slug: lecture0
 Author: Pavlos Protopapas
 Date: 2018-04-25
 Tags: Introduction
@@ -8,9 +8,9 @@ Tags: Introduction
 
 ### Slides
 
-- [PDF]({attach}pdf/lecture0.pdf)
+- [PDF]({attach}presentation/lecture0.pdf)
 
 
 ### Notebooks
 
-- [Adversarial Examples]({filename}notebook/lecture23_notebook.ipynb)
+- [Adversarial Examples]({filename}notebook/lecture0_notebook.ipynb)

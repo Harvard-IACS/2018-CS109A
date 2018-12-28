@@ -1,6 +1,6 @@
 Title: Schedule
 Slug: schedule
-Date: 2018-12-22
+Date: 2018-12-28
 
 
 |Week|Lecture|Lecture|Lab|Topics|A-Section TF|S-Section TF|Assignment (release and due) |
