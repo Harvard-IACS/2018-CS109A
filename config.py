@@ -67,7 +67,7 @@ IGNORE_FILES = ['.ipynb_checkpoints']
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
 
-STATIC_PATHS = ['lectures', 'labs', 'homeworks', 'sections', 'wiki', 'images', 'projects', 'slides', 'data']
+STATIC_PATHS = ['lectures', 'labs', 'homeworks', 'a-sections', 'sections', 'wiki', 'images', 'projects', 'slides', 'data']
 
 DIRECT_TEMPLATES = ['index', 'category', 'tags', 'search']
 

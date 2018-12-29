@@ -1,8 +1,8 @@
-Week,Lecture (Mon),Lecture (Wed),Lab,A-Section,Assignment (release and due) 
+Week,Lecture (Mon),Lecture (Wed),Lab,a-sections,Assignment (release and due) 
 1,,"Lecture 0: What is Data Science?  Data, Visualizations ","Lab 1: Intro to Python (numpy, graphing libraries, program structure, Jupyter Notebook)",,
 2,"Lecture 1: Data, Summaries, and Visuals","Lecture 2: Data Engineering, Grammar of Data","Lab 2: Python: numpy, functions, Pandas, matplotlib",,
-3,Lecture 3: Effective Exploratory Data Analysis and Visualization,"Lecture 4: Linear Regression, kNN Regression and Inference",Lab 3: skLearn and simple Linear Regression,A-sec1:,
-4,Lecture 5: kNN Regression  and Linear Regression (reading: ISL section 3.1 (page 58-70)),"Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection",Lab 4: Multi-Regression and Polynimial Regression,A-sec2: :,
+3,Lecture 3: Effective Exploratory Data Analysis and Visualization,"Lecture 4: Linear Regression, kNN Regression and Inference",Lab 3: skLearn and simple Linear Regression,a-section  1: first,
+4,Lecture 5: kNN Regression  and Linear Regression (reading: ISL section 3.1 (page 58-70)),"Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection",Lab 4: Multi-Regression and Polynimial Regression,A-sec 2: :,
 5,Lecture 7: Regularization,Lecture 8:  High Dimensionality & PCA,Lab 5: Regularization and Cross-Validation,A-sec3: :,
 6,No Lecture: Hoiliday,Lecture 9: Visualization for Communication,No Lab,,
 7,Lecture 10: Logistic Regression I,Lecture 11: Logistic Regression II,"Lab 6: Logistic Regression, PCA",A-sec4: :,
