@@ -1,5 +1,3 @@
-SITE_NAME = '2018-CS109A'
-
 COURSE_NAME = 'CS109A'
 
 AUTHOR = 'Pavlos Protopapas, Kevin Rader'
@@ -8,15 +6,13 @@ SITEURL = 'https://harvard-iacs.github.io/2018-CS109A'
 
 GITHUB = 'https://github.com/Harvard-IACS/2018-CS109A'
 
-COLOR = '#A51C30'
+COLOR = '#8996A0'
 
 MENUITEMS = [
     ('Syllabus', 'pages/syllabus.html'),
     ('Schedule', 'pages/schedule.html'),
     ('Materials', 'pages/materials.html')
 ]
-
-
 
 PATH = 'content'
 
