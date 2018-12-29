@@ -10,7 +10,6 @@ Tags: Regularization, CV, cross validation
 
 - [PDF]({attach}presentation/section_3_slides.pdf)
 
-
 ### Notebooks
 
 - [Section]({filename}notebook/section_3_student.ipynb)
