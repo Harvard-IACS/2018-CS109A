@@ -8,8 +8,8 @@ Tags:
 
 ### Slides
 
-- [PDF]({attach}presentation/Lecture22_ResponsibleDS.pdf)
-- [PPTX]({attach}presentation/Lecture22_ResponsibleDS.pptx)
+- [PDF]({attach}presentation/Lecture21_Stacking.pdf)
+- [PPTX]({attach}presentation/Lecture21_Stacking.pptx)
 
 ### Notes
-%- [Examples]({filename}notebook/Lecture14_Notebook.ipynb)
+- [Examples]({filename}notes/Lecture21_Notebook.ipynb)

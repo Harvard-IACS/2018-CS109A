@@ -10,5 +10,5 @@ Tags: Viz, EDA
 
 - [PDF]({attach}presentation/Lecture9_VIZComm.pdf)
 
-### Notes
-<!-- - [Examples]({filename}notebook/Exercise_Lecture4.ipynb) -->
+<!--### Notes
+ - [Examples]({filename}notebook/Exercise_Lecture4.ipynb) -->

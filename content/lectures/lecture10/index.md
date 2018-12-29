@@ -12,4 +12,4 @@ Tags: Logistic Regression, Logistic Function
 - [PPTX]({attach}presentation/Lecture10_LogisticRegression.pptx)
 
 ### Notes
-- [Examples]({filename}notebook/Lecture10.ipynb)
+- [Examples]({filename}notes/Lecture10.ipynb)

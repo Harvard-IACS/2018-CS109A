@@ -12,4 +12,4 @@ Tags:
 - [PPTX]({attach}presentation/Lecture23_ABTesting.pptx)
 
 ### Notes
-- [Examples]({filename}notebook/Lecture23_Notebook.ipynb)
+- [Examples]({filename}notes/Lecture23_Notebook.ipynb)

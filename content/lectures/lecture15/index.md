@@ -12,4 +12,4 @@ Tags:
 - [PPTX]({attach}presentation/Lecture15_Classification_Trees.pptx)
 
 ### Notes
-- [Examples]({filename}notebook/Lecture15_Notebook.ipynb)
+- [Examples]({filename}notes/Lecture15_Notebook.ipynb)

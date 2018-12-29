@@ -10,3 +10,7 @@ Tags:
 
 - [PDF]({attach}presentation/Lecture7_Regularization.pdf)
 - [PPTX]({attach}presentation/Lecture7_Regularization.pptx)
+
+### Sections
+
+- [Sections]({filename}notebook/Exercise_Lecture4.ipynb) 

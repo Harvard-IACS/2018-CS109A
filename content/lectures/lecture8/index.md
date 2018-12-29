@@ -9,7 +9,7 @@ Tags:
 ### Slides
 
 - [PDF]({attach}presentation/Lecture8_PCA.pdf)
-- [PPTX]({attach}presentation/Lecture7_PCA.pptx)
+- [PPTX]({attach}presentation/Lecture8_PCA.pptx)
 
 ### Notes
-- [Examples]({filename}notebook/Exercise_Lecture4.ipynb)
+- [Examples]({filename}notes/Lecture8_Notebook.ipynb)

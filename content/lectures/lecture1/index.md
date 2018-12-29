@@ -11,6 +11,6 @@ Tags: Statistcis, Introduction
 - [PDF]({attach}presentation/Lecture1_Data.pdf)
 
 
-### Notebooks
+<!-- ### Notebooks
 
-- [Examples]({filename}notebook/lecture1_notebook.ipynb)
+- [Examples]({filename}notebook/lecture1_notebook.ipynb) -->

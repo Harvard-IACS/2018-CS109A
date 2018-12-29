@@ -1058,6 +1058,99 @@ h6:hover .anchor-link {
 </div>
 <div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS-109A Introduction to Data Science</h1>
+<h2 id="Lecture-3:-EDA-and-visualization">Lecture 3: EDA and visualization<a class="anchor-link" href="#Lecture-3:-EDA-and-visualization">¶</a></h2><p><strong>Harvard University</strong><br />
+<strong>Summer 2018</strong><br />
+<strong>Instructors</strong>: Pavlos Protopapas and Kevin Rader <br />
+<strong>Author</strong>: Rahul Dave</p>
+<hr />
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [1]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO PROPERLY HIGHLIGHT THE EXERCISES</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
+<span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
+<span class="n">HTML</span><span class="p">(</span><span class="n">styles</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[1]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<style>
+blockquote { background: #AEDE94; }
+h1 { 
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: left; 
+    padding-left: 10px;
+    background-color: #DDDDDD; 
+    color: black;
+}
+h2 { 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left; 
+    padding-left: 5px;
+    background-color: #EEEEEE; 
+    color: black;
+}
+
+div.exercise {
+	background-color: #ffcccc;
+	border-color: #E9967A; 	
+	border-left: 5px solid #800080; 
+	padding: 0.5em;
+}
+div.theme {
+	background-color: #DDDDDD;
+	border-color: #E9967A; 	
+	border-left: 5px solid #800080; 
+	padding: 0.5em;
+	font-size: 18pt;
+}
+div.gc { 
+	background-color: #AEDE94;
+	border-color: #E9967A; 	 
+	border-left: 5px solid #800080; 
+	padding: 0.5em;
+	font-size: 12pt;
+}
+p.q1 { 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left; 
+    padding-left: 5px;
+    background-color: #EEEEEE; 
+    color: black;
+}
+header {
+   padding-top: 35px;
+    padding-bottom: 35px;
+    text-align: left; 
+    padding-left: 10px;
+    background-color: #DDDDDD; 
+    color: black;
+}
+</style>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div>
+<div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="EDA-and-visualization">EDA and visualization<a class="anchor-link" href="#EDA-and-visualization">¶</a></h1><p>In the last lecture we focussed on the machinery needed to get data into a tabular form. In this lecture we focus on the visualization part of Exploratory Data Analysis. This notebook accompanies the slides. It is strongly recommended that you see the lecture/read the slides and then work on this notebook. The textual descriptions are sparse here and the code will become much clearer in the context of visualization best practices.</p>
 </div>
 </div>
@@ -1847,10 +1940,10 @@ RBNDAEA0MQQARBNDAEA0MQQARPsDYhNyj965+J4AAAAASUVORK5CYII=
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="b0ef7a0f-dad9-42e8-aeab-9cc6fcaa48e0"></div>
+<div id="ac191157-35dd-4a85-a87b-4eb59c4a0412"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#b0ef7a0f-dad9-42e8-aeab-9cc6fcaa48e0');
+var element = $('#ac191157-35dd-4a85-a87b-4eb59c4a0412');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "4b4615c10ff74a36be2d1979420e7dc7"}
@@ -12166,10 +12259,10 @@ RERERESSxgQZERERERERERFJGhNkREREREREREQkaf8F+r/BTfFRDeAAAAAASUVORK5CYII=
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="d0138b18-c85b-416a-857f-24d4e59c6911"></div>
+<div id="d995d392-d158-4036-91fc-f05810628e68"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#d0138b18-c85b-416a-857f-24d4e59c6911');
+var element = $('#d995d392-d158-4036-91fc-f05810628e68');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "e8847f7c5ea24c1db2b2a7f62614911f"}
@@ -12531,10 +12624,10 @@ MARRBgDAEEQZAABDEGUAAAxBlAEAMARRBgDAEP8f5ipqVXEApsoAAAAASUVORK5CYII=
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="a4962cab-9141-4776-bd09-e09dc5536d51"></div>
+<div id="b4d43e48-4285-45e5-81bb-67c6b5cc5da8"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a4962cab-9141-4776-bd09-e09dc5536d51');
+var element = $('#b4d43e48-4285-45e5-81bb-67c6b5cc5da8');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "be74ec38c70144cab341d3eca87f3cd2"}

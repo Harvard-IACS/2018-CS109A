@@ -12,4 +12,4 @@ Tags:
 - [PPTX]({attach}presentation/Lecture14_Discrimant_Analysis.pptx)
 
 ### Notes
-- [Examples]({filename}notebook/Lecture14_Notebook.ipynb)
+- [Examples]({filename}notes/Lecture14_Notebook.ipynb)

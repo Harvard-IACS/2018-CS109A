@@ -11,5 +11,5 @@ Tags:
 - [PDF]({attach}presentation/Lecture16_BaggingRF.pdf)
 - [PPTX]({attach}presentation/Lecture16_BaggingRF.pptx)
 
-### Notes
-%- [Examples]({filename}notebook/Lecture14_Notebook.ipynb)
+<!-- ### Notes
+%- [Examples]({filename}notebook/Lecture14_Notebook.ipynb) -->

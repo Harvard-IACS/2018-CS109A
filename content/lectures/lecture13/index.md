@@ -12,4 +12,4 @@ Tags:
 - [PPTX]({attach}presentation/Lecture13_kNN_Missing.pptx)
 
 ### Notes
-- [Examples]({filename}notebook/Lecture13_Notebook.ipynb)
+- [Examples]({filename}notes/Lecture13_Notebook.ipynb)

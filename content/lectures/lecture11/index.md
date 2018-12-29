@@ -12,4 +12,4 @@ Tags: Logistic Regression, Multiple Logistic Regression, Regularization
 - [PPTX]({attach}presentation/Lecture11_LogReg2.pptx)
 
 ### Notes
-- [Examples]({filename}notebook/Lecture11.ipynb)
+- [Examples]({filename}notes/Lecture11_Notebook.ipynb)

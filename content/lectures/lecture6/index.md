@@ -1,9 +1,10 @@
-Title: Lecture 6: Multiple Linear, Polynomical Regression
+Title: Lecture 6: Multiple Linear Regression, Polynomial
+Regression and Model Selection
 Category: lectures
 Slug: lecture6
 Author: Pavlos Protopapas
 Date: 2018-09-26
-Tags: Multiple Linear Regression, Regression, Model Selection, Polynomial Regression, Qualitative Predictors, Collinearity, Hypothesis Testing
+Tags: Multiple Linear Regression, Regression, Model Selection, Polynomial Regression, Qualitative Predictors, Collinearity, Hypothesis Testing, Overfitting, Collinearity, Categorical Predictors, Interaction Terms, Cross Validation
 
 ### Slides
 

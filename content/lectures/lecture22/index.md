@@ -8,8 +8,7 @@ Tags:
 
 ### Slides
 
-- [PDF]({attach}presentation/Lecture23_ABTesting.pdf)
-- [PPTX]({attach}presentation/Lecture23_ABTesting.pptx)
+- [PDF]({attach}presentation/Lecture22_ResponsibleDS.pdf)
 
-### Notes
-- [Examples]({filename}notebook/Lecture23_Notebook.ipynb)
+<!-- ### Notes
+- [Examples]({filename}notebook/Lecture23_Notebook.ipynb) -->

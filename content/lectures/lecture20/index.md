@@ -12,4 +12,4 @@ Tags:
 - [PPTX]({attach}presentation/Lecture20_SVM.pptx)
 
 ### Notes
-%- [Examples]({filename}notebook/Lecture14_Notebook.ipynb)
+- [Examples]({filename}notes/Lecture20_Notebook.ipynb)

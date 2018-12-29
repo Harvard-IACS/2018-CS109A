@@ -11,5 +11,5 @@ Tags: Artificial Neural Networks, Perceptron, Back Propagation, Neural Networks,
 - [PDF]({attach}presentation/Lecture12_PerceptronBackProp.pdf)
 - [PPTX]({attach}presentation/Lecture12_PerceptronBackProp.pptx)
 
-### Notes
-<!-- - [Examples]({filename}notebook/Lecture10.ipynb) -->
+<!--  ### Notes
+- [Examples]({filename}notebook/Lecture10.ipynb) -->

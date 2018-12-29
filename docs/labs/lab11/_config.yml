@@ -1,0 +1,9 @@
+theme: jekyll-theme-primer
+title: Support Vector Olives
+description: Keeping Italian Olives Pure!
+baseurl:
+markdown: kramdown
+kramdown:
+    math_engine: mathjax
+    input: GFM
+    syntax_highlighter: rouge

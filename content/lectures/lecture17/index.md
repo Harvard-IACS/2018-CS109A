@@ -11,5 +11,5 @@ Tags:
 - [PDF]({attach}presentation/Lecture17_Boosting.pdf)
 - [PPTX]({attach}presentation/Lecture17_Boosting.pptx)
 
-### Notes
-%- [Examples]({filename}notebook/Lecture14_Notebook.ipynb)
+<!-- ### Notes
+%- [Examples]({filename}notebook/Lecture14_Notebook.ipynb) -->
