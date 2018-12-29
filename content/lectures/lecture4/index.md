@@ -12,8 +12,8 @@ Tags: Regression, Linear Regression, k-Nearest Neighbors (kNN), kNN Regression, 
 - [PPTX]({attach}presentation/Lecture4_Regression.pptx)
 
 ### Notebooks
-- [Examples]({filename}notebook/Exercise_Lecture4.ipynb) 
+- [Examples]({filename}notes/Exercise_Lecture4.ipynb) 
 
 ### Sections 
 
-- [Sections]({filename}/Sections/sec1/blas) 
+- [Sections]({filename}Sections/sec1/blas) 
