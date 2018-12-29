@@ -5,4 +5,4 @@ Author: Pavlos Protopapas
 Date: 2017-10-05
 
 
-- [Lab 1]({filename}notebook/lab1_notebook.ipynb)
+- [Lab 1]({filename}notebook/lab1.ipynb)
