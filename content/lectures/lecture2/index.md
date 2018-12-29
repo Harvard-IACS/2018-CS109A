@@ -14,4 +14,4 @@ Tags: Data Engineering, Grammar of Data
 
 ### Notebooks
 
-- [Examples]({filename}notebook/grammarofdata.ipynb)
+- [Examples]({filename}notes/grammarofdata.ipynb)

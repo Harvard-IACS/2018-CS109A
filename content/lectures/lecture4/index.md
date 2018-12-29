@@ -2,7 +2,7 @@ Title: Lecture 4: Linear Regression, kNN Regression and Inference
 Category: lectures
 Slug: lecture4
 Author: Pavlos Protopapas
-Date: 2018-09-219
+Date: 2018-09-19
 Tags: Regression, Linear Regression, kNN Regression
 
 
@@ -13,6 +13,6 @@ Tags: Regression, Linear Regression, kNN Regression
 
 
 
-### Notebooks
+<!-- ### Notebooks
 
-- [Examples]({filename}notebook/Exercise_Lecture4.ipynb)
+- [Examples]({filename}notebook/Exercise_Lecture4.ipynb) -->

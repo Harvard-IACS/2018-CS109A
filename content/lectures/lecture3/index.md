@@ -13,4 +13,4 @@ Tags: EDA, Exploratory Data Analysis, Visualization
 
 ### Notebooks
 
-- [Examples]({filename}notebook/edaviz.ipynb)
+- [Examples]({filename}notes/edaviz.ipynb)
