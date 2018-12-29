@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+{% seo %}
+    <link href="{{ '/assets/css/style.css?v=' | append: site.github.build_revision | relative_url }}" rel="stylesheet">
+    <title>{{page.title}}</title>
+    <!-- mathjax config similar to math.stackexchange -->
+    <script type="text/x-mathjax-config">
+    MathJax.Hub.Config({
+      jax: ["input/TeX", "output/HTML-CSS"],
+      tex2jax: {
+        inlineMath: [ ['$', '$'] ],
+        displayMath: [ ['$$', '$$']],
+        processEscapes: true,
+        displayAlign: 'center',
+        skipTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+      }
+    });
+    </script>
+    <script src="//cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS_HTML" type="text/javascript"></script>
+  </head>
+  <body>
+    <div class="container-lg px-3 my-5 markdown-body">
+      <nav class="group">
+        {% if site.title and site.title != page.title %}
+           <a href="{{ "/" | absolute_url }}">{{ site.title }}</a>
+        {% endif %}
+        {% assign navigation_pages = site.html_pages | sort: 'nav_include' %}
+        {% for node in navigation_pages %}
+                {% if node.nav_include %}
+                    {% if page.url == node.url %}
+                      &nbsp;|&nbsp;<a class="active" href="{{node.url | prepend: site.baseurl}}" class="active" style="color:#b4d5fe">{{node.title}}</a>
+                    {% else %}
+                      &nbsp;|&nbsp;<a href="{{node.url | prepend: site.baseurl}}">{{node.title}}</a>
+                    {% endif %}
+                {% endif %}
+        {% endfor %}
+        </nav>
+
+      <h1>{{page.title}}</h1>
+
+      {{ content }}
+
+      {% if site.github.private != true and site.github.license %}
+      <div class="footer border-top border-gray-light mt-5 pt-3 text-right text-gray">
+        This site is open source. {% github_edit_link "Improve this page" %}.
+      </div>
+      {% endif %}
+    </div>
+    <script src="{{ "assets/javascript/anchor-js/anchor.min.js" | relative_url }}"></script>
+    <script>anchors.add();</script>
+  </body>
+</html>
