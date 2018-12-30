@@ -1,5 +1,4 @@
-Title: Lecture 6: Multiple Linear Regression, Polynomial
-Regression and Model Selection
+Title: Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection
 Category: lectures
 Slug: lecture6
 Author: Pavlos Protopapas
@@ -10,3 +9,7 @@ Tags: Multiple Linear Regression, Regression, Model Selection, Polynomial Regres
 
 - [PDF]({attach}presentation/Lecture6_MR_ModelSelection.pdf)
 - [PPTX]({attach}presentation/Lecture6_MR_ModelSelection.pptx)
+
+### Sections
+- [Section 3 student]({filename}../../sections/section3/notebook/section_3_student.ipynb)
+- [Section 3 solutions]({filename}../../sections/section3/notebook/section_3_solutions.ipynb)

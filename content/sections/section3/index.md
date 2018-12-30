@@ -2,7 +2,7 @@ Title: Section 3
 Category: sections
 Slug: section3
 Author: Pavlos Protopapas
-Date: 2018-09-05
+Date: 2018-09-28
 Tags: Regularization, CV, cross validation
 
 
@@ -13,4 +13,5 @@ Tags: Regularization, CV, cross validation
 ### Notebooks
 
 - [Section]({filename}notebook/section_3_student.ipynb)
+- [Section]({filename}notebook/section_3_solutions.ipynb)
 <!-- - [Section]({filename}notebook/section_3_solutions.ipynb) -->

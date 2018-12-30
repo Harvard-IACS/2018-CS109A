@@ -10,6 +10,8 @@ Tags: Multiple Linear Regression, Standard Errors, Regression, Model Selection, 
 - [PDF]({attach}presentation/Lecture5_MultiRegression.pdf)
 - [PPTX]({attach}presentation/Lecture5_MultiRegression.pptx)
 
-<!-- ### Notebooks
 
-- [Examples]({filename}notebook/Exercise_Lecture4.ipynb) -->
+### Sections
+- [Section 3 student]({filename}../../sections/section3/notebook/section_3_student.ipynb)
+- [Section 3 solutions]({filename}../../sections/section3/notebook/section_3_solutions.ipynb)
+
