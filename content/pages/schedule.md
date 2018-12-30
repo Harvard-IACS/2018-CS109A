@@ -1,6 +1,6 @@
 Title: Schedule
 Slug: schedule
-Date: 2018-12-29
+Date: 2018-12-30
 
 
 |Week|Lecture (Mon)|Lecture (Wed)|Lab|a-sections|Assignment (release and due) |

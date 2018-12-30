@@ -5,5 +5,6 @@ Author: Pavlos Protopapas
 Date: 2018-09-13
 Tags: Pandas
 
-
-- [Lab 2]({filename}notebook/lab2_pandas.ipynb)
+### Notebooks
+- [Lab 2a]({filename}notebook/lab2_pandas.ipynb)
+- [Lab 2b]({filename}notebook/lab2_scraping.ipynb)

@@ -11,6 +11,6 @@ Tags:
 - [PDF]({attach}presentation/Lecture7_Regularization.pdf)
 - [PPTX]({attach}presentation/Lecture7_Regularization.pptx)
 
-### Sections
+### Sections2
 
-- [Sections]({filename}notebook/Exercise_Lecture4.ipynb) 
+- [Sections]({attach}../../sections/section3/presentation/section_3_slides.pdf) 
