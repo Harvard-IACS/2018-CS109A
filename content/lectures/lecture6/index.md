@@ -11,5 +11,5 @@ Tags: Multiple Linear Regression, Regression, Model Selection, Polynomial Regres
 - [PPTX]({attach}presentation/Lecture6_MR_ModelSelection.pptx)
 
 ### Sections
-- [Section 3 student]({filename}../../sections/section3/notebook/section_3_student.ipynb)
-- [Section 3 solutions]({filename}../../sections/section3/notebook/section_3_solutions.ipynb)
+- [Section 4 student]({filename}../../sections/section4/notebook/section_4.ipynb)
+- [Section 4 slides]({filename}../../sections/section3/presentation/section_4.slides.html)

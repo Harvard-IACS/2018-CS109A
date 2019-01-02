@@ -1,4 +1,4 @@
-Title: Section 2
+Title: Section 2, Prediction using kNN and Linear Regression
 Category: sections
 Slug: section2
 Author: Pavlos Protopapas

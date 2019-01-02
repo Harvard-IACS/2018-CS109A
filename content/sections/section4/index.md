@@ -1,4 +1,4 @@
-Title: Section 4
+Title: Section 4, Model Selection
 Category: sections
 Slug: section4
 Author: Pavlos Protopapas
@@ -12,5 +12,5 @@ Tags: Regularization, CV, cross validation
 
 ### Notebooks
 
-- [Notebook]({filename}notebook/section_4.ipynb)
+- [Section4 Notebook]({filename}notebook/section_4.ipynb)
 <!-- - [Section]({filename}notebook/section_3_solutions.ipynb) -->

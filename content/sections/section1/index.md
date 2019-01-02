@@ -1,4 +1,4 @@
-Title: Section 1
+Title: Section 1, Introduction to Web Scraping
 Category: sections
 Slug: section1
 Author: Pavlos Protopapas
