@@ -13,3 +13,7 @@ Tags:
 
 ### Notes
 - [Examples]({filename}notes/Lecture8_Notebook.ipynb)
+
+### Sections
+
+- [Section 5 solutions]({filename}../../sections/section5/notebook/section_5_solutions.ipynb)

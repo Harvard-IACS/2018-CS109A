@@ -13,3 +13,6 @@ Tags: Artificial Neural Networks, Perceptron, Back Propagation, Neural Networks,
 
 <!--  ### Notes
 - [Examples]({filename}notebook/Lecture10.ipynb) -->
+### Sections
+
+- [Section 6 solutions]({filename}../../sections/section6/notebook/section_6_solutions.ipynb)

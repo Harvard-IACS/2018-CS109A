@@ -11,8 +11,8 @@ Tags: Statistcis, Introduction
 - [PDF]({attach}presentation/Lecture1_Data.pdf)
 
 ### Sections 
-- [Section1 student]({filename}../../sections/section1/notebook/section_1_student.ipynb) 
-- [Section1 solutions]({filename}../../sections/section1/notebook/section_1_solutions.ipynb) 
+- [Section 1 student]({filename}../../sections/section1/notebook/section_1_student.ipynb) 
+- [Section 1 solutions]({filename}../../sections/section1/notebook/section_1_solutions.ipynb)  
 
 
 

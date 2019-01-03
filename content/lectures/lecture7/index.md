@@ -1,9 +1,9 @@
-Title: Lecture 7: Pandas and Data Scraping
+Title: Lecture 7: Regularization
 Category: lectures
 Slug: lecture7
 Author: Pavlos Protopapas
 Date: 2018-10-01
-Tags:
+Tags: Regularization, LASSO, Ridge
 
 
 ### Slides

@@ -15,3 +15,9 @@ Tags: Data Engineering, Grammar of Data
 ### Notebooks
 
 - [Examples]({filename}notes/grammarofdata.ipynb)
+
+
+### Sections 
+
+- [Section 1 student]({filename}../../sections/section1/notebook/section_1_solutions.ipynb) 
+- [Section 1 solutions]({filename}../../sections/section1/notebook/section_1_solutions.ipynb) 

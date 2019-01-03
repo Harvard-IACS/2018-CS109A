@@ -13,3 +13,7 @@ Tags: Logistic Regression, Logistic Function
 
 ### Notes
 - [Examples]({filename}notes/Lecture10.ipynb)
+
+### Sections
+
+- [Section 5 solutions]({filename}../../sections/section5/notebook/section_5_solutions.ipynb)

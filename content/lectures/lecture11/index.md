@@ -13,3 +13,7 @@ Tags: Logistic Regression, Multiple Logistic Regression, Regularization
 
 ### Notes
 - [Examples]({filename}notes/Lecture11_Notebook.ipynb)
+
+### Sections
+
+- [Section 5 solutions]({filename}../../sections/section5/notebook/section_5_solutions.ipynb)
