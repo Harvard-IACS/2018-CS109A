@@ -4,10 +4,6 @@ Date: 2018-07-06
 
 
 
-# CS 109A, STAT 121A, AC 209A, CSCI E-109A
-
-# Introduction to Data Science
-
 ## Syllabus - Fall 2018
 
 Welcome to CS109a/STAT121a/AC209a, also offered by the DCE as CSCI E-109a, Introduction to Data Science. This course is the first half of a one‐year introduction to data science. The course focuses on the analysis of messy, real life data to perform predictions using statistical and machine learning methods.

@@ -16,4 +16,7 @@ Tags:
 
 ### Sections
 
-- [Section 9 solutions]({filename}../../sections/section9/notebook/section_9_student.ipynb)
+- [Section 8 solutions]({filename}../../sections/section8/notebook/section_8_student.ipynb)
+
+
+- [Section 6 solutions]({filename}../../sections/section8/notebook/section_8_student.ipynb)
