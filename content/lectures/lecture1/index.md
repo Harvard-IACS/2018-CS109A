@@ -1,21 +1,17 @@
-Title: Lecture 1: Data, Summaries, and Visuals
+Title: Lecture 1: Data, Summaries and Visuals
 Category: lectures
-Slug: lecture1
+Slug: lecture-1
 Author: Pavlos Protopapas
 Date: 2018-09-10
-Tags: Statistcis, Introduction
+Tags: What are Data?, Data Exploration, Descriptive Statistics, Visualizations
 
+## Slides
 
-### Slides
+- [Lecture 1: Data, Summaries and Visuals]({attach}presentation/Lecture1_Data.pdf) 
 
-- [PDF]({attach}presentation/Lecture1_Data.pdf)
+## Standard Section Notebooks
 
-### Sections 
-- [Section 1 student]({filename}../../sections/section1/notebook/section_1_student.ipynb) 
-- [Section 1 solutions]({filename}../../sections/section1/notebook/section_1_solutions.ipynb)  
+- [Section 1 Student Version]({filename}../../sections/section1/notebook/section_1_student.ipynb) 
+- [Section 1 Solutions]({filename}../../sections/section1/notebook/section_1_solutions.ipynb)
 
-
-
-<!-- ### Notebooks
-
-- [Examples]({filename}notebook/lecture1_notebook.ipynb) -->
+<hr>
