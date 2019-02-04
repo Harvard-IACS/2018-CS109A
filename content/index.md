@@ -1,4 +1,4 @@
-Title: CS109a: Introduction to Data Science <br> 
+Title: CS109a: Introduction to Data Science <br>
 Date: 2018-12-09
 save_as: index.html
 
@@ -7,7 +7,7 @@ save_as: index.html
 Fall 2018 <br><br>
 <a href="https://iacs.seas.harvard.edu/people/pavlos-protopapas">Pavlos Protopapas</a> and <a href='https://statistics.fas.harvard.edu/people/kevin-rader'>Kevin A. Rader</a></h5>
 
-<hr> 
+<hr>
 
 <style>
 pre {
@@ -23,7 +23,7 @@ pre {
   margin: 1em 0;
   padding: 5px;
   white-space: pre-wrap;  
-} 
+}
 
 .containerMain {
     display: flex;
@@ -37,11 +37,11 @@ pre {
  }
 
 .contentB {
-    flex: 3; 
+    flex: 3;
   }
 </style>
 
-<p>Welcome to CS109a/STAT121a/AC209a, also offered by the DCE as CSCI E-109a, Introduction to Data Science. This course is the first half of a one‐year course to data science. We will focus on the analysis of data to perform predictions using statistical and machine learning methods. Topics include data scraping, data management, data visualization, regression and classification methods, and deep neural networks (see the <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS0UTDiQe2gC0AAvpyCGizBwY7IaDEtW6F8ge8QyvFlxJ_ROW4GBnJtrQCH5mGvKLE-wnZtfquO2Fgt/pubhtml?"> schedule</a>). You will get ample practice through weekly homework assignments. The class material integrates the five key facets of an investigation using data: 
+<p>Welcome to CS109a/STAT121a/AC209a, also offered by the DCE as CSCI E-109a, Introduction to Data Science. This course is the first half of a one‐year course to data science. We will focus on the analysis of data to perform predictions using statistical and machine learning methods. Topics include data scraping, data management, data visualization, regression and classification methods, and deep neural networks (see the <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS0UTDiQe2gC0AAvpyCGizBwY7IaDEtW6F8ge8QyvFlxJ_ROW4GBnJtrQCH5mGvKLE-wnZtfquO2Fgt/pubhtml?"> schedule</a>). You will get ample practice through weekly homework assignments. The class material integrates the five key facets of an investigation using data:
 <br/><br/>
 
 1. data collection ‐ data wrangling, cleaning, and sampling to get a suitable data set <br>
@@ -52,10 +52,10 @@ pre {
 3. exploratory data analysis – generating hypotheses and building intuition
 <br>
 
-4. prediction or statistical learning 
+4. prediction or statistical learning
 <br>
 5. communication – summarizing results through visualization, stories, and interpretable summaries
-<br/> <br/> 
+<br/> <br/>
 
 
 Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who have previously taken CS 109, AC 209, or Stat 121 cannot take CS 109a, AC 209a, or Stat 121a for credit.
@@ -69,7 +69,7 @@ Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who
 </br>
 <strong>Head TFs</strong>: Eleni Kaxiras <strong> -DCE Head TF</strong>: Sol Girouard
 </br>
-<strong>Office Hours:</strong> IACS student lobby in Maxwell-Dworkin's ground. Just follow the signs. 
+<strong>Office Hours:</strong> IACS student lobby in Maxwell-Dworkin's ground. Just follow the signs.
 <br/>
 <strong>Online Office Hours zoom link: </strong><a href="https://harvard-dce.zoom.us/j/7607382317">https://harvard-dce.zoom.us/j/7607382317</a>
 
@@ -121,4 +121,3 @@ Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who
 </div>
 
 <hr />
-
