@@ -55,7 +55,7 @@ INDEX_SAVE_AS = 'pages/materials.html'
 
 THEME_STATIC_DIR = 'style'
 
-DELETE_OUTPUT_DIRECTORY = True
+DELETE_OUTPUT_DIRECTORY = False
 
 MARKUP = ['md', 'ipynb']
 
@@ -63,7 +63,7 @@ PLUGIN_PATHS = ['plugins']
 
 PLUGINS = ['ipynb.markup', 'tipue_search']
 
-IGNORE_FILES = ['.ipynb_checkpoints']
+IGNORE_FILES = ['.ipynb_checkpoints', 'README.md']
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True
@@ -80,4 +80,4 @@ JINJA_FILTERS = {
 
 USE_FOLDER_AS_CATEGORY = False
 
-IGNORE_FILES = ['README.md']
+CACHE_CONTENT = True
