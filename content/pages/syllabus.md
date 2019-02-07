@@ -36,7 +36,7 @@ pre {
 
 <hr>
 
-## Course Structure 
+## Course Structure <a name='Course-Structure'>
 
 The material of the course is divided 3 modules. Each module will integrate the five key facets of an investigation using data:
 
