@@ -3,6 +3,22 @@
   <component name="ChangeListManager">
     <list default="true" id="2ba160de-36cd-4543-9b99-7afc4305c26f" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/pages/schedule.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/pages/schedule.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/a-sections/a-sec3/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec9/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/a-sections/a-sec9/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}10.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}2.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}3.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}4.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}5.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}6.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}7.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}8.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}9.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lecture-3/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lecture-3/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section-1/notebook-student/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section-1/notebook-student/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tipuesearch_content.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tipuesearch_content.js" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -63,14 +79,23 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content/lectures/lecture5/index.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="255">
-                <caret line="17" lean-forward="true" selection-start-line="14" selection-end-line="17" />
+                <caret line="17" selection-start-line="14" selection-end-line="17" />
               </first_editor>
               <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/content/sections/section1/notebook/section_1_student.ipynb">
+          <provider selected="true" editor-type-id="ipnb-editor">
+            <state>
+              <selected id="1" />
             </state>
           </provider>
         </entry>
@@ -130,27 +155,28 @@
               <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
               <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
               <item name="content" type="462c0819:PsiDirectoryNode" />
-              <item name="lectures" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
-              <item name="content" type="462c0819:PsiDirectoryNode" />
-              <item name="lectures" type="462c0819:PsiDirectoryNode" />
-              <item name="lecture1" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
-              <item name="content" type="462c0819:PsiDirectoryNode" />
-              <item name="lectures" type="462c0819:PsiDirectoryNode" />
-              <item name="lecture5" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
-              <item name="content" type="462c0819:PsiDirectoryNode" />
               <item name="pages" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="sections" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="sections" type="462c0819:PsiDirectoryNode" />
+              <item name="section1" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="sections" type="462c0819:PsiDirectoryNode" />
+              <item name="section1" type="462c0819:PsiDirectoryNode" />
+              <item name="notebook" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -211,28 +237,28 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1549524738155</updated>
-      <workItem from="1549524740065" duration="3120000" />
+      <workItem from="1549524740065" duration="3792000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3120000" />
+    <option name="totallyTimeSpent" value="3792000" />
   </component>
   <component name="ToolWindowManager">
-    <frame x="392" y="36" width="1440" height="816" extended-state="0" />
+    <frame x="32" y="23" width="1440" height="816" extended-state="0" />
     <layout>
       <window_info id="Favorites" sideWeight="0.50212765" side_tool="true" weight="0.24964234" />
-      <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49787235" visible="true" weight="0.24964234" />
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49787235" visible="true" weight="0.24964234" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info anchor="bottom" id="Docker" show_stripe_button="false" />
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" weight="0.32952926" />
+      <window_info active="true" anchor="bottom" id="Terminal" visible="true" weight="0.32952926" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32952926" />
       <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
@@ -299,9 +325,16 @@
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="255">
-            <caret line="17" lean-forward="true" selection-start-line="14" selection-end-line="17" />
+            <caret line="17" selection-start-line="14" selection-end-line="17" />
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/sections/section1/notebook/section_1_student.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="1" />
         </state>
       </provider>
     </entry>
