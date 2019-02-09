@@ -7,7 +7,7 @@ Tags: Regularization, CV, cross validation
 
 
 
-### Notebooks
+## Standard Section Notebooks
 
-- [Notebook]({filename}notebook/section_8_student.ipynb)
+- [Notebook]({filename}../../sections/section8/notebook/section_8_student.ipynb)
 <!-- - [Section]({filename}notebook/section_3_solutions.ipynb) -->

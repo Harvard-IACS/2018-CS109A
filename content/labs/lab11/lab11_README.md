@@ -1,3 +1,9 @@
+Title: Lab 11 README
+Category: labs
+Slug: lab11/readme
+Author: Rahul Dave
+Date: 2018-12-02
+
 # gpages
 
 ## Script for the Lab: Preamble

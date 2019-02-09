@@ -6,3 +6,4 @@ Date: 2018-10-04
 
 
 - [Lab 5]({filename}notebook/lab5.ipynb)
+- [Lab 5 solutions]({filename}notebook/lab5_solutions.ipynb)

@@ -1,6 +1,6 @@
 Title: Section 1: Introduction to Web Scraping
 Category: sections
-Slug: section-1
+Slug: section1
 Author: Pavlos Protopapas
 Date: 2018-09-14
 Tags: Scraping, Parse HTML with BeautifulSoup, Data Formats: JSON and CSV
