@@ -2,710 +2,16 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="2ba160de-36cd-4543-9b99-7afc4305c26f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/content/labs/lab11/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/labs/lab11/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/labs/lab4/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/labs/lab4/index.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/pages/schedule.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/pages/schedule.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/pages/syllabus.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/pages/syllabus.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec1/data/cleaned_mtcars.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec1/presentation/Adv_Section1_Slides.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec1/presentation/Adv_Section1_Slides.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec2/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec2/notes/a-sec2-MLEtoAIC.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec2/presentation/Adv_Section2_Slides.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec2/presentation/Adv_Section2_Slides.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/ENlossplot.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/Extended_viz_Ridge.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/Instability.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/LASSO_RIDGE_comp.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/Lasso coefs evolution.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/Ridge coefs evolution.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/RidgeRegressionCurve.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/RidgeVsLassoLossVisualization.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/RidgeVsLassoMinimizationBoundEvolution.PNG" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/Subgradients.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/formaljpg.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/keep-calm-and-behave-yourself-2-1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/mtn122p2b.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/other image on ridge min.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/ridgevslassoBest.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/ridgevslassoBest.webp" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/ridgevslassoNoCaption.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/sphx_glr_plot_underfitting_overfitting_001.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/img/subdifferential.svg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/notebook/A-sec3-demo.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/presentation/A-sec3_Regularization_CamReady.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/presentation/A-sec3_Slides.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec4/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec4/notes/a-sec4-PCA.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec4/presentation/Adv_Section4_Slides_PCA.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec4/presentation/Adv_Section4_Slides_PCA.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec5/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec5/notes/a-sec5-GLM_notes.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec5/presentation/Adv_Section5_Slides_GLMs.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec5/presentation/Adv_Section5_Slides_GLMs.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec6/section_6.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec7/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec7/presentation/A-sec7_Slides.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec7/presentation/A-sec7_Slides.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec8/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec8/presentation/A-sec8_Slides.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec8/presentation/A-sec8_Slides.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec9/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec9/notebook/SVM_Playground.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec9/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec9/presentation/a-sec9_SVMs.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec9/presentation/a-sec9_SVMs.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/a-sections.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/labs.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/labs2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/labs3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/lectures.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/lectures2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/lectures3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/lectures4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/pages.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/sections.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/sections2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/{slug}.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/images/CS109AImage.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/images/CS109AImage.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab-1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab-1/notebook-solutions/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab-1/notebook-student/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/data/cleaned-mtcars.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/data/hamlet.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/data/mtcars.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/2dindex.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/2dindex_v2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/3flips.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/canvas.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/cells.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/foo1.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/foo1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/foo2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/jupyter.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/jupyter2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/jupyterdemo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/jupyterhome.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/mpl1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/mpl2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/ops1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/ops1_v2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/ops2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/ops2_v2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/ops3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/ops3_v2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/ops4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/ops4_v2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/ops4_v3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/pandastruct.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/images/sticksnotboxes.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/notebook/lab1.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/notebook/lab1_solutions.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab10/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab10/notebook/Lab10_keras_students.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab10/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab10/solutions/NN_10_layers_100_nodes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab10/solutions/NN_1_layer_16_nodes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab10/solutions/NN_1_layer_2_nodes.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab10/solutions/full_NN.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab10/solutions/print_history.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/.sass-cache/64b06dfb3a0c024190ce69ab5962338730e53ef7/jekyll-theme-slate.scssc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/.sass-cache/64b06dfb3a0c024190ce69ab5962338730e53ef7/rouge-github.scssc" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/_config.yml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/_support/markdown.tpl" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/_support/nbmd.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/notebook/local-olives-cleaned.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/olives-eda_files/olives-eda_10_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/olives-eda_files/olives-eda_13_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/olives-eda_files/olives-eda_15_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/olives-eda_files/olives-eda_17_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/olives-eda_files/olives-eda_19_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/olives-eda_files/olives-eda_22_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/olives-eda_files/olives-eda_26_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/olives-eda_files/olives-eda_27_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/olives-eda_files/olives-eda_8_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/olives-eda_files/olives-eda_9_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/olives-model_files/olives-model_10_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/olives-model_files/olives-model_16_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab11/olives-model_files/olives-model_8_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/data/cleaned-goodreads.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/data/goodreads.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/files/list01.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/files/list02.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/files/meta.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/images/goodreads1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/images/goodreads2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/images/goodreads3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/lab2.zip" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/notebook/Scraping.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/notebook/lab2_pandas.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/notebook/lab2_scraping.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/pandas/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/scraping/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/data/BLI.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/data/WHR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/data/WHR_mini.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/data/data/BLI.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/data/data/WHR.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/data/data/WHR_mini.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/data/data/mtcars.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/data/mtcars.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/images/2dindex.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/images/2dindex_v2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/images/LHS.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/images/images/2dindex.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/images/images/2dindex_v2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/images/images/LHS.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/images/images/scikit-learn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/images/images/sklearn2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/images/images/statsmodels.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/images/logistic.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/images/nice_plots.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/images/scikit-learn.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/images/sklearn2.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/images/statsmodels.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/notebook/lab3_SLR_KNN.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/solutions/best_fit_line_scratch.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/solutions/best_fit_scatterplot.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/solutions/cars_simple_EDA.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/solutions/knn_regression.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/solutions/make_numpy_arrays.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/solutions/nice_scatterplot.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/solutions/simple_linear_regression_fit.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/solutions/simple_scatterplot.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab4/data/dataset_1.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab4/data/league_data.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab4/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab4/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab4/notebook/lab4.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab5/data/noisypopulation.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab5/images/ridge_lambda.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab5/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab5/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab5/notebook/lab5.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/data/winequality_red.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/data/winequality_white.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/data/wines.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/notebook/cs109a_lab6_classification.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/solutions/3.3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/solutions/4.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/solutions/6.3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/solutions/6.4.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/solutions/boundaries.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/solutions/multi_logistic.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/solutions/multi_logistic.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/solutions/score1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/solutions/sklearn_logistic.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/solutions/trivial_model.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/figs/Reese_Witherspoon.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/figs/expanded-perceptron.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/figs/multiple-perceptrons.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/figs/perceptron.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/notebook/lab7_MLP_students.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/solutions/affine.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/solutions/change_weights.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/solutions/perceptron.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/solutions/plot_sig.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/solutions/plot_sig_tanh.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/solutions/sigmoid.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/solutions/step_function.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/datasets/dataset_1_year_2000.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/datasets/dataset_1_year_2001.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/datasets/dataset_1_year_2002.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/datasets/dataset_1_year_2003.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/datasets/dataset_1_year_2004.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/datasets/dataset_1_year_2005.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/datasets/dataset_1_year_2006.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/datasets/dataset_1_year_2007.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/datasets/dataset_1_year_2008.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/datasets/dataset_1_year_2009.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/datasets/dataset_1_year_2010.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/datasets/dataset_2.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/datasets/dataset_3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/notebook/GDA_2cities.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab9/data/county_level_election.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab9/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab9/notebook/Lab9-RF_and_Boosting.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lab9/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lecture-0/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lecture2/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lecture3/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture-0/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture-0/presentation/lecture0.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture-1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture-1/presentation/Lecture1_Data.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture0/data/hubway_stations.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture0/notebook/How.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture0/notebook/Lecture1a_g2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture0/notebook/Who.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture0/notebook/lecture0.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture10/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture10/data/Heart.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture10/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture10/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture10/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture10/notes/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture10/notes/Lecture10.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture10/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture10/presentation/Lecture10_LogisticRegression.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture10/presentation/Lecture10_LogisticRegression.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture11/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture11/data/Heart.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture11/data/NFLplaybyplay-2015.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture11/data/gsspartyid.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture11/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture11/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture11/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture11/notes/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture11/notes/Lecture11_Notebook.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture11/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture11/presentation/Lecture11_LogReg2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture11/presentation/Lecture11_LogReg2.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/data/Heart.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/fig/BasicLogReg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/fig/BeyondLogReg.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/fig/BeyondLogReg2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/fig/BeyondLogReg2a.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/fig/BeyondLogReg3b.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/fig/BeyondLogReg3c.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/fig/BeyondLogReg_mini2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/fig/LogBeta0.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/fig/LogBeta1.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/presentation/Lecture12_PerceptronBackProp.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture12/presentation/Lecture12_PerceptronBackProp.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture13/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture13/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture13/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture13/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture13/notes/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture13/notes/Lecture13_Notebook.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture13/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture13/presentation/Lecture13_kNN_Missing.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture13/presentation/Lecture13_kNN_Missing.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/data/gsspartyid.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/data/lec14_dataset1.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/data/lec14_dataset2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/data/lec14_dataset3.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/data/lec14_dataset4.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/notes/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/notes/Lecture14_Notebook.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/presentation/Lecture14_Discrimant_Analysis.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/presentation/Lecture14_Discrimant_Analysis.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture15/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture15/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture15/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture15/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture15/notes/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture15/notes/Lecture15_Notebook.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture15/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture15/presentation/Lecture15_Classification_Trees.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture15/presentation/Lecture15_Classification_Trees.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture16/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture16/presentation/Lecture16_BaggingRF.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture16/presentation/Lecture16_BaggingRF.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/data/lendingtree.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/Ada1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/Ada2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/Ada3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/Ada4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/Ada5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/Ada6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/Ada7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/GB1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/GB2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/GB3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/GB4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/GB5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/GB6.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/GB7.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/fig/GB8.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/notes/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/presentation/Lecture17_Boosting.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture17/presentation/Lecture17_Boosting.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/CE-y0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/CE-y1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/CE.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/MSE-y0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/MSE-y1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/NN_1L_1N.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/NN_1L_2N.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/NN_1L_3N.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/NN_2I_2H.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/NN_2L_1N.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/NN_2L_2N.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/NN_3L_3N.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/ReluSoftplusB.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/gen-relu.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/maxout.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/rep-cart.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/rep-polar.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/fig/sigmoid.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/notes/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/presentation/Lecture18_NN_Design.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture18/presentation/Lecture18_NN_Design.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture19/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture19/notes/Lecture19_Additional_Optimization.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture19/notes/Lecture19_Additional_Optimization.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture19/presentation/Lecture19_NNRegularization.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture19/presentation/Lecture19_NNRegularization.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture2/data/candidates.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture2/data/contributors_with_candidate_id.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture2/data/mtcars.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture2/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture2/notes/grammarofdata.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture2/presentation/Lecture2.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture2/presentation/Lecture2.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture20/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture20/data/lec20_data1_test.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture20/data/lec20_data1_train.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture20/data/lec20_data2_test.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture20/data/lec20_data2_train.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture20/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture20/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture20/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture20/notes/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture20/notes/Lecture20_Notebook.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture20/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture20/presentation/Lecture20_SVM.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture20/presentation/Lecture20_SVM.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture21/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture21/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture21/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture21/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture21/notes/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture21/notes/Lecture21_Notebook.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture21/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture21/presentation/Lecture21_Stacking.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture21/presentation/Lecture21_Stacking.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture22/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture22/presentation/Lecture22_ResponsibleDS.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture23/data/bone.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture23/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture23/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture23/notes/Lecture23_Notebook.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture23/presentation/Lecture23_ABTesting.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture23/presentation/Lecture23_ABTesting.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture24/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture24/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture24/notes/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture24/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture24/presentation/Lecture24_Wrapup.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture24/presentation/Lecture24_Wrapup.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture3/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture3/data/mtcars.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture3/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture3/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture3/notes/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture3/notes/edaviz.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture3/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture3/presentation/EDA.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture4/data/Advertising.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture4/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture4/fig/E1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture4/fig/Exercise1-2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture4/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture4/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture4/notes/Exercise_Lecture4.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture4/presentation/Lecture4_Regression.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture4/presentation/Lecture4_Regression.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/data/Advertising.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/fig/HT_BS_h.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/fig/HT_Null_h.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/fig/HT_NullandBS.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/fig/HT_f1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/fig/HT_rand_0.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/fig/HT_rand_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/fig/HT_rand_2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/fig/HT_rand_3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/fig/HT_rand_4.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/fig/HT_rand_5.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/presentation/Lecture5_MultiRegression.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/presentation/Lecture5_MultiRegression.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/presentation/Lecture5_Regressionb.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/presentation/Lecture5_Regressionb.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture6/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture6/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture6/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture6/notes/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture6/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture6/presentation/Lecture6_MR_ModelSelection.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture6/presentation/Lecture6_MR_ModelSelection.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/data/Advertising.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/Reg_1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/hairy1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/hairy_l1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/hairy_l2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/hairy_l3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/hairy_l_all.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/hairy_p1.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/hairy_p2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/hairy_p3.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/hairy_p_all.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/hairy_p_all2.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/hairy_violin_lin.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/hairy_violin_poly.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/fig/hairy_violin_poly10.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/presentation/Lecture7_Regularization.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/presentation/Lecture7_Regularization.pptx" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture8/data/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture8/fig/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture8/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture8/notebook/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture8/notes/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture8/notes/Lecture8_Notebook.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture8/presentation/.placeholder" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture8/presentation/Lecture8_PCA.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture9/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture9/presentation/Lecture9_VIZComm.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/pages/lecture2/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/pages/materials.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/pages/materials10.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/pages/materials2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/pages/materials3.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/pages/materials4.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/pages/materials5.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/pages/materials6.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/pages/materials7.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/pages/materials8.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/pages/materials9.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/pages/schedule.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/pages/syllabus.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/projects/Alzheimers_ProjectDescription.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/projects/Dogs_ProjectDescription.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/projects/FinalReport_Guidelines.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/projects/LendingClub_ProjectDescription.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/projects/MidtermElections_ProjectDescription.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/projects/ProjectGuidelines.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/projects/Spotify_ProjectDescription.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/projects/Twitter/tweets_sample.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/projects/Twitter_ProjectDescription.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/projects/WorldCup_ProjectDescription.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/search.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/Section8/data/spam.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section-1/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section-1/notebook-solutions/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section-1/notebook-student/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section1/notebook/section_1_solutions.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section1/notebook/section_1_student.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section2/data/bikeshare.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section2/data/states.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section2/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section2/notebook/section_2_solutions.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section2/sol1.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section2/sol2.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section2/sol3.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section2/sol4.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section2/sol5.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section2/sol6.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section2/sol7.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section2/sol8.py" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section2/solutions/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section3/data/dataset3.txt" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section3/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section3/notebook/section_3_solutions.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section3/notebook/section_3_student.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section3/presentation/section_3_slides.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section3/solutions/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section3/student/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section4/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section4/notebook/section_4.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section4/solutions/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section5/data/flowers.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section5/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section5/notebook/section_5_solutions.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section5/presentation/section_5_logistic_regression_slides.pdf" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section5/solutions/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section6/data/fun_dataset.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section6/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section6/notebook/section_6_solutions.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section6/solutions/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section7/data/Skyserver.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section7/data/Skyserver_2.csv" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section7/data/blackbody_radn_curves.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section7/data/expansion.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section7/data/galaxy_morph.fit" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section7/data/quasar.jpeg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section7/data/redshift.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section7/data/sdss.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section7/data/uexp.gif" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section7/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section7/notebook/section_7_solutions.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section7/solutions/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section8/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section8/notebook/section_8_student.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section8/student/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section9/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section9/notebook/section_9_students.ipynb-meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section9/students/index.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/style/css/hiacs.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/style/images/favicon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/style/images/logo.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/style/images/logo_tUV_icon.ico" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/style/tipuesearch/tipuesearch.css" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/style/tipuesearch/tipuesearch.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/style/tipuesearch/tipuesearch.min.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/style/tipuesearch/tipuesearch_set.js" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/a-sec.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/adaboost.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/aic.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/akaike-information-criterion.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/artificial-neural-networks.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/back-propagation.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/bagging.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/blah.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/boosting.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/bootstrap.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/catboost.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/categorical-predictors.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/classification.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/cnn.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/collinearity.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/confidence-intervals.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/convolutional-neural-networks.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/cross-validation.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/cross-validation2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/cv.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/cv2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/data-analysis.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/data-engineering.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/data-exploration.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/data-formats-json-and-csv.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/data-science-demo.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/decision-trees.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/descriptive-statistics.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/dictionaries.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/dimensionality-reduction.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/discriminant-analysis.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/eda.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/efb.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/eigenvalues.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/eigenvectors.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/exclusive-feature-bundling-efb.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/exploratory-data-analysis.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/exponential-family.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/functions.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/gda.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/generalized-linear-models.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/glms.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/goss.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/gradient-boosting.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/gradient-descent.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/gram-matrix.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/grammar-of-data.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/how-to-read-data.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/hypothesis-testing.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/importance-of-predictors.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/information-criteria.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/information-theory.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/interaction-terms.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/introduction.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/k-nearest-neighbors-knn.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/kl-divergence.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/knn-regression.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/knn.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/lasso.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/lda.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/lgbm.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/linear-algebra.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/linear-regression.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/link-function.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/lists.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/logistic-function.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/logistic-regression.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/matplotlib.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/maximum-likelihood-estimation.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/maximum-likelihood.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/mle-eignevalues.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/mle.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/mlp.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/model-fitness.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/model-selection.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/mse.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/multi-layer-perceptron.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/multiple-linear-regression.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/multiple-logistic-regression.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/multiple-regression.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/neural-networks.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/nn.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/numpy.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/overfitting.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/p-values.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/pandas.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/parse-html-with-beautifulsoup.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/pca.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/perceptron.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/polynomial-regression.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/pruning.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/qda.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/qualitative-predictors.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/r-squared.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/r2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/random-forest.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/regression-trees.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/regression.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/regularization.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/regularization2.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/ridge.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/rmse.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/scraping.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/standard-errors.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/support-vector-machines.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/svc.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/svm.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/the-data-science-process.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/visualization.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/visualizations.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/viz.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/what-are-data.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/what-is-data-science.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tag/xgboost.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tags.html" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tipuesearch_content.js" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/2018_CS109A$2018_CS109A.coverage" NAME="2018-CS109A Coverage Results" MODIFIED="1549749732217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
   <component name="FavoritesManager">
     <favorites_list name="2018-CS109A" />
@@ -745,12 +51,24 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="true">
+      <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/content/labs/lab4/index.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
               <first_editor relative-caret-position="120">
                 <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/content/lectures/lecture5/index.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="255">
+                <caret line="17" lean-forward="true" selection-start-line="14" selection-end-line="17" />
               </first_editor>
               <second_editor />
             </state>
@@ -785,8 +103,8 @@
     </option>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="392" />
-    <option name="y" value="36" />
+    <option name="x" value="32" />
+    <option name="y" value="23" />
     <option name="width" value="1440" />
     <option name="height" value="816" />
   </component>
@@ -812,36 +130,21 @@
               <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
               <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
               <item name="content" type="462c0819:PsiDirectoryNode" />
-              <item name="labs" type="462c0819:PsiDirectoryNode" />
+              <item name="lectures" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
               <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
               <item name="content" type="462c0819:PsiDirectoryNode" />
-              <item name="labs" type="462c0819:PsiDirectoryNode" />
-              <item name="lab4" type="462c0819:PsiDirectoryNode" />
+              <item name="lectures" type="462c0819:PsiDirectoryNode" />
+              <item name="lecture1" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
               <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
               <item name="content" type="462c0819:PsiDirectoryNode" />
-              <item name="labs" type="462c0819:PsiDirectoryNode" />
-              <item name="lab4" type="462c0819:PsiDirectoryNode" />
-              <item name="notebook" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
-              <item name="content" type="462c0819:PsiDirectoryNode" />
-              <item name="labs" type="462c0819:PsiDirectoryNode" />
-              <item name="lab10" type="462c0819:PsiDirectoryNode" />
-            </path>
-            <path>
-              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
-              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
-              <item name="content" type="462c0819:PsiDirectoryNode" />
-              <item name="labs" type="462c0819:PsiDirectoryNode" />
-              <item name="lab11" type="462c0819:PsiDirectoryNode" />
+              <item name="lectures" type="462c0819:PsiDirectoryNode" />
+              <item name="lecture5" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
@@ -878,6 +181,26 @@
       </list>
     </option>
   </component>
+  <component name="RunManager">
+    <configuration name="2018-CS109A" type="JupiterNotebook" factoryName="Jupyter Notebook">
+      <module name="2018-CS109A" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="additionalOptions" value="" />
+      <option name="ipnbHost" value="127.0.0.1" />
+      <option name="ipnbPort" value="8888" />
+      <method v="2" />
+    </configuration>
+  </component>
   <component name="SvnConfiguration">
     <configuration />
   </component>
@@ -888,16 +211,15 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1549524738155</updated>
-      <workItem from="1549524740065" duration="709000" />
+      <workItem from="1549524740065" duration="3120000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="709000" />
+    <option name="totallyTimeSpent" value="3120000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="392" y="36" width="1440" height="816" extended-state="0" />
-    <editor active="true" />
     <layout>
       <window_info id="Favorites" sideWeight="0.50212765" side_tool="true" weight="0.24964234" />
       <window_info active="true" content_ui="combo" id="Project" order="0" sideWeight="0.49787235" visible="true" weight="0.24964234" />
@@ -906,7 +228,7 @@
       <window_info anchor="bottom" id="Database Changes" />
       <window_info anchor="bottom" id="Version Control" />
       <window_info anchor="bottom" id="Python Console" />
-      <window_info anchor="bottom" id="Terminal" visible="true" weight="0.32952926" />
+      <window_info anchor="bottom" id="Terminal" weight="0.32952926" />
       <window_info anchor="bottom" id="Event Log" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
@@ -968,6 +290,16 @@
         <state split_layout="SPLIT">
           <first_editor relative-caret-position="120">
             <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/lectures/lecture5/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="255">
+            <caret line="17" lean-forward="true" selection-start-line="14" selection-end-line="17" />
           </first_editor>
           <second_editor />
         </state>
