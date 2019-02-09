@@ -61,7 +61,7 @@
           </provider>
         </entry>
       </file>
-      <file pinned="false" current-in-tab="false">
+      <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/content/lectures/lecture5/index.md">
           <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
             <state split_layout="SPLIT">
@@ -69,15 +69,6 @@
                 <caret line="17" selection-start-line="14" selection-end-line="17" />
               </first_editor>
               <second_editor />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/content/sections/section1/notebook/section_1_student.ipynb">
-          <provider selected="true" editor-type-id="ipnb-editor">
-            <state>
-              <selected id="1" />
             </state>
           </provider>
         </entry>
@@ -219,12 +210,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1549524738155</updated>
-      <workItem from="1549524740065" duration="4022000" />
+      <workItem from="1549524740065" duration="4244000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="4022000" />
+    <option name="totallyTimeSpent" value="4244000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="32" y="23" width="1440" height="816" extended-state="0" />
@@ -303,6 +294,13 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/content/sections/section1/notebook/section_1_student.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="1" />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/content/lectures/lecture5/index.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
@@ -310,13 +308,6 @@
             <caret line="17" selection-start-line="14" selection-end-line="17" />
           </first_editor>
           <second_editor />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/content/sections/section1/notebook/section_1_student.ipynb">
-      <provider selected="true" editor-type-id="ipnb-editor">
-        <state>
-          <selected id="1" />
         </state>
       </provider>
     </entry>
