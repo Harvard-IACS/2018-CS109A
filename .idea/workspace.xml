@@ -1,25 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="2ba160de-36cd-4543-9b99-7afc4305c26f" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/content/pages/schedule.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/pages/schedule.md" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/a-sections/a-sec3/notebook/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec9/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/a-sections/a-sec9/notebook/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/{slug}.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/{slug}10.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}10.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/{slug}2.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}2.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/{slug}3.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}3.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/{slug}4.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}4.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/{slug}5.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}5.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/{slug}6.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}6.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/{slug}7.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}7.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/{slug}8.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}8.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/category/{slug}9.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}9.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/labs/lecture-3/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lecture-3/notebook/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/sections/section-1/notebook-student/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section-1/notebook-student/index.html" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/docs/tipuesearch_content.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tipuesearch_content.js" afterDir="false" />
-    </list>
+    <list default="true" id="2ba160de-36cd-4543-9b99-7afc4305c26f" name="Default Changelist" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -237,12 +219,12 @@
       <option name="number" value="Default" />
       <option name="presentableId" value="Default" />
       <updated>1549524738155</updated>
-      <workItem from="1549524740065" duration="3792000" />
+      <workItem from="1549524740065" duration="4022000" />
     </task>
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="3792000" />
+    <option name="totallyTimeSpent" value="4022000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="32" y="23" width="1440" height="816" extended-state="0" />
