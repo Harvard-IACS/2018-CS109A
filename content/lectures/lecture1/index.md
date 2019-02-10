@@ -3,7 +3,7 @@ Category: lectures
 Slug: lecture-1
 Author: Pavlos Protopapas
 Date: 2018-09-10
-Tags: What are Data?, Data Exploration, Descriptive Statistics, Visualizations
+Tags: What are Data?, Da ta Exploration, Descriptive Statistics, Visualizations
 
 ## Slides
 
@@ -11,5 +11,5 @@ Tags: What are Data?, Data Exploration, Descriptive Statistics, Visualizations
 
 ## Standard Section Notebooks
 
-- [Jupyter | Section 1: Student Version]({filename}../../sections/section1/notebook/section_1_student.ipynb) 
-- [Jupyter | Section 1: Solutions]({filename}../../sections/section1/notebook/section_1_student.ipynb)
+- [Jupyter | Section 1: Introduction to Web Scraping - Student Version]({filename}../../sections/section1/notebook/section_1_student.ipynb) 
+- [Jupyter | Section 1:  Introduction to Web Scraping - Solutions]({filename}../../sections/section1/notebook/section_1_student.ipynb)

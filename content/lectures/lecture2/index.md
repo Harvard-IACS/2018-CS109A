@@ -1,23 +1,29 @@
-Title: Lecture 2: Data Engineering
+Title: Lecture 2: Data Engineering - The Grammar of Data
 Category: lectures
-Slug: lecture2
+Slug: lecture-2
 Author: Pavlos Protopapas
 Date: 2018-09-12
-Tags: Data Engineering, Grammar of Data
+Tags: Data Engineering, The Grammar of Data
 
 
-### Slides
+## Slides
 
-- [PDF]({attach}presentation/lecture2.pdf)
-- [PPTX]({attach}presentation/lecture2.pptx)
-
-
-### Notebooks
-
-- [Examples]({filename}notes/grammarofdata.ipynb)
+- [PDF | Lecture 2: Data Engineering - The Grammar of Data]({attach}presentation/lecture2.pdf)
+- [PPTX | Lecture 2: Data Engineering - The Grammar of Data]({attach}presentation/lecture2.pptx)
 
 
-### Sections 
+## Lecture Notebooks
 
-- [Section 1 student]({filename}../../sections/section1/notebook/section_1_solutions.ipynb) 
-- [Section 1 solutions]({filename}../../sections/section1/notebook/section_1_solutions.ipynb) 
+- [Jupyter | Lecture 2: Data Engineering - The Grammar of Data]({filename}notes/grammarofdata.ipynb)
+
+
+## Standard Section Notebooks 
+
+- [Jupyter | Section 1: Introduction to Web Scraping - Student Version]({filename}../../sections/section1/notebook/section_1_student.ipynb) 
+- [Jupyter | Section 1:  Introduction to Web Scraping - Solutions]({filename}../../sections/section1/notebook/section_1_student.ipynb)
+
+
+## Lab Notebooks
+
+- [Jupyter | Lab 1: Introduction to Python and its Numerical Stack - Student Version]({filename}../../labs/lab1/notebook/lab1.ipynb)
+- [Jupyter | Lab 1: Introduction to Python and its Numerical Stack - Solutions]({filename}../../labs/lab1/notebook/lab1_solutions.ipynb)
