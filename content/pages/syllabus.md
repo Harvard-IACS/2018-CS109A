@@ -25,7 +25,6 @@ pre {
 </style>
 
 ## List of Contents
-- [Course Structure](#Course-Structure)
 - [Prerequisites](#Prerequisites)
 - [Software](#Software)
 - [Course Activities](#Course-Activities)
@@ -34,31 +33,23 @@ pre {
 - [Getting Help](#Getting-Help)
 - [Course Policies](#Course-Policies)
 
-<hr>
-
-## Course Structure <a name='Course-Structure'>
-
-The material of the course is divided 3 modules. Each module will integrate the five key facets of an investigation using data:
-
-* **Module A:** facet a, facet b, facet c, facet d, facet e.
-* **Module B:** facet a, facet b, facet c, facet d, facet e.
-* **Module C:** facet a, facet b, facet c, facet d, facet e.
-
-Check the [schedule](https://add_link_here) for more details on the contents of the course.
 
 <hr>
+<a name='Prerequisites'>
 
 ## Prerequisites 
 
 You are expected to have programming experience at the level of CS 50 or above, and statistics knowledge at the level of Stat 100 or above (Stat 110 recommended). HW0 is designed to test your knowledge on the prerequisites. Successful completion of this assignment will show that this course is suitable for you. HW0 will not be graded but you are required to submit to enroll in the class.
 
 <hr>
+<a name='Software'>
 
 ## Software
 
 We will be using Python 3 run on Jupyter Notebooks. You can access the notebook viewer either in your own machine by installing the [Anaconda Platform](https://docs.continuum.io/anaconda/) which includes Jupyter/IPython as well all packages that will be required for the course, or by using the SEAS JupyterHub from Canvas. More details in class.
 
 <hr>
+<a name='Course-Activities'>
 
 ## Course Activities
 
@@ -72,7 +63,8 @@ The course is structured in three different types of activities that repeat them
     * 3a. **Standard Sections** are held on **Monday** and will cover a blend of lecture material and practice problems.  
     * 3b. **Advanced Sections** are held on **Wednesday** and will cover advanced topics about mathematical underpinnings of the methods presented in lecture and lab. The Advanced Section material is **required for AC209A students**.
 
-<hr>
+<hr> 
+<a name='Recommended-Textbook'>
 
 ## Recommended Textbook
 
@@ -85,6 +77,7 @@ The book is available here:
 [Amazon](https://www.amazon.com/Introduction-Statistical-Learning-Applications-Statistics/dp/1461471370)  
 
 <hr>
+<a name='Assignments'>
 
 ## Assignments
 
@@ -123,6 +116,7 @@ Homework will be graded based on:
 3. How well you present the results (as you would do in a report). 
 
 <hr>
+<a name='Getting-Help'>
 
 ## Getting Help
 
@@ -134,6 +128,7 @@ For questions about homework, course content, package installation, and after yo
 4. For personal and confidential matters send an email to the **instructors**.
 
 <hr>
+<a name='Course-Policies'>
 
 ## Course Policies  
 
