@@ -7,11 +7,9 @@ Tags: What are Data?, Data Exploration, Descriptive Statistics, Visualizations
 
 ## Slides
 
-- [Lecture 1: Data, Summaries and Visuals]({attach}presentation/Lecture1_Data.pdf) 
+- [PDF | Lecture 1: Data, Summaries and Visuals]({attach}presentation/Lecture1_Data.pdf) 
 
 ## Standard Section Notebooks
 
-- [Section 1 Student Version]({filename}../../sections/section1/notebook/section_1_student.ipynb) 
-- [Section 1 Solutions]({filename}../../sections/section1/notebook/section_1_solutions.ipynb)
-
-<hr>
+- [Jupyter | Section 1: Student Version]({filename}../../sections/section1/notebook/section_1_student.ipynb) 
+- [Jupyter | Section 1: Solutions]({filename}../../sections/section1/notebook/section_1_student.ipynb)
