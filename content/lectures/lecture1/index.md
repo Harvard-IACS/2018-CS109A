@@ -13,3 +13,8 @@ Tags: What are Data?, Da ta Exploration, Descriptive Statistics, Visualizations
 
 - [Jupyter | Section 1: Introduction to Web Scraping - Student Version]({filename}../../sections/section1/notebook/section_1_student.ipynb) 
 - [Jupyter | Section 1:  Introduction to Web Scraping - Solutions]({filename}../../sections/section1/notebook/section_1_student.ipynb)
+
+## Lab Notebooks
+
+- [Jupyter | Lab 1: Introduction to Python and its Numerical Stack - Student Version]({filename}../../labs/lab1/notebook/lab1.ipynb)
+- [Jupyter | Lab 1: Introduction to Python and its Numerical Stack - Solutions]({filename}../../labs/lab1/notebook/lab1.ipynb)

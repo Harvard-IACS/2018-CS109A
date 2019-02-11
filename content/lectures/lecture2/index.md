@@ -3,7 +3,7 @@ Category: lectures
 Slug: lecture-2
 Author: Pavlos Protopapas
 Date: 2018-09-12
-Tags: Data Engineering, The Grammar of Data
+Tags: Data Engineering, The Grammar of Data, Data Collection, Data Cleaning
 
 
 ## Slides
@@ -14,7 +14,7 @@ Tags: Data Engineering, The Grammar of Data
 
 ## Lecture Notebooks
 
-- [Jupyter | Lecture 2: Data Engineering - The Grammar of Data]({filename}notes/grammarofdata.ipynb)
+- [Jupyter | Lecture 2: Data Engineering Demo]({filename}notes/grammarofdata.ipynb)
 
 
 ## Standard Section Notebooks 
@@ -26,4 +26,6 @@ Tags: Data Engineering, The Grammar of Data
 ## Lab Notebooks
 
 - [Jupyter | Lab 1: Introduction to Python and its Numerical Stack - Student Version]({filename}../../labs/lab1/notebook/lab1.ipynb)
-- [Jupyter | Lab 1: Introduction to Python and its Numerical Stack - Solutions]({filename}../../labs/lab1/notebook/lab1_solutions.ipynb)
+- [Jupyter | Lab 1: Introduction to Python and its Numerical Stack - Solutions]({filename}../../labs/lab1/notebook/lab1.ipynb)
+- [Jupyter | Lab 2: BeautifulSoup for Scraping - Student Version]({filename}../../labs/lab2/notebook/lab2_scraping.ipynb)
+- [Jupyter | Lab 2: BeautifulSoup for Scraping - Solutions]({filename}../../labs/lab2/notebook/lab2_scraping.ipynb)
