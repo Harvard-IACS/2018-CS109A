@@ -1,9 +1,10 @@
-Title: Lab 3: KNN Regression, Simple Linear Regression
+Title: Lab 3: Scikit-learn for Simple Linear Regression
 Category: labs
-Slug: lab3
+Slug: lab-3
 Author: Pavlos Protopapas
 Date: 2018-09-20
-Tags: Linear Regression, kNN Regression, Regression, kNN
+Tags: Scikit-learn, Linear Regression, k-Nearest Neighbors (kNN) Regression
 
+## Lab Notebooks
 
-- [Lab 3]({filename}notebook/lab3_SLR_KNN.ipynb)
+- [Jupyter | Lab 3: Scikit-learn for Simple Linear Regression]({filename}notebook/lab3_SLR_KNN.ipynb)
