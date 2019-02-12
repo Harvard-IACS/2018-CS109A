@@ -23,6 +23,9 @@ div.exercise {
 	border-left: 5px solid #800080; 
 	padding: 0.5em;
 }
+div.sub-q {
+	font-weight: bold;
+}
 div.theme {
 	background-color: #DDDDDD;
 	border-color: #E9967A; 	
