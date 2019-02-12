@@ -90,9 +90,124 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -171,12 +286,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -189,27 +312,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -405,7 +540,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -415,11 +552,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -667,6 +817,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -705,7 +858,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -827,6 +980,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -843,16 +1000,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -868,6 +1033,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -918,8 +1088,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1058,29 +1235,26 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS-109A Introduction to Data Science</h1>
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS-109A Introduction to Data Science</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Lab-5:-Regularization-and-Cross-Validation">Lab 5: Regularization and Cross-Validation<a class="anchor-link" href="#Lab-5:-Regularization-and-Cross-Validation">¶</a></h2><p><strong>Harvard University</strong><br />
-<strong>Fall 2018</strong><br />
-<strong>Instructors:</strong> Pavlos Protopapas and Kevin Rader<br />
-<strong>Lab Instructor:</strong> Keivn Rader (today at least)<br />
+<h2 id="Lab-5:-Regularization-and-Cross-Validation">Lab 5: Regularization and Cross-Validation<a class="anchor-link" href="#Lab-5:-Regularization-and-Cross-Validation">¶</a></h2><p><strong>Harvard University</strong><br>
+<strong>Fall 2018</strong><br>
+<strong>Instructors:</strong> Pavlos Protopapas and Kevin Rader<br>
+<strong>Lab Instructor:</strong> Keivn Rader (today at least)<br>
 <strong>Authors:</strong> Kevin Rader, Rahul Dave, David Sondak, Will Claybaugh, Pavlos Protopapas</p>
-<hr />
+<hr>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ol start="0">
 <li> Learning Goals </li>
@@ -1095,8 +1269,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Learning-Goals">Learning Goals<a class="anchor-link" href="#Learning-Goals">¶</a></h2><p>In this lab, you will work with some noisy data.  You will use  simple linear and ridge regressions to fit linear, high-order polynomial features to the dataset.  You will attempt to figure out what degree polynomial fits the dataset the best and ultimately use cross validation to determine the best polynomial order.  Finally, you will automate the cross validation process using <code>sklearn</code> in order to determine the best regularization paramter for the ridge regression analysis on your dataset.</p>
 <p>By the end of this lab, you should:</p>
@@ -1140,8 +1313,7 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-1:--Review-of-regularized-regression">Part 1:  Review of regularized regression<a class="anchor-link" href="#Part-1:--Review-of-regularized-regression">¶</a></h2><p>We briefly review the idea of regularization as introduced in lecture.  Recall that in the ordinary least squares problem we find the regression coefficients $\boldsymbol{\beta}\in\mathbb{R}^{m}$ that minimize the loss function 
 \begin{align*}
@@ -1165,8 +1337,7 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Dataset">Dataset<a class="anchor-link" href="#Dataset">¶</a></h3><p>We will work with a synthetic dataset contained in <code>data/noisypopulation.csv</code>.  The data were generated from a specific function $f\left(x\right)$ (the actual mathematical form will remain a mystery).  Noise was added to the function to generate synthetic, noisy (aka, real) observations via $y = f\left(x\right) + \epsilon$ where $\epsilon$ was drawn from a random distribution.  Even if you could make observations at every single value of $x$, the true function may still be obscured.  Of course, the data you actually observe are a subset of all the possible observations in the population.  In this lab, we will refer to observations at every single value of $x$ as the <em>population</em> and the subset of observations as <em>in-sample y</em> or simply <em>the observations</em>.</p>
 <p>The dataset contains three columns:</p>
@@ -1191,8 +1362,7 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this lab, we will try out some regression methods to fit the data and see how well our model matches the true function <code>f</code>.</p>
 </div>
@@ -1215,8 +1385,7 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's take a quick look at the dataset.  We will plot the true function value and the population.</p>
 </div>
@@ -1244,8 +1413,7 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It is often the case that you just can't make observations at every single value of $x$.  We will simulate this situation by making a random choice of $60$ points from the full $200$ points.  We do it by choosing the indices randomly and then using these indices as a way of getting the appropriate samples.</p>
 </div>
@@ -1265,16 +1433,14 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Note:  If you are not familiar with the <code>numpy</code> <code>sort</code> method or the <code>numpy random.choice()</code> method, then please take a moment to look them up in the <code>numpy</code> documentation.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Moving on, let's get the $60$ random samples from our dataset.</p>
 </div>
@@ -1294,8 +1460,7 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's take one more look at our data to see which points we've selected.</p>
 </div>
@@ -1323,8 +1488,7 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we do our favorite thing and split the sample data into training and testing sets.</p>
 <p>Note that here we are actually getting indices instead of the actual training and test set.  This is okay and is another way of generating train-test splits.</p>
@@ -1356,32 +1520,28 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Great!  At this point we've explored our data a little bit, selected a sample of the dataset, and done a train-test split on the sample dataset.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr style="height:2px" />
+<hr style="height:2px">
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's move on to the data analysis.  We'll begin with ridge regression.  In particular we'll do ridge regression on a single predictor and compare it with simple linear regression.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To start, let's fit the old classic, linear regression.</p>
 </div>
@@ -1408,16 +1568,14 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-2:-Bootstrapping">Part 2: Bootstrapping<a class="anchor-link" href="#Part-2:-Bootstrapping">¶</a></h2><p>But wait! Unlike <code>statsmodels</code>, we don't get confidence intervals for the betas. Fortunately, we can bootstrap to build the confidence intervals</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise">**Exercise 1**</div></p>
 <ol>
@@ -1477,16 +1635,14 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>From the above, we find that the bootstrap $90\%$ confidence interval is well away from $0$. We can confidently say that $\beta_{1}$ is not secretly $0$ and we're being fooled by randomness.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-3:-Ridge-regression-for-Simple-Regression">Part 3: Ridge regression for Simple Regression<a class="anchor-link" href="#Part-3:-Ridge-regression-for-Simple-Regression">¶</a></h2><p>To begin, we'll use <code>sklearn</code> to do simple linear regression on the sampled training data.  We'll then do ridge regression with the same data, setting the penalty parameter $\lambda$ to zero.  What happens when we set $\lambda = 0$ for Ridge's Penalty factor?</p>
 <p>We will store the regression coefficients in a dataframe for easy comparison.  The cell below provides some code to set up the dataframe ahead of time.  Notice that we don't know the actual values in the <code>pandas</code> series, so we just set them to <code>NaN</code>.  We will overwrite these later.</p>
@@ -1513,8 +1669,7 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We start with simple linear regression to get the ball rolling.</p>
 </div>
@@ -1553,8 +1708,7 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We will use the above $\boldsymbol\beta$ coefficients as a benchmark for comparision to the ridge method.  The same coefficients can be obtained with ridge regression, which we demonstrate now.</p>
 <p>For reference, here is the ridge regression documentation: <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html">sklearn.linear_model.Ridge</a>.</p>
@@ -1573,8 +1727,7 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The snippet of code below implements the ridge regression with $\lambda = 0$.</p>
 <p><strong>Note:</strong> The weight $\lambda$ is referred to as <code>alpha</code> in the documentation.</p>
@@ -1605,8 +1758,7 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The beta coefficients for linear and ridge regressions coincide for $\lambda = 0$, as expected. We plot the data and fits.</p>
 </div>
@@ -1637,15 +1789,14 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 2</b></div>
 Explore the effect of $\lambda$ on ridge regression.</p>
 <p>Make a plot with of the ridge regression predictions with $\lambda = 0, 5, 10, 100$.  Be sure to include a legend.</p>
 <p>What happens for very large $\lambda$ (e.g. $\lambda \to \infty$)?</p>
 <p>Your plot should look something like the following plot (doesn't have to be exact):
-<img alt="" src="images/ridge_lambda.png" /></p>
+<img alt="" src="images/ridge_lambda.png"></p>
 </div>
 </div>
 </div>
@@ -1661,31 +1812,28 @@ Explore the effect of $\lambda$ on ridge regression.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Part-3-Recap">Part 3 Recap<a class="anchor-link" href="#Part-3-Recap">¶</a></h3><p>That was nice, but we were just doing simple linear regression.  We really want to do more interesting regression problems like multilinear regression.  We will do so in the next section.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-4:-Ridge-regression-with-polynomial-features-on-a-grid">Part 4: Ridge regression with polynomial features on a grid<a class="anchor-link" href="#Part-4:-Ridge-regression-with-polynomial-features-on-a-grid">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we'll make a more complex model by adding polynomial features.  Instead of building the linear model $y = \beta_0 + \beta_1 x$, we build a polynomial model $y = \beta_0 + \beta_1 x + \beta_2 x^2 + \ldots \beta_d x^d$ for some $d$ to be determined.  This regression will be linear though, since we'll be treating  $x^2, \ldots, x^d$ themselves as predictors in the linear model.</p>
-<p>The design matrix $\mathbf{X}$ contains columns corresponding to $1, x, x^2, \ldots, x^d$. To build it, we use <code>sklearn</code>. (The particular design matrix is also known as the <a href="https://en.wikipedia.org/wiki/Vandermonde_matrix"><em>Vandermonde</em> matrix</a>).  For example, if we have three observations<br /><br />
+<p>The design matrix $\mathbf{X}$ contains columns corresponding to $1, x, x^2, \ldots, x^d$. To build it, we use <code>sklearn</code>. (The particular design matrix is also known as the <a href="https://en.wikipedia.org/wiki/Vandermonde_matrix"><em>Vandermonde</em> matrix</a>).  For example, if we have three observations<br><br>
 \begin{align*}
   \left\{\left(x_{1}, y_{1}\right), \left(x_{2}, y_{2}\right), \left(x_{3}, y_{3}\right)\right\}
-\end{align*}<br />
-and we want polynomial features up to and including degree $4$, the design matrix looks like<br /><br />
+\end{align*}<br>
+and we want polynomial features up to and including degree $4$, the design matrix looks like<br><br>
 \begin{align*}
 X = \begin{bmatrix}
 x_1^0 & x_1^1 & x_1^2 & x_1^3 & x_1^4\\
@@ -1702,12 +1850,11 @@ x_3^0 & x_3^1 & x_3^2 & x_3^3 & x_3^4\\
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 3</b></div></p>
 <ol>
-<li>Make a toy vector called <code>toy</code>, where<br />
+<li>Make a toy vector called <code>toy</code>, where<br>
 \begin{align*}
 \mathrm{toy} = 
 \begin{bmatrix}
@@ -1745,16 +1892,14 @@ x_3^0 & x_3^1 & x_3^2 & x_3^3 & x_3^4\\
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We now continue working with our data.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise 4</b></div><p>The code provided below is missing a few lines and it's missing many comments.  Do the following:</p>
 <ol>
@@ -1822,16 +1967,14 @@ x_3^0 & x_3^1 & x_3^2 & x_3^3 & x_3^4\\
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As you can see, as we increase $\lambda$ from 0 to 1, we start out overfitting, then doing well, and then our fits develop a mind of their own irrespective of data, as the penalty term dominates.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 5</b></div>
 What would you expect if you compared a performance metric between these models on a grid?  What performance metric should you use?</p>
@@ -1841,16 +1984,14 @@ What would you expect if you compared a performance metric between these models 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Part-4-Recap">Part 4 Recap<a class="anchor-link" href="#Part-4-Recap">¶</a></h3><p>We did a ridge regression on our dataset where the features were the polynomial terms.  We also assessed the impact of the regularization parameter on the solution.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-5:-Cross-validation-----Finding-the-best-penalization-parameter">Part 5: Cross-validation --- Finding the best penalization parameter<a class="anchor-link" href="#Part-5:-Cross-validation-----Finding-the-best-penalization-parameter">¶</a></h2><p>In order to determine the critical value of $\lambda$ that gives us our best predictive model, which we'll refer to as $\lambda^*$, we will assess this via cross-validation. To do this we use the concept of a <em>meta-estimator</em> from <code>scikit-learn</code>.</p>
 <p>Model selection is supported by two distinct meta-estimators:</p>
@@ -1869,8 +2010,7 @@ The input to these meta-estimators is an estimator, which has some hyperparamete
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Here is a helper function that we will use to get the best Ridge regression.</p>
 </div>
@@ -1896,8 +2036,7 @@ The input to these meta-estimators is an estimator, which has some hyperparamete
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 6</b></div>
 Use the function above to fit the model on the training set with $4$-fold cross validation.  Save the fit as the variable <code>fitmodel</code>.</p>
@@ -1930,8 +2069,7 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We also output the mean cross-validation error at different $\lambda$ (with a negative sign, as scikit-learn likes to maximize negative error which is equivalent to minimizing error).</p>
 </div>
@@ -1961,8 +2099,7 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we make a <code>log-log</code> plot of <code>-fit_scores</code> versus <code>fit_lambdas</code>.</p>
 </div>
@@ -1985,8 +2122,7 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="SK-learn's-cross_val_score:-Easier-Cross-Validation">SK-learn's <code>cross_val_score</code>: Easier Cross Validation<a class="anchor-link" href="#SK-learn's-cross_val_score:-Easier-Cross-Validation">¶</a></h3><p><code>GridSearchCV</code> is an important tool when you are searching over many hyperparameters (and believe us, you will be), but when you only need to get CV scores for a particular model, some students find <code>cross_val_score</code> more intuitive.</p>
 </div>
@@ -2007,8 +2143,7 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can loop over particular models and get scores for each (equivalent to GridSearchCV over the given parameter settings).</p>
 </div>
@@ -2029,8 +2164,7 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Built-in-Cross-Validation:-RidgeCV-and-LassoCV">Built-in Cross Validation: <code>RidgeCV</code> and <code>LassoCV</code><a class="anchor-link" href="#Built-in-Cross-Validation:-RidgeCV-and-LassoCV">¶</a></h3><p>Some sklearn models have built-in, automated cross validation to tune their hyper parameters.</p>
 </div>
@@ -2056,8 +2190,7 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Important-note:">Important note:<a class="anchor-link" href="#Important-note:">¶</a></h3><ol>
 <li>For any tool more automated than literally using k_fold, just setting <code>cv=5</code> will <strong>NOT</strong> shuffle your data by default.</li>
@@ -2088,16 +2221,14 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-5b:-Refitting-on-full-training-set">Part 5b: Refitting on full training set<a class="anchor-link" href="#Part-5b:-Refitting-on-full-training-set">¶</a></h2><p>At this point, we have determined the best penalization parameter for the ridge regression on our current dataset using cross validation.  Let's refit the estimator on the training set and calculate and plot the test set error and the polynomial coefficients. Notice how many of these coefficients have been pushed to lower values or 0.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 7</b></div>
 Assign to variable <code>est</code> the classifier obtained by fitting the entire training set using the best $\lambda$ found above.  Assign the predictions to the variable <code>ypredict_ridge_best</code>.</p>

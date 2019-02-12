@@ -19,7 +19,7 @@
     <link rel='shortcut icon' type='image/x-icon' href='../../../style/images/favicon.ico' />
     <link rel="stylesheet" href="../../../style/css/hiacs.css">
 
-    <title>CS109A - Lecture 3: EDA and Visualization</title>
+    <title>CS109A - Lecture 3: Lecture 3: EDA and Visualization Demo</title>
 
     <style>
       .navbar {
@@ -90,9 +90,124 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -171,12 +286,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -189,27 +312,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -405,7 +540,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -415,11 +552,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -667,6 +817,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -705,7 +858,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -827,6 +980,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -843,16 +1000,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -868,6 +1033,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -918,8 +1088,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1058,15 +1235,14 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS-109A Introduction to Data Science</h1>
-<h2 id="Lecture-3:-EDA-and-Visualization-Demo">Lecture 3: EDA and Visualization Demo<a class="anchor-link" href="#Lecture-3:-EDA-and-Visualization-Demo">¶</a></h2><p><strong>Harvard University</strong><br />
-<strong>Fall 2018</strong><br />
-<strong>Instructors</strong>: Pavlos Protopapas and Kevin Rader <br />
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS-109A Introduction to Data Science</h1>
+<h2 id="Lecture-3:-EDA-and-Visualization-Demo">Lecture 3: EDA and Visualization Demo<a class="anchor-link" href="#Lecture-3:-EDA-and-Visualization-Demo">¶</a></h2><p><strong>Harvard University</strong><br>
+<strong>Fall 2018</strong><br>
+<strong>Instructors</strong>: Pavlos Protopapas and Kevin Rader <br>
 <strong>Author</strong>: Rahul Dave</p>
-<hr />
+<hr>
 </div>
 </div>
 </div>
@@ -1151,16 +1327,14 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<hr />
+<hr>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="EDA-and-visualization">EDA and visualization<a class="anchor-link" href="#EDA-and-visualization">¶</a></h1><p>In the last lecture we focussed on the machinery needed to get data into a tabular form. In this lecture we focus on the visualization part of Exploratory Data Analysis. This notebook accompanies the slides. It is strongly recommended that you see the lecture/read the slides and then work on this notebook. The textual descriptions are sparse here and the code will become much clearer in the context of visualization best practices.</p>
 </div>
@@ -1196,8 +1370,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The seaborn API is changing, and <code>seaborn.apionly</code> is being deprecated. The default will soon behave like <code>apionly</code> and not change the standard matplotlib color scheme and defaults. Here we choose <code>apionly</code> to make sure we have to do everything explicitly.</p>
 </div>
@@ -1216,16 +1389,14 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Getting-the-mtcars-dataset-into-shape">Getting the mtcars dataset into shape<a class="anchor-link" href="#Getting-the-mtcars-dataset-into-shape">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The documentation for this data is <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html">here</a> but I have extracted some relevant parts below:</p>
 <pre><code>Description
@@ -1389,8 +1560,7 @@ Henderson and Velleman (1981), Building multiple regression models interactively
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>There is an ugly  poorly named column right here. Lets fix that.</p>
 </div>
@@ -1550,8 +1720,7 @@ Henderson and Velleman (1981), Building multiple regression models interactively
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We parse out a <code>maker</code>, which we shall lkater use to group cars.</p>
 </div>
@@ -1612,8 +1781,7 @@ Name: maker, dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is what the dataframe looks like now:</p>
 </div>
@@ -1757,8 +1925,7 @@ Name: maker, dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can construct the <code>av_mpg</code> series by using the "split-apply-combine" paradigm and summarizing within group data by a mean:</p>
 </div>
@@ -1810,8 +1977,7 @@ Name: mpg, dtype: float64</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Simple-EDA">Simple EDA<a class="anchor-link" href="#Simple-EDA">¶</a></h2><p>(as provided by  Chris, a previous head-TF for cs109)</p>
 <p>He says:</p>
@@ -1849,8 +2015,7 @@ Name: mpg, dtype: float64</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We ask what the defaukt color palette is. Since we imported <code>sns.apionly</code>, we get the default matplotlib color palette.</p>
 </div>
@@ -1887,8 +2052,7 @@ Name: mpg, dtype: float64</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we see maplotlib's default color palette, 'viridis'.</p>
 </div>
@@ -1923,15 +2087,14 @@ RBNDAEA0MQQARBNDAEA0MQQARBNDAEA0MQQARBNDAEA0MQQARBNDAEC0qbX2/wfTtF9Ve39//FVV
 HzpvGulqVX0dPaKTOd9W5b5l577lNefbqty37K631jYXPVoYQ/88nqbWWpvONOscm/N9c76tyn3L
 zn3La863VbkvhY/JAIBoYggAiHbaGHrSZcX5Mef75nxblfuWnfuW15xvq3JfhFN9ZwgAYG58TAYA
 RBNDAEA0MQQARBNDAEA0MQQARPsDYhNyj965+J4AAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can choose other palettes. The default palette is for qualitative data. It creates a color cycle we use in our plots. In other words, as we plot multiple things in a plot, it will use these colors one-by-one.</p>
 </div>
@@ -1951,10 +2114,10 @@ RBNDAEA0MQQARBNDAEA0MQQARPsDYhNyj965+J4AAAAASUVORK5CYII=
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="a634ebed-95e7-4646-978c-d9182b3a5a3f"></div>
+<div id="c8a355f3-a932-4545-af9f-481cd8e3ae36"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#a634ebed-95e7-4646-978c-d9182b3a5a3f');
+var element = $('#c8a355f3-a932-4545-af9f-481cd8e3ae36');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "4b4615c10ff74a36be2d1979420e7dc7"}
@@ -1978,7 +2141,7 @@ JBYAgGhqreUH03RQVft//vxZVR87bxppp6q+jB7RyZxvq3LfqnPf6przbVXzv2+3tba16NHCWPjr
 8TS11tp0qVlLbM73zfm2KvetOvetrjnfVjX/+87LZwgAIBILAEB00Vh42WXF8pjzfXO+rcp9q859
 q2vOt1XN/75zudBvFgCA/4/PEABAJBYAgEgsAACRWAAAIrEAAES/ARDsZw618doqAAAAAElFTkSu
 QmCC
-" />
+">
 </div>
 </div>
 </div>
@@ -2013,7 +2176,7 @@ JBYAgGhqreUH03RQVft//vxZVR87bxppp6q+jB7RyZxvq3LfqnPf6przbVXzv2+3tba16NHCWPjr
 8TS11tp0qVlLbM73zfm2KvetOvetrjnfVjX/+87LZwgAIBILAEB00Vh42WXF8pjzfXO+rcp9q859
 q2vOt1XN/75zudBvFgCA/4/PEABAJBYAgEgsAACRWAAAIrEAAES/ARDsZw618doqAAAAAElFTkSu
 QmCC
-" />
+">
 </div>
 </div>
 </div>
@@ -2031,8 +2194,7 @@ QmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Bar-Charts">Bar Charts<a class="anchor-link" href="#Bar-Charts">¶</a></h4><p>We see that Pandas series very niftily give us bar graphs.</p>
 </div>
@@ -2505,7 +2667,7 @@ oUMHU+vWrU2dO3c2vfzyy6bi4mJrh21V9bUXYEpPTzeXUX+r64faTf2tfpMnTzZ17tzZ5OTkZOrQ
 oYNp2LBhpk8//dR83F76msFkMpmaM+ETERERaek0B0xERESkmSkBExEREWlmSsBEREREmpkSMBER
 EZFmpgRMREREpJkpARMRERFpZkrARERERJqZEjARERGRZqYETERERKSZKQETERERaWZKwERERESa
 2f8BWnmsRq5NUw4AAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
@@ -2991,15 +3153,14 @@ HbZd1dRfgCU9Pd1aR+Otup/qN423mo0bN87Stm1bi5ubm8Xb29sycOBAy6effmrd7yxjzWCxWCz1
 mfCJiIiINHRaAyYiIiJSz5SAiYiIiNQzJWAiIiIi9UwJmIiIiEg9UwImIiIiUs+UgImIiIjUMyVg
 IiIiIvVMCZiIiIhIPVMCJiIiIlLPlICJiIiI1DMlYCIiIiL17P8Bu0YH9Vc3cv4AAAAASUVORK5C
 YII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The default, which comes from matplotlib, is chart-junky (although not as much as matlab, or as much as it used to be in earlier versions of matplotlib). But lets clean it.</p>
 </div>
@@ -3463,15 +3624,14 @@ J06csGzQf/JXbaisrFT9+vVTHh4eyt7eXvn6+qrXX3/dqv4jU1vsgEpNTTXWseZxuF38tjAGo0eP
 Vr6+vsrBwUF5eHioPn36GJOOUubvf9kWQQghhFnJdzxCCCHMShKPEEIIs5LEI4QQwqwk8QghhDAr
 STxCCCHMShKPEEIIs5LEI4QQwqwk8QghhDArSTxCCCHMShKPEEIIs5LEI4QQwqz+HyyZc4mF14iJ
 AAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And more....</p>
 </div>
@@ -4280,15 +4440,14 @@ Kyv3GmsbsurixYuaMWOGtm7dqt9++00XL17UnTt35ObmpqpVq6p9+/bq1auXHB0drc5nbSMAAgAA
 AAAAMDxiVQAAAAAAAIMjAAIAAAAAADA4AiAAAAAAAACDIwACAAAAAAAwOAIgAAAAAAAAgyMAAgAA
 AAAAMDgCIAAAAAAAAIMjAAIAAAAAADA4AiAAAAAAAACDIwACAAAAAAAwOAIgAAAAAAAAgyMAAgAA
 AAAAMDgCIAAAAAAAAIP7f2MYC7vQF5GTAAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Its important to understand what is going on under the hood. Try and write <code>sns.despine</code> on your own by looking up the matplotlib documentation.</p>
 </div>
@@ -4923,15 +5082,14 @@ oCeE0CgS9IQQGkUmMoQQGkVGekIIjSJBTwihUSToCSE0igQ9IYRGkaAnhNAoEvSEEBpFgp4QQqNI
 TwihUSToCSE0igQ9IYRGkaAnhNAoEvSEEBpFgp4QQqNI0BNCaBQJekIIjSJBTwihUSToCSE0igQ9
 IYRGkaAnhNAoEvSEEBpFgp4QQqNI0BNCaBQJekIIjSJBTwihUSToCSE0igQ9IYRGkaAnhNAo/w9w
 rdhwK2xcLQAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Histograms">Histograms<a class="anchor-link" href="#Histograms">¶</a></h4><p>Numerical data leads to distributions, and distributions to histograms. Here is the Pandas default</p>
 </div>
@@ -5086,15 +5244,14 @@ tLj88ssjIuLaa6+Nd73rXXHbbbfFsmXL4rHHHov169cPvXICnBi84gHUzM033xzXXXddnHvuubFr
 F1wQL7/8clXfl+Oqq66Kn/zkJ0P/egZofN5qAZL54he/GIsXL46TTz451q9fH1//+tfjK1/5St7L
 AhISHkAyTz31VNxyyy3x6quvxpve9Kb48pe/HB/72MfyXhaQkLdaAIBkfHEpAJCM8AAAkhEeAEAy
 wgMASEZ4AADJCA8AIBnhAQAkIzwAgGSEBwCQzP8BxnRX4lDJa0QAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And matplotlib:</p>
 </div>
@@ -5215,15 +5372,14 @@ YUJRKpWKRYsWFbt27art0HXkSOv/xhtvFIsXLy7GjRtXHHPMMcW0adOKq666qti7d2+tx64Lh1r3
 iCjuvvvuvmvs/+p5v/W3/6vr61//ejFt2rRi5MiRxbhx44pFixYVv//97/u+bu9X15HWf6j3fkNR
 FMVgSwkA4IMYVu/xAACGN+EBAKQRHgBAGuEBAKQRHgBAGuEBAKQRHgBAGuEBAKQRHgBAGuEBAKQR
 HgBAmv8H5GY8ZxK2BCEAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Lets style it a bit with seaborn. The <code>with</code> syntax followed by indentation is a python construct called a "context manager". Here it sets up a while axes style only for the code that is <em>inside</em> the context (ie, indented).</p>
 </div>
@@ -5371,15 +5527,14 @@ b3vb2+KXv/xlvO9974vRo0cXPDUwklqqXmQFanDPPffEggUL4t57742Xv/zlgz7uM5/5TGzatClW
 r16dOB2wP/FMBpBi5cqV8ec//zk2b94cN998c9x2221x1llnFT0WMIK8JwNIcd9998WNN94YO3bs
 iClTpsSnP/3pOOecc4oeCxhBXi4BAFJ4uQQASCEyAIAUIgMASCEyAIAUIgMASCEyAIAUIgMASCEy
 AIAUIgMASPF/cBUA052Fl3YAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What if I wanted to get the benefit of the default seaborn style and colors?</p>
 </div>
@@ -5546,15 +5701,14 @@ d3d3PPDAA3H00UdHc3Nz3/E5c+bEO9/5zjj33HNfqFEBXjB+WhygSkaNGhWf//znY8aMGfGJT3wi
 Ghoa4s4774zNmzfHCSecMNLjAVSFl8UBqqRQKMTSpUtj+/btceqpp8a73/3u+N3vfhe33HJLHHbY
 YSM9HkBVeFkcAIA07lwCAJBGXAIAkEZcAgCQRlwCAJBGXAIAkEZcAgCQRlwCAJBGXAIAkOb/AZJ9
 MURKlEyRAAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>I can <code>reset_defaults</code> back to the matplotlib defaults.</p>
 </div>
@@ -5748,18 +5902,17 @@ aOXKlbr//vsVGxsb5lEDqEi8uwRAQHJzc9W9e3cdPnw4oM+9GDFihHbs2OF7FwuAqo+nSwCY+OMf
 /6iUlBTVqlVL2dnZeuWVV/Tss8+Ge1gAKhCRAcDExo0bNWPGDB09elQtW7bU008/rV//+tfhHhaA
 CsTTJQAAwAQv/AQAACaIDAAAYILIAAAAJogMAABggsgAAAAmiAwAAGCCyAAAACaIDAAAYILIAAAA
 Jv4fZ2vIyyGX9OoAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Here are the most commonly used matplotlib plotting routines.</p>
-<p><img alt="" src="images/mpl1.png" /></p>
+<p><img alt="" src="images/mpl1.png"></p>
 <p>Here we use a white grid.  We also illustrate how a series can be converted to a numpy array with the <code>values</code> method (<code>dfcars.mpg.values</code>) and how x and y limits can be set (the difference in the way <code>xlim</code> and <code>ylim</code> are called is on purpose and illustrates two ways you can set the limits). In the <code>hist</code> function  you can also change the number of bins. We also show how to label a plot and obtain a legend from the plot. A vertical line is drawn at the mean.</p>
 </div>
 </div>
@@ -6058,15 +6211,14 @@ N7uO3ADIPzjiAsAnjBo1ShMmTFCXLl3022+/acaMGSpUqJAkqXHjxoqJidHcuXP1xBNPaMuWLXr6
 c+bM0S+//KLjx49r3rx5Wr58uZ566imzywKQx7jGBYAl7NmzR7Nnz1ZycrKqVq2q1157Td26dTO7
 LAB5jFNFAADAMjhVBAAALIPgAgAALIPgAgAALIPgAgAALIPgAgAALIPgAgAALIPgAgAALIPgAgAA
 LIPgAgAALOP/A2he1xgJKQkvAAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>One can set bins using a list, and also label the histogram (not recommended but just for illustration). We also illustrate how to capture the color used and use it again</p>
 </div>
@@ -6381,15 +6533,14 @@ FaVZs2bp6aef1ubNm/Xcc8/Jx8fH5KoBZDYvg5PMAEy0bds2de/eXTt27FDevHnTvdybb76pw4cP
 a/78+fexOgBZDUdcAFjCzJkz9euvv+rYsWOaO3euYmNj1bp1a7PLApDJuMYFgCXs2bNHM2bM0NWr
 V1WyZEm98cYbateundllAchknCoCAACWwakiAABgGQQXAABgGQQXAABgGQQXAABgGQQXAABgGQQX
 AABgGQQXAABgGQQXAABgGQQXAABgGf8fmK06RCNGHV4AAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Seaborn very handily provides Kernel Density Estimates (KDE) which try to infer a probability distribution from the data. This is more useful when you have lots of data.</p>
 </div>
@@ -6896,15 +7047,14 @@ GCUlJcaDDz5oDBkyxBg2bJjx/PPPe99TA3GcGMb5exKo4+SMqVOnGlOnTvU+DtQx0hQWwzjLCtki
 IiIiIq3E7w/Zi4iIiIh/UyAVEREREVMpkIqIiIiIqRRIRURERMRUCqQiIiIiYioFUhERERExlQKp
 iIiIiJhKgVRERERETKVAKiIiIiKmUiAVEREREVMpkIqIiIiIqRRIRURERMRU/x8+zRBJNunHqwAA
 AABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And a histogram and a kdeplot together:</p>
 </div>
@@ -7423,15 +7573,14 @@ QkTE261du5Z58+bx1Vdffef9TqeTTz75hPPOO4/g4GD39mnTpnHNNddwzz33nK1SRUS6nc6yFxHp
 A/z8/Fi8eDETJkzg17/+NT4+Prz66quUlpYyffp0s8sTETkjOmQvItIHWCwWnn76aaqqqrjhhhu4
 7rrr2LlzJytXriQxMdHs8kREzogO2YuIiIiIqTRCKiIiIiKmUiAVEREREVMpkIqIiIiIqRRIRURE
 RMRUCqQiIiIiYioFUhERERExlQKpiIiIiJhKgVRERERETPX/AQ+Gixhc3v0GAAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Plotting-features-against-other-features">Plotting features against other features<a class="anchor-link" href="#Plotting-features-against-other-features">¶</a></h3><p>Sometimes we want to see co-variation amongst our columns. A scatter-plot does this for us.</p>
 </div>
@@ -7689,15 +7838,14 @@ X/hC5Iorrojs3Lkzuh+d3ddPJJJYf+y4fs667777YvaBZO3EGq8/dlw7f/zjHyM1NTWRpUuXRq64
 4orIv/zLv/B3z6ck0p9UrB9HJPJ/jyUDAAAAhtjydDkAAACSi5AJAAAA4wiZAAAAMI6QCQAAAOMI
 mQAAADCOkAkAAADjCJkAAAAwjpAJAAAA4wiZAAAAMI6QCQAAAOMImQAAADCOkAkAAADj/g/L/cNg
 1cn+KwAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can also use <code>plot</code> without lines:</p>
 </div>
@@ -7949,7 +8097,7 @@ d+zbb7/dnjx5sr148WL74MGD+SrdFdn2x2vr56xkMmk/9NBD9je+8Q171qxZ9pYtW3r3ovP6GrLt
 7Prj1TVk27b92GOPpe0DydpJd7H+eHXt/Pa3v7WXLFliT5061Z41a5b9L//yL/z+OUc2/cn1GrJs
 +/8eRwYAAAAM8dzpcgAAAOQeIRMAAADGETIBAABgHCETAAAAxhEyAQAAYBwhEwAAAMYRMgEAAGAc
 IRMAAADGETIBAABgHCETAAAAxhEyAQAAYBwhEwAAAMb9/wz0llzMsOCUAAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
@@ -8201,15 +8349,14 @@ O++8Yy9fvtyuq6uzb731VvvAgQPZKj0jUu2P2+bPae+//75933332QsWLLA/85nP2Fu2bBnZi87t
 c8i2U+uPW+eQbdv2gw8+mLAPJHMn0fn649a509HRYa9YscKeN2+e/ZnPfMb+wQ9+wL8/Z0ilP+me
 Q5Zt///ryAAAAIAhrjtdDgAAgPQjZAIAAMA4QiYAAACMI2QCAADAOEImAAAAjCNkAgAAwDhCJgAA
 AIwjZAIAAMA4QiYAAACMI2QCAADAOEImAAAAjCNkAgAAwLj/D/oJCej9Z4qMAAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>But what if we want to save our figure into a file? The extension tells you how it will be saved..and note that the <code>savefig</code> needs to be in the same cell as the plotting commands. Go look at the files..</p>
 </div>
@@ -8431,15 +8578,14 @@ Dhw4UKrSiyLf/gRt/Aw4ceKEt2zZMu/Tn/6095nPfMbbsmVLZi+6oI8hz8uvP0EdQ57neatWrcra
 B5Kxk+1S/Qnq2Pnv//5vb8mSJd51113nfeYzn/H+8R//kd8/H5NPfwo9hizPOzePDAAAABgSuMvl
 AAAAKDxCJgAAAIwjZAIAAMA4QiYAAACMI2QCAADAOEImAAAAjCNkAgAAwDhCJgAAAIwjZAIAAMA4
 QiYAAACMI2QCAADAOEImAAAAjPv/xhnBC0Oi0SIAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Trend">Trend<a class="anchor-link" href="#Trend">¶</a></h4><p>The correlation that we saw might suggest a trend. We can capture it with a "regression". We'll learn more about regressions soon, but we show a quadratic fit here with a 1 standard deviation bar to show the graphics aspect of this. Also see <code>sns.regplot</code>.</p>
 </div>
@@ -9012,15 +9158,14 @@ ZF16Qsy2PlprPxO6u7vV+++/X12+fLm6du1a9Xvf+15sLTqttyFVnV19tNqGVFVVH3rooUnrQLLt
 THax+mi17Zw8eVL90pe+pC5dulRdu3at+t3vfpf3n7PMpj5z3YYEVR3vRyYiIiIiihPNDZcTERER
 0dxjyCQiIiKiuGPIJCIiIqK4Y8gkIiIiorhjyCQiIiKiuGPIJCIiIqK4Y8gkIiIiorhjyCQiIiKi
 uGPIJCIiIqK4Y8gkIiIiorhjyCQiIiKiuGPIJCIiIqK4+/8ZRjbavit8TgAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Group-Properties">Group Properties<a class="anchor-link" href="#Group-Properties">¶</a></h2><p>Such "co-variational" plots, and for that matter, even single-variable plots,  are even more interesting when we look at them <strong>conditional</strong> upon the value of a categorical variable.</p>
 <p>Such conditionality is behind the notion of grouping, where we group our data by various values of categorical variables, for example, whether our cars have an automatic transmission or not.</p>
@@ -9028,8 +9173,7 @@ uGPIJCIiIqK4Y8gkIiIiorhjyCQiIiKiuGPIJCIiIqK4+/8ZRjbavit8TgAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Grouping-of-one-outcome-variable">Grouping of one outcome variable<a class="anchor-link" href="#Grouping-of-one-outcome-variable">¶</a></h3><p>This notion of grouping based on combinations of factors is used by seaborn to make various easy-to-see exploratory visualizations for us. We shall first see how to make these plots quick-and-dirty using <code>seaborn</code> and then see how we make make these plots ourselves.</p>
 <p>First, we make a boxplot of  <code>mpg</code>, grouped by transmission style</p>
@@ -9205,15 +9349,14 @@ Oadr166f+nMFBX5RBpz6BCtAAp5++unYv39//Ou//mtLmH60FcCeVKCz819zgAR87nOfi/r6+njm
 mWdi165d8fzzz8dNN90UEX7FD2CFFSABl112WWzcuDH+4R/+IQ4ePBjl5eXxF3/xF/Hcc8/Ff/3X
 f8WgQYOyHhEgM7m83zUBAJAwWwIAAEiaYAUAIGmCFQCApAlWAACSJlgBAEiaYAUAIGmCFQCApAlW
 AACSJlgBAEiaYAUAIGmCFQCApAlWAACS9v8BMEiXQWIMta0AAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The box shows the quartiles  of the distribution
 This can also be done using a violin-plot, which uses KDE to show the distribution itself:</p>
@@ -9778,15 +9921,14 @@ ATQnVUTaOn00FxGxgU6dOuH3+/nrX/9KaWkp27Zt4/777wd0il9ERCOsIiI2MHv2bPbs2cN3vvMd
 Ghoa6Nq1K0uXLuWll17i/fffp3PnzlZHFBGxjMPUuSYRERERsTFNCRARERERW1PBKiIiIiK2poJV
 RERERGxNBauIiIiI2JoKVhERERGxNRWsIiIiImJrKlhFRERExNZUsIqIiIiIralgFRERERFbU8Eq
 IiIiIramglVEREREbO3/B3TyoWA7jnLDAAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Automatics surveyed have a higher range of  mpg, with higher fuel efficiency significant at 1 sigma, and we may want to investigate if this is a selection effect or whether there is some true impact of an automatic transmission. Further subgrouping the data is one way to do this.</p>
 <p>Split violin plots can be used to do multiple categorical variables</p>
@@ -10145,15 +10287,14 @@ SJIePXo0+djExIRyc3N148YNFRQUaGxsTOfPn9fw8LAKCgpMTQWAoCJYAcASiYmJWr9+vRobG3X3
 GeDJkyfy+Xw6efKkSktLiVUAPxRe8QBgBujv71ddXZ1SU1O1Y8cO03MAIKi4JAAAAABW44QVAAAA
 ViNYAQAAYDWCFQAAAFYjWAEAAGA1ghUAAABWI1gBAABgNYIVAAAAViNYAQAAYLV/At/AWm9jwSYv
 AAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>One can see that the difference in mpg is starker between 6 and 8 cylinder cars, for manual transmissions. And that the large-range effect in automatics is coming almost entirely through 4-cylinder cars.  What about the better mpg for automatics? Mostly in the 4 and 6 cyclinders. But we ought to see how representative these are in our sample. We'll show how to do this soon but a cross-tabulation, combined with the graph above, gives us some idea that the poor miles per gallon for manual transmission may be coming from the preponderance of 8-cylinder manual cars in our dataset.</p>
 </div>
@@ -10225,8 +10366,7 @@ AAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Faceting-for-general-grouping">Faceting for general grouping<a class="anchor-link" href="#Faceting-for-general-grouping">¶</a></h3><p>Seaborn provides a nice construct: the <code>FacetGrid</code>. You decide what variables to facet over, and then decide the kind of plot you want. Here we want hue to be <code>am</code>, and  different columns in the  plot grid to be cylinders. We then ask for a facet plot  of <code>mpg</code> against <code>wt</code> scatter.</p>
 <p>Such plots are often called small multiple plots. They repeat the same plot based on categories, making sure that all plotting parameters are the same so that we have direct comparability.</p>
@@ -10439,15 +10579,14 @@ s2JiYvTaa6/pwIEDuummm7wOD4AFqDMAIokag47g1E1Yz3EcPffcczp+/LgmTZqkb3/729q8ebP+
 4z/+Q7179/Y6PAAWoM4AiCRqDDqCUzcBAAAAwDLM6AEAAACAZWj0AAAAAMAyNHoAAAAAYBkaPQAA
 AACwDI0eAAAAAFiGRg8AAAAALEOjBwAAAACWodEDAAAAAMvQ6AEAAACAZf4foNzLA/HGtqgAAAAA
 SUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can see that the "regression-like" effect is cleanest for automatic transmissions in 4 cylinder cars.</p>
 <h4 id="SPLOM,-or-Scatter-Plot-Matrix">SPLOM, or Scatter Plot Matrix<a class="anchor-link" href="#SPLOM,-or-Scatter-Plot-Matrix">¶</a></h4><p>We'd get tired if we had to this on a 2-by-2 basis for every pair of continuously co-varying features.  The <code>PairGrid</code>, colorable by transmission type, allows us to do this comparison for 5 continuous features here, with the diagonal being a kernel density estimate.</p>
@@ -12137,23 +12276,21 @@ KYYOHYq5c+fCxsYGhw4dQlVVFd59912xwyMiIiIiIiIiK8JnkFGHJJPJoNfrcevWLXzwwQcYP348
 CgoKkJKSgn79+okdHhERERERERFZES6xJCIiIiIiIiIiSeMdZEREREREREREJGlMkBERERERERER
 kaQxQUZERERERERERJLGBBkREREREREREUkaE2RERERERERERCRpTJAREREREREREZGkMUFGRERE
 RERERESSxgQZERERERERERFJGhNkREREREREREQkaf8F+r/BTfFRDeAAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In many places, for example <code>mpg</code> vs <code>disp</code>, there see to be two separate trends for the different transmissions. This will (as we shall see later in this course) suggest to us the addition of a transmission term as a <strong>indicator</strong> variable in regressions for <code>mpg</code> against various features. This changes the intercept of the regression. But the trends have different slopes as well, which suggests that <code>disp</code> may interact with <code>am</code>, the transmission indicator to create a varying slope as well.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Correlation">Correlation<a class="anchor-link" href="#Correlation">¶</a></h4><p>The SPLOM seems to suggest correlations. Well, so lets calculate it:</p>
 </div>
@@ -12249,8 +12386,7 @@ RERERESSxgQZERERERERERFJGhNkREREREREREQkaf8F+r/BTfFRDeAAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Since correlations range from -1 to 1 through 0, a diverging palette is probably our best bet.</p>
 </div>
@@ -12270,10 +12406,10 @@ RERERESSxgQZERERERERERFJGhNkREREREREREQkaf8F+r/BTfFRDeAAAAAASUVORK5CYII=
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="cc3fba89-30e9-4acc-8c18-2c7527c8b7f5"></div>
+<div id="99404c00-5d65-4d68-a536-dce20bade657"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#cc3fba89-30e9-4acc-8c18-2c7527c8b7f5');
+var element = $('#99404c00-5d65-4d68-a536-dce20bade657');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "e8847f7c5ea24c1db2b2a7f62614911f"}
@@ -12307,15 +12443,14 @@ fr9xyX5LXkfD5a8yb+p6C9/9jL7Vc1W9/UdlY+fiVvuz/YWD44K10VywX7A4voOo7vLicI/wD2M8
 3zg3nmvcVWuPmZ5auj8TQeGCt/rJp74Ge6/CFrov8nIz4/RpY83Mixt777nRc/x6XsZuxk15fHxs
 773XFSZvb29LrbX8/umua1OAj7Q8+r2/7p5+WvO/4q0Bv6qnp6eyXq+7auvY+09FAAB4w89MAgCQ
 JkwCAJAmTAIAkCZMAgCQJkwCAJAmTAIAkCZMAgCQJkwCAJD2H9aZNwc1GRrXAAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We use <code>maptplotlib</code>s correlation plot. You'll land up doing plots like this for both EDA and do see misclassification from your machine learning algorithms. In other words, EDA is even useful at the analysis stage.</p>
 </div>
@@ -12533,15 +12668,14 @@ ZQAADEGUAQAwBFEGAMAQRBkAAEMQZQAADEGUAQAwBFEGAMAQRBkAAEMQZQAADEGUAQAwBFEGAMAQ
 RBkAAEMQZQAADEGUAQAwBFEGAMAQRBkAAEMQZQAADEGUAQAwBFEGAMAQRBkAAEMQZQAADEGUAQAw
 BFEGAMAQRBkAAEMQZQAADEGUAQAwBFEGAMAQThUVFRVWDwEAADhSBgDAGEQZAABDEGUAAAxBlAEA
 MARRBgDAEEQZAABDEGUAAAxBlAEAMARRBgDAEP8f5ipqVXEApsoAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="KDE-plots-and-sequential-palettes.">KDE plots and sequential palettes.<a class="anchor-link" href="#KDE-plots-and-sequential-palettes.">¶</a></h3><p>Here we make a KDE plot of a multivariate normal distribution. Since a probability density is strictly positive, with values near 0 not being so interesting, a sequential palette is our ticket. Seaborn will by default provide such a palette for KDE plots, but you can use your own!</p>
 </div>
@@ -12635,10 +12769,10 @@ MARRBgDAEEQZAABDEGUAAAxBlAEAMARRBgDAEP8f5ipqVXEApsoAAAAASUVORK5CYII=
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div id="198c56cb-b12b-448a-8cea-03fb422ae42f"></div>
+<div id="daaa3abc-f45b-4bd6-bae2-1d8b42ff207b"></div>
 <div class="output_subarea output_widget_view ">
 <script type="text/javascript">
-var element = $('#198c56cb-b12b-448a-8cea-03fb422ae42f');
+var element = $('#daaa3abc-f45b-4bd6-bae2-1d8b42ff207b');
 </script>
 <script type="application/vnd.jupyter.widget-view+json">
 {"model_id": "be74ec38c70144cab341d3eca87f3cd2"}
@@ -12663,7 +12797,7 @@ gJiYBAAgJiYBAIiJSQAAYm81i7quK+fzuez3+2fP80Pf903ve0TLWVt/Li3um8sdc5lzqPOGmmWs
 Gcb+2ce+f6jzpvAePOu8Kc3Uem96X8u7Ht27WCx+/PnMu4Y6Z+z3+rp3uVyWruuq9lTF5Pv7ezmd
 TvFgqdovfwrmNCsAwC3H47GsVquqtYt+Tv/8BwDApPidSQAAYmISAICYmAQAICYmAQCIiUkAAGJi
 EgCAmJgEACAmJgEAiH0D3MOVULdvatYAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 <div class="output_area">
@@ -12689,7 +12823,7 @@ kwAAxIRJAABiwiQAALFPaxrt9/t2Op3ar7/9Mt9w6vp4pTG9bO1u8KjRgNtr6Kh6Kn+8umlxsLya
 6avu32XD8patv0br2ISuc7Pnq9gz8NdbT5//bvv9P6tuWRUm7+/v2/F4XG541/XxSmN62drd4FG/
 k49ZNQBwW4fDv223261qezdNo39fAwDA/4W/mQQAICZMAgAQEyYBAIgJkwAAxIRJAABiwiQAADFh
 EgCAmDAJAEDsC04M3XUG/L76AAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
@@ -12916,18 +13050,17 @@ jltvvTX+8R//MXbv3h1LliyJYcPMHYDe4b94ABnbuXNnXH/99XHmmWfGt771rVi4cGG89tpr8dBD
 D6U+GkClRCtAxu66667YsGFDLFy4MCIiTj755Jg1a1b8/d//ffznf/5n4tMBVMd6AAAA2TNpBQAg
 e6IVAIDsiVYAALInWgEAyJ5oBQAge6IVAIDsiVYAALInWgEAyJ5oBQAge6IVAIDsiVYAALL3/wEa
 QQztLZXKKQAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Matplotlib-and-multiple-plots:-Small-Multiples">Matplotlib and multiple plots: Small Multiples<a class="anchor-link" href="#Matplotlib-and-multiple-plots:-Small-Multiples">¶</a></h2><p>There are many cases where we want to see plots side by side. The SPLOMS and Facet grids that seaborn makes for us are an example.But we should know how to do this on our own.</p>
-<p><img alt="" src="images/mpl2.png" /></p>
+<p><img alt="" src="images/mpl2.png"></p>
 <p>Here is a simple example of a plot with one column and 3 rows. It illustrates one way of doing this.</p>
 </div>
 </div>
@@ -13668,15 +13801,14 @@ u2X69Ony6KOPSkJCgpw+fdrs45WwDyJd5zh06FCnz406ai82btzY4deIVqvtMINSa8KaHEqtC2v3
 Qol1YW0GJdZEq9LSUklOTpawsDCJjIyUP//5z6ZvKpRSFxyRSUREpHD8P2siIiKFY7MmIiJSODZr
 IiIihWOzJiIiUjg2ayIiIoVjsyYiIlI4NmsiIiKFY7MmIiJSODZrIiIihWOzJiIiUjg2ayIiIoVj
 syYiIlK4/weLBAfdp0Y2OQAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Small-multiples,-youself">Small multiples, youself<a class="anchor-link" href="#Small-multiples,-youself">¶</a></h3><p>Here is another way, which to me is far clearer that the <code>add_subplot</code> way. It basically creates an array of plots and zips this array up with the various data grouped by categories.</p>
 </div>
@@ -14396,15 +14528,14 @@ Ls53PD09XU888YQyMzOba6kAAOAOUe+B5sdvHQfgV3R0tF577TUNHDhQL7zwgiIjI/XnP/9Zp0+f
 1siRI0O9PAAAYAH1HrCPW8cB+OXxeLRy5UpduHBB48eP15gxY3TgwAGtXr1a3bp1C/XyAACABdR7
 wD5uHQcAAAAAwCLe0QYAAAAAwCIabQAAAAAALKLRBgAAAADAIhptAAAAAAAsotEGAAAAAMAiGm0A
 AAAAACyi0QYAAAAAwCIabQAAAAAALPp/KCPyXoAhbosAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="The-Interest-in-Science-Problem-from-lecture-slides">The Interest in Science Problem from lecture slides<a class="anchor-link" href="#The-Interest-in-Science-Problem-from-lecture-slides">¶</a></h2><p>Dataframe construction:</p>
 </div>
@@ -14493,8 +14624,7 @@ AAAAACyi0QYAAAAAwCIabQAAAAAALPp/KCPyXoAhbosAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Multiple-Pie-Charts">Multiple Pie Charts<a class="anchor-link" href="#Multiple-Pie-Charts">¶</a></h3>
 </div>
@@ -15000,15 +15130,14 @@ EZEhsdAlIiIiIkNioUtEREREhsRCl4iIiIgMiYUuERERERkSC10iIiIiMiQWukRERERkSCx0iYiI
 iMiQWOgSERERkSGx0CUiIiIiQ2KhS0RERESGxEKXiIiIiAyJhS4RERERGRILXSIiIiIyJBa6RERE
 RGRILHSJiIiIyJBY6BIRERGRIbHQJSIiIiJDYqFLRERERIbEQpeIiIiIDOn/A1cfDOxJzQgRAAAA
 AElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Before-and-after-bar-charts">Before and after bar charts<a class="anchor-link" href="#Before-and-after-bar-charts">¶</a></h3>
 </div>
@@ -15345,15 +15474,14 @@ omQCwE9ITExUZWWlkpOT5ezsrMLCQk2dOlUbNmzQ0qVLVVtbq9zcXM2dO3fQa4SFhamgoEBNTU2K
 jY3VunXr5O/vr6KiIrm5ucnT01P5+fnq6upSXFycYmNj9ezZM50+fbpvxFH/HADwK2JOJgAAAAzH
 nUwAAAAYjpIJAAAAw1EyAQAAYDhKJgAAAAxHyQQAAIDhKJkAAAAwHCUTAAAAhqNkAgAAwHCUTAAA
 ABiOkgkAAADDUTIBAABgOEomAAAADPc3rqjuM7Y13GoAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Stacked-Charts">Stacked Charts<a class="anchor-link" href="#Stacked-Charts">¶</a></h3>
 </div>
@@ -15629,15 +15757,14 @@ AQO0Z88ehYSEKC4uTi+88IKDq3x0vPfeexo3btxt7/v222/pj4OdPXtWCQkJ2r59u9zd3fX3v/9d
 HTp0kMVioTdO5JdPWx41apQkfq45g8OHD2vEiBHavXu3PD091aRJE3Xq1InXTj5HSAAAAABgYLkR
 AAAAAAMhAQAAAICBkAAAAADAQEgAAAAAYCAkAAAAADAQEgAAAAAYCAkAAAAADIQEAAAAAAZCAgAA
 AAADIQEAAACAgZAAAAAAwEBIAAAAAGD4/wBAtnMMp0eYwQAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is hard to read. We wznt to compare before and after easily. Sometimes the solution is a transpose!!</p>
 </div>
@@ -15709,8 +15836,7 @@ AAADIQEAAACAgZAAAAAAwEBIAAAAAGD4/wBAtnMMp0eYwQAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We have to play some games to get the ordering right...</p>
 </div>
@@ -16017,23 +16143,21 @@ aOcRIzUGDBhg+5xYy2JeTXbp0iWrX79+VunSpa3KlStb06ZNs5KSkizLYl5NFhUVZQUHB1tly5a1
 atasac2fP595TQf+/jmxlnX/ufzuu++sWrVqWb6+vtbrr79uHT16NK2HbFmWZTlYlj3+iwUAAAAg
 9dL94QQAAABIf4hYAAAAGIeIBQAAgHGIWAAAABiHiAUAAIBxiFgAAAAYh4gFAACAcYhYAAAAGIeI
 BQAAgHGIWAAAABiHiAUAAIBxiFgAAAAY5/8BFtuTXlX3ffAAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we see that the blue and greens have it. Try and improve this plot. It still has too much chartjunk.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Difference-Bar-chart">Difference Bar chart<a class="anchor-link" href="#Difference-Bar-chart">¶</a></h3><p>Sometimes a small data transformation makes the effect blindingly obvious. Here we just make a bar chart of the change!</p>
 </div>
@@ -16282,15 +16406,14 @@ alX16tVLPXr08PZYKEaRkZFatGiRoqKiJEmHDx/WyJEjtWvXLoWHhyshIUEtW7b08pS4Hq+++qqm
 Tp1a5GUHDhwo9jUnEgAAAAAYON0IAAAAgIFIAAAAAGAgEgAAAAAYiAQAAAAABiIBAAAAgIFIAAAA
 AGAgEgAAAAAYiAQAAAAABiIBAAAAgIFIAAAAAGAgEgAAAAAYiAQAAAAAhv8DaorKUN1mEW0AAAAA
 SUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Bacteria-Dataset">Bacteria Dataset<a class="anchor-link" href="#Bacteria-Dataset">¶</a></h2><p>For those want to play...</p>
 </div>

@@ -1,6 +1,6 @@
-Title: Section 2
+Title: Section 2: Prediction using kNN and Linear Regression
 Category: sections
-Slug: section2/solutions
+Slug: section-2/notebook-solutions
 Author: Pavlos Protopapas
 Date: 2018-10-05
-Tags: Scraping
+Tags: Scikit-learn, Linear Regression, k-Nearest Neighbors (kNN) Regression

@@ -86,9 +86,124 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -167,12 +282,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -185,27 +308,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -401,7 +536,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -411,11 +548,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -663,6 +813,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -701,7 +854,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -823,6 +976,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -839,16 +996,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -864,6 +1029,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -914,8 +1084,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1054,14 +1231,13 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS-109A Introduction to Data Science</h1>
-<h2 id="Lecture-20:-SVM-Examples">Lecture 20: SVM Examples<a class="anchor-link" href="#Lecture-20:-SVM-Examples">¶</a></h2><p><strong>Harvard University</strong><br />
-<strong>Summer 2018</strong><br />
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS-109A Introduction to Data Science</h1>
+<h2 id="Lecture-20:-SVM-Examples">Lecture 20: SVM Examples<a class="anchor-link" href="#Lecture-20:-SVM-Examples">¶</a></h2><p><strong>Harvard University</strong><br>
+<strong>Summer 2018</strong><br>
 <strong>Instructors</strong>: Pavlos Protopapas and Kevin Rader</p>
-<hr />
+<hr>
 </div>
 </div>
 </div>
@@ -1146,8 +1322,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Import libraries</p>
 </div>
@@ -1241,8 +1416,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Examples:</p>
 <ol>
@@ -1255,8 +1429,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="1.-Linearly-Separable-vs.-Nonseparable">1. Linearly Separable vs. Nonseparable<a class="anchor-link" href="#1.-Linearly-Separable-vs.-Nonseparable">¶</a></h3>
 </div>
@@ -1568,23 +1741,21 @@ IuK77S/gJcBfAjcDtwH/Brx7sSdn5rdo9vN9BvgazdGOBw972O3AIyLizzLzNpqnNG+jOcnmS63X
 +XuafYNfA77Q+rlk5j00+wA/EhG3AE8GLu3BfktSFZmzNRJq8/OHfwCURk9EbKKZtN+WmY2IeBfw
 L5m5aKKXJA2GOVtVYY+21HQf8Ajg1oiYo7lU1PsGG5IkaRHmbFWCI9qSJElSAezRliRJkgpgoS1J
 kiQVwEJbkiRJKoCFtiRJklQAC21JkiSpABbakiRJUgH+P6fXThy6GW78AAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It looks like the classes in Dataset 1 can be separated by a line, while the classes in Dataset 2 cannot. In Dataset 1, it's possible to find a subset of points from the two classes that are well separated, SVM chooses the subset in which the classes are maximally separated (the margin between points from different classes is maximized). In Dataset 2 it is not possible. Any decision boundary will have some errors (a mix of classes on either side).</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="2.-The-role-of-support-vectors">2. The role of support vectors<a class="anchor-link" href="#2.-The-role-of-support-vectors">¶</a></h3>
 </div>
@@ -1886,7 +2057,7 @@ R1ij93ozuwf4FnAHcGb02H8H7jOzBbHn/xS4wMw+ThigdxFeoPNp4CcA7v7vhEH6fuA/gAej++8D
 rgV+CDxA+G/t45U7VBGRhqeYLU0plclkaj0GEREREZGmpJltEREREZEKUbItIiIiIlIhSrZFRERE
 RCpEybaIiIiISIUo2RYRERERqRAl2yIiIiIiFaJkW0RERESkQpRsi4iIiIhUyP8P7J+8jeXm534A
 AAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
@@ -2204,23 +2375,21 @@ RMH074CdwE8TBViA8bg+MGmMY8F2D/ACM8uZ2anAC+P7/xO40szmm9li4JXx/d8B3mBm/WaWI6o7
 mqDzceAuAHf/V6Ig/UPg34BH4/sfBj4MfAv4EdG/tT9J71JFRJqeYra0pFyhUKh3G0REREREWpJ6
 tkVEREREUqJkW0REREQkJUq2RURERERSomRbRERERCQlSrZFRERERFKiZFtEREREJCVKtkVERERE
 UqJkW0REREQkJf8/fwJrB0Jat/0AAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In both cases, the decision boundary of an SVM is completely determined by a subset of data points - the support vectors.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="3.-Margin-vs-misclassification-trade-off">3. Margin vs misclassification trade-off<a class="anchor-link" href="#3.-Margin-vs-misclassification-trade-off">¶</a></h3>
 </div>
@@ -3265,15 +3434,14 @@ piSpR8xhSeqWOazecIChoTktIv4z+qK6L++CiPgjcDuwC9hY73sH8HBErB/7+QeAkyJiO1Uw/5Xq
 QUc7gPsAMvMOqnB+FLgT+Eu9/mHgW8CvgMeoPn/b165VSSqSOSxJ3TKH1Vtzy8vLXdcgSZIkSZLU
 yCswJEmSJElS8RxgSJIkSZKk4jnAkCRJkiRJxXOAIUmSJEmSiucAQ5IkSZIkFc8BhiRJkiRJKp4D
 DEmSJEmSVLz/AZwS6tUoEI4wAAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For <code>dataset_2</code>, any linear decision boundary would have some errors. In this case, SVM chooses a decision boundary by trading-off the errors for margin (i.e. balancing minimizing error with maximizing margin). The parameter $C$ controls the trade-off.</p>
 <p>Increasing $C$ puts more emphasis on accuracy (note that after $C=10$, train accuracy cannot be improved upon by a linear classifier and thus the decision boundary stops changing) and less emphasis on the margin of separation. As a result, the model tends to overfit the train set, and perform poorly on the test set.</p>
@@ -3281,8 +3449,7 @@ DEmSJEmSVLz/AZwS6tUoEI4wAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="4.-Comparison-with-other-models">4. Comparison with other models<a class="anchor-link" href="#4.-Comparison-with-other-models">¶</a></h3>
 </div>
@@ -3751,15 +3918,14 @@ AfA54B7gmtZzvwD8MISws+Pr/xN4bgjhA2Rv/j8jW9zvo8DdADHGL5AFwI+ALwKHWo//EHgf8DXg
 x2R/lx/Ib6iSpItgTkiSejEnJKDSbDaLrkGSJEmSJEljzplMkiRJkiRJ6ptNJkmSJEmSJPXNJpMk
 SZIkSZL6ZpNJkiRJkiRJfbPJJEmSJEmSpL7ZZJIkSZIkSVLfbDJJkiRJkiSpbzaZJEmSJEmS1Lf/
 B3b9cp6OvFQLAAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Adjusting the margin-accuracy trade-off in SVM and the $\ell_2$ regularization parameter in logistic regression produce similar decision boundaries for Dataset 2. In this sense, considering the margin when training the model is another form of regularization.</p>
 <p>Other dimensions along which we can compare SVM with logistic regression:</p>
@@ -4781,7 +4947,7 @@ AGsi4oiIWAZ8pL19K/DxiDguIsYorjVcvxBNSVKDmMOSVC1zWI3hAEOj5pyIeK3zRXFd3pUR8Xvg
 fmA7sLx97IPAUxGxpPT4XwNnRsStFMH8d4oPOroL2AaQmQ9ShPMzwEPAn9rbnwJuAX4KPEvx83fr
 wrUqSbVkDktStcxhNdZYq9WqugZJkiRJkqSeXIEhSZIkSZJqzwGGJEmSJEmqPQcYkiRJkiSp9hxg
 SJIkSZKk2nOAIUmSJEmSas8BhiRJkiRJqj0HGJIkSZIkqfb+D5pVz+tcXJePAAAAAElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
@@ -5542,7 +5708,7 @@ F4DvCCHUQggvB17Vev6/A28PIRwMIRwF/n7r+c8DPx5CqIcQamRrZD+Qxw8lSZIGwlwhaUsWMCTt
 +GvgD4AnWs//FfALwOeAvyH7HfYr+f2okiQpZ+YKST2rNZvNQY9BkiRJkiRpW87AkCRJkiRJhWcB
 Q5IkSZIkFZ4FDEmSJEmSVHgWMCRJkiRJUuFZwJAkSZIkSYVnAUOSJEmSJBWeBQxJkiRJklR4/x/r
 gCxldO7tlQAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
@@ -6438,7 +6604,7 @@ SPqWpHvXnvunkv7GGNPf8v3/W9KbjDG/KT+Ir8rf2OhTki5KkrX2T+WH8d9K+jNJz6zd/zeSflXS
 VyR9T/6fr98M7qMCQKSRxwAQDeQxEsNpNBphjwEAAAAAAGBHzMAAAAAAAACRR4EBAAAAAAAijwID
 AAAAAABEHgUGAAAAAACIPAoMAAAAAAAQeRQYAAAAAAAg8igwAAAAAABA5P1/cuvX6Vm4mqIAAAAA
 SUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
