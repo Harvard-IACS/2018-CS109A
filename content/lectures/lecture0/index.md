@@ -7,10 +7,8 @@ Tags: What is Data Science?, The Data Science Process
 
 ## Slides
 
-- [Lecture 0: What is Data Science?]({attach}presentation/lecture0.pdf)
+- [PDF | Lecture 0: What is Data Science?]({attach}presentation/lecture0.pdf)
 
-## Lecture Notebook
+## Jupyter Notebook
 
 - [Lecture 0: Data Science Demo]({filename}notebook/lecture0.ipynb)
-
-<hr>
