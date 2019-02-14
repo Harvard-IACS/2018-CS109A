@@ -1,7 +1,7 @@
 Week,Lecture (Mon),Lecture (Wed),Lab (Thu-Fri),Advanced Section (Wed),Assignment (R:Released Tue - D:Due Wed)
 1,,"Lecture 0: What is Data Science?","Lab 1: Introduction to Python and its Numerical Stack",,R:HW0,
 2,"Lecture 1: Data, Summaries and Visuals","Lecture 2: Data Engineering - The Grammar of Data",Lab 2: Python for Data Collection and Cleaning,,R:HW1 - D:HW0,
-3,Lecture 3: Effective Exploratory Data Analysis and Visualization,"Lecture 4: Linear Regression, kNN Regression and Inference",Lab 3: Scikit-learn for Simple Linear Regression,Advanced Section 1: Linear Algebra and Hypothesis Testing,R:HW2 - D:HW1,
+3,Lecture 3: Effective Exploratory Data Analysis and Visualization,"Lecture 4: Linear Regression, kNN Regression and Inference",Lab 3: Scikit-learn for Regression,Advanced Section 1: Linear Algebra and Hypothesis Testing,R:HW2 - D:HW1,
 4,"Lecture 5: Linear Regression, Confidence Intervals and Standard Errors","Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection",Lab 4: Multiple Linear Regression and Polynomial Regression,Advanced Section 2: Model Selection and Information Criteria - Akaike Information Criterion (AIC),R:HW3 - D:HW2,
 5,Lecture 7: Regularization,Lecture 8:  High Dimensionality and Principal Component Analysis (PCA),Lab 5: Regularization and Cross-Validation,Advanced Section 3: Methods of Regularization and its Justifications,R:HW4(individual) D:HW3,
 6,No Lecture: Columbus Day,Lecture 9: Visualization for Communication,No Lab,No Advanced Section,No Assignment,
