@@ -10,6 +10,6 @@ Tags: Exploratory Data Analysis (EDA), Effective Visualization, Seaborn
 
 - [PDF | Lecture 3: Effective Exploratory Data Analysis and Visualization]({attach}presentation/lecture3.pdf)
 
-## Lecture Notebook
+## Jupyter Notebook
 
-- [Jupyter | Lecture 3: EDA and Visualization Demo]({filename}notebook/lecture3.ipynb)
+- [Lecture 3: EDA and Visualization Demo]({filename}notebook/lecture3.ipynb)
