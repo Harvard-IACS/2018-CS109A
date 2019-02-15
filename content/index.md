@@ -1,4 +1,4 @@
-Title: CS109a: Introduction to Data Science <br>
+Title: CS109A: Introduction to Data Science <br>
 Date: 2018-12-09
 save_as: index.html
 
@@ -44,17 +44,17 @@ pre {
 <p>Welcome to CS109a/STAT121a/AC209a, also offered by the DCE as CSCI E-109a, Introduction to Data Science. This course is the first half of a one‐year course to data science. We will focus on the analysis of data to perform predictions using statistical and machine learning methods. Topics include data scraping, data management, data visualization, regression and classification methods, and deep neural networks (see the <a href="https://docs.google.com/spreadsheets/d/e/2PACX-1vS0UTDiQe2gC0AAvpyCGizBwY7IaDEtW6F8ge8QyvFlxJ_ROW4GBnJtrQCH5mGvKLE-wnZtfquO2Fgt/pubhtml?"> schedule</a>). You will get ample practice through weekly homework assignments. The class material integrates the five key facets of an investigation using data:
 <br/><br/>
 
-1. data collection ‐ data wrangling, cleaning, and sampling to get a suitable data set <br>
+1. Data Collection ‐ data wrangling, cleaning, and sampling to get a suitable data set <br>
 
-2. data management ‐ accessing data quickly and reliably
+2. Data Management ‐ accessing data quickly and reliably
 <br>
 
-3. exploratory data analysis – generating hypotheses and building intuition
+3. Exploratory Data Analysis – generating hypotheses and building intuition
 <br>
 
-4. prediction or statistical learning
+4. Prediction or Statistical Learning
 <br>
-5. communication – summarizing results through visualization, stories, and interpretable summaries
+5. Communication – summarizing results through visualization, stories, and interpretable summaries
 <br/> <br/>
 
 
@@ -111,7 +111,10 @@ Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who
 <pre><strong><span style="color: #993300;">TF Office Hours </span></strong><strong><span style="color: #993300;"><br /></span></strong>See the <a href="https://docs.google.com/spreadsheets/d/1QhAIfummebKrfFmS6uHQQ4ut9dQcvcWf2FYnx-NxIs4/edit#gid=0">Weekly Schedule</a></pre>
 
 <p>Please be aware, that we will not publicly release the homework assignments this year. If you want to follow the course online without registering, you can use the assignments from 2013 and 2014, available at the links below. Additionally, the material from 2015 is also available.</p>
-<h4>Previous Material</h4>
+
+<hr>
+
+<h5>Previous Years Material</h5>
 <ul>
 <li><a href="http://harvard-iacs.github.io/2017-CS109A">2017</a></li>
 <li><a href="http://cs109.github.io/2015">2015</a></li>
