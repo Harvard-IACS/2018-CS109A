@@ -1,13 +1,11 @@
-Title: Section 6,  Feed Forward Neural Networks
+Title: Standard Section 6: Feed Forward Neural Networks Demo
 Category: sections
-Slug: section6
+Slug: section-6
 Author: Pavlos Protopapas
 Date: 2018-10-26
-Tags: Regularization, CV, cross validation
+Tags: Artificial Neural Networks (ANN), Feed Forward Neural Network, Linear Regression, Gradient Descent
 
 
+## Jupyter Notebook
 
-### Notebooks
-
-- [Notebook with solutions]({filename}notebook/section_6_solutions.ipynb)
-<!-- - [Section]({filename}notebook/section_3_solutions.ipynb) -->
+- [Standard Section 6: Feed Forward Neural Networks - Solutions]({filename}notebook/section6_solutions.ipynb)
