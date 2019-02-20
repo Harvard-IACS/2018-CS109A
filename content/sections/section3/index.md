@@ -1,9 +1,9 @@
-Title: Section 3: Predictor Types and Feature 
+Title: Standard Section 3: Predictor Types and Feature 
 Category: sections
 Slug: section-3
 Author: Pavlos Protopapas
 Date: 2018-09-28
-Tags: Regularization, Cross-Validation (CV)
+Tags: Linear Regression, Interaction Terms,  Model Selection
 
 
 ## Slides

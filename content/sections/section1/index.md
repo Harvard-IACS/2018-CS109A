@@ -3,7 +3,7 @@ Category: sections
 Slug: section-1
 Author: Pavlos Protopapas
 Date: 2018-09-14
-Tags: BeautifulSoup, Data Formats: JSON and CSVScraping, Pandas, Parse HTML
+Tags: BeautifulSoup, Data Formats: JSON and CSV, Scraping, Pandas, Parse HTML
 
 ## Jupyter Notebooks
 
