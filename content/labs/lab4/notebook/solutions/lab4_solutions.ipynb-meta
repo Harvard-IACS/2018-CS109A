@@ -1,7 +1,6 @@
 Title: Lab 4: Multiple and Polynomial Linear Regression
 Category: labs
-Slug: lab-4/student
+Slug: lab-4/solutions
 Author: Pavlos Protopapas
 Date: 2018-09-01
 Tags: Multiple Linear Regression, Polynomial Regression, Feature Selection, Greedy Forward Selection, Greedy Backward Elimination, Information Criteria (AIC/BIC), Scikit-learn
-
