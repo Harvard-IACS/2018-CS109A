@@ -1,8 +1,11 @@
-Title: Lab 10: Neural Networks using keras
+Title: Lab 10: Keras for Artificial Neural Network
 Category: labs
-Slug: lab10
+Slug: lab-10
 Author: Pavlos Protopapas
 Date: 2018-11-15
+Tags: Keras, Artificial Neural Networks (ANN), Multilayer Perceptron (MLP), Regularization
 
 
-- [Lab 10]({filename}notebook/Lab10_keras_students.ipynb)
+## Jupyter Notebooks
+
+- [Lab 10: Keras for Artificial Neural Network]({filename}notebook/lab10_keras.ipynb)
