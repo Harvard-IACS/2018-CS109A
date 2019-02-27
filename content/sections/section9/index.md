@@ -1,13 +1,11 @@
-Title: Section 9, Neural Networks Continued
+Title: Standard Section 9: Artificial Neural Networks Continued
 Category: sections
-Slug: section9
+Slug: section-9
 Author: Pavlos Protopapas
 Date: 2018-11-16
-Tags: Regularization, CV, cross validation
+Tags: Artificial Neural Networks (ANN), Multilayer Perceptron (MLP), Linear Regression, Classification, Regularization
 
 
+## Jupyter Notebooks
 
-### Notebooks
-
-- [Notebook]({filename}notebook/section_9_students.ipynb)
-<!-- - [Section]({filename}notebook/section_3_solutions.ipynb) -->
+- [Standard Section 9: Artificial Neural Networks Continued]({filename}notebook/section9.ipynb)

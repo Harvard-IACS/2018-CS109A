@@ -1,4 +1,4 @@
-Title: Standard Section 6: Feed Forward Neural Networks Demo
+Title: Standard Section 6: Feed Forward Artificial Neural Networks Demo
 Category: sections
 Slug: section-6
 Author: Pavlos Protopapas
@@ -8,4 +8,4 @@ Tags: Artificial Neural Networks (ANN), Feed Forward Neural Network, Linear Regr
 
 ## Jupyter Notebook
 
-- [Standard Section 6: Feed Forward Neural Networks - Solutions]({filename}notebook/section6_solutions.ipynb)
+- [Standard Section 6: Feed Forward Artificial Neural Networks - Solutions]({filename}notebook/section6_solutions.ipynb)
