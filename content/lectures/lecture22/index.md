@@ -1,14 +1,11 @@
-Title: Lecture 22: Responsible DS
+Title: Lecture 22: Responsible Data Science
 Category: lectures
-Slug: lecture22
+Slug: lecture-22
 Author: Pavlos Protopapas
 Date: 2018-11-28
-Tags:
+Tags: Ethics for Data Science, Fairness Transparency and Accountability (FAT), Statistical Parity
 
 
-### Slides
+## Slides
 
-- [PDF]({attach}presentation/Lecture22_ResponsibleDS.pdf)
-
-<!-- ### Notes
-- [Examples]({filename}notebook/Lecture23_Notebook.ipynb) -->
+- [PDF | Lecture 22: Responsible Data Science]({attach}presentation/lecture22_responsible_ds.pdf)

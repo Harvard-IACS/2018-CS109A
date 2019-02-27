@@ -1,15 +1,16 @@
 Title: Lecture 21: Stacking
 Category: lectures
-Slug: lecture21
+Slug: lecture-21
 Author: Pavlos Protopapas
 Date: 2018-11-26
-Tags:
+Tags: Comparison of Methods, Stacking
 
 
 ### Slides
 
-- [PDF]({attach}presentation/Lecture21_Stacking.pdf)
-- [PPTX]({attach}presentation/Lecture21_Stacking.pptx)
+- [PDF | Lecture 21: Stacking]({attach}presentation/lecture21_stacking.pdf)
+- [PPTX | Lecture 21: Stacking]({attach}presentation/lecture21_stacking.pptx)
 
-### Notes
-- [Examples]({filename}notes/Lecture21_Notebook.ipynb)
+## Jupyter Notebook
+
+- [Lecture 21: Stacking Demo]({filename}notebook/lecture21.ipynb)
