@@ -1,15 +1,16 @@
-Title: Lecture 20: SVM
+Title: Lecture 20: Support Vector Machine (SVM)
 Category: lectures
-Slug: lecture20
+Slug: lecture-20
 Author: Pavlos Protopapas
 Date: 2018-11-19
-Tags:
+Tags: Classification, Support Vector Machine (SVM), Classification Non-Separable Data, Kernel Trick
 
 
-### Slides
+## Slides
 
-- [PDF]({attach}presentation/Lecture20_SVM.pdf)
-- [PPTX]({attach}presentation/Lecture20_SVM.pptx)
+- [PDF | Lecture 20: Support Vector Machine]({attach}presentation/lecture20_svm.pdf)
+- [PPTX | Lecture 20: Support Vector Machine]({attach}presentation/lecture20_svm.pptx)
 
-### Notes
-- [Examples]({filename}notes/Lecture20_Notebook.ipynb)
+## Jupuyter Notebook
+
+- [Lecture 20: Support Vector Machine Demo]({filename}notebook/lecture20.ipynb)

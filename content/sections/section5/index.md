@@ -1,16 +1,16 @@
-Title: Section 5, Logistic Regression and PCA
+Title: Standard Section 5: Logistic Regression and Principal Component Analysis (PCA)
 Category: sections
-Slug: section5
+Slug: section-5
 Author: Pavlos Protopapas
 Date: 2018-10-19
-Tags: Regularization, CV, cross validation
+Tags: Linear Regression, Multiple Linear Regression, Logistic Regression, Classification, Principal Component Analysis (PCA)
 
 
-### Slides
+## Slides
 
-- [PDF]({attach}presentation/section_5_logistic_regression_slides.pdf)
+- [PDF | Standard Section 5: Linear and Logistic Regression Recap]({attach}presentation/section5_logistic_regression.pdf)
 
-### Notebooks
+## Jupyter Notebooks
 
-- [Notebook with solutions]({filename}notebook/section_5_solutions.ipynb)
-<!-- - [Section]({filename}notebook/section_3_solutions.ipynb) -->
+- [Standard Section 5: Logistic Regression and Principal Component Analysis (PCA)
+- Solutions]({filename}notebook/solutions/section5_solutions.ipynb)

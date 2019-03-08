@@ -1,16 +1,15 @@
-Title: Section 4, Model Selection
+Title: Standard Section 4: Model Selection
 Category: sections
-Slug: section4
+Slug: section-4
 Author: Pavlos Protopapas
 Date: 2018-10-12
-Tags: Regularization, CV, cross validation
+Tags: Feature Scaling, k-Nearest Neighbors (kNN) Regression, Cross-Validation (CV), Hyperparameter Optimization, Model Selection
 
 
-### Slides
+## Slides
 
-- [HTML]({attach}presentation/section_4.slides.html)
+- [HTML | Standard Section 4: Model Selection]({attach}presentation/section4_model_selection.html)
 
-### Notebooks
+## Jupyter Notebooks
 
-- [Section4 Notebook]({filename}notebook/section_4.ipynb)
-<!-- - [Section]({filename}notebook/section_3_solutions.ipynb) -->
+- [Standard Section 4: Model Selection Demo]({filename}notebook/section4_model_selection.ipynb)

@@ -1,18 +1,21 @@
-Title: Lecture 19: NN design choices
+Title: Lecture 19: Artificial Neural Networks 3 - Regularization Methods for ANN
 Category: lectures
-Slug: lecture19
+Slug: lecture-19
 Author: Pavlos Protopapas
 Date: 2018-11-14
-Tags:
+Tags: Artificial Neural Networks (ANN), Norm Penalties,  Data Augmentation, Sparse Representation, Regularization, Bootstrap-Aggregating (Bagging), Dropout, Artificial Neural Network Optimization
 
 
 ### Slides
 
-- [PDF]({attach}presentation/Lecture19_NNRegularization.pdf)
-- [PPTX]({attach}presentation/Lecture19_NNRegularization.pptx)
+- [PDF | Lecture 19: Artificial Neural Networks 3 - Regularization Methods for ANN]({attach}presentation/lecture19_nn3_regularization.pdf)
+- [PPTX | Lecture 19: Artificial Neural Networks 3 - Regularization Methods for ANN]({attach}presentation/lecture19_nn3_regularization.pptx)
 
-### Notes
-- [PDF]({attach}notes/Lecture19_Additional_Optimization.pdf)
-- [PPTX]({attach}notes/Lecture19_Additional_Optimization.pptx)
+### Lecture Notes
 
-<!-- %- [Examples]({filename}notebook/Lecture14_Notebook.ipynb) -->
+- [PDF | Lecture 19: Artificial Neural Networks 3 - Optimization]({attach}presentation/notes/lecture19_notes_optimization.pdf)
+- [PPTX Lecture 19: Artificial Neural Networks 3 - Optimization]({attach}presentation/notes/lecture19_notes_optimization.pptx)
+
+## Jupyter Notebook
+
+- [Standard Section 9: Artificial Neural Networks Continued]({filename}../../sections/section9/notebook/section9.ipynb)

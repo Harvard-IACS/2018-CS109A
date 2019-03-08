@@ -1,13 +1,11 @@
-Title: Section 7, Multiclass Classification
+Title: Standard Section 7: Multiclass Classification Methods
 Category: sections
-Slug: section7
+Slug: section-7
 Author: Pavlos Protopapas
 Date: 2018-11-2
-Tags: Regularization, CV, cross validation
+Tags: Classification, Multinomial Logistic Regression, One Versus Rest (OVR), Linear Discriminant Analysis (LDA), Quadratic Discriminant Analysis (QDA)
 
 
+## Jupyter Notebooks
 
-### Notebooks
-
-- [Notebook with solutions]({filename}notebook/section_7_solutions.ipynb)
-<!-- - [Section]({filename}notebook/section_3_solutions.ipynb) -->
+- [Standard Section 7: Multiclass Classification Methods]({filename}notebook/section7_solutions.ipynb)

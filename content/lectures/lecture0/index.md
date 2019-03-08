@@ -1,16 +1,14 @@
-Title: Lecture 0: First Lecture
+Title: Lecture 0: What is Data Science?
 Category: lectures
-Slug: lecture0
+Slug: lecture-0
 Author: Pavlos Protopapas
 Date: 2018-09-05
-Tags: Introduction
+Tags: What is Data Science?, The Data Science Process
 
+## Slides
 
-### Slides
+- [PDF | Lecture 0: What is Data Science?]({attach}presentation/lecture0.pdf)
 
-- [PDF]({attach}presentation/Lecture0_Introduction.pdf)
+## Jupyter Notebook
 
-
-### Notebooks
-
-- [Examples]({filename}notes/Lecture0_Notebook.ipynb)
+- [Lecture 0: Data Science Demo]({filename}notebook/lecture0.ipynb)

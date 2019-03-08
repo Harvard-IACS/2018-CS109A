@@ -1,15 +1,16 @@
-Title: Lecture 23: AB testing
+Title: Lecture 23: A/B Testing
 Category: lectures
-Slug: lecture23
+Slug: lecture-23
 Author: Pavlos Protopapas
 Date: 2018-12-03
-Tags:
+Tags: Causal Effects, Experiments and AB-testing, Analyses for Controlled Randomized Design (CRD), Controlling for Confounding (Advantages/Disadvantages), Adaptive Experimental Design
 
 
 ### Slides
 
-- [PDF]({attach}presentation/Lecture23_ABTesting.pdf)
-- [PPTX]({attach}presentation/Lecture23_ABTesting.pptx)
+- [PDF | Lecture 23: A/B Testing]({attach}presentation/lecture23_ab_testing.pdf)
+- [PPTX | Lecture 23: A/B Testing]({attach}presentation/lecture23_ab_testing.pptx)
 
-### Notes
-- [Examples]({filename}notes/Lecture23_Notebook.ipynb)
+## Jupyter Notebook
+
+- [Lecture 23: A/B Testing Demo]({filename}notebook/lecture23.ipynb)

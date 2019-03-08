@@ -86,9 +86,124 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI colors. */
+/* CSS font colors for translated ANSI escape sequences */
+/* The color values are a mix of
+   http://www.xcolors.net/dl/baskerville-ivorylight and
+   http://www.xcolors.net/dl/euphrasia */
+.ansi-black-fg {
+  color: #3E424D;
+}
+.ansi-black-bg {
+  background-color: #3E424D;
+}
+.ansi-black-intense-fg {
+  color: #282C36;
+}
+.ansi-black-intense-bg {
+  background-color: #282C36;
+}
+.ansi-red-fg {
+  color: #E75C58;
+}
+.ansi-red-bg {
+  background-color: #E75C58;
+}
+.ansi-red-intense-fg {
+  color: #B22B31;
+}
+.ansi-red-intense-bg {
+  background-color: #B22B31;
+}
+.ansi-green-fg {
+  color: #00A250;
+}
+.ansi-green-bg {
+  background-color: #00A250;
+}
+.ansi-green-intense-fg {
+  color: #007427;
+}
+.ansi-green-intense-bg {
+  background-color: #007427;
+}
+.ansi-yellow-fg {
+  color: #DDB62B;
+}
+.ansi-yellow-bg {
+  background-color: #DDB62B;
+}
+.ansi-yellow-intense-fg {
+  color: #B27D12;
+}
+.ansi-yellow-intense-bg {
+  background-color: #B27D12;
+}
+.ansi-blue-fg {
+  color: #208FFB;
+}
+.ansi-blue-bg {
+  background-color: #208FFB;
+}
+.ansi-blue-intense-fg {
+  color: #0065CA;
+}
+.ansi-blue-intense-bg {
+  background-color: #0065CA;
+}
+.ansi-magenta-fg {
+  color: #D160C4;
+}
+.ansi-magenta-bg {
+  background-color: #D160C4;
+}
+.ansi-magenta-intense-fg {
+  color: #A03196;
+}
+.ansi-magenta-intense-bg {
+  background-color: #A03196;
+}
+.ansi-cyan-fg {
+  color: #60C6C8;
+}
+.ansi-cyan-bg {
+  background-color: #60C6C8;
+}
+.ansi-cyan-intense-fg {
+  color: #258F8F;
+}
+.ansi-cyan-intense-bg {
+  background-color: #258F8F;
+}
+.ansi-white-fg {
+  color: #C5C1B4;
+}
+.ansi-white-bg {
+  background-color: #C5C1B4;
+}
+.ansi-white-intense-fg {
+  color: #A1A6B2;
+}
+.ansi-white-intense-bg {
+  background-color: #A1A6B2;
+}
+.ansi-default-inverse-fg {
+  color: #FFFFFF;
+}
+.ansi-default-inverse-bg {
+  background-color: #000000;
+}
+.ansi-bold {
+  font-weight: bold;
+}
+.ansi-underline {
+  text-decoration: underline;
+}
+/* The following styles are deprecated an will be removed in a future version */
 .ansibold {
   font-weight: bold;
+}
+.ansi-inverse {
+  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -167,12 +282,20 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  border-left-width: 1px;
-  padding-left: 5px;
-  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
+  position: relative;
+  overflow: visible;
+}
+div.cell:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: transparent;
 }
 div.cell.jupyter-soft-selected {
-  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -185,27 +308,39 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected {
+div.cell.selected,
+div.cell.selected.jupyter-soft-selected {
   border-color: #ababab;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
+}
+div.cell.selected:before,
+div.cell.selected.jupyter-soft-selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #42A5F5;
 }
 @media print {
-  div.cell.selected {
+  div.cell.selected,
+  div.cell.selected.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected.jupyter-soft-selected {
-  border-left-width: 0;
-  padding-left: 6px;
-  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
-}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-  border-left-width: 0px;
-  padding-left: 6px;
-  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
+}
+.edit_mode div.cell.selected:before {
+  position: absolute;
+  display: block;
+  top: -1px;
+  left: -1px;
+  width: 5px;
+  height: calc(100% +  2px);
+  content: '';
+  background: #66BB6A;
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -401,7 +536,9 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  padding: 0.4em;
+  /* Note that this should set vertical padding only, since CodeMirror assumes
+       that horizontal padding will be set on CodeMirror pre */
+  padding: 0.4em 0;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -411,11 +548,24 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
-  /* .CodeMirror-lines */
-  padding: 0;
+  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
+    use .CodeMirror-lines for vertical */
+  padding: 0 0.4em;
   border: 0;
   border-radius: 0;
+}
+.CodeMirror-cursor {
+  border-left: 1.4px solid black;
+}
+@media screen and (min-width: 2138px) and (max-width: 4319px) {
+  .CodeMirror-cursor {
+    border-left: 2px solid black;
+  }
+}
+@media screen and (min-width: 4320px) {
+  .CodeMirror-cursor {
+    border-left: 4px solid black;
+  }
 }
 /*
 
@@ -663,6 +813,9 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
+div.output_area .mglyph > img {
+  max-width: none;
+}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -701,7 +854,7 @@ div.output_area svg.unconfined {
 }
 div.output_area pre {
   margin: 0;
-  padding: 0;
+  padding: 1px 0 1px 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -823,6 +976,10 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
+.rendered_html ul:not(.list-inline),
+.rendered_html ol:not(.list-inline) {
+  padding-left: 2em;
+}
 
 
 
@@ -839,16 +996,24 @@ div.output_unrecognized a:hover {
 }
 
 
+
+
+
 .rendered_html pre,
+
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
-.rendered_html td,
 
-
+.rendered_html tbody tr:nth-child(odd) {
+  background: #f5f5f5;
+}
+.rendered_html tbody tr:hover {
+  background: rgba(66, 165, 245, 0.2);
+}
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -864,6 +1029,11 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
+
+.rendered_html * + .alert {
+  margin-top: 1em;
+}
+[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -914,8 +1084,15 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
+.text_cell.rendered .rendered_html tr,
+.text_cell.rendered .rendered_html th,
+.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
+}
+.text_cell .dropzone .input_area {
+  border: 2px dashed #bababa;
+  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1054,14 +1231,13 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px" /> CS109A Introduction to Data Science</h1>
-<h2 id="Standard-Section-9:-Neural-Networks-Continued">Standard Section 9: Neural Networks Continued<a class="anchor-link" href="#Standard-Section-9:-Neural-Networks-Continued">¶</a></h2><p><strong>Harvard University</strong><br />
-<strong>Fall 2018</strong><br />
-<strong>Section Leaders:</strong> Mehul Smriti Raje, Ken Arnold, Karan Motwani, Cecilia Garraffo<br />
-<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader <br />
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
+<h2 id="Standard-Section-9:-Neural-Networks-Continued">Standard Section 9: Neural Networks Continued<a class="anchor-link" href="#Standard-Section-9:-Neural-Networks-Continued">¶</a></h2><p><strong>Harvard University</strong><br>
+<strong>Fall 2018</strong><br>
+<strong>Section Leaders:</strong> Mehul Smriti Raje, Ken Arnold, Karan Motwani, Cecilia Garraffo<br>
+<strong>Instructors:</strong> Pavlos Protopapas, Kevin Rader <br>
 <strong>Author:</strong> Mehul Smriti Raje</p>
 </div>
 </div>
@@ -1147,8 +1323,7 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this section, we will revisit some of the problems we did in previous sections and try to do them again using Keras. The goal is to familiarize you with building Neural Networks using Keras. The exercises below will help you be able to answer parts of Homework 9.</p>
 <p>Specifically, we will:</p>
@@ -1208,24 +1383,21 @@ Using TensorFlow backend.
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Neural Networks are flexible structures that can be used to solve probelms of different complexities.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="1.-Linear-Regression-as-a-Neural-Net">1. Linear Regression as a Neural Net<a class="anchor-link" href="#1.-Linear-Regression-as-a-Neural-Net">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's first load the Titanic dataset from Section 3 and do the same pre-processing, as described before.</p>
 </div>
@@ -1542,7 +1714,7 @@ q9whTAW43SmwdetW/O53v0NpaWnie9///vexdetWRCIRlJaWYuvWrdBqtQpWOffWr1+PJ554AhqN
 Bj/4wQ8ysi/+7u/+Dh988AFkWcZf//Vfo7CwMGP7IhAI4LHHHoPb7UYkEsHXv/51rFq1KuP649y5
 c/jOd76DnTt34tSpUxc9/507d6KpqQmyLOOb3/wm7rzzTqXLvioMZyIiIpXhsDYREZHKMJyJiIhU
 huFMRESkMgxnIiIilWE4ExERqQzDmYiISGUYzkRERCrz/wF+Krivj7kWyQAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
@@ -1652,8 +1824,7 @@ huFMRESkMgxnIiIilWE4ExERqQzDmYiISGUYzkRERCrz/wF+Krivj7kWyQAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, we fit a multiple linear regression model as before, on our numerical predictors.</p>
 </div>
@@ -1745,32 +1916,28 @@ huFMRESkMgxnIiIilWE4ExERqQzDmYiISGUYzkRERCrz/wF+Krivj7kWyQAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Note: we get an R^2 of 0.58 and, intercept of about 24, and coefficients of about [-2.7, -2.1, -15.5, -21.9].</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, let's try to build a neural network for this linear regression.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's first answer some questions to make this easier for us.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 1:</strong> What is the input-output size we should use to build our model?</p>
 </div>
@@ -1801,8 +1968,7 @@ Each output sample has dimensionality:  1
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Do you recall the feed-forward network we made in Section 6?</p>
 <p><strong>Question 2:</strong> What transformation will help us get linear regression?</p>
@@ -1811,8 +1977,7 @@ Each output sample has dimensionality:  1
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Building-a-NN-for-this-linear-transformation">Building a NN for this linear transformation<a class="anchor-link" href="#Building-a-NN-for-this-linear-transformation">¶</a></h3>
 </div>
@@ -1880,16 +2045,14 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question</strong>: Why does the output shape and the number of params make sense?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer</strong>: The output is a single scalar (1) for each input sample (<code>None</code>). To get 1 output from 4 inputs requires $4*1=4$ weights plus one bias term for each output, so 5 params.</p>
 </div>
@@ -2275,15 +2438,14 @@ JCUl0djYyLhx4xgxYgT3338/H3/8Mb/88guDBg3C6/Vy3333kZmZyZIlS2hoaCAqKop3332XsLAw
 cnJyWLlyJQ0NDQwYMIDNmzdTXFzs9zU9Hg/vvPMOBQUFuN1u1q1b9wdnLdLz6e5nIkGsurqa5ORk
 vv/+e6dDEZEO0qF1ERERi2lFLiIiYjGtyEVERCymRi4iImIxNXIRERGLqZGLiIhYTI1cRETEYv8B
 XvGu5Mv9ejsAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question</strong>: When I first tried this, I got validation MSE much lower than train MSE. I checked and they were being computed completely correctly. Why might that have happened? (Hint: both MSEs were around 2000...)</p>
 </div>
@@ -2356,32 +2518,28 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Does that R^2 number look familiar?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Ok, what just happened here?</strong></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We just created a neural network where the input layer takes a 5-dimensional input (4 parameters and 1 constant) and output layer produces a 1-dimensional output (regression value). The mapping is activated by a <code>linear</code> activation function. Optimisation of coeffients are done using <code>sgd</code> or stochastic gradient descent where the <code>mse</code> of fit is optimised.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 3:</strong> Why did we choose the activation function?</p>
 <p><strong>Ans:</strong> We want to produce a linear transformation, which motivates us to pick the <code>linear</code> activation.</p>
@@ -2389,8 +2547,7 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 4:</strong> Why did we normalise our data?</p>
 <p><strong>Ans:</strong> For a single linear layer, it didn't matter much. But when we add a nonlinearity, the scale of whatever gets passed through the nonlinearity will matter a lot.</p>
@@ -2398,8 +2555,7 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 5:</strong> How do we pick the number of epochs and batch size?</p>
 <p><strong>Ans:</strong> The number of epochs usually depends on the complexity of function being fitted and the structure of model. The batch size is often governed by the number of parameters one is trying to fit, since it determines how much memory is required for the backward pass.</p>
@@ -2407,8 +2563,7 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 6:</strong> Why dooes the training MSE keep decreasing with the number of epochs, while the validation MSE flattens out?</p>
 <p><strong>Ans:</strong> The NN is likely overfitting.</p>
@@ -2416,8 +2571,7 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What function is the linear regression actually computing?</p>
 </div>
@@ -2451,8 +2605,7 @@ Statsmodels weights: [ 24.16932019  -2.6490289   -2.14478285 -15.46766422 -21.96
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Question: In what ways are these similar or different? Why?</p>
 </div>
@@ -2533,16 +2686,14 @@ Statsmodels weights: [ 24.16932019  -2.6490289   -2.14478285 -15.46766422 -21.96
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="From-linear-regression-to-MLP">From linear regression to MLP<a class="anchor-link" href="#From-linear-regression-to-MLP">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now recall our MLP from section 6: we also had a linear output layer, but we added some hidden nodes. Let's do that in Keras.</p>
 </div>
@@ -2604,8 +2755,7 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question</strong>: Why do those shapes and #params make sense?</p>
 </div>
@@ -3407,15 +3557,14 @@ OxfXdZk9ezYzZ86kpKSE733ve2zfvp0JEyZQU1NDJBLhgQce4IYbbsC2bSorK/nGN75BMBhkxYoV
 2yzEQJLpxEIIIYQQQgghCoaMxAohhBBCCCGEKBgyEiuEEEIIIYQQomBIEiuEEEIIIYQQomBIEiuE
 EEIIIYQQomBIEiuEEEIIIYQQomBIEiuEEEIIIYQQomBIEiuEEEIIIYQQomD8fyo4NTQwRIfoAAAA
 AElFTkSuQmCC
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>How did our training and validation error compare with the linear model?</p>
 </div>
@@ -3739,23 +3888,21 @@ f4ve3l688soreOWVVwD4Ri/6+/tRXl6OH/3oR1i8eDEMBgNmzJgx5B9NavHwww/j3//931FRUQGN
 RoO1a9figw8+iLh9MqC5uRk5OTn+x+f/fkXSfhnwzDPP4Nlnn8Uvf/lLjB07FnPnzgUAPP3003jq
 qaeGPKaChVdRIiIiUkjEDkcTERFFOoYwERGRQhjCRERECmEIExERKYQhTEREpBCGMBERkUIYwkRE
 RAphCBMRESnk/wMElHivgtkcDwAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Classification">Classification<a class="anchor-link" href="#Classification">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Doing classification instead of regression is as easy as changing the loss!</p>
 </div>
@@ -4376,7 +4523,7 @@ zNSTTz6phIQEPf300/rlL38pl8ulMWPG6KmnntKHH34Y8DMXLlyoJUuW6O2335bFYtGjjz4a5q8a
 AIDoRdsMRAeTYRhGpAsBoH0lJSVatGiRPv3000gXBQAAiLYZiASGCgMAAAAAohpPXAEAAAAAUY0n
 rgAAAACAqEZwBQAAAABENYIrAAAAACCqEVwBAAAAAFGN4AoAAAAAiGoEVwAAAABAVPv/u6Q9X8cO
 66IAAAAASUVORK5CYII=
-" />
+">
 </div>
 </div>
 </div>
@@ -4538,24 +4685,21 @@ rgAAAACAqEZwBQAAAABENYIrAAAAACCqEVwBAAAAAFGN4AoAAAAAiGoEVwAAAABAVPv/u6Q9X8cO
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Regularisation">Regularisation<a class="anchor-link" href="#Regularisation">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 7:</strong> What happens if we increase the number of hidden nodes in the regression problem above?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Building a model with 100 hidden nodes:</p>
 </div>
@@ -5613,23 +5757,21 @@ mTBhAqmpqbzwwgscP36cUaNGUVhYSEJCAuvWreOJJ54gGAySmZnJz3/+czweDxs3bmTJkiUEg0Gy
 s7P5xS9+wc6dO61+eSIiIraj2ixiLcPU+gQR26moqGDu3Lm8//77VkcRERERVJtFepKWE4uIiIiI
 iIhtaCZWREREREREbEMzsSIiIiIiImIbamJFRERERETENtTEioiIiIiIiG2oiRURERERERHbUBMr
 IiIiIiIitqEmVkRERERERGzj/wGo2bQ8yJj+iwAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 8:</strong> What happens if we increase the number of hidden layers?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Building a model with 10 hidden layers having 5 units each (You may need to run this on a GPU - Eg. Google Colab)</p>
 </div>
@@ -6694,23 +6836,21 @@ c+fO6fTp05KkDz/8UB9//LG1cwIAwGV0M2AXV2KBIPfwww+rsbFR6enp6uvr09y5c3X//ffrpptu
 4w3V1NTYPj0AAJxDNwN2eQz3JwDOaWlpUVZWlr7++mvbUQAAgOhmYDRxOzEAAAAAwBlciQUAAAAA
 OIMrsQAAAAAAZ7DEAgAAAACcwRILAAAAAHAGSywAAAAAwBkssQAAAAAAZ7DEAgAAAACc8R9lyd1+
 FLdgPgAAAABJRU5ErkJggg==
-" />
+">
 </div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>From both the above experiments, we can see that NNs can overfit very quickly.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 9:</strong> Based on the above, what are some obvious methods of regularising NNs?</p>
 <p><strong>Ans:</strong> Choosing the right number of hidden layers and hidden nodes! Unfortunately, picking the right number of parameters is a hard problem itself.</p>
@@ -6718,8 +6858,7 @@ FLdgPgAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 10:</strong> Does this give you a hint of another method to prevent overfitting?</p>
 <p><strong>Ans:</strong> Stopping the process early could likely be helpful. This is known as 'early stopping' and is typically used in combination with other regularisation techniques. As intution suggests, it means 'Stopping the process when the model starts overfitting'.</p>
@@ -6727,11 +6866,21 @@ FLdgPgAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div>
-<div class="inner_cell">
+</div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 11:</strong> Think of how we prevented overfitting and helped regularise parameters in regression. Can you remember any? (Hint: Norms)</p>
 <p><strong>Ans:</strong> Using L2 regularisation can be helpful in regularising parameters, like we have observed in regression.</p>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing code_cell rendered">
+<div class="input">
+<div class="prompt input_prompt">In [ ]:</div>
+<div class="inner_cell">
+<div class="input_area">
+<div class=" highlight hl-ipython3"><pre><span></span> 
+</pre></div>
+</div>
 </div>
 </div>
 </div>

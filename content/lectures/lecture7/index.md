@@ -1,16 +1,21 @@
 Title: Lecture 7: Regularization
 Category: lectures
-Slug: lecture7
+Slug: lecture-7
 Author: Pavlos Protopapas
 Date: 2018-10-01
-Tags: Regularization, LASSO, Ridge
+Tags: Overfitting, Bias–Variance Tradeoff, Regularization, Lasso, Ridge
 
 
-### Slides
+## Slides
 
-- [PDF]({attach}presentation/Lecture7_Regularization.pdf)
-- [PPTX]({attach}presentation/Lecture7_Regularization.pptx)
+- [PDF | Lecture 7: Regularization]({attach}presentation/lecture7_regularization.pdf)
+- [PPTX | Lecture 7: Regularization]({attach}presentation/lecture7_regularization.pptx)
 
-### Sections
-- [Section 4 student]({filename}../../sections/section3/notebook/section_3_student.ipynb)
-- [Section 4 solutions]({filename}../../sections/section3/notebook/section_3_solutions.ipynb)
+
+## Jupyter Notebooks
+
+- [Lab 5: Regularization and Cross-Validation - Student Version]({filename}../../labs/lab5/notebook/lab5.ipynb)
+- [Lab 5: Regularization and Cross-Validation - Solutions]({filename}../../labs/lab5/notebook/solutions/lab5_solutions.ipynb)
+
+
+

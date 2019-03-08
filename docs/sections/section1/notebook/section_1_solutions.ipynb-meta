@@ -1,6 +1,6 @@
-Title: Section 1
+Title: Section 1: Solutions
 Category: sections
-Slug: section1/solutions
+Slug: section-1/notebook-solutions
 Author: Pavlos Protopapas
 Date: 2018-10-05
-Tags: Scraping
+Tags: Scraping, Parse HTML with BeautifulSoup, Data Formats: JSON and CSV

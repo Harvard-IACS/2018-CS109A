@@ -1,0 +1,758 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="2ba160de-36cd-4543-9b99-7afc4305c26f" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/labs/lab1/notebook/lab1_solutions.ipynb-meta" beforeDir="false" afterPath="$PROJECT_DIR$/content/labs/lab1/notebook/lab1_solutions.ipynb-meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/lectures/lecture8/index.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/lectures/lecture8/index.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/pages/schedule.md" beforeDir="false" afterPath="$PROJECT_DIR$/content/pages/schedule.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/content/sections/section5/section_5_solutions.ipynb" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec3/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/a-sections/a-sec3/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/a-sections/a-sec9/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/a-sections/a-sec9/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/labs.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/labs.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/labs2.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/labs2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/labs3.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/labs3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/lectures.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/lectures.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/lectures2.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/lectures2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/lectures3.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/lectures3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/lectures4.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/lectures4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/pages.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/pages.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/sections.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/sections.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/sections2.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/sections2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}10.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}2.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}3.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}4.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}5.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}6.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}7.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}8.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/category/{slug}9.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/category/{slug}9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab-1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab-1/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab-1/notebook-solutions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab-1/notebook-solutions/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab-1/notebook-student/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab-1/notebook-student/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/notebook/lab1.ipynb-meta" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab1/notebook/lab1.ipynb-meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab1/notebook/lab1_solutions.ipynb-meta" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab1/notebook/lab1_solutions.ipynb-meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab10/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab10/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/notebook/Scraping.pdf" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/notebook/lab2_pandas.ipynb-meta" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab2/notebook/lab2_pandas.ipynb-meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/notebook/lab2_scraping.ipynb-meta" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab2/notebook/lab2_scraping.ipynb-meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/pandas/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab2/scraping/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab3/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab3/notebook/lab3_SLR_KNN.ipynb-meta" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab3/notebook/lab3_SLR_KNN.ipynb-meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab4/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab4/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab4/solutions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab4/solutions/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab5/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab5/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab5/notebook_solutions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab5/notebook_solutions/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab6/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab6/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab7/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab7/prelab/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab7/prelab/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab8/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab8/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lab9/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lab9/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lecture-0/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lecture-0/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lecture-3/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/labs/lecture-3/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/labs/lecture2/notebook/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture-1/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture-1/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture-3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture-3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture10/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture10/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture11/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture11/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture13/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture13/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture14/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture14/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture15/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture15/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture2/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture2/notes/grammarofdata.ipynb-meta" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture2/notes/grammarofdata.ipynb-meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture20/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture20/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture21/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture21/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture23/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture23/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture3/notebook/lecture3.ipynb-meta" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture3/notebook/lecture3.ipynb-meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture4/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture4/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture4/notebook/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture4/notes/Exercise_LNB_1.ipynb-meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture4/notes/Exercise_Lecture4.ipynb-meta" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture4/notes/Exercise_Lecture4.ipynb-meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture5/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture5/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture7/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture7/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture8/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture8/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/lectures/lecture8/notebook/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/lectures/lecture8/notebook/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/pages/lecture2/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/pages/materials.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/materials.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/pages/materials10.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/materials10.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/pages/materials2.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/materials2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/pages/materials3.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/materials3.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/pages/materials4.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/materials4.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/pages/materials5.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/materials5.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/pages/materials6.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/materials6.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/pages/materials7.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/materials7.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/pages/materials8.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/materials8.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/pages/materials9.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/materials9.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/pages/schedule.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/schedule.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/pages/syllabus.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/pages/syllabus.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section-1/notebook-solutions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section-1/notebook-solutions/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section-1/notebook-student/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section-1/notebook-student/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section1/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section1/notebook/section_1_solutions.ipynb-meta" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section1/notebook/section_1_solutions.ipynb-meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section1/notebook/section_1_student.ipynb-meta" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section1/notebook/section_1_student.ipynb-meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section2/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section2/notebook/section_2_solutions.ipynb-meta" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section2/notebook/section_2_solutions.ipynb-meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section2/solutions/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section3/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section3/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section3/notebook/section_3_solutions.ipynb-meta" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section3/notebook/section_3_solutions.ipynb-meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section3/notebook/section_3_student.ipynb-meta" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section3/notebook/section_3_student.ipynb-meta" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section3/solutions/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section3/student/index.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section4/solutions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section4/solutions/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section5/solutions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section5/solutions/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section6/solutions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section6/solutions/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section7/solutions/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section7/solutions/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section8/student/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section8/student/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/sections/section9/students/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/sections/section9/students/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/a-sec.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/a-sec.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/adaboost.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/adaboost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/aic.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/aic.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/akaike-information-criterion.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/akaike-information-criterion.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/artificial-neural-networks.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/artificial-neural-networks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/back-propagation.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/back-propagation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/bagging.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/bagging.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/blah.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/blah.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/boosting.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/boosting.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/bootstrap.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/bootstrap.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/catboost.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/catboost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/categorical-predictors.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/categorical-predictors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/classification.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/classification.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/cnn.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/cnn.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/collinearity.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/collinearity.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/confidence-intervals.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/confidence-intervals.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/convolutional-neural-networks.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/convolutional-neural-networks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/cross-validation.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/cross-validation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/cross-validation2.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/cross-validation2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/cv.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/cv.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/cv2.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/cv2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/data-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/data-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/data-engineering.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/data-engineering.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/data-exploration.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/data-formats-json-and-csv.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/data-formats-json-and-csv.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/data-science-demo.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/data-science-demo.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/decision-trees.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/decision-trees.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/descriptive-statistics.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/descriptive-statistics.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/dictionaries.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/dictionaries.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/dimensionality-reduction.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/dimensionality-reduction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/discriminant-analysis.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/discriminant-analysis.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/eda.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/eda.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/efb.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/efb.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/effective-visualization.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/effective-visualization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/eigenvalues.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/eigenvalues.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/eigenvectors.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/eigenvectors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/exclusive-feature-bundling-efb.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/exclusive-feature-bundling-efb.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/exploratory-data-analysis-eda.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/exploratory-data-analysis-eda.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/exponential-family.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/exponential-family.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/functions.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/functions.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/gda.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/gda.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/generalized-linear-models.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/generalized-linear-models.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/glms.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/glms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/goss.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/goss.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/gradient-boosting.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/gradient-boosting.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/gradient-descent.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/gradient-descent.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/gram-matrix.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/gram-matrix.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/grammar-of-data.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/how-to-read-data.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/hypothesis-testing.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/hypothesis-testing.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/importance-of-predictors.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/importance-of-predictors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/information-criteria.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/information-criteria.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/information-theory.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/information-theory.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/interaction-terms.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/interaction-terms.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/introduction.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/introduction.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/k-nearest-neighbors-knn.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/kl-divergence.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/kl-divergence.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/knn-regression.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/knn.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/lasso.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/lasso.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/lda.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/lda.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/lgbm.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/lgbm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/linear-algebra.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/linear-algebra.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/linear-regression.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/linear-regression.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/link-function.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/link-function.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/lists.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/lists.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/logistic-function.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/logistic-function.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/logistic-regression.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/logistic-regression.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/matplotlib.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/matplotlib.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/maximum-likelihood-estimation.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/maximum-likelihood-estimation.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/maximum-likelihood.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/maximum-likelihood.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/mle-eignevalues.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/mle-eignevalues.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/mle.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/mle.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/mlp.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/mlp.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/model-fitness.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/model-fitness.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/model-selection.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/model-selection.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/mse.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/multi-layer-perceptron.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/multi-layer-perceptron.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/multiple-linear-regression.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/multiple-linear-regression.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/multiple-logistic-regression.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/multiple-logistic-regression.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/multiple-regression.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/multiple-regression.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/neural-networks.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/neural-networks.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/nn.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/nn.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/numpy.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/numpy.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/overfitting.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/overfitting.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/p-values.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/p-values.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/pandas.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/pandas.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/parse-html-with-beautifulsoup.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/parse-html-with-beautifulsoup.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/pca.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/pca.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/perceptron.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/perceptron.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/polynomial-regression.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/polynomial-regression.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/pruning.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/pruning.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/qda.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/qda.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/qualitative-predictors.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/qualitative-predictors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/r-squared.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/r2.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/random-forest.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/random-forest.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/regression-trees.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/regression-trees.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/regression.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/regression.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/regularization.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/regularization.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/regularization2.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/regularization2.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/ridge.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/ridge.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/rmse.html" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/scraping.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/scraping.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/seaborn.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/seaborn.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/standard-errors.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/standard-errors.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/support-vector-machines.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/support-vector-machines.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/svc.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/svc.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/svm.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/svm.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/the-data-science-process.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/the-data-science-process.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/visualizations.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/visualizations.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/viz.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/viz.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/what-are-data.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/what-are-data.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/what-is-data-science.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/what-is-data-science.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tag/xgboost.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tag/xgboost.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tags.html" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tags.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/docs/tipuesearch_content.js" beforeDir="false" afterPath="$PROJECT_DIR$/docs/tipuesearch_content.js" afterDir="false" />
+    </list>
+    <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CoverageDataManager">
+    <SUITE FILE_PATH="coverage/2018_CS109A$2018_CS109A.coverage" NAME="2018-CS109A Coverage Results" MODIFIED="1549749732217" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+  <component name="FavoritesManager">
+    <favorites_list name="2018-CS109A" />
+  </component>
+  <component name="FileEditorManager">
+    <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/labs/lab5/index.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="135">
+                <caret line="9" selection-start-line="9" selection-end-line="9" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/labs/lab9/notebook/Lab9-RF_and_Boosting_Solutions.ipynb-meta">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/content/lectures/lecture8/index.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="270">
+                <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/styles/cs109.css">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="615">
+              <caret line="41" column="20" selection-start-line="40" selection-start-column="19" selection-end-line="41" selection-end-column="20" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/labs/lab1/index.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor relative-caret-position="60">
+                <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+              </first_editor>
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/labs/lab1/notebook/lab1_solutions.ipynb-meta">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="60">
+              <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/labs/lab5/notebook/lab5_solutions.ipynb-meta">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="30">
+              <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/sections/section2/index.md">
+          <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+            <state split_layout="SPLIT">
+              <first_editor />
+              <second_editor />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/content/sections/section1/notebook/section_1_solutions.ipynb-meta">
+          <provider selected="true" editor-type-id="text-editor" />
+        </entry>
+      </file>
+    </leaf>
+  </component>
+  <component name="Git.Settings">
+    <option name="UPDATE_TYPE" value="MERGE" />
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/content/pages/syllabus.md" />
+        <option value="$PROJECT_DIR$/content/labs/lab11/index.md" />
+        <option value="$PROJECT_DIR$/content/labs/lab4/notebook/lab4_solutions.ipynb-meta" />
+        <option value="$PROJECT_DIR$/content/labs/lab4/index.md" />
+        <option value="$PROJECT_DIR$/content/sections/section1/index.md" />
+        <option value="$PROJECT_DIR$/content/labs/lab11/lab11_README.md" />
+        <option value="$PROJECT_DIR$/content/sections/Section8/index.md" />
+        <option value="$PROJECT_DIR$/content/labs/lab5/notebook/lab5_solutions.ipynb-meta" />
+        <option value="$PROJECT_DIR$/content/labs/lab5/index.md" />
+        <option value="$PROJECT_DIR$/content/styles/cs109.css" />
+        <option value="$PROJECT_DIR$/content/labs/lab1/notebook/lab1_solutions.ipynb-meta" />
+        <option value="$PROJECT_DIR$/content/labs/lab9/notebook/Lab9-RF_and_Boosting_Solutions.ipynb-meta" />
+        <option value="$PROJECT_DIR$/content/lectures/lecture8/index.md" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectFrameBounds" extendedState="6">
+    <option name="x" value="138" />
+    <option name="y" value="23" />
+    <option name="width" value="2560" />
+    <option name="height" value="1337" />
+  </component>
+  <component name="ProjectView">
+    <navigator proportions="" version="1">
+      <foldersAlwaysOnTop value="true" />
+    </navigator>
+    <panes>
+      <pane id="Scope" />
+      <pane id="ProjectPane">
+        <subPane>
+          <expand>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="lectures" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="lectures" type="462c0819:PsiDirectoryNode" />
+              <item name="lecture4" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="lectures" type="462c0819:PsiDirectoryNode" />
+              <item name="lecture4" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="lectures" type="462c0819:PsiDirectoryNode" />
+              <item name="lecture8" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="lectures" type="462c0819:PsiDirectoryNode" />
+              <item name="lecture8" type="462c0819:PsiDirectoryNode" />
+              <item name="data" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="lectures" type="462c0819:PsiDirectoryNode" />
+              <item name="lecture8" type="462c0819:PsiDirectoryNode" />
+              <item name="presentation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="sections" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="sections" type="462c0819:PsiDirectoryNode" />
+              <item name="section5" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="sections" type="462c0819:PsiDirectoryNode" />
+              <item name="section5" type="462c0819:PsiDirectoryNode" />
+              <item name="notebook" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="sections" type="462c0819:PsiDirectoryNode" />
+              <item name="section5" type="462c0819:PsiDirectoryNode" />
+              <item name="presentation" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="2018-CS109A" type="b2602c69:ProjectViewProjectNode" />
+              <item name="2018-CS109A" type="462c0819:PsiDirectoryNode" />
+              <item name="content" type="462c0819:PsiDirectoryNode" />
+              <item name="styles" type="462c0819:PsiDirectoryNode" />
+            </path>
+          </expand>
+          <select />
+        </subPane>
+      </pane>
+    </panes>
+  </component>
+  <component name="PropertiesComponent">
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/content/labs/lab4/notebook" />
+    </key>
+  </component>
+  <component name="RunDashboard">
+    <option name="ruleStates">
+      <list>
+        <RuleState>
+          <option name="name" value="ConfigurationTypeDashboardGroupingRule" />
+        </RuleState>
+        <RuleState>
+          <option name="name" value="StatusDashboardGroupingRule" />
+        </RuleState>
+      </list>
+    </option>
+  </component>
+  <component name="RunManager">
+    <configuration name="2018-CS109A" type="JupiterNotebook" factoryName="Jupyter Notebook">
+      <module name="2018-CS109A" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="additionalOptions" value="" />
+      <option name="ipnbHost" value="127.0.0.1" />
+      <option name="ipnbPort" value="8888" />
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="2ba160de-36cd-4543-9b99-7afc4305c26f" name="Default Changelist" comment="" />
+      <created>1549524738155</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1549524738155</updated>
+      <workItem from="1549524740065" duration="7355000" />
+      <workItem from="1549948156234" duration="977000" />
+      <workItem from="1549985531871" duration="1358000" />
+    </task>
+    <task id="LOCAL-00001" summary="new css">
+      <created>1549948836561</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1549948836561</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="9690000" />
+  </component>
+  <component name="ToolWindowManager">
+    <frame x="0" y="23" width="2560" height="1337" extended-state="6" />
+    <layout>
+      <window_info content_ui="combo" id="Project" order="0" sideWeight="0.49787235" visible="true" weight="0.2533757" />
+      <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
+      <window_info id="Favorites" order="2" sideWeight="0.50212765" side_tool="true" weight="0.24964234" />
+      <window_info anchor="bottom" id="Message" order="0" />
+      <window_info active="true" anchor="bottom" id="Find" order="1" visible="true" weight="0.32978722" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.32952926" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.4" />
+      <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
+      <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
+      <window_info anchor="bottom" id="TODO" order="6" />
+      <window_info anchor="bottom" id="Docker" order="7" show_stripe_button="false" />
+      <window_info anchor="bottom" id="Version Control" order="8" />
+      <window_info anchor="bottom" id="Database Changes" order="9" />
+      <window_info anchor="bottom" id="Event Log" order="10" side_tool="true" />
+      <window_info anchor="bottom" id="Terminal" order="11" weight="0.3289689" />
+      <window_info anchor="bottom" id="Python Console" order="12" />
+      <window_info anchor="right" id="Commander" internal_type="SLIDING" order="0" type="SLIDING" weight="0.4" />
+      <window_info anchor="right" id="Ant Build" order="1" weight="0.25" />
+      <window_info anchor="right" content_ui="combo" id="Hierarchy" order="2" weight="0.25" />
+      <window_info anchor="right" id="SciView" order="3" />
+      <window_info anchor="right" id="Database" order="4" />
+    </layout>
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="new css" />
+    <option name="LAST_COMMIT_MESSAGE" value="new css" />
+    <option name="OPTIMIZE_IMPORTS_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REFORMAT_BEFORE_PROJECT_COMMIT" value="true" />
+    <option name="REARRANGE_BEFORE_PROJECT_COMMIT" value="true" />
+  </component>
+  <component name="editorHistoryManager">
+    <entry file="file://$PROJECT_DIR$/content/pages/syllabus.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="84">
+            <caret line="38" column="20" selection-start-line="38" selection-start-column="20" selection-end-line="38" selection-end-column="20" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/labs/lab10/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor>
+            <caret selection-end-line="5" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/labs/lab4/notebook/lab4_solutions.ipynb-meta">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="20" selection-start-line="2" selection-start-column="20" selection-end-line="2" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/sections/section1/notebook/section_1_student.ipynb">
+      <provider selected="true" editor-type-id="ipnb-editor">
+        <state>
+          <selected id="1" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/sections/section1/notebook/section_1_student.ipynb-meta">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/lectures/lecture5/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="255">
+            <caret line="17" selection-start-line="14" selection-end-line="17" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/labs/lab11/lab11_README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="30">
+            <caret line="2" column="18" selection-start-line="2" selection-start-column="18" selection-end-line="2" selection-end-column="18" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/lectures/lecture4/readings.md" />
+    <entry file="file://$PROJECT_DIR$/content/labs/lab11/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="60">
+            <caret line="4" column="16" selection-end-line="4" selection-end-column="16" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/labs/lab4/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="120">
+            <caret line="8" column="53" selection-start-line="8" selection-start-column="53" selection-end-line="8" selection-end-column="53" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/sections/section1/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="105">
+            <caret line="7" selection-start-line="7" selection-end-line="7" selection-end-column="29" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/sections/Section8/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="135">
+            <caret line="9" column="29" selection-start-line="9" selection-start-column="29" selection-end-line="9" selection-end-column="29" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/junk">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="330">
+          <caret line="22" column="34" selection-start-line="22" selection-start-column="30" selection-end-line="22" selection-end-column="34" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/labs/lab5/notebook/lab5.ipynb-meta">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/labs/lab5/notebook/lab5_solutions.ipynb-meta">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/sections/section2/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/sections/section1/notebook/section_1_solutions.ipynb-meta">
+      <provider selected="true" editor-type-id="text-editor" />
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/styles/cs109.css">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="615">
+          <caret line="41" column="20" selection-start-line="40" selection-start-column="19" selection-end-line="41" selection-end-column="20" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/labs/lab1/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="60">
+            <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/labs/lab1/notebook/lab1_solutions.ipynb-meta">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="60">
+          <caret line="4" column="16" selection-start-line="4" selection-start-column="16" selection-end-line="4" selection-end-column="16" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/labs/lab5/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="135">
+            <caret line="9" selection-start-line="9" selection-end-line="9" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/labs/lab9/notebook/Lab9-RF_and_Boosting_Solutions.ipynb-meta">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="30">
+          <caret line="2" column="29" selection-start-line="2" selection-start-column="29" selection-end-line="2" selection-end-column="29" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/lectures/lecture8/index.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="270">
+            <caret line="18" column="32" selection-start-line="18" selection-start-column="32" selection-end-line="18" selection-end-column="32" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/content/lectures/lecture4/data/README.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor />
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
+  </component>
+</project>

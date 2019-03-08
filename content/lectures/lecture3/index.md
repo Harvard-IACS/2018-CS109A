@@ -1,16 +1,15 @@
 Title: Lecture 3: Effective Exploratory Data Analysis and Visualization
 Category: lectures
-Slug: lecture3
+Slug: lecture-3
 Author: Rahul Dave, Pavlos Protopapas
 Date: 2018-09-17
-Tags: EDA, Exploratory Data Analysis, Visualization
+Tags: Exploratory Data Analysis (EDA), Effective Visualization, Seaborn
 
 
-### Slides
+## Slides
 
-- [PDF]({attach}presentation/EDA.pdf)
+- [PDF | Lecture 3: Effective Exploratory Data Analysis and Visualization]({attach}presentation/lecture3.pdf)
 
+## Jupyter Notebook
 
-### Notebooks
-
-- [Examples]({filename}notes/edaviz.ipynb)
+- [Lecture 3: EDA and Visualization Demo]({filename}notebook/lecture3.ipynb)

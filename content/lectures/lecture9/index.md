@@ -1,14 +1,12 @@
 Title: Lecture 9: Visualization for Communication
 Category: lectures
-Slug: lecture9
+Slug: lecture-9
 Author: Pavlos Protopapas
 Date: 2018-10-10
-Tags: Viz, EDA
+Tags: Visualization, Communication, Exploratory Data Analysis (EDA)
 
 
-### Slides
+## Slides
 
-- [PDF]({attach}presentation/Lecture9_VIZComm.pdf)
+- [PDF | Lecture 9: Visualization for Communication]({attach}presentation/lecture9_viscomm.pdf)
 
-<!--### Notes
- - [Examples]({filename}notebook/Exercise_Lecture4.ipynb) -->

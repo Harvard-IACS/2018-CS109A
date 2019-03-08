@@ -1,3 +1,9 @@
+Title: Lab 11: Italian Olives
+Category: labs
+Slug: lab11
+Author: Rahul Dave
+Date: 2018-12-02
+
 ---
 title: The Case of the Italian Olives
 ---

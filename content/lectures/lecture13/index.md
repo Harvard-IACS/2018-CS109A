@@ -1,19 +1,17 @@
-Title: Lecture 13: k-NN Classification and Dealing with Missingness
+Title: Lecture 13: k-NN for Classification and Dealing with Missingness
 Category: lectures
-Slug: lecture13
+Slug: lecture-13
 Author: Pavlos Protopapas
 Date: 2018-10-24
-Tags:
+Tags: Classification, K-Nearest Neighbors (KNN) Regression, Imputation Methods
 
 
-### Slides
+## Slides
 
-- [PDF]({attach}presentation/Lecture13_kNN_Missing.pdf)
-- [PPTX]({attach}presentation/Lecture13_kNN_Missing.pptx)
+- [PDF | Lecture 13: k-NN for Classification and Dealing with Missingness]({attach}presentation/lecture13_knn_missing.pdf)
+- [PPTX | Lecture 13: k-NN for Classification and Dealing with Missingness]({attach}presentation/lecture13_knn_missing.pptx)
 
-### Notes
-- [Examples]({filename}notes/Lecture13_Notebook.ipynb)
+## Jupyter Notebooks
 
-### Sections
-
-- [Section 7 solutions]({filename}../../sections/section7/notebook/section_7_solutions.ipynb)
+- [Lecture 13: Classification with KNN Demo]({filename}notebook/lecture13.ipynb)
+- [Standard Section 7: Multiclass Classification]({filename}../../sections/section7/notebook/section7_solutions.ipynb)
