@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,700" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+
+    <link rel="stylesheet" href="../../style/tipuesearch/tipuesearch.css">
+
+    <link rel='shortcut icon' type='image/x-icon' href='../../style/images/favicon.ico' />
+    <link rel="stylesheet" href="../../style/css/hiacs.css">
+
+    <title>CS109A - EDA</title>
+
+    <style>
+      .navbar {
+        background-color: #8996A0
+      }
+    </style>
+  </head>
+  <body>
+
+<nav class="navbar navbar-dark navbar-expand-md">
+  <div class="container">
+    <a class="navbar-brand" href="../..">
+      <img class="navbar-brand-logo" src="../../style/images/logo.png" />
+      <h3 class="course-title">CS109A</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsDefault">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/syllabus.html">Syllabus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/schedule.html">Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/materials.html">Materials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/github.html">GitHub</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/projects.html">Projects</a>
+        </li>
+        <form
+          class="form-inline my-2"
+          action="../../search.html"
+          onsubmit="return validateForm(this.elements['q'].value);"
+        >
+          <div class="input-group input-group-sm">
+            <input class="form-control" type="text" name="q" placeholder="Search Topic">
+            <div class="input-group-append">
+              <button class="btn btn-default" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+        </div>
+      </form>
+      </ul>
+    </div><!-- .collapse navbar-collapse -->
+  </div><!-- .container -->
+</nav>
+    <main id="content" class="container">
+    <h1>EDA</h1>
+    <br />
+    <hr />
+  <h2>Contents</h2>
+<p toc>{:.no_toc}
+*<br></p>
+<div class="highlight"><pre><span></span><span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.width&#39;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+
+<h2>Italian Olives</h2>
+<p><img alt="" src="Italy.png"></p>
+<p>I found this data set in the RGGobi book (http://www.ggobi.org/book/), from which the above diagram is taken. It has "the percentage composition of fatty acids
+found in the lipid fraction of Italian olive oils', with oils from 3 regions of Italy: the North, the South, and Sardinia. The regions themselves are subdivided into areas as shown in the map above. The source for this data is:</p>
+<blockquote>
+<p>Forina, M., Armanino, C., Lanteri, S. &amp; Tiscornia, E. (1983), Classification of Olive Oils from their Fatty Acid Composition, in Martens, H. and
+Russwurm Jr., H., eds, Food Research and Data Analysis, Applied Science
+Publishers, London, pp. 189–214.</p>
+</blockquote>
+<h2>Exploratory Viz</h2>
+<div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;local-olives-cleaned.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>areastring</th>
+      <th>region</th>
+      <th>area</th>
+      <th>palmitic</th>
+      <th>palmitoleic</th>
+      <th>stearic</th>
+      <th>oleic</th>
+      <th>linoleic</th>
+      <th>linolenic</th>
+      <th>arachidic</th>
+      <th>eicosenoic</th>
+      <th>regionstring</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>10.75</td>
+      <td>0.75</td>
+      <td>2.26</td>
+      <td>78.23</td>
+      <td>6.72</td>
+      <td>0.36</td>
+      <td>0.60</td>
+      <td>0.29</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>10.88</td>
+      <td>0.73</td>
+      <td>2.24</td>
+      <td>77.09</td>
+      <td>7.81</td>
+      <td>0.31</td>
+      <td>0.61</td>
+      <td>0.29</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>9.11</td>
+      <td>0.54</td>
+      <td>2.46</td>
+      <td>81.13</td>
+      <td>5.49</td>
+      <td>0.31</td>
+      <td>0.63</td>
+      <td>0.29</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>9.66</td>
+      <td>0.57</td>
+      <td>2.40</td>
+      <td>79.52</td>
+      <td>6.19</td>
+      <td>0.50</td>
+      <td>0.78</td>
+      <td>0.35</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>10.51</td>
+      <td>0.67</td>
+      <td>2.59</td>
+      <td>77.71</td>
+      <td>6.72</td>
+      <td>0.50</td>
+      <td>0.80</td>
+      <td>0.46</td>
+      <td>South</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h3>exploring globally</h3>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">areastring</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">regionstring</span><span class="p">)</span>
+</pre></div>
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>regionstring</th>
+      <th>North</th>
+      <th>Sardinia</th>
+      <th>South</th>
+    </tr>
+    <tr>
+      <th>areastring</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>Calabria</th>
+      <td>0</td>
+      <td>0</td>
+      <td>56</td>
+    </tr>
+    <tr>
+      <th>Coast-Sardinia</th>
+      <td>0</td>
+      <td>33</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>East-Liguria</th>
+      <td>50</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>Inland-Sardinia</th>
+      <td>0</td>
+      <td>65</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>North-Apulia</th>
+      <td>0</td>
+      <td>0</td>
+      <td>25</td>
+    </tr>
+    <tr>
+      <th>Sicily</th>
+      <td>0</td>
+      <td>0</td>
+      <td>36</td>
+    </tr>
+    <tr>
+      <th>South-Apulia</th>
+      <td>0</td>
+      <td>0</td>
+      <td>206</td>
+    </tr>
+    <tr>
+      <th>Umbria</th>
+      <td>51</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>West-Liguria</th>
+      <td>50</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">areastring</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img alt="png" src="olives-eda_files/olives-eda_8_0.png"></p>
+<div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">regionstring</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="bp">False</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img alt="png" src="olives-eda_files/olives-eda_9_0.png"></p>
+<div class="highlight"><pre><span></span><span class="n">acidlist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;palmitic&#39;</span><span class="p">,</span> <span class="s1">&#39;palmitoleic&#39;</span><span class="p">,</span> <span class="s1">&#39;stearic&#39;</span><span class="p">,</span> <span class="s1">&#39;oleic&#39;</span><span class="p">,</span> <span class="s1">&#39;linoleic&#39;</span><span class="p">,</span> <span class="s1">&#39;linolenic&#39;</span><span class="p">,</span> <span class="s1">&#39;arachidic&#39;</span><span class="p">,</span> <span class="s1">&#39;eicosenoic&#39;</span><span class="p">]</span>
+<span class="n">df</span><span class="p">[</span><span class="n">acidlist</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;bar&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img alt="png" src="olives-eda_files/olives-eda_10_0.png"></p>
+<p>Or one can use <code>aggregate</code> to pass an arbitrary function of to the sub-dataframe. The function is applied columnwise.</p>
+<div class="highlight"><pre><span></span><span class="n">dfbymean</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;regionstring&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
+<span class="n">dfbymean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>region</th>
+      <th>area</th>
+      <th>palmitic</th>
+      <th>palmitoleic</th>
+      <th>stearic</th>
+      <th>oleic</th>
+      <th>linoleic</th>
+      <th>linolenic</th>
+      <th>arachidic</th>
+      <th>eicosenoic</th>
+    </tr>
+    <tr>
+      <th>regionstring</th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>North</th>
+      <td>3.0</td>
+      <td>8.006623</td>
+      <td>10.948013</td>
+      <td>0.837351</td>
+      <td>2.308013</td>
+      <td>77.930530</td>
+      <td>7.270331</td>
+      <td>0.217881</td>
+      <td>0.375762</td>
+      <td>0.019735</td>
+    </tr>
+    <tr>
+      <th>Sardinia</th>
+      <td>2.0</td>
+      <td>5.336735</td>
+      <td>11.113469</td>
+      <td>0.967449</td>
+      <td>2.261837</td>
+      <td>72.680204</td>
+      <td>11.965306</td>
+      <td>0.270918</td>
+      <td>0.731735</td>
+      <td>0.019388</td>
+    </tr>
+    <tr>
+      <th>South</th>
+      <td>1.0</td>
+      <td>2.783282</td>
+      <td>13.322879</td>
+      <td>1.548019</td>
+      <td>2.287740</td>
+      <td>71.000093</td>
+      <td>10.334985</td>
+      <td>0.380650</td>
+      <td>0.631176</td>
+      <td>0.273220</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">axes_style</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">,</span> <span class="p">{</span><span class="s1">&#39;grid&#39;</span><span class="p">:</span><span class="bp">False</span><span class="p">}):</span>
+    <span class="n">dfbymean</span><span class="p">[</span><span class="n">acidlist</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;barh&#39;</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="bp">True</span><span class="p">);</span>
+    <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
+</pre></div>
+
+
+<p><img alt="png" src="olives-eda_files/olives-eda_13_0.png"></p>
+<h2>Figuring the dataset by Region</h2>
+<div class="highlight"><pre><span></span><span class="n">g</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;region&quot;</span><span class="p">)</span>
+<span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">,</span><span class="s2">&quot;eicosenoic&quot;</span><span class="p">,</span> <span class="s2">&quot;linoleic&quot;</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img alt="png" src="olives-eda_files/olives-eda_15_0.png"></p>
+<p>Clearly, region 1 or the South can visually be separated out by <code>eicosenoic</code> fraction itself.</p>
+<div class="highlight"><pre><span></span><span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">axes_style</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">):</span>
+    <span class="n">g</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">&quot;region&quot;</span><span class="p">)</span>
+    <span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">,</span> <span class="s2">&quot;eicosenoic&quot;</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="png" src="olives-eda_files/olives-eda_17_0.png"></p>
+<p>We make a SPLOM using <code>seaborn</code> to see in what space the regions may be separated. Note that linoleic and oleic seem promising. And perhaps arachidic paired with eicosenoic.</p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="n">acidlist</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;regionstring&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img alt="png" src="olives-eda_files/olives-eda_19_0.png"></p>
+<p>Pandas supports conditional indexing: <a href="http://pandas.pydata.org/pandas-docs/dev/indexing.html#boolean-indexing">documentation</a>. Lets use it to follow up on the clear pattern of Southern oils seeeming to be separable by just the <code>eicosenoic</code> feature.</p>
+<p><strong>Indeed this is the case!</strong> Can also be seen using parallel co-ordinates:</p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.tools.plotting</span> <span class="kn">import</span> <span class="n">parallel_coordinates</span>
+<span class="n">dfna</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">acidlist</span><span class="p">]</span>
+<span class="c1">#normalizing by range</span>
+<span class="n">dfna_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfna</span> <span class="o">-</span> <span class="n">dfna</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">dfna</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">dfna</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
+<span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">axes_style</span><span class="p">(</span><span class="s2">&quot;white&quot;</span><span class="p">):</span>
+    <span class="n">parallel_coordinates</span><span class="p">(</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;regionstring&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">dfna_norm</span><span class="p">),</span> <span class="s1">&#39;regionstring&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+</pre></div>
+
+
+<p><img alt="png" src="olives-eda_files/olives-eda_22_0.png"></p>
+<h2>Figuring the South of Italy by Area</h2>
+<div class="highlight"><pre><span></span><span class="n">dfsouth</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">regionstring</span><span class="o">==</span><span class="s1">&#39;South&#39;</span><span class="p">]</span>
+<span class="n">dfsouth</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>areastring</th>
+      <th>region</th>
+      <th>area</th>
+      <th>palmitic</th>
+      <th>palmitoleic</th>
+      <th>stearic</th>
+      <th>oleic</th>
+      <th>linoleic</th>
+      <th>linolenic</th>
+      <th>arachidic</th>
+      <th>eicosenoic</th>
+      <th>regionstring</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>10.75</td>
+      <td>0.75</td>
+      <td>2.26</td>
+      <td>78.23</td>
+      <td>6.72</td>
+      <td>0.36</td>
+      <td>0.60</td>
+      <td>0.29</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>10.88</td>
+      <td>0.73</td>
+      <td>2.24</td>
+      <td>77.09</td>
+      <td>7.81</td>
+      <td>0.31</td>
+      <td>0.61</td>
+      <td>0.29</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>9.11</td>
+      <td>0.54</td>
+      <td>2.46</td>
+      <td>81.13</td>
+      <td>5.49</td>
+      <td>0.31</td>
+      <td>0.63</td>
+      <td>0.29</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>9.66</td>
+      <td>0.57</td>
+      <td>2.40</td>
+      <td>79.52</td>
+      <td>6.19</td>
+      <td>0.50</td>
+      <td>0.78</td>
+      <td>0.35</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>10.51</td>
+      <td>0.67</td>
+      <td>2.59</td>
+      <td>77.71</td>
+      <td>6.72</td>
+      <td>0.50</td>
+      <td>0.80</td>
+      <td>0.46</td>
+      <td>South</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<p>We make a couple of SPLOM's, one with sicily and one without sicily, to see whats separable. Sicily seems to be a problem. As before, see the KDE's first to see if separability exists and then let the eye look for patterns.</p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dfsouth</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;areastring&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="n">acidlist</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img alt="png" src="olives-eda_files/olives-eda_26_0.png"></p>
+<div class="highlight"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dfsouth</span><span class="p">[</span><span class="n">dfsouth</span><span class="o">.</span><span class="n">areastring</span><span class="o">!=</span><span class="s2">&quot;Sicily&quot;</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="s2">&quot;areastring&quot;</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="n">acidlist</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s1">&#39;kde&#39;</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img alt="png" src="olives-eda_files/olives-eda_27_0.png"></p>
+<p>Seems that combinations of oleic, palmitic, palmitoleic might be useful?</p>
+    </main>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">Copyright 2018 &copy;
+      <a class="text-muted" href="https://iacs.seas.harvard.edu/">Institute for Applied Computational Science</a>
+    </span>
+  </div>
+</footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+</html>

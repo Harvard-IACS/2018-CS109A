@@ -1,0 +1,3090 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,700" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+
+    <link rel="stylesheet" href="../style/tipuesearch/tipuesearch.css">
+
+    <link rel='shortcut icon' type='image/x-icon' href='../style/images/favicon.ico' />
+    <link rel="stylesheet" href="../style/css/hiacs.css">
+
+    <title>CS109A - A Pelican Blog - Kernel Trick tag</title>
+
+    <style>
+      .navbar {
+        background-color: #8996A0
+      }
+    </style>
+  </head>
+  <body>
+
+<nav class="navbar navbar-dark navbar-expand-md">
+  <div class="container">
+    <a class="navbar-brand" href="..">
+      <img class="navbar-brand-logo" src="../style/images/logo.png" />
+      <h3 class="course-title">CS109A</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsDefault">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/syllabus.html">Syllabus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/schedule.html">Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/materials.html">Materials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/github.html">GitHub</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../pages/projects.html">Projects</a>
+        </li>
+        <form
+          class="form-inline my-2"
+          action="../search.html"
+          onsubmit="return validateForm(this.elements['q'].value);"
+        >
+          <div class="input-group input-group-sm">
+            <input class="form-control" type="text" name="q" placeholder="Search Topic">
+            <div class="input-group-append">
+              <button class="btn btn-default" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+        </div>
+      </form>
+      </ul>
+    </div><!-- .collapse navbar-collapse -->
+  </div><!-- .container -->
+</nav>
+    <main id="content" class="container">
+  <section class="material-section">
+    <h2>Resources</h2>
+    <ul class="category-list">
+        <li class="category-item">
+          <a href="../category/a-sections.html" class="text-capitalize">
+            a-sections
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../category/labs.html" class="text-capitalize">
+            labs
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../category/lectures.html" class="text-capitalize">
+            lectures
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../category/sections.html" class="text-capitalize">
+            sections
+          </a>
+        </li>
+    </ul>
+  </section>
+  <hr />
+  <section class="material-section">
+    <h2>Topics</h2>
+      <h4 class="category-title--list" id="Activation Functions">Activation Functions</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-18/">
+            Lecture 18: Artificial Neural Networks 2 - Anatomy of ANN
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Adaboost">Adaboost</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-8/student/">
+            Standard Section 8: Bagging and Random Forest
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-8/">
+            Standard Section 8: Bagging and Random Forest
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-9/">
+            Lab 9: Decision Trees, Bagged Trees, Random Forests and Boosting
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-7/">
+            Advanced Section 7: Decision Trees and Ensemble Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-17/">
+            Lecture 17: Boosting Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-9/student/">
+            Lab 9: Decision Trees, Bagged Trees, Random Forests and Boosting
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Adaptive Experimental Design">Adaptive Experimental Design</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-23/">
+            Lecture 23: A/B Testing
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Akaike Information Criterion (AIC)">Akaike Information Criterion (AIC)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-2/">
+            Advanced Section 2: Model Selection and Information Criteria
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Analyses for Controlled Randomized Design (CRD)">Analyses for Controlled Randomized Design (CRD)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-23/">
+            Lecture 23: A/B Testing
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-23/demo/">
+            Lecture 23: A/B Testing Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Artificial Neural Network Optimization">Artificial Neural Network Optimization</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-19/">
+            Lecture 19: Artificial Neural Networks 3 - Regularization Methods for ANN
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Artificial Neural Networks (ANN)">Artificial Neural Networks (ANN)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-9/">
+            Standard Section 9: Artificial Neural Networks Continued
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-9/solutions/">
+            Standard Section 9: Artificial Neural Networks Continued
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-10/">
+            Lab 10: Keras for Artificial Neural Network
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-8/">
+            Advanced Section 8: Artificial Neural Networks for Image Analysis
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-19/">
+            Lecture 19: Artificial Neural Networks 3 - Regularization Methods for ANN
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-18/">
+            Lecture 18: Artificial Neural Networks 2 - Anatomy of ANN
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-6/">
+            Standard Section 6: Feed Forward Artificial Neural Networks Demo
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-12/">
+            Lecture 12: Artificial Neural Networks 1 - Perceptron and Back Propagation
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-7/prelab/solutions/">
+            Prep for Lab 7: Numpy for Tensor and Artificial Neural Networks
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-7/solutions/">
+            Lab 7: NumPy for Building an Artificial Neural Network and Dealing with Missing Values
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-6/demo/">
+            Standard Section 6: Feed Forward Artificial Neural Networks Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Back Propagation">Back Propagation</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-12/">
+            Lecture 12: Artificial Neural Networks 1 - Perceptron and Back Propagation
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Bayes Theorem">Bayes Theorem</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-11/">
+            Lecture 11: Logistic Regression 2
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="BeautifulSoup">BeautifulSoup</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-1/solutions/">
+            Standard Section 1: Introduction to Web Scraping - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-1/student/">
+            Standard Section 1: Introduction to Web Scraping - Student Version
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-1/">
+            Standard Section 1: Introduction to Web Scraping
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/">
+            Lab 2: Python for Data Collection and Cleaning
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/scraping/solutions/">
+            Lab 2: BeautifulSoup for Scraping - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/scraping/student/">
+            Lab 2: BeautifulSoup for Scraping - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Bias–Variance Tradeoff">Bias–Variance Tradeoff</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-8/student/">
+            Standard Section 8: Bagging and Random Forest
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-8/">
+            Standard Section 8: Bagging and Random Forest
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-15/">
+            Lecture 15: Classification Trees
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-7/">
+            Lecture 7: Regularization
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Boosting">Boosting</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-8/student/">
+            Standard Section 8: Bagging and Random Forest
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-8/">
+            Standard Section 8: Bagging and Random Forest
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-9/">
+            Lab 9: Decision Trees, Bagged Trees, Random Forests and Boosting
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-7/">
+            Advanced Section 7: Decision Trees and Ensemble Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-17/">
+            Lecture 17: Boosting Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-9/solutions/">
+            Lab 9: Random Forest and Boosting
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-9/student/">
+            Lab 9: Decision Trees, Bagged Trees, Random Forests and Boosting
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Bootstrap">Bootstrap</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-5/">
+            Lab 5: Regularization and Cross-Validation
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-4/">
+            Lecture 4: Linear Regression, kNN Regression and Inference
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/solutions/">
+            Lab 5: Regularization and Cross-Validation - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/student/">
+            Lab 5: Regularization and Cross-Validation - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Bootstrap-Aggregating (Bagging)">Bootstrap-Aggregating (Bagging)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-8/student/">
+            Standard Section 8: Bagging and Random Forest
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-19/">
+            Lecture 19: Artificial Neural Networks 3 - Regularization Methods for ANN
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-8/">
+            Standard Section 8: Bagging and Random Forest
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-9/">
+            Lab 9: Decision Trees, Bagged Trees, Random Forests and Boosting
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-7/">
+            Advanced Section 7: Decision Trees and Ensemble Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-17/">
+            Lecture 17: Boosting Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-16/">
+            Lecture 16: Regression Trees, Bagging and Random Forest
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-9/student/">
+            Lab 9: Decision Trees, Bagged Trees, Random Forests and Boosting
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Categorical Predictors">Categorical Predictors</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-10/">
+            Lecture 10: Logistic Regression 1
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-10/demo/">
+            Lecture 10: Logistic Regression 1 Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-6/">
+            Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-5/">
+            Lecture 5: Linear Regression, Confidence Intervals and Standard Errors
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Causal Effects">Causal Effects</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-23/">
+            Lecture 23: A/B Testing
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Classification">Classification</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-9/">
+            Advanced Section 9: Support Vector Machine
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-20/">
+            Lecture 20: Support Vector Machine (SVM)
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-9/">
+            Standard Section 9: Artificial Neural Networks Continued
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-9/solutions/">
+            Standard Section 9: Artificial Neural Networks Continued
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-7/">
+            Standard Section 7: Multiclass Classification Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-8/">
+            Lab 8: Discriminant Analysis - A tale of two cities
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-14/">
+            Lecture 14: Discriminant Analysis - Linear and Quadratic (LDA/QDA)
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-13/">
+            Lecture 13: k-NN for Classification and Dealing with Missingness
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-5/">
+            Standard Section 5: Logistic Regression and Principal Component Analysis (PCA)
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-6/">
+            Lab 6: Classification and Dimensionality Reduction
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-13/demo/">
+            Lecture 13: Classification with KNN Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-14/demo/">
+            Lecture 14: Discriminant Analysis Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-15/demo/">
+            Lecture 15: Decision Trees Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-20/demo/">
+            Lecture 20: Support Vector Machine Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-5/solutions/">
+            Standard Section 5: Logistic Regression and Principal Component Analysis (PCA)
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-6/student/">
+            Lab 6: Classification and Dimensionality Reduction - Student Version
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-9/demo/">
+            Advanced Section 9: Support Vector Machines Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-6/">
+            Advanced Section 6: Topics in Supervised Classification
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Classification Boundaries">Classification Boundaries</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-6/">
+            Lab 6: Classification and Dimensionality Reduction
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-11/">
+            Lecture 11: Logistic Regression 2
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-10/">
+            Lecture 10: Logistic Regression 1
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-6/student/">
+            Lab 6: Classification and Dimensionality Reduction - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Classification Criteria">Classification Criteria</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-15/">
+            Lecture 15: Classification Trees
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Classification Non-Separable Data">Classification Non-Separable Data</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-20/">
+            Lecture 20: Support Vector Machine (SVM)
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Collinearity">Collinearity</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-6/">
+            Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-5/">
+            Lecture 5: Linear Regression, Confidence Intervals and Standard Errors
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Common Bosting Techniques">Common Bosting Techniques</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-7/">
+            Advanced Section 7: Decision Trees and Ensemble Methods
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Communication">Communication</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-9/">
+            Lecture 9: Visualization for Communication
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Comparison of Classification Methods">Comparison of Classification Methods</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-8/">
+            Lab 8: Discriminant Analysis - A tale of two cities
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-14/">
+            Lecture 14: Discriminant Analysis - Linear and Quadratic (LDA/QDA)
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-14/demo/">
+            Lecture 14: Discriminant Analysis Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-20/demo/">
+            Lecture 20: Support Vector Machine Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Comparison of Methods">Comparison of Methods</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-24/">
+            Lecture 24: Final Lecture
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-21/">
+            Lecture 21: Stacking
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Confidence Intervals">Confidence Intervals</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-5/">
+            Lab 5: Regularization and Cross-Validation
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-1/">
+            Advanced Section 1: Linear Algebra and Hypothesis Testing
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/solutions/">
+            Lab 5: Regularization and Cross-Validation - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/student/">
+            Lab 5: Regularization and Cross-Validation - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Controlling for Confounding (Advantages/Disadvantages)">Controlling for Confounding (Advantages/Disadvantages)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-23/">
+            Lecture 23: A/B Testing
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Convolutional Neural Networks (CNN)">Convolutional Neural Networks (CNN)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-8/">
+            Advanced Section 8: Artificial Neural Networks for Image Analysis
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Cross-Validation (CV)">Cross-Validation (CV)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-4/">
+            Standard Section 4: Model Selection
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-4/demo/">
+            Standard Section 4: Model Selection
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/">
+            Lab 5: Regularization and Cross-Validation
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-6/">
+            Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/solutions/">
+            Lab 5: Regularization and Cross-Validation - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/student/">
+            Lab 5: Regularization and Cross-Validation - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Data Analysis">Data Analysis</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-2/demo/">
+            Lecture 2: Data Engineering Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Data Augmentation">Data Augmentation</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-19/">
+            Lecture 19: Artificial Neural Networks 3 - Regularization Methods for ANN
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Data Cleaning">Data Cleaning</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-2/">
+            Lab 2: Python for Data Collection and Cleaning
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-2/">
+            Lecture 2: Data Engineering - The Grammar of Data
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/pandas/solutions/">
+            Lab 2: Pandas for Data Cleaning
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/pandas/student/">
+            Lab 2: Pandas for Data Cleaning
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Data Collection">Data Collection</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-2/">
+            Lab 2: Python for Data Collection and Cleaning
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-2/">
+            Lecture 2: Data Engineering - The Grammar of Data
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-1/">
+            Lecture 1: Data, Summaries and Visuals
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/scraping/solutions/">
+            Lab 2: BeautifulSoup for Scraping - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/scraping/student/">
+            Lab 2: BeautifulSoup for Scraping - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Data Engineering">Data Engineering</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-2/">
+            Lecture 2: Data Engineering - The Grammar of Data
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Data Exploration">Data Exploration</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-1/">
+            Lecture 1: Data, Summaries and Visuals
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Data Formats: JSON and CSV">Data Formats: JSON and CSV</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-1/solutions/">
+            Standard Section 1: Introduction to Web Scraping - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-1/student/">
+            Standard Section 1: Introduction to Web Scraping - Student Version
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-1/">
+            Standard Section 1: Introduction to Web Scraping
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="DataFrame">DataFrame</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-2/">
+            Lab 2: Python for Data Collection and Cleaning
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/pandas/solutions/">
+            Lab 2: Pandas for Data Cleaning
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/pandas/student/">
+            Lab 2: Pandas for Data Cleaning
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Decision Tree">Decision Tree</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-8/student/">
+            Standard Section 8: Bagging and Random Forest
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-8/">
+            Standard Section 8: Bagging and Random Forest
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-9/">
+            Lab 9: Decision Trees, Bagged Trees, Random Forests and Boosting
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-16/">
+            Lecture 16: Regression Trees, Bagging and Random Forest
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-15/">
+            Lecture 15: Classification Trees
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-15/demo/">
+            Lecture 15: Decision Trees Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-9/student/">
+            Lab 9: Decision Trees, Bagged Trees, Random Forests and Boosting
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Decision Trees">Decision Trees</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-7/">
+            Advanced Section 7: Decision Trees and Ensemble Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-9/solutions/">
+            Lab 9: Random Forest and Boosting
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Demo">Demo</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-10/demo/">
+            Lecture 10: Logistic Regression 1 Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-11/demo/">
+            Lecture 11: Logistic Regression 2 Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-13/demo/">
+            Lecture 13: Classification with KNN Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-14/demo/">
+            Lecture 14: Discriminant Analysis Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-15/demo/">
+            Lecture 15: Decision Trees Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-20/demo/">
+            Lecture 20: Support Vector Machine Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-4/demo/">
+            Lecture 4: Regression Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-8/demo/">
+            Lecture 8: Principal Component Analysis Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-0/demo/">
+            Lecture 0: Data Science Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-2/demo/">
+            Lecture 2: Data Engineering Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Descriptive Statistics">Descriptive Statistics</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-1/">
+            Lecture 1: Data, Summaries and Visuals
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Dictionaries">Dictionaries</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-1/solutions/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-1/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-1/student/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Dimensionality Reduction">Dimensionality Reduction</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-4/">
+            Advanced Section 4: Methods of Dimensionality Reduction - Principal Component Analysis
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Discriminant Analysis">Discriminant Analysis</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-8/">
+            Lab 8: Discriminant Analysis - A tale of two cities
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-14/">
+            Lecture 14: Discriminant Analysis - Linear and Quadratic (LDA/QDA)
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-14/demo/">
+            Lecture 14: Discriminant Analysis Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-8/solutions/">
+            Lab 8: Discriminant Analysis
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-8/student/">
+            Lab 8: Discriminant Analysis
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-6/">
+            Advanced Section 6: Topics in Supervised Classification
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Dropout">Dropout</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-19/">
+            Lecture 19: Artificial Neural Networks 3 - Regularization Methods for ANN
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Effective Communication">Effective Communication</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-8/">
+            Lab 8: Discriminant Analysis - A tale of two cities
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Effective Visualization">Effective Visualization</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-3/">
+            Lecture 3: Effective Exploratory Data Analysis and Visualization
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lecture-3/notebook/">
+            Lecture 3: Lecture 3: EDA and Visualization Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Eigenvectors and Eigenvalues">Eigenvectors and Eigenvalues</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-4/">
+            Advanced Section 4: Methods of Dimensionality Reduction - Principal Component Analysis
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-1/">
+            Advanced Section 1: Linear Algebra and Hypothesis Testing
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Ensemble Methods">Ensemble Methods</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-7/">
+            Advanced Section 7: Decision Trees and Ensemble Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-17/">
+            Lecture 17: Boosting Methods
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Ensemble Models">Ensemble Models</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-16/">
+            Lecture 16: Regression Trees, Bagging and Random Forest
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Entropy">Entropy</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-15/">
+            Lecture 15: Classification Trees
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Ethics for Data Science">Ethics for Data Science</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-22/">
+            Lecture 22: Responsible Data Science
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Experiments and AB-testing">Experiments and AB-testing</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-23/">
+            Lecture 23: A/B Testing
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-23/demo/">
+            Lecture 23: A/B Testing Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Exploratory Data Analysis (EDA)">Exploratory Data Analysis (EDA)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-9/">
+            Lecture 9: Visualization for Communication
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-3/">
+            Lecture 3: Effective Exploratory Data Analysis and Visualization
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lecture-3/notebook/">
+            Lecture 3: Lecture 3: EDA and Visualization Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Exponential Family">Exponential Family</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-5/">
+            Advanced Section 5: Generalized Linear Models, Logistic Regression and Beyond
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Fairness Transparency and Accountability (FAT)">Fairness Transparency and Accountability (FAT)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-22/">
+            Lecture 22: Responsible Data Science
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Feature Scaling">Feature Scaling</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-4/">
+            Standard Section 4: Model Selection
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-4/demo/">
+            Standard Section 4: Model Selection
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Feature Selection">Feature Selection</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-4/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-6/">
+            Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/solutions/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/student/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Feed Forward Neural Network">Feed Forward Neural Network</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-6/">
+            Standard Section 6: Feed Forward Artificial Neural Networks Demo
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-6/demo/">
+            Standard Section 6: Feed Forward Artificial Neural Networks Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Functions">Functions</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-1/solutions/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-1/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-1/student/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Generalized Linear Models">Generalized Linear Models</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-5/">
+            Advanced Section 5: Generalized Linear Models, Logistic Regression and Beyond
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Gini Index">Gini Index</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-15/">
+            Lecture 15: Classification Trees
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Gradient Boosting">Gradient Boosting</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-7/">
+            Advanced Section 7: Decision Trees and Ensemble Methods
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Gradient Descent">Gradient Descent</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-17/">
+            Lecture 17: Boosting Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-6/">
+            Standard Section 6: Feed Forward Artificial Neural Networks Demo
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-12/">
+            Lecture 12: Artificial Neural Networks 1 - Perceptron and Back Propagation
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-6/demo/">
+            Standard Section 6: Feed Forward Artificial Neural Networks Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Gram Matrix">Gram Matrix</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-4/">
+            Advanced Section 4: Methods of Dimensionality Reduction - Principal Component Analysis
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Greedy Backward Elimination">Greedy Backward Elimination</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-4/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/solutions/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/student/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Greedy Forward Selection">Greedy Forward Selection</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-4/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/solutions/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/student/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="High Dimensionality Reduction">High Dimensionality Reduction</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-8/">
+            Lecture 8: High Dimensionality and Principal Component Analysis (PCA)
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Hyperparameter Optimization">Hyperparameter Optimization</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-4/">
+            Standard Section 4: Model Selection
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-4/demo/">
+            Standard Section 4: Model Selection
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Hypothesis Testing">Hypothesis Testing</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-6/">
+            Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-5/">
+            Lecture 5: Linear Regression, Confidence Intervals and Standard Errors
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-1/">
+            Advanced Section 1: Linear Algebra and Hypothesis Testing
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Importance of Predictors">Importance of Predictors</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-5/">
+            Lecture 5: Linear Regression, Confidence Intervals and Standard Errors
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Imputation Methods">Imputation Methods</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-13/">
+            Lecture 13: k-NN for Classification and Dealing with Missingness
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-7/solutions/">
+            Lab 7: NumPy for Building an Artificial Neural Network and Dealing with Missing Values
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Information Criteria (AIC/BIC)">Information Criteria (AIC/BIC)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-4/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-2/">
+            Advanced Section 2: Model Selection and Information Criteria
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-6/">
+            Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/solutions/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/student/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Information Theory">Information Theory</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-2/">
+            Advanced Section 2: Model Selection and Information Criteria
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Interaction Terms">Interaction Terms</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-3/solutions/">
+            Standard Section 3: Predictor Types and Feature - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-3/student/">
+            Standard Section 3: Predictor Types and Feature - Student Version
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-8/">
+            Lecture 8: High Dimensionality and Principal Component Analysis (PCA)
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-3/">
+            Standard Section 3: Predictor Types and Feature
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-6/">
+            Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="K-Nearest Neighbors (KNN) Regression">K-Nearest Neighbors (KNN) Regression</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-8/">
+            Lab 8: Discriminant Analysis - A tale of two cities
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-13/">
+            Lecture 13: k-NN for Classification and Dealing with Missingness
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-4/">
+            Standard Section 4: Model Selection
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-13/demo/">
+            Lecture 13: Classification with KNN Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-4/demo/">
+            Lecture 4: Regression Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-2/solutions/">
+            Standard Section 2: Prediction using kNN and Linear Regression - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-2/student/">
+            Standard Section 2: Prediction using kNN and Linear Regression - Student Version
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-4/demo/">
+            Standard Section 4: Model Selection
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-2/">
+            Standard Section 2: Prediction using kNN and Linear Regression
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-3/">
+            Lab 3: Scikit-learn for Regression
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-4/">
+            Lecture 4: Linear Regression, kNN Regression and Inference
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-3/solutions/">
+            Lab 3: Scikit-learn for Regression
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-3/student/">
+            Lab 3: Scikit-learn for Regression
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Keras">Keras</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-10/">
+            Lab 10: Keras for Artificial Neural Network
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Kernel Trick">Kernel Trick</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-20/">
+            Lecture 20: Support Vector Machine (SVM)
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Kullback–Leibler (KL) Divergence">Kullback–Leibler (KL) Divergence</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-2/">
+            Advanced Section 2: Model Selection and Information Criteria
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Lasso">Lasso</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-5/">
+            Lab 5: Regularization and Cross-Validation
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-3/">
+            Advanced Section 3: Methods of Regularization and Justifications
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-7/">
+            Lecture 7: Regularization
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-3/demo/">
+            Advanced Sections 3: Methods of Regularization and Justifications
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/solutions/">
+            Lab 5: Regularization and Cross-Validation - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/student/">
+            Lab 5: Regularization and Cross-Validation - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Likelihood Function">Likelihood Function</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-10/">
+            Lecture 10: Logistic Regression 1
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-10/demo/">
+            Lecture 10: Logistic Regression 1 Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Linear Algebra">Linear Algebra</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-4/">
+            Advanced Section 4: Methods of Dimensionality Reduction - Principal Component Analysis
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-1/">
+            Advanced Section 1: Linear Algebra and Hypothesis Testing
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Linear Discriminant Analysis (LDA)">Linear Discriminant Analysis (LDA)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-7/">
+            Standard Section 7: Multiclass Classification Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-8/">
+            Lab 8: Discriminant Analysis - A tale of two cities
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-14/">
+            Lecture 14: Discriminant Analysis - Linear and Quadratic (LDA/QDA)
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-14/demo/">
+            Lecture 14: Discriminant Analysis Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-8/solutions/">
+            Lab 8: Discriminant Analysis
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-6/">
+            Advanced Section 6: Topics in Supervised Classification
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Linear Regression">Linear Regression</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-9/">
+            Standard Section 9: Artificial Neural Networks Continued
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-9/solutions/">
+            Standard Section 9: Artificial Neural Networks Continued
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-16/">
+            Lecture 16: Regression Trees, Bagging and Random Forest
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-6/">
+            Standard Section 6: Feed Forward Artificial Neural Networks Demo
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-5/">
+            Standard Section 5: Logistic Regression and Principal Component Analysis (PCA)
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-4/demo/">
+            Lecture 4: Regression Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-2/solutions/">
+            Standard Section 2: Prediction using kNN and Linear Regression - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-2/student/">
+            Standard Section 2: Prediction using kNN and Linear Regression - Student Version
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-3/solutions/">
+            Standard Section 3: Predictor Types and Feature - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-3/student/">
+            Standard Section 3: Predictor Types and Feature - Student Version
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-6/demo/">
+            Standard Section 6: Feed Forward Artificial Neural Networks Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-3/">
+            Standard Section 3: Predictor Types and Feature
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-2/">
+            Standard Section 2: Prediction using kNN and Linear Regression
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-3/">
+            Lab 3: Scikit-learn for Regression
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-1/">
+            Advanced Section 1: Linear Algebra and Hypothesis Testing
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-4/">
+            Lecture 4: Linear Regression, kNN Regression and Inference
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-3/solutions/">
+            Lab 3: Scikit-learn for Regression
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-3/student/">
+            Lab 3: Scikit-learn for Regression
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Link Function">Link Function</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-5/">
+            Advanced Section 5: Generalized Linear Models, Logistic Regression and Beyond
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Lists">Lists</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-1/solutions/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-1/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-1/student/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Logistic Regression">Logistic Regression</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-5/">
+            Standard Section 5: Logistic Regression and Principal Component Analysis (PCA)
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-6/">
+            Lab 6: Classification and Dimensionality Reduction
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-11/">
+            Lecture 11: Logistic Regression 2
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-10/">
+            Lecture 10: Logistic Regression 1
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-10/demo/">
+            Lecture 10: Logistic Regression 1 Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-5/solutions/">
+            Standard Section 5: Logistic Regression and Principal Component Analysis (PCA)
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-6/student/">
+            Lab 6: Classification and Dimensionality Reduction - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Loss Function">Loss Function</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-18/">
+            Lecture 18: Artificial Neural Networks 2 - Anatomy of ANN
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Matplotlib">Matplotlib</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-1/solutions/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-1/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-1/student/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab3/notebook/">
+            Lab 3: KNN Regression, Simple Linear Regression
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Maximum Likelihood Estimation (MLE)">Maximum Likelihood Estimation (MLE)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-5/">
+            Advanced Section 5: Generalized Linear Models, Logistic Regression and Beyond
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-2/">
+            Advanced Section 2: Model Selection and Information Criteria
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-1/">
+            Advanced Section 1: Linear Algebra and Hypothesis Testing
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Mean Squared Error (MSE)">Mean Squared Error (MSE)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-4/">
+            Lecture 4: Linear Regression, kNN Regression and Inference
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Mis-classification Rates">Mis-classification Rates</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-11/">
+            Lecture 11: Logistic Regression 2
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-11/demo/">
+            Lecture 11: Logistic Regression 2 Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Model Fitness">Model Fitness</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-4/">
+            Lecture 4: Linear Regression, kNN Regression and Inference
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Model Selection">Model Selection</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-4/">
+            Standard Section 4: Model Selection
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-3/solutions/">
+            Standard Section 3: Predictor Types and Feature - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-3/student/">
+            Standard Section 3: Predictor Types and Feature - Student Version
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-4/demo/">
+            Standard Section 4: Model Selection
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-3/">
+            Standard Section 3: Predictor Types and Feature
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-2/">
+            Advanced Section 2: Model Selection and Information Criteria
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-6/">
+            Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-5/">
+            Lecture 5: Linear Regression, Confidence Intervals and Standard Errors
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Multi Layer Perceptron (MLP)">Multi Layer Perceptron (MLP)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-8/">
+            Advanced Section 8: Artificial Neural Networks for Image Analysis
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Multilayer Perceptron (MLP)">Multilayer Perceptron (MLP)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-9/">
+            Standard Section 9: Artificial Neural Networks Continued
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-9/solutions/">
+            Standard Section 9: Artificial Neural Networks Continued
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-10/">
+            Lab 10: Keras for Artificial Neural Network
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-18/">
+            Lecture 18: Artificial Neural Networks 2 - Anatomy of ANN
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-7/prelab/solutions/">
+            Prep for Lab 7: Numpy for Tensor and Artificial Neural Networks
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-7/solutions/">
+            Lab 7: NumPy for Building an Artificial Neural Network and Dealing with Missing Values
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Multinomial Logistic Regression">Multinomial Logistic Regression</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-7/">
+            Standard Section 7: Multiclass Classification Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-6/">
+            Lab 6: Classification and Dimensionality Reduction
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-10/">
+            Lecture 10: Logistic Regression 1
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-10/demo/">
+            Lecture 10: Logistic Regression 1 Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-11/demo/">
+            Lecture 11: Logistic Regression 2 Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-6/student/">
+            Lab 6: Classification and Dimensionality Reduction - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Multiple Linear Regression">Multiple Linear Regression</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-5/">
+            Standard Section 5: Logistic Regression and Principal Component Analysis (PCA)
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-5/solutions/">
+            Standard Section 5: Logistic Regression and Principal Component Analysis (PCA)
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-6/">
+            Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-5/">
+            Lecture 5: Linear Regression, Confidence Intervals and Standard Errors
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/solutions/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/student/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Multiple Logistic Regression">Multiple Logistic Regression</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-11/">
+            Lecture 11: Logistic Regression 2
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-10/">
+            Lecture 10: Logistic Regression 1
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-10/demo/">
+            Lecture 10: Logistic Regression 1 Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-11/demo/">
+            Lecture 11: Logistic Regression 2 Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Multivariate Normal distribution">Multivariate Normal distribution</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-14/">
+            Lecture 14: Discriminant Analysis - Linear and Quadratic (LDA/QDA)
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="NN">NN</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-11/note/">
+            Lab 10: Neural Networks using keras
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-11/note1/">
+            Lab 10: Neural Networks using keras
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab10/notebook/">
+            Lab 10: Neural Networks using keras
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Norm Penalties">Norm Penalties</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-19/">
+            Lecture 19: Artificial Neural Networks 3 - Regularization Methods for ANN
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="NumPy">NumPy</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-1/solutions/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-7/prelab/solutions/">
+            Prep for Lab 7: Numpy for Tensor and Artificial Neural Networks
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-7/solutions/">
+            Lab 7: NumPy for Building an Artificial Neural Network and Dealing with Missing Values
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-1/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-1/student/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab3/notebook/">
+            Lab 3: KNN Regression, Simple Linear Regression
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="One Versus Rest (OVR)">One Versus Rest (OVR)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-7/">
+            Standard Section 7: Multiclass Classification Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-11/">
+            Lecture 11: Logistic Regression 2
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Out of Bag Error (OOB)">Out of Bag Error (OOB)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-16/">
+            Lecture 16: Regression Trees, Bagging and Random Forest
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Output Units">Output Units</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-18/">
+            Lecture 18: Artificial Neural Networks 2 - Anatomy of ANN
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Overfitting">Overfitting</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-7/">
+            Lecture 7: Regularization
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-6/">
+            Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="P-values">P-values</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-1/">
+            Advanced Section 1: Linear Algebra and Hypothesis Testing
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Pandas">Pandas</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-1/solutions/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-1/solutions/">
+            Standard Section 1: Introduction to Web Scraping - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-1/student/">
+            Standard Section 1: Introduction to Web Scraping - Student Version
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-1/">
+            Standard Section 1: Introduction to Web Scraping
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/">
+            Lab 2: Python for Data Collection and Cleaning
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-1/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-1/student/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/pandas/solutions/">
+            Lab 2: Pandas for Data Cleaning
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/pandas/student/">
+            Lab 2: Pandas for Data Cleaning
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab3/notebook/">
+            Lab 3: KNN Regression, Simple Linear Regression
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Parse HTML">Parse HTML</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-1/solutions/">
+            Standard Section 1: Introduction to Web Scraping - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-1/student/">
+            Standard Section 1: Introduction to Web Scraping - Student Version
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-1/">
+            Standard Section 1: Introduction to Web Scraping
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Perceptron">Perceptron</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-18/">
+            Lecture 18: Artificial Neural Networks 2 - Anatomy of ANN
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-12/">
+            Lecture 12: Artificial Neural Networks 1 - Perceptron and Back Propagation
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-7/prelab/solutions/">
+            Prep for Lab 7: Numpy for Tensor and Artificial Neural Networks
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-7/solutions/">
+            Lab 7: NumPy for Building an Artificial Neural Network and Dealing with Missing Values
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Polynomial Regression">Polynomial Regression</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-5/">
+            Lab 5: Regularization and Cross-Validation
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-6/">
+            Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-5/">
+            Lecture 5: Linear Regression, Confidence Intervals and Standard Errors
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/solutions/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/student/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/solutions/">
+            Lab 5: Regularization and Cross-Validation - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/student/">
+            Lab 5: Regularization and Cross-Validation - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Principal Component Analysis (PCA)">Principal Component Analysis (PCA)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-5/">
+            Standard Section 5: Logistic Regression and Principal Component Analysis (PCA)
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-4/">
+            Advanced Section 4: Methods of Dimensionality Reduction - Principal Component Analysis
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-8/demo/">
+            Lecture 8: Principal Component Analysis Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-5/solutions/">
+            Standard Section 5: Logistic Regression and Principal Component Analysis (PCA)
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-8/">
+            Lecture 8: High Dimensionality and Principal Component Analysis (PCA)
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Principle Components Analysis (PCA)">Principle Components Analysis (PCA)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-6/">
+            Lab 6: Classification and Dimensionality Reduction
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-6/student/">
+            Lab 6: Classification and Dimensionality Reduction - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Probabilistic Linear Regression">Probabilistic Linear Regression</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-8/">
+            Lecture 8: High Dimensionality and Principal Component Analysis (PCA)
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Probit">Probit</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-10/">
+            Lecture 10: Logistic Regression 1
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-10/demo/">
+            Lecture 10: Logistic Regression 1 Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Pruning">Pruning</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-7/">
+            Advanced Section 7: Decision Trees and Ensemble Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-15/">
+            Lecture 15: Classification Trees
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Quadratic Discriminant Analysis (QDA)">Quadratic Discriminant Analysis (QDA)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-7/">
+            Standard Section 7: Multiclass Classification Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-8/">
+            Lab 8: Discriminant Analysis - A tale of two cities
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-14/">
+            Lecture 14: Discriminant Analysis - Linear and Quadratic (LDA/QDA)
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-14/demo/">
+            Lecture 14: Discriminant Analysis Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-8/solutions/">
+            Lab 8: Discriminant Analysis
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-6/">
+            Advanced Section 6: Topics in Supervised Classification
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="R-squared (R2)">R-squared (R2)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-4/">
+            Lecture 4: Linear Regression, kNN Regression and Inference
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Radio Operator Characteristics (ROC)">Radio Operator Characteristics (ROC)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-11/">
+            Lecture 11: Logistic Regression 2
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-11/demo/">
+            Lecture 11: Logistic Regression 2 Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Random Forest">Random Forest</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-8/student/">
+            Standard Section 8: Bagging and Random Forest
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-8/">
+            Standard Section 8: Bagging and Random Forest
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-9/">
+            Lab 9: Decision Trees, Bagged Trees, Random Forests and Boosting
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-7/">
+            Advanced Section 7: Decision Trees and Ensemble Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-17/">
+            Lecture 17: Boosting Methods
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-16/">
+            Lecture 16: Regression Trees, Bagging and Random Forest
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-9/solutions/">
+            Lab 9: Random Forest and Boosting
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-9/student/">
+            Lab 9: Decision Trees, Bagged Trees, Random Forests and Boosting
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Read Data">Read Data</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-1/solutions/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-1/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-1/student/">
+            Lab 1: Introduction to Python and its Numerical Stack
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Regression Trees">Regression Trees</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-7/">
+            Advanced Section 7: Decision Trees and Ensemble Methods
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Regularization">Regularization</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-9/">
+            Standard Section 9: Artificial Neural Networks Continued
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-9/solutions/">
+            Standard Section 9: Artificial Neural Networks Continued
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-10/">
+            Lab 10: Keras for Artificial Neural Network
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-19/">
+            Lecture 19: Artificial Neural Networks 3 - Regularization Methods for ANN
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-4/">
+            Advanced Section 4: Methods of Dimensionality Reduction - Principal Component Analysis
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-11/">
+            Lecture 11: Logistic Regression 2
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-11/demo/">
+            Lecture 11: Logistic Regression 2 Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/">
+            Lab 5: Regularization and Cross-Validation
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-3/">
+            Advanced Section 3: Methods of Regularization and Justifications
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-8/">
+            Lecture 8: High Dimensionality and Principal Component Analysis (PCA)
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-7/">
+            Lecture 7: Regularization
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-3/demo/">
+            Advanced Sections 3: Methods of Regularization and Justifications
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/solutions/">
+            Lab 5: Regularization and Cross-Validation - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/student/">
+            Lab 5: Regularization and Cross-Validation - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Ridge">Ridge</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-5/">
+            Lab 5: Regularization and Cross-Validation
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-3/">
+            Advanced Section 3: Methods of Regularization and Justifications
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-7/">
+            Lecture 7: Regularization
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-3/demo/">
+            Advanced Sections 3: Methods of Regularization and Justifications
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/solutions/">
+            Lab 5: Regularization and Cross-Validation - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/student/">
+            Lab 5: Regularization and Cross-Validation - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Root Mean Squared Error (RMSE)">Root Mean Squared Error (RMSE)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-4/">
+            Lecture 4: Linear Regression, kNN Regression and Inference
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Scikit-learn">Scikit-learn</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-6/">
+            Lab 6: Classification and Dimensionality Reduction
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-13/demo/">
+            Lecture 13: Classification with KNN Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-14/demo/">
+            Lecture 14: Discriminant Analysis Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-15/demo/">
+            Lecture 15: Decision Trees Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-20/demo/">
+            Lecture 20: Support Vector Machine Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-7/solutions/">
+            Lab 7: NumPy for Building an Artificial Neural Network and Dealing with Missing Values
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-2/solutions/">
+            Standard Section 2: Prediction using kNN and Linear Regression - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-2/student/">
+            Standard Section 2: Prediction using kNN and Linear Regression - Student Version
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/">
+            Lab 5: Regularization and Cross-Validation
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-2/">
+            Standard Section 2: Prediction using kNN and Linear Regression
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-3/">
+            Lab 3: Scikit-learn for Regression
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-6/student/">
+            Lab 6: Classification and Dimensionality Reduction - Student Version
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-3/solutions/">
+            Lab 3: Scikit-learn for Regression
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-3/student/">
+            Lab 3: Scikit-learn for Regression
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/solutions/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-4/student/">
+            Lab 4: Multiple and Polynomial Linear Regression
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/solutions/">
+            Lab 5: Regularization and Cross-Validation - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-5/student/">
+            Lab 5: Regularization and Cross-Validation - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="SciPy">SciPy</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-23/demo/">
+            Lecture 23: A/B Testing Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Scraping">Scraping</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../sections/section-1/solutions/">
+            Standard Section 1: Introduction to Web Scraping - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-1/student/">
+            Standard Section 1: Introduction to Web Scraping - Student Version
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../sections/section-1/">
+            Standard Section 1: Introduction to Web Scraping
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/">
+            Lab 2: Python for Data Collection and Cleaning
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/scraping/solutions/">
+            Lab 2: BeautifulSoup for Scraping - Solutions
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../labs/lab-2/scraping/student/">
+            Lab 2: BeautifulSoup for Scraping - Student Version
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Seaborn">Seaborn</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-3/">
+            Lecture 3: Effective Exploratory Data Analysis and Visualization
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../labs/lecture-3/notebook/">
+            Lecture 3: Lecture 3: EDA and Visualization Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Softmax">Softmax</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-11/">
+            Lecture 11: Logistic Regression 2
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Sparse Representation">Sparse Representation</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-19/">
+            Lecture 19: Artificial Neural Networks 3 - Regularization Methods for ANN
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Stacking">Stacking</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-21/">
+            Lecture 21: Stacking
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Standard Errors">Standard Errors</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-5/">
+            Lecture 5: Linear Regression, Confidence Intervals and Standard Errors
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Statistical Parity">Statistical Parity</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-22/">
+            Lecture 22: Responsible Data Science
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Support Vector Classifier (SVC)">Support Vector Classifier (SVC)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-9/">
+            Advanced Section 9: Support Vector Machine
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-9/demo/">
+            Advanced Section 9: Support Vector Machines Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Support Vector Machine (SVM)">Support Vector Machine (SVM)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-20/">
+            Lecture 20: Support Vector Machine (SVM)
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-20/demo/">
+            Lecture 20: Support Vector Machine Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Support Vector Machines (SVM)">Support Vector Machines (SVM)</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-9/">
+            Advanced Section 9: Support Vector Machine
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../a-sections/a-section-9/demo/">
+            Advanced Section 9: Support Vector Machines Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Tensor">Tensor</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../labs/lab-7/prelab/solutions/">
+            Prep for Lab 7: Numpy for Tensor and Artificial Neural Networks
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="The Data Science Process">The Data Science Process</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-0/demo/">
+            Lecture 0: Data Science Demo
+          </a>
+            [Notebook]
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-0/">
+            Lecture 0: What is Data Science?
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="The Grammar of Data">The Grammar of Data</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-2/demo/">
+            Lecture 2: Data Engineering Demo
+          </a>
+            [Notebook]
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Universal Approximitation Theorem">Universal Approximitation Theorem</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-18/">
+            Lecture 18: Artificial Neural Networks 2 - Anatomy of ANN
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Variable Importance">Variable Importance</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-16/">
+            Lecture 16: Regression Trees, Bagging and Random Forest
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="Visualization">Visualization</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../lectures/lecture-9/">
+            Lecture 9: Visualization for Communication
+          </a>
+        </li>
+        <li class="category-item">
+          <a href="../lectures/lecture-1/">
+            Lecture 1: Data, Summaries and Visuals
+          </a>
+        </li>
+      </ul>
+      <h4 class="category-title--list" id="XGBoost">XGBoost</h4>
+      <ul class="category-list">
+        <li class="category-item">
+          <a href="../a-sections/a-section-7/">
+            Advanced Section 7: Decision Trees and Ensemble Methods
+          </a>
+        </li>
+      </ul>
+  </section>
+    </main>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">Copyright 2018 &copy;
+      <a class="text-muted" href="https://iacs.seas.harvard.edu/">Institute for Applied Computational Science</a>
+    </span>
+  </div>
+</footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+</html>

@@ -51,7 +51,10 @@
           <a class="nav-link" href="../../../pages/materials.html">Materials</a>
         </li>
         <li class="nav-item">
-          <a class="nav-link" href="../../../category/sections.html">Sections</a>
+          <a class="nav-link" href="../../../pages/github.html">GitHub</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../../pages/projects.html">Projects</a>
         </li>
         <form
           class="form-inline my-2"
@@ -78,7 +81,7 @@
           <a href="../../../pages/materials.html#NN">NN</a>        </p>
       </div>
       <div class="float-right">
-        <a href="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/labs/lab10/notebook/Lab10_keras_students.ipynb">
+        <a href="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/labs/lab10/notebook/lab10_keras.ipynb">
           Download Notebook <i class="fas fa-download"></i>
         </a>
       </div>
@@ -1237,24 +1240,25 @@ h6:hover .anchor-link {
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS-109A Introduction to Data Science</h1>
+<h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
 </div><div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
-<h2 id="Lab-10:--Neural-Networks-using-keras">Lab 10:  Neural Networks using <code>keras</code><a class="anchor-link" href="#Lab-10:--Neural-Networks-using-keras">¶</a></h2><p><strong>Harvard University</strong><br>
+<h2 id="Lab-10:--Keras-for-Artificial-Neural-Networks">Lab 10:  Keras for Artificial Neural Networks<a class="anchor-link" href="#Lab-10:--Keras-for-Artificial-Neural-Networks">¶</a></h2><p><strong>Harvard University</strong><br>
 <strong>Fall 2018</strong><br>
 <strong>Instructors:</strong> Pavlos Protopapas and Kevin Rader<br>
 <strong>Lab Instructor:</strong> Eleni Kaxiras<br>
 <strong>Authors:</strong> David Sondak, Eleni Kaxiras, and Pavlos Protopapas</p>
+<hr>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing code_cell rendered">
 <div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
+<div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
 <div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO GET THE RIGHT FORMATTING </span>
@@ -1265,6 +1269,82 @@ h6:hover .anchor-link {
 <span class="n">HTML</span><span class="p">(</span><span class="n">styles</span><span class="p">)</span>
 </pre></div>
 </div>
+</div>
+</div>
+<div class="output_wrapper">
+<div class="output">
+<div class="output_area">
+<div class="prompt output_prompt">Out[1]:</div>
+<div class="output_html rendered_html output_subarea output_execute_result">
+<style>
+blockquote { background: #AEDE94; }
+h1 { 
+    padding-top: 25px;
+    padding-bottom: 25px;
+    text-align: left; 
+    padding-left: 10px;
+    background-color: #DDDDDD; 
+    color: black;
+}
+h2 { 
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: left; 
+    padding-left: 5px;
+    background-color: #EEEEEE; 
+    color: black;
+}
+
+div.exercise {
+	background-color: #ffcccc;
+	border-color: #E9967A; 	
+	border-left: 5px solid #800080; 
+	padding: 0.5em;
+}
+
+span.sub-q {
+	font-weight: bold;
+}
+div.theme {
+	background-color: #DDDDDD;
+	border-color: #E9967A; 	
+	border-left: 5px solid #800080; 
+	padding: 0.5em;
+	font-size: 18pt;
+}
+div.gc { 
+	background-color: #AEDE94;
+	border-color: #E9967A; 	 
+	border-left: 5px solid #800080; 
+	padding: 0.5em;
+	font-size: 12pt;
+}
+p.q1 { 
+    padding-top: 5px;
+    padding-bottom: 5px;
+    text-align: left; 
+    padding-left: 5px;
+    background-color: #EEEEEE; 
+    color: black;
+}
+header {
+   padding-top: 35px;
+    padding-bottom: 35px;
+    text-align: left; 
+    padding-left: 10px;
+    background-color: #DDDDDD; 
+    color: black;
+}
+</style>
+</div>
+</div>
+</div>
+</div>
+</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
 </div>
 </div>
 </div>
@@ -2218,14 +2298,10 @@ input_dim =</code></p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
+<div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
+</div><div class="inner_cell">
+<div class="text_cell_render border-box-sizing rendered_html">
+<hr>
 </div>
 </div>
 </div>

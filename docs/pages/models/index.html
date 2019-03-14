@@ -1,0 +1,637 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+
+    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,700" rel="stylesheet">
+
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+
+    <link rel="stylesheet" href="../../style/tipuesearch/tipuesearch.css">
+
+    <link rel='shortcut icon' type='image/x-icon' href='../../style/images/favicon.ico' />
+    <link rel="stylesheet" href="../../style/css/hiacs.css">
+
+    <title>CS109A - Models</title>
+
+    <style>
+      .navbar {
+        background-color: #8996A0
+      }
+    </style>
+  </head>
+  <body>
+
+<nav class="navbar navbar-dark navbar-expand-md">
+  <div class="container">
+    <a class="navbar-brand" href="../..">
+      <img class="navbar-brand-logo" src="../../style/images/logo.png" />
+      <h3 class="course-title">CS109A</h3>
+    </a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarsDefault">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/syllabus.html">Syllabus</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/schedule.html">Schedule</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/materials.html">Materials</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/github.html">GitHub</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="../../pages/projects.html">Projects</a>
+        </li>
+        <form
+          class="form-inline my-2"
+          action="../../search.html"
+          onsubmit="return validateForm(this.elements['q'].value);"
+        >
+          <div class="input-group input-group-sm">
+            <input class="form-control" type="text" name="q" placeholder="Search Topic">
+            <div class="input-group-append">
+              <button class="btn btn-default" type="submit">
+                <i class="fas fa-search"></i>
+              </button>
+            </div>
+        </div>
+      </form>
+      </ul>
+    </div><!-- .collapse navbar-collapse -->
+  </div><!-- .container -->
+</nav>
+    <main id="content" class="container">
+    <h1>Models</h1>
+    <br />
+    <hr />
+  <h2>Contents</h2>
+<p toc>{:.no_toc}
+*<br></p>
+<div class="highlight"><pre><span></span><span class="ch">#!pip install seaborn</span>
+<span class="o">%</span><span class="n">matplotlib</span> <span class="n">inline</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="kn">as</span> <span class="nn">np</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="kn">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="kn">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">seaborn</span> <span class="kn">as</span> <span class="nn">sns</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.width&#39;</span><span class="p">,</span> <span class="mi">500</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;local-olives-cleaned.csv&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>areastring</th>
+      <th>region</th>
+      <th>area</th>
+      <th>palmitic</th>
+      <th>palmitoleic</th>
+      <th>stearic</th>
+      <th>oleic</th>
+      <th>linoleic</th>
+      <th>linolenic</th>
+      <th>arachidic</th>
+      <th>eicosenoic</th>
+      <th>regionstring</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>10.75</td>
+      <td>0.75</td>
+      <td>2.26</td>
+      <td>78.23</td>
+      <td>6.72</td>
+      <td>0.36</td>
+      <td>0.60</td>
+      <td>0.29</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>10.88</td>
+      <td>0.73</td>
+      <td>2.24</td>
+      <td>77.09</td>
+      <td>7.81</td>
+      <td>0.31</td>
+      <td>0.61</td>
+      <td>0.29</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>9.11</td>
+      <td>0.54</td>
+      <td>2.46</td>
+      <td>81.13</td>
+      <td>5.49</td>
+      <td>0.31</td>
+      <td>0.63</td>
+      <td>0.29</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>9.66</td>
+      <td>0.57</td>
+      <td>2.40</td>
+      <td>79.52</td>
+      <td>6.19</td>
+      <td>0.50</td>
+      <td>0.78</td>
+      <td>0.35</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>10.51</td>
+      <td>0.67</td>
+      <td>2.59</td>
+      <td>77.71</td>
+      <td>6.72</td>
+      <td>0.50</td>
+      <td>0.80</td>
+      <td>0.46</td>
+      <td>South</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><span class="n">acidlist</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;palmitic&#39;</span><span class="p">,</span> <span class="s1">&#39;palmitoleic&#39;</span><span class="p">,</span> <span class="s1">&#39;stearic&#39;</span><span class="p">,</span> <span class="s1">&#39;oleic&#39;</span><span class="p">,</span> <span class="s1">&#39;linoleic&#39;</span><span class="p">,</span> <span class="s1">&#39;linolenic&#39;</span><span class="p">,</span> <span class="s1">&#39;arachidic&#39;</span><span class="p">,</span> <span class="s1">&#39;eicosenoic&#39;</span><span class="p">]</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">dfsouth</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">regionstring</span><span class="o">==</span><span class="s1">&#39;South&#39;</span><span class="p">]</span>
+<span class="n">dfsouth</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>areastring</th>
+      <th>region</th>
+      <th>area</th>
+      <th>palmitic</th>
+      <th>palmitoleic</th>
+      <th>stearic</th>
+      <th>oleic</th>
+      <th>linoleic</th>
+      <th>linolenic</th>
+      <th>arachidic</th>
+      <th>eicosenoic</th>
+      <th>regionstring</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>10.75</td>
+      <td>0.75</td>
+      <td>2.26</td>
+      <td>78.23</td>
+      <td>6.72</td>
+      <td>0.36</td>
+      <td>0.60</td>
+      <td>0.29</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>10.88</td>
+      <td>0.73</td>
+      <td>2.24</td>
+      <td>77.09</td>
+      <td>7.81</td>
+      <td>0.31</td>
+      <td>0.61</td>
+      <td>0.29</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>9.11</td>
+      <td>0.54</td>
+      <td>2.46</td>
+      <td>81.13</td>
+      <td>5.49</td>
+      <td>0.31</td>
+      <td>0.63</td>
+      <td>0.29</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>9.66</td>
+      <td>0.57</td>
+      <td>2.40</td>
+      <td>79.52</td>
+      <td>6.19</td>
+      <td>0.50</td>
+      <td>0.78</td>
+      <td>0.35</td>
+      <td>South</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>North-Apulia</td>
+      <td>1</td>
+      <td>1</td>
+      <td>10.51</td>
+      <td>0.67</td>
+      <td>2.59</td>
+      <td>77.71</td>
+      <td>6.72</td>
+      <td>0.50</td>
+      <td>0.80</td>
+      <td>0.46</td>
+      <td>South</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<h2>Predicting via SVM</h2>
+<div class="highlight"><pre><span></span><span class="n">dfnew</span><span class="o">=</span><span class="n">df</span><span class="p">[[</span><span class="s1">&#39;eicosenoic&#39;</span><span class="p">,</span> <span class="s1">&#39;region&#39;</span><span class="p">,</span> <span class="s1">&#39;regionstring&#39;</span><span class="p">]]</span>
+<span class="n">dfnew</span><span class="p">[</span><span class="s1">&#39;linoarch&#39;</span><span class="p">]</span><span class="o">=</span><span class="p">(</span><span class="mf">0.969</span><span class="o">/</span><span class="mf">1022.0</span><span class="p">)</span><span class="o">*</span><span class="n">df</span><span class="o">.</span><span class="n">linoleic</span> <span class="o">+</span> <span class="p">(</span><span class="mf">0.245</span><span class="o">/</span><span class="mf">105.0</span><span class="p">)</span><span class="o">*</span><span class="n">df</span><span class="o">.</span><span class="n">arachidic</span>
+<span class="n">dfnew</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+
+<div style="max-height:1000px;max-width:1500px;overflow:auto;">
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>eicosenoic</th>
+      <th>region</th>
+      <th>regionstring</th>
+      <th>linoarch</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td> 0.29</td>
+      <td> 1</td>
+      <td> South</td>
+      <td> 0.007772</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td> 0.29</td>
+      <td> 1</td>
+      <td> South</td>
+      <td> 0.008828</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td> 0.29</td>
+      <td> 1</td>
+      <td> South</td>
+      <td> 0.006675</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td> 0.35</td>
+      <td> 1</td>
+      <td> South</td>
+      <td> 0.007689</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td> 0.46</td>
+      <td> 1</td>
+      <td> South</td>
+      <td> 0.008238</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><span class="n">dfnosouth</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">regionstring</span><span class="o">!=</span><span class="s1">&#39;South&#39;</span><span class="p">]</span>
+<span class="n">dfnosouth</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+
+
+<div>
+<style>
+    .dataframe thead tr:only-child th {
+        text-align: right;
+    }
+
+    .dataframe thead th {
+        text-align: left;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>areastring</th>
+      <th>region</th>
+      <th>area</th>
+      <th>palmitic</th>
+      <th>palmitoleic</th>
+      <th>stearic</th>
+      <th>oleic</th>
+      <th>linoleic</th>
+      <th>linolenic</th>
+      <th>arachidic</th>
+      <th>eicosenoic</th>
+      <th>regionstring</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>323</th>
+      <td>Inland-Sardinia</td>
+      <td>2</td>
+      <td>5</td>
+      <td>11.29</td>
+      <td>1.20</td>
+      <td>2.22</td>
+      <td>72.72</td>
+      <td>11.12</td>
+      <td>0.43</td>
+      <td>0.98</td>
+      <td>0.02</td>
+      <td>Sardinia</td>
+    </tr>
+    <tr>
+      <th>324</th>
+      <td>Inland-Sardinia</td>
+      <td>2</td>
+      <td>5</td>
+      <td>10.42</td>
+      <td>1.35</td>
+      <td>2.10</td>
+      <td>73.76</td>
+      <td>11.16</td>
+      <td>0.35</td>
+      <td>0.90</td>
+      <td>0.03</td>
+      <td>Sardinia</td>
+    </tr>
+    <tr>
+      <th>325</th>
+      <td>Inland-Sardinia</td>
+      <td>2</td>
+      <td>5</td>
+      <td>11.03</td>
+      <td>0.96</td>
+      <td>2.10</td>
+      <td>73.80</td>
+      <td>10.85</td>
+      <td>0.32</td>
+      <td>0.94</td>
+      <td>0.03</td>
+      <td>Sardinia</td>
+    </tr>
+    <tr>
+      <th>326</th>
+      <td>Inland-Sardinia</td>
+      <td>2</td>
+      <td>5</td>
+      <td>11.18</td>
+      <td>0.97</td>
+      <td>2.21</td>
+      <td>72.79</td>
+      <td>11.54</td>
+      <td>0.35</td>
+      <td>0.94</td>
+      <td>0.02</td>
+      <td>Sardinia</td>
+    </tr>
+    <tr>
+      <th>327</th>
+      <td>Inland-Sardinia</td>
+      <td>2</td>
+      <td>5</td>
+      <td>10.52</td>
+      <td>0.95</td>
+      <td>2.15</td>
+      <td>73.88</td>
+      <td>11.26</td>
+      <td>0.31</td>
+      <td>0.92</td>
+      <td>0.01</td>
+      <td>Sardinia</td>
+    </tr>
+  </tbody>
+</table>
+</div>
+
+<div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfnosouth</span><span class="o">.</span><span class="n">linoleic</span><span class="p">,</span> <span class="n">dfnosouth</span><span class="o">.</span><span class="n">arachidic</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">dfnosouth</span><span class="o">.</span><span class="n">region</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img alt="png" src="olives-model_files/olives-model_8_0.png"></p>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.cross_validation</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.svm</span> <span class="kn">import</span> <span class="n">SVC</span> <span class="c1"># &quot;Support Vector Classifier&quot;</span>
+
+<span class="k">def</span> <span class="nf">plot_svc_decision_function</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="bp">None</span><span class="p">):</span>
+    <span class="sd">&quot;&quot;&quot;Plot the decision function for a 2D SVC&quot;&quot;&quot;</span>
+    <span class="k">if</span> <span class="n">ax</span> <span class="ow">is</span> <span class="bp">None</span><span class="p">:</span>
+        <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">()</span>
+    <span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">30</span><span class="p">)</span>
+    <span class="n">y</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">0</span><span class="p">],</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylim</span><span class="p">()[</span><span class="mi">1</span><span class="p">],</span> <span class="mi">30</span><span class="p">)</span>
+    <span class="n">Y</span><span class="p">,</span> <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">meshgrid</span><span class="p">(</span><span class="n">y</span><span class="p">,</span> <span class="n">x</span><span class="p">)</span>
+    <span class="n">P</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros_like</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">xi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">yj</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">y</span><span class="p">):</span>
+            <span class="n">P</span><span class="p">[</span><span class="n">i</span><span class="p">,</span> <span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">clf</span><span class="o">.</span><span class="n">decision_function</span><span class="p">([[</span><span class="n">xi</span><span class="p">,</span> <span class="n">yj</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">ax</span><span class="o">.</span><span class="n">contour</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">P</span><span class="p">,</span> <span class="n">colors</span><span class="o">=</span><span class="s1">&#39;k&#39;</span><span class="p">,</span>
+                      <span class="n">levels</span><span class="o">=</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span>
+                      <span class="n">linestyles</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;--&#39;</span><span class="p">,</span> <span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="s1">&#39;--&#39;</span><span class="p">])</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">X</span> <span class="o">=</span> <span class="n">dfnosouth</span><span class="p">[[</span><span class="s1">&#39;linoleic&#39;</span><span class="p">,</span> <span class="s1">&#39;arachidic&#39;</span><span class="p">]]</span>
+<span class="n">y</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfnosouth</span><span class="o">.</span><span class="n">regionstring</span><span class="o">.</span><span class="n">values</span><span class="o">==</span><span class="s1">&#39;Sardinia&#39;</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span>
+<span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">ytest</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">values</span> <span class="p">,</span><span class="n">y</span><span class="p">)</span>
+<span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">)</span>
+<span class="n">clf</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Xtrain</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">ytrain</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;spring&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">plot_svc_decision_function</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">clf</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="n">s</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="s1">&#39;none&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Xtest</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Xtest</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">ytest</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s2">&quot;s&quot;</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;spring&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">);</span>
+</pre></div>
+
+
+<p><img alt="png" src="olives-model_files/olives-model_10_0.png"></p>
+<div class="highlight"><pre><span></span><span class="n">clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">Xtest</span><span class="p">,</span> <span class="n">ytest</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>1.0
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">confusion_matrix</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xtest</span><span class="p">),</span> <span class="n">ytest</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>array([[31,  0],
+       [ 0, 32]])
+</pre></div>
+
+
+<h2>Allowing for crossovers</h2>
+<div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">GridSearchCV</span>
+<span class="k">def</span> <span class="nf">cv_optimize_svm</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">n_folds</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">num_p</span><span class="o">=</span><span class="mi">50</span><span class="p">):</span>
+    <span class="c1">#clf = SVC()</span>
+    <span class="c1">#parameters = {&quot;C&quot;: np.logspace(-4, 3, num=num_p), &quot;gamma&quot;: np.logspace(-4, 3, num=10)}</span>
+    <span class="n">clf</span> <span class="o">=</span> <span class="n">SVC</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span> <span class="n">probability</span><span class="o">=</span><span class="bp">True</span><span class="p">)</span>
+    <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;C&quot;</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">logspace</span><span class="p">(</span><span class="o">-</span><span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="n">num</span><span class="o">=</span><span class="n">num_p</span><span class="p">)}</span>
+    <span class="n">gs</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">param_grid</span><span class="o">=</span><span class="n">parameters</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="n">n_folds</span><span class="p">)</span>
+    <span class="n">gs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">gs</span>
+
+<span class="k">def</span> <span class="nf">get_optim_classifier_svm</span><span class="p">(</span><span class="n">indf</span><span class="p">,</span> <span class="n">inacidlist</span><span class="p">,</span> <span class="n">clon</span><span class="p">,</span> <span class="n">clonval</span><span class="p">):</span>
+    <span class="n">subdf</span><span class="o">=</span><span class="n">indf</span><span class="p">[</span><span class="n">inacidlist</span><span class="p">]</span>
+    <span class="n">subdfstd</span><span class="o">=</span><span class="p">(</span><span class="n">subdf</span> <span class="o">-</span> <span class="n">subdf</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span><span class="o">/</span><span class="n">subdf</span><span class="o">.</span><span class="n">std</span><span class="p">()</span>
+    <span class="n">X</span><span class="o">=</span><span class="n">subdfstd</span><span class="o">.</span><span class="n">values</span>
+    <span class="n">y</span><span class="o">=</span><span class="p">(</span><span class="n">indf</span><span class="p">[</span><span class="n">clon</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">==</span><span class="n">clonval</span><span class="p">)</span><span class="o">*</span><span class="mi">1</span>
+    <span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">ytest</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">train_size</span><span class="o">=</span><span class="mf">0.8</span><span class="p">)</span>
+    <span class="c1">#Xtrain, Xtest, ytrain, ytest=X,X,y,y</span>
+    <span class="n">fitted</span><span class="o">=</span><span class="n">cv_optimize_svm</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">fitted</span><span class="p">,</span> <span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">ytest</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="n">thesvcfit</span><span class="p">,</span> <span class="n">Xtr</span><span class="p">,</span> <span class="n">ytr</span><span class="p">,</span> <span class="n">Xte</span><span class="p">,</span> <span class="n">yte</span> <span class="o">=</span> <span class="n">get_optim_classifier_svm</span><span class="p">(</span><span class="n">dfnosouth</span><span class="p">,</span> <span class="p">[</span><span class="s1">&#39;linoleic&#39;</span><span class="p">,</span><span class="s1">&#39;arachidic&#39;</span><span class="p">],</span><span class="s1">&#39;regionstring&#39;</span><span class="p">,</span> <span class="s2">&quot;Sardinia&quot;</span><span class="p">)</span>
+<span class="c1">#thesvcfit, Xtr, ytr, Xte, yte = get_optim_classifier_binary(dfsouthns, [&#39;palmitic&#39;,&#39;palmitoleic&#39;],&#39;area&#39;, 3)</span>
+<span class="n">thesvcfit</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">,</span> <span class="n">thesvcfit</span><span class="o">.</span><span class="n">best_params_</span><span class="p">,</span> <span class="n">thesvcfit</span><span class="o">.</span><span class="n">best_score_</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>(SVC(C=0.071968567300115138, cache_size=200, class_weight=None, coef0=0.0,
+   decision_function_shape=None, degree=3, gamma=&#39;auto&#39;, kernel=&#39;linear&#39;,
+   max_iter=-1, probability=True, random_state=None, shrinking=True,
+   tol=0.001, verbose=False), {&#39;C&#39;: 0.071968567300115138}, 1.0)
+</pre></div>
+
+
+<div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">plot_svm_new</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span><span class="n">Xtr</span><span class="p">,</span><span class="n">ytr</span><span class="p">,</span><span class="n">Xte</span><span class="p">,</span><span class="n">yte</span><span class="p">):</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Xtr</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Xtr</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="o">=</span><span class="n">ytr</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;spring&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">Xte</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">Xte</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;s&#39;</span><span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="n">yte</span><span class="p">,</span> <span class="n">s</span><span class="o">=</span><span class="mi">50</span><span class="p">,</span> <span class="n">cmap</span><span class="o">=</span><span class="s1">&#39;spring&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+
+    <span class="c1">#plt.xlim(-1, 4)</span>
+    <span class="c1">#plt.ylim(-1, 6)</span>
+    <span class="n">plot_svc_decision_function</span><span class="p">(</span><span class="n">clf</span><span class="p">,</span> <span class="n">plt</span><span class="o">.</span><span class="n">gca</span><span class="p">())</span>
+    <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">clf</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">],</span> <span class="n">clf</span><span class="o">.</span><span class="n">support_vectors_</span><span class="p">[:,</span> <span class="mi">1</span><span class="p">],</span>
+                <span class="n">s</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">facecolors</span><span class="o">=</span><span class="bp">None</span> <span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">)</span>
+<span class="k">print</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span><span class="o">**</span><span class="n">thesvcfit</span><span class="o">.</span><span class="n">best_params_</span><span class="p">))</span>
+<span class="n">clsvc</span><span class="o">=</span><span class="n">SVC</span><span class="p">(</span><span class="o">**</span><span class="nb">dict</span><span class="p">(</span><span class="n">kernel</span><span class="o">=</span><span class="s2">&quot;linear&quot;</span><span class="p">,</span><span class="o">**</span><span class="n">thesvcfit</span><span class="o">.</span><span class="n">best_params_</span><span class="p">))</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtr</span><span class="p">,</span> <span class="n">ytr</span><span class="p">)</span>
+<span class="n">plot_svm_new</span><span class="p">(</span><span class="n">clsvc</span><span class="p">,</span> <span class="n">Xtr</span><span class="p">,</span> <span class="n">ytr</span><span class="p">,</span> <span class="n">Xte</span><span class="p">,</span> <span class="n">yte</span><span class="p">)</span>
+</pre></div>
+
+
+<div class="highlight"><pre><span></span>{&#39;kernel&#39;: &#39;linear&#39;, &#39;C&#39;: 0.071968567300115138}
+</pre></div>
+
+
+<p><img alt="png" src="olives-model_files/olives-model_16_1.png"></p>
+<p>The best fit allows for a bigger margin by allowing some inbetween penalization. If we use the standard C=1 in scikit-learn you see that we are allowing for less penalization.</p>
+    </main>
+
+<footer class="footer">
+  <div class="container">
+    <span class="text-muted">Copyright 2018 &copy;
+      <a class="text-muted" href="https://iacs.seas.harvard.edu/">Institute for Applied Computational Science</a>
+    </span>
+  </div>
+</footer>
+
+    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+  </body>
+</html>
