@@ -2,6 +2,7 @@
 nav_include: 1
 title: EDA
 notebook: olives-eda.ipynb
+date: 2018-12-02
 ---
 
 ## Contents

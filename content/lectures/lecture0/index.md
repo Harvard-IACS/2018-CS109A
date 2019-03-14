@@ -3,7 +3,7 @@ Category: lectures
 Slug: lecture-0
 Author: Pavlos Protopapas
 Date: 2018-09-05
-Tags: What is Data Science?, The Data Science Process
+Tags: The Data Science Process
 
 ## Slides
 

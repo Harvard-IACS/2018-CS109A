@@ -3,7 +3,7 @@ Category: lectures
 Slug: lecture-1
 Author: Pavlos Protopapas
 Date: 2018-09-10
-Tags: What are Data?, Data Collection, Data Exploration, Descriptive Statistics, Visualizations
+Tags: Data Collection, Data Exploration, Descriptive Statistics, Visualization
 
 ## Slides
 

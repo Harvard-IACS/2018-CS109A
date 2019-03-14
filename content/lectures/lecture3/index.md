@@ -5,11 +5,10 @@ Author: Rahul Dave, Pavlos Protopapas
 Date: 2018-09-17
 Tags: Exploratory Data Analysis (EDA), Effective Visualization, Seaborn
 
-
 ## Slides
 
 - [PDF | Lecture 3: Effective Exploratory Data Analysis and Visualization]({attach}presentation/lecture3.pdf)
 
-## Jupyter Notebook
+## Associated Materials
 
-- [Lecture 3: EDA and Visualization Demo]({filename}notebook/lecture3.ipynb)
+- [Notebook | Lecture 3: EDA and Visualization Demo]({filename}notebook/lecture3.ipynb)

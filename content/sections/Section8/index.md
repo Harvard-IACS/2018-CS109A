@@ -1,13 +1,11 @@
-Title: Section 8, Bagging and Random Forest
+Title: Standard Section 8: Bagging and Random Forest
 Category: sections
-Slug: section8
+Slug: section-8
 Author: Pavlos Protopapas
 Date: 2018-11-9
-Tags: Regularization, CV, cross validation
+Tags: Decision Tree, Random Forest, Bias–Variance Tradeoff, Adaboost, Boosting, Bootstrap-Aggregating (Bagging)
 
 
+## Jupyter Notebooks
 
-## Standard Section Notebooks
-
-- [Notebook]({filename}../../sections/section8/notebook/section_8_student.ipynb)
-<!-- - [Section]({filename}notebook/section_3_solutions.ipynb) -->
+- [Standard Section 8: Bagging and Random Forest]({filename}notebook/section8.ipynb)

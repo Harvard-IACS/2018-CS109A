@@ -5,7 +5,6 @@ Author: Pavlos Protopapas
 Date: 2018-11-15
 Tags: Keras, Artificial Neural Networks (ANN), Multilayer Perceptron (MLP), Regularization
 
+## Associated Materials
 
-## Jupyter Notebooks
-
-- [Lab 10: Keras for Artificial Neural Network]({filename}notebook/lab10_keras.ipynb)
+- [Notebook | Lab 10: Keras for Artificial Neural Network]({filename}notebook/lab10_keras.ipynb)

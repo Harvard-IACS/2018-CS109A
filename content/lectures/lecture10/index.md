@@ -10,7 +10,6 @@ Tags: Logistic Regression, Likelihood Function, Categorical Predictors, Probit, 
 
 - [PDF | Lecture 10: Logistic Regression 1]({attach}presentation/lecture10_logistic_regression1.pdf)
 - [PPTX | Lecture 10: Logistic Regression 1]({attach}presentation/lecture10_logistic_regression1.pptx)
-- [PDF | Standard Section 5: Linear and Logistic Regression Recap]({attach}../../sections/section5/presentation/section5_logistic_regression.pdf)
 
 ## Jupyter Notebooks
 

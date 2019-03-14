@@ -3,7 +3,7 @@ Category: lectures
 Slug: lecture-2
 Author: Pavlos Protopapas
 Date: 2018-09-12
-Tags: Data Engineering, The Grammar of Data, Data Collection, Data Cleaning
+Tags: Data Engineering, Data Collection, Data Cleaning
 
 
 ## Slides

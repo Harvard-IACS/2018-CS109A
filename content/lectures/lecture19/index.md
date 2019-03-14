@@ -11,11 +11,8 @@ Tags: Artificial Neural Networks (ANN), Norm Penalties,  Data Augmentation, Spar
 - [PDF | Lecture 19: Artificial Neural Networks 3 - Regularization Methods for ANN]({attach}presentation/lecture19_nn3_regularization.pdf)
 - [PPTX | Lecture 19: Artificial Neural Networks 3 - Regularization Methods for ANN]({attach}presentation/lecture19_nn3_regularization.pptx)
 
-### Lecture Notes
+## Associated Materials
 
 - [PDF | Lecture 19: Artificial Neural Networks 3 - Optimization]({attach}presentation/notes/lecture19_notes_optimization.pdf)
-- [PPTX Lecture 19: Artificial Neural Networks 3 - Optimization]({attach}presentation/notes/lecture19_notes_optimization.pptx)
-
-## Jupyter Notebook
-
-- [Standard Section 9: Artificial Neural Networks Continued]({filename}../../sections/section9/notebook/section9.ipynb)
+- [PPTX | Lecture 19: Artificial Neural Networks 3 - Optimization]({attach}presentation/notes/lecture19_notes_optimization.pptx)
+- [Notebook | Standard Section 9: Artificial Neural Networks Continued]({filename}../../sections/section9/notebook/section9.ipynb)

@@ -1,6 +1,6 @@
 Title: Lecture 4: Linear Regression, kNN Regression and Inference
 Category: lectures
-Slug: lecture4
+Slug: lecture-4
 Author: Pavlos Protopapas
 Date: 2018-09-19
 Tags: Linear Regression, k-Nearest Neighbors (kNN) Regression, Model Fitness, R-squared (R2), Root Mean Squared Error (RMSE), Mean Squared Error (MSE), Bootstrap
