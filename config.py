@@ -12,7 +12,8 @@ MENUITEMS = [
     ('Syllabus', 'pages/syllabus.html'),
     ('Schedule', 'pages/schedule.html'),
     ('Materials', 'pages/materials.html'),
-    ('Sections', 'category/sections.html')
+    ('GitHub','pages/github.html'),
+    ('Projects','pages/projects.html')
 ]
 
 PATH = 'content'
