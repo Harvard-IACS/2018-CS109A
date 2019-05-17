@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,7 +1061,8 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS-109A Introduction to Data Science</h1>
 <h2 id="Lecture-11:-Logistic-Regression-2-Demo">Lecture 11: Logistic Regression 2 Demo<a class="anchor-link" href="#Lecture-11:-Logistic-Regression-2-Demo">¶</a></h2><p><strong>Harvard University</strong><br>
@@ -1253,7 +1077,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO PROPERLY HIGHLIGHT THE EXERCISES</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO PROPERLY HIGHLIGHT THE EXERCISES</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1329,7 +1153,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 </div>
@@ -1340,7 +1165,7 @@ header {
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">sys</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
@@ -1357,7 +1182,7 @@ header {
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df_heart</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/heart.csv'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df_heart</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/heart.csv'</span><span class="p">)</span>
 <span class="n">df_heart</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1507,7 +1332,7 @@ header {
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_heart</span><span class="o">.</span><span class="n">MaxHR</span><span class="p">,</span> <span class="n">df_heart</span><span class="o">.</span><span class="n">AHD</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_heart</span><span class="o">.</span><span class="n">MaxHR</span><span class="p">,</span> <span class="n">df_heart</span><span class="o">.</span><span class="n">AHD</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1522,7 +1347,7 @@ header {
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXkAAAD8CAYAAACSCdTiAAAABHNCSVQICAgIfAhkiAAAAAlwSFlzAAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDMuMC4yLCBodHRwOi8vbWF0cGxvdGxpYi5vcmcvOIA7rQAAIABJREFUeJzt3XmsXvld3/H393fWZ7nPvdfL2J49TGaSFAKTxNCUpqBCVAhCpK2qKgKpaUFC5Y9SkCiLIrVBFWoJdENtRZFAasJSltKW/oEKQXShbYImdJJMyCQzJpnVHl/bd3m2s/5+/eM812M7Ho/tWXx95vOSrvw85znL9/zO73yes11fCyEgIiL95G51ASIi8tpRyIuI9JhCXkSkxxTyIiI9ppAXEekxhbyISI8p5EVEekwhLyLSYwp5EZEei291AUeOHAn333//rS5DROS28alPfepcCOHo9Yx7y0P+/vvv55FHHrnVZYiI3DbM7KnrHVeXa0REekwhLyLSYwp5EZEeU8iLiPSYQl5EpMeu+XSNmRnwv4CfCiH87mrY3wS+N4Tw7a9DfVdV1C3nZyVl48lix+FxRp5Et6qcy1ytNuCG6t2fx17RsKhqIudovWeYxEwGyXXPc2dRcWpryqxoGOcxDxxdA+DU1pQLs4o2BI6vDzg6zjg8zijqllNbU87sFOwWFeuDjOPr2WXTndkt2V2WDJKIQRpzfH1AFju2FxXzoqENgc1hShwZwyQmSyIIgbLxLOqGYZowyWMOjzN2FhWPPrPNzqJmY5jw1uMTkshRNh5CALNuuqrm7F7Jo89coCg9wyzijrWUJE5wLnDPoRHDNLpseVuzglNbM6bLhiZ47pwMqVrPnz63w86yYZRH/Pn7j3D34cFlNe23wX6b3bUxpPVd/QCEwHO7Sz7z7DbnpxVF03LnxoBJnjArG3bmJbOqJTFjp6jJ4ojDo4Q71nKqNnBhUZJEjrr1HBpm3HdkxMP3bHJ8fQDAF07v8vHHz3BuWnFkLeW9bz3OsfVBt83mNa33HJ/kZJFjt2g4P6vYLUq8h92iYhAn3LGWcfdmTtkGTm1NKWpPnrjVdgx8/vSU53cWzMqGtSwF8xwa5RwZpawNEgxoQ2CURsyrlrYNRJG9bF85PExYH6ZgxqKqL+uv1+pbG8P0JfedK/v0pePsbw/MXtccOMj5czX2cn8Zysy+BvhN4B1ABDwKfHsI4dSrUcDJkyfDjTxCWdQtz20vSOOIJDLqNlA1LXdtDm95Q1+ttumyIpgxyZPrqnd/Hj7A+VlB1Qa29gqOTQbEkXFknFG2HguBtUH6kvPcWVT8v6cuMMoS8sRR1J4XdpcEB5uDlL1ljQ9QNS1vOTGhaj1buwVxZHz53ILIGa333HdkzLJqCBjDNOKpczPaENie1dx/ZETlW9omMMgS0tgIAc7sLnhoFditD4ARORgkMT54Do9zzs9LvvD8LofGOaMsYmdR89SFOd/00FEOjzKe3V5SNi2JwQuzkt9/7AxHJzkWWp66sKQN8K57NlgbppzdKzh53xEGWbe8WdHypfNTEmec3l6wNsw4s7vgy+cXTNKEo5OUsoXz04LvfPhO3nRkzOFxzrSs2dot2Bxl5Iljd1nz9IU5X3fPJuMs5tntBad3Cx57dofI4JkLS4ZZwu6ioA6QOUeWOsra88TZPe49PCaxQNkGqjZwYpIxSCO+dG7Omw6PGaQRDx2bYA6+9W3H2V1U/PInn2JzmDLJI/aKljM7C95+9yb3HRkxXVb4YOwsSpoAsTMWy5pl4/nimSl3HxqSGGRZxKxoicxzaDxgWjWMk5itvYKdomKYxOwWFUUdeGZ7ykPH1kmdEceOxEW8+fiY2Iwvnp3ypsMjqiasgji8ZF8p64ZhHmPAscmA9UGKD4Ej44xp2XB2d0kcOb58bn5J3xoRmfGO+w6RJ9HL7teX7l+t9zy7vQCMuzcHRM69LjlwUPLHzD4VQjh5PeO+7OWaEMJjwH8Ffgz4R8BHQwinzOyDZvbHZvaomf1bM3NmFpvZx8zss2b2mJn94Ctbla90flaSxhFp7DAz0tiRxhHnZ+WrvahXpbZ53bIom+uud38e87Ihi2OaNjDKEqrWkyUR86phUTbM6/aa8zy1NWWUJQyzGOccwyxmu6jZmdXUPpCn3VHWKEs4vVNwZqegDoHtRc0oj9kYpYyyhO1FxfaiZmdRsb2oGGUJcRyxNoiZVg27i4ZZ3YIFqsYTgMkgY3tRUdSepoXGB4rGM8xisjhmXjY8eXYKOCaDhMg5At2Xz5Nnp+wua0ZZt+7LNvDZZ3dYHyYMs4idZcs4zxgmEae2FsRRxGSQ8PTO/OLynttd4AzKNjAeZGRJxNMXFuBhPEwo6sA4j5gMUh758oWLNe23wX6b1T4wyVNO7xTsLGpGacKfvbBHGjlmtWdtkDDKI2ZVS1l7Wu+Zl569omZtkFI3nmUDAcMCvLBXUTaBjUFG0QbGWcIL04JJnvLoM9t8/PEzbA5TDo8zkrg7s/DA557fpWkDeZIwGSTsFXXXB4qW1ozdRc1kENOGQLCIsgnsLWt2li1x5BglEXHkODNdsqw886rBOYf3no08Z69oKVsoSk+eGM/vFMyqlo1BytasYpR3J/zX6is+GPOyxcw4Nyu7bb3qr6d3FzQeLiyqy/vWvGaUJZzaml7Xfn3pOPvbY5TF7C7r1y0HDnL+vJTrvSb/k8B3A+8DPrI6uv9rwDeGEB6mu+zzAeBdwJEQwttDCF8DfPRqMzOz7zezR8zska2trRsquGw8SWSXDUsie/H07Ra6Wm3eB/wVZ0vXqnd/HlXriVf/ZvHqveum8yHg/bXnOSsa8uTyzdu2njZ4qsazX2YWG/OqoWxaHDCvWtLVh2lsLKqW1ncBtqha0thomu70f1m3tMHjW4/34EOgbj2D1LGoWnwItKGbdr/e/XWaFzXxJW1Vt55xHrG7qCmbbl3313Nn3rCWRTQeyiYQGaSRY1rVNK1nlEZMi+bi8uZlQ2zd2UueOpo2UNQtZmAB6hBoPUwGEduz+mJN+22wr2o8o6wLqv3tsVe0xA6KsiWLofWBpvG0IdCEQOtblpVnFHfL997TtJ4Qui/Bom4Zpo6yasgSY1a1F89kzk0rJvnlR4ORGbOipmo90aq4xgfa1lP5rt5F3c2jXK1j3bY03lP7bnuksaPx3Xbfv3QWAcvaM0yNZd0QQkvZBpxzLKqG5Wqe06IhjYza+2v2FbOuvYwX++F+f92va3Fl36pb8sQxK5rr2q8vHWd/e+wv4+X2q1fLQc6fl3JdIR9CmAO/DnwshFAC7wW+HnjEzB4Fvhl4AHgSeIuZ/Ssz+zZg9yXm9wshhJMhhJNHj17Xb+ZelMWOur084Oo2kMW3/h7y1WpzznB2eae4Vr3780ijLpzSyFE2q/e+m86Z4dy15znOY4r68o4XRY7IHGns2C+zbAKjNCaLIzwwSiOq1YdVEximEZFzRM4xTCOqJhCvAmyQRETmcJHDOXBmJJFjWXmGaYQzI7Ju2v1699dplCc0l7RVEjlmRcv6MCGLu3XdX8+NUcy07MI1i402dDv5WpoQR4551bKWxxeXN8pimtB9ERVVFwZ5EhECBIPEustHe8uWzXFysab9NtiXxo552TJK44vbY5J3XzZ5FlE2EK0uc0RmxGZELmKQOuarL0LnHHH04lFfnkQsKk+WxpR1YJxGzMuWjWHCkbWUvaK9bJu1ITDOE9LI0a6Ki50RRY7UdfUOk24e2Wodkygido7Eddujajyx67b7/vXrFhgkjkUVGCQxZhFZZHjvGaYxg9U81/KYqg0kzl2zr4TQtVfgxX6431/36xpe2beSiKL2jPP4uvbrS8fZ3x77y3i5/erVcpDz56XcSGV+9QNgwC+FEB5e/bwlhPCPQwjnga8F/gj4QeDfvbrlwuFxRtW03aWB1dFR1bQXb0beSlerbZREDLP4uuvdn8coiymbhjgy5mXdhX3dBc4wixkl0TXn+cDRNeZld1rvvWdRNmzmCRvjhMQZRdWwt6yZlzUnNnKOb+QkZmwOE+ZFw868Yl7WbA5TNocJG8OUzWHKvKxpmpbpsmEtjVkfxoyTCEIXYgbsLUs2hyl54oijLpTy2LEoG8qmYZTFvPmONcCzt+xuJhqwvax48x1rrA+S7mg8MgaR8fa7N9hd1CzKlo1BxKwoWdQtDxwd0rQte8uaezdGF5d31/oQHyCLjNmypKxb7j00BAezRU2eGLOiZW9ZcfL+Qxdr2m+D/TZLnLFXVJzYyNkYJsyrmq861l2THieO6bJmXrSM04gs6b7MRpljkidMlxVJ7BjEYASCwbFJShYbO8uSPDJmZc2xtZy9ouLhezZ571uPs72oOD8rqZuG87MSB3z1nevEkVHUNXvLmkneXYYb5RFRCKwPE/aWDZEZFlqy2JgMEjYGEU3rmdctTes5vjZgkDpGaYz3HuccO0XBJI/IIsgzR1EH7tzIGacRO8uKo+OUedEAXLOvOAuMsoiwug6/KJuL/fXE+pDYwaFhennfGiXMy5oHjq5d13596Tj722NeNqwPktctBw5y/ryUl73xenFEsw8DsxDCz5rZ24HfAv5iCOGcmR0GRsASKEIIUzM7Cfz8y90cuNEbr3Cw727r6Ro9XaOna/R0zWvtRm683lTIr95/N/CjdGcDNfB3gRb4Rboj/QD8WAjh964135sJeRGRN7IbCfnr/l8oQwgfvuL9rwK/epVR33G98xQRkdfWwb1bICIir5hCXkSkxxTyIiI9ppAXEekxhbyISI8p5EVEekwhLyLSYwp5EZEeU8iLiPSYQl5EpMcU8iIiPaaQFxHpMYW8iEiPKeRFRHpMIS8i0mMKeRGRHlPIi4j0mEJeRKTHFPIiIj2mkBcR6TGFvIhIjynkRUR6TCEvItJjCnkRkR5TyIuI9JhCXkSkxxTyIiI9ppAXEekxhbyISI8p5EVEekwhLyLSYwp5EZEeU8iLiPSYQl5EpMcU8iIiPaaQFxHpMYW8iEiPKeRFRHpMIS8i0mMKeRGRHlPIi4j0mEJeRKTHFPIiIj2mkBcR6TGFvIhIjynkRUR6TCEvItJjCnkRkR5TyIuI9JhCXkSkxxTyIiI9ppAXEekxhbyISI8p5EVEekwhLyLSYwp5EZEeU8iLiPSYQl5EpMcU8iIiPaaQFxHpMYW8iEiPKeRFRHpMIS8i0mMKeRGRHlPIi4j0mEJeRKTHFPIiIj2mkBcR6TGFvIhIjynkRUR6TCEvItJjCnkRkR5TyIuI9JhCXkSkxxTyIiI9ppAXEekxhbyISI8p5EVEekwhLyLSYwp5EZEeU8iLiPSYQl5EpMcU8iIiPaaQFxHpMYW8iEiPKeRFRHpMIS8i0mMKeRGRHlPIi4j0mEJeRKTHFPIiIj2mkBcR6TGFvIhIjynkRUR6TCEvItJjCnkRkR5TyIuI9JhCXkSkxxTyIiI9ppAXEekxhbyISI8p5EVEekwhLyLSYwp5EZEeU8iLiPSYQl5EpMcU8iIiPaaQFxHpMYW8iEiPKeRFRHpMIS8i0mMKeRGRHlPIi4j0mEJeRKTHFPIiIj2mkBcR6TGFvIhIjynkRUR6TCEvItJjCnkRkR5TyIuI9JhCXkSkxxTyIiI9ppAXEekxhbyISI8p5EVEekwhLyLSYwp5EZEeU8iLiPSYQl5EpMcU8iIiPaaQFxHpMYW8iEiPKeRFRHpMIS8i0mMKeRGRHlPIi4j0mEJeRKTHFPIiIj2mkBcR6TGFvIhIjynkRUR6TCEvItJjCnkRkR5TyIuI9JhCXkSkxxTyIiI9ppAXEekxhbyISI8p5EVEekwhLyLSYwp5EZEeU8iLiPSYQl5EpMcU8iIiPaaQFxHpMYW8iEiPKeRFRHpMIS8i0mMKeRGRHlPIi4j0mEJeRKTHFPIiIj2mkBcR6TGFvIhIjynkRUR6TCEvItJjCnkRkR5TyIuI9JhCXkSkxxTyIiI9ppAXEekxhbyISI8p5EVEekwhLyLSYwp5EZEeU8iLiPSYQl5EpMcU8iIiPaaQFxHpMYW8iEiPKeRFRHpMIS8i0mMKeRGRHlPIi4j0mEJeRKTHFPIiIj2mkBcR6bEbDnkzC2b2zy55/yNm9uFXtSoREXlVxDcxTQn8dTP7JyGEc692QfKiom45PyspG08WOw6PM/IkuiXzvNZ0+59tTQvO7BW0HiIHxycDjq5lL7uM/emf3V5wamtK62FzkHL3Zs5kmJHFjsgZz+0smBUNWeRYH6ZkSfSS63BlTZFzrGUx63kMZizqhmGaMMnjG56+bP3FYYdGCQ8cXQPg1NaUJ1+Y8mfnZtQNJDE8cHSNezeHrA/TbrlVTdN6thc1kXMQArvLmr2iZlk3bAxSzGA9Twkh8MJeyamzezy9vSQxmIxS3nHvJnetD5gWLTtFxbJuGCYxi7phkMQkzphVDdvzhllZsZZEEBmHhhmJM85OCy4sasqmxWE8s70gBMhiRxoZkXOMBzHvvGeTJHFMi4bGe+5cH3JikrM+TNkrak5tTTm7V3B2WjLOEsZZRADmRcusqvFt4NmdJYTAep6wNkzwHsq25cgoJ47h0CjnvsNDHr5nk+PrAwC+cHqXjz9+hnPTCmtagjmK1mMOHrxjwomNnOOTAWXT8PnTU6ZFzeFxyrvuPcQ4Tygb323EENgrG87sLi/pkzmTPAEzoFvnURYzL5vL+jbwFf39asNuZn98Lfbra7EQwo1NYDYDfgoYhxA+ZGY/snr9YTO7D/gl4CiwBfydEMLT15rfyZMnwyOPPHJz1fdYUbc8t70gjSOSyKjbQNW03LU5vOkOcbPzvNZ0AM9tLyjqlsdPTwHYWZRsjFIIgbecWGeQRC+5jP157y5rPnFqi2GaAIFF1eAxvunBI0TO8egz29xzaMQgcTxzYUnjPV939wbDLPmKddif535Naexo24aiDTQejq1lrA9SfPAcHuc442Wnb3xLVbcsa0/kHBvDFGeBtUHK7rwiOAg+8H+fOA8Ozk8LDo8zmhB48Ogaozzi2GSAM/jimRl3THKWVcMT56aYhzRxEODpC3Peduc6ZeV5emdBVbc8d2FBEkdM5wUnDo+pas+J9ZyNUUIeR1Q+8MQLe7zl+ISmbXnmQgFAEoFZxHMX5jx4bEzZes7ulUTOGEQRu0XNF7emHJtkhLbl/KLBAW87sUYSxTy9veTdX7VJFMdMsoSqqblrc0TVembLCjAee36PSZ6yKAp2y4CzwCSLKJrA557b5fjmAOc9F4qG4AN3bg4ZJRHP7i756uMT1ocpDx0f45zjW992nN1FxS9/8ik2hylFWfK/n9zGm+fe9Zwsy7gwK3nPg0chBJ7aXrI5TLlnc8CsbHh6e8H73n6CO9cHPLu9YFo07C4qktixM6/YHGWUTcvmMGOcR9y9OaRpA89cmHP3oRFreUzdBqbLimDGJE8u9ve9osZCt71fyf74au3XZvapEMLJ6xn3Zq/J/xvge8xs/Yrh/xr4aAjha4FfAX7uJuf/hnd+VpLGEWnsMDPS2JHGEedn5es+z2tNt//Z6d2CUd6dGI6yBDBGWcrp3eU1l7E//RdfmDIZZGyMUqo2kMQxG4OEz5+Zcnq3YJKnNG1gWrasD1MmecrTF5ZXXYcra5oMEkoPhuGAc/OSYRaTxd0R3PVMXzUBnGNeNewVNZNBQp4kNG1gu6jZmdU88cKUyTABg7U8BWekkeO5nTlmxrlZyfaiZm3QtdNzO0vyKKb1sKxa2gAbw4zdZcPp3QURxtm9EnOOLI0YD3OqxtMEz/M7C3wwFlXLomrYGGbMyoYzeyWxczQ+sKw93nsmg4S90rM1rfDBCAEW3nNuXjKKHa03pmVLYo5BlvDMdhdya1nMp5/ZZS2NyRNH7GLO7pWcn1Ysm8DpvZK1LGGcR+yWnhACPgR2i5azewXjPIYA07oldg4XO7amBQFYz1LOLWrW8pSzexWTPOXRZ7b5+ONn2BymHB5nPHGu4NA4I3MxW7OWcR6xMUh5cmvKU9sLWu85PE67L97IsTlM+cyz2+wsakZpws68wgdWfTEhAD4EdpZV9/miZl41jLKEedlc7NvzumVRNpf190XZMK/bV7w/vhb79cu5qZAPIewBHwV+8IqP/gLwq6vXHwPec7Xpzez7zewRM3tka2vrZkrovbLxJJFdNiyJ7MVT0ddxnteabv+zWdmQRUbtPWls1K0nSxzzsrnmMvan31vWDNKuO4YQ8N4zSBy7i5pZ2TDKIqrWUzWeyCCLjXnVXHUdrqwJwHtWOzyUdTduHBlV669v+tDNo/GBtu3GjRxUradtPW3w7CwahqmjagJZalR1IDZjWnqMbhnzqmWQOGrvWdYtkTNa72l9oKw9oyxiXjYsag8hUFQNMYG2DWSJo2g8FgLLi8sNLKuWcRaxrDxF3WAu4EOL97CsPcPEWFYNZd1ioZvGt56i9qSJUTee2oMnkDijaFrKxjPJHdOyIU+6I07nYFm3lE0LAeZlwzA1Gh9oWg8EWu+pfWDReAZJt85NGwgh4HygbAJl6xlmxrJsyRKY1S2jLGJnUXNuWjHJuyPaRVGTJ4AFiral9TDKHbvLhqJuiSwQOaPxnqb1TPKI7VlN1XriyChX26luX+yThlHU7cVtXzaePHFU7Yvb3/vuy+pSPgS8v3zYzeyPr8V+/XJeydM1/xL4PmB0jXGuei0ohPALIYSTIYSTR48efQUl9FcWO+r28uar20AW3/wmu9l5Xmu6/c/GWUzZBhLXhVwSuVVoxddcxv70k0HCsuo6upnhnGNZe9aHCeMsZl62pJHrLr0EKJvAKI2vug5X1gTgHLjVvpUl3bhNG0gjd33TWzeP2BlR1I3bekgjRxQ5InNsDGMWVRcoZRVIE6MJgbXMEeiWMUojlrUncY5BEtH6QOS6ew7dl2LLKIsZJg7MyNOYBiOKjLL25LEjmDG4uFxjkEbMypZB6siTmOANZxHOwSBxLOrAII3Jkohg3TQucl241YEkdiQOHEbtA3nc3evYKzxrWUxRB5LI8B4GSUQWR2AwymIWVSB2Rhw5oLuenzhjGDuWdbfOcWSYGd4ZWWxkkWNRBgZZRFnDOImYly0bw4Qjayl7RQvAME8oaiAYeRQROZgXnvVBTJ5EtMFofSB2jjhy7BUtm+OENHI0bSBbbackerFPBgJ5El3c9lnsui+76MXt75zh7PIgdmY4d/mwm9kfX4v9+uXc9JxDCBeA36AL+n3/B/jA6vX3AH9086W9sR0eZ1RNS9V0p8FV46ma9uINoNdznteabv+zE+s586I7sp6XNRCYlxUn1gfXXMb+9A8dW2NvWbIzr0gjo24adpY1bzu+xon1nL2iIo6MtSxid1GxV1Tce2hw1XW4sqa9ZU3mIBDwwJFRxqJsKJuGURZf1/RpbOA9ozRmkifsLWuKuiaOjM08YWOc8OCxNfYWdXeJoqjAB6rWc9fGiBACR8YZm8OE6bJrp7s2BhRtQ+RgkEZE1t3PWB/EnFgf0hK4Y5IRvKesWmaLgjR2xOa4c2OIs8AwjRimMTuLknEWc3yS0XhP7IxB4nDOsbesmWSOo2vdfQQzGDrHkVHGvPFELrCWRdTBsyxr7tlMsRCYlg1fd88606qhqD2Nb7hjknF4LWUQGycmGdOyZla0rGfd5QdnxnoeccckZ1Y03aWrJKLxHt94jq7lGLBbVhwZJkyLijsmKXtFxcP3bPLetx5ne1Fxflby4JGcC7OS0jccHUfMipadZcWbj65x3+aQyDnOzyoGiaNtPduLiq+9e5ONYcK8qtkYpasv9sC8rDG6sN4YpN3nw4RRGjMva0ZZfLFvj5KIYRZf1t+HWcwoiV7x/vha7Ncv56ZuvIYQxqvXx4AvAR9Z3Xi9n+7G6xF04/UV09M1erpGT9fo6ZqruZEbrzcc8q82hbyIyI15PZ6uERGR24BCXkSkxxTyIiI9ppAXEekxhbyISI/d8qdrzGwLeOqWFnG5I8Dt+B+v3a51w+1b++1aN9y+tavuzn0hhOv6TdJbHvIHjZk9cr2PJh0kt2vdcPvWfrvWDbdv7ar7xulyjYhIjynkRUR6TCH/lX7hVhdwk27XuuH2rf12rRtu39pV9w3SNXkRkR7TkbyISI+9oUPezH7YzD5nZo+Z2a+ZWW5mbzKzT5rZE2b262aW3uo6Aczsl8zsrJk9dsmwQ2b2+6taf9/MNlfDzcx+zsyeNLPPmNk7D1jdP2Nmj69q+09mtnHJZz+xqvsLZvZtt6bqi7V8Re2XfPYjqz9qf2T1/kC3+Wr431u16+fM7COXDD/QbW5mD5vZJ8zs0dUfG/qG1fCD1Ob3mNkfmtnnV+3791fDb/0+GkJ4Q/4Ad9H9N8mD1fvfAP726t8PrIb9PPADt7rWVS3fBLwTeOySYR8Bfnz1+seBn169/g7gdwED3g188oDV/VeAePX6py+p+88BnwYy4E3AKSA6SLWvht8D/De63+84cpu0+V8GPg5kq/d33C5tDvwe8L5L2vm/H8A2PwG8c/V6Dfjiqm1v+T76hj6SB2JgYGYxMAROA98C/Nbq838P/NVbVNtlQgj/E7hwxeD309UIl9f6frq/tRtCCJ8ANszsxOtT6eWuVncI4fdCCM3q7SeAu1ev3w/8hxBCGUL4EvAk8A2vW7FXeIk2B/gXwI9y+V8+O9BtDvwA8E9DCOVqnLOr4bdDmwdgsnq9Djy/en2Q2vx0COFPVq+nwOfpDiRv+T76hg35EMJzwM8CT9OF+y7wKWDnkgB6lm5DHVTHQginoetkwB2r4XcBz1wy3kFej++lO6KB26BuM/su4LkQwqev+Oig1/4Q8JdWlyL/h5l9/Wr4Qa8b4IeAnzGzZ+j22Z9YDT+Qta/+eNI7gE9yAPbRN2zIr66NvZ/uFPVOur9V+76rjHo7Pn5kVxl24NbDzD4ENMCv7A+6ymgHpm4zGwIfAv7h1T6+yrADUzvdWesm3aWBfwD8hpkZB79u6M5CfjiEcA/ww8AvroYfuNrNbAz8R+CHQgh71xr1KsNek9rfsCEPvBf4UghhK4RQA78NfCPdaVO8GuduXjw1PIhe2D/FW/27fwr+LN11430Hbj3M7IMqLBtfAAABpklEQVTAdwLfE1YXKTn4dT9Ad1DwaTP7Ml19f2Jmxzn4tT8L/Pbq8sAfQ/fnbjn4dQN8kG7/BPhNXrycdKBqN7OELuB/JYSwX+8t30ffyCH/NPBuMxuujmi+FfhT4A+Bv7Ea54PAf7lF9V2P36GrES6v9XeAv7W6g/9uYHf/lPEgMLNvB34M+K4QwuKSj34H+ICZZWb2JuBB4I9vRY1XE0L4bAjhjhDC/SGE++l21HeGEM5wwNsc+M9095sws4eAlO4/zDrQbb7yPPDNq9ffAjyxen1g2nyVIb8IfD6E8M8v+ejW76O36m70QfgBfhJ4HHgM+BjdEwZfRdfJn6Q7ashudZ2rWn+N7t5BTRcu3wccBv6ArtP/AXBoNa4B/4buSYnPAicPWN1P0l2PfHT18/OXjP+hVd1fYPVExUGq/YrPv8yLT9cc9DZPgV9e9fU/Ab7ldmlz4D1098s+TXed+10HsM3fQ3e55TOX9OvvOAj7qH7jVUSkx97Il2tERHpPIS8i0mMKeRGRHlPIi4j0mEJeRKTHFPIiIj2mkBcR6TGFvIhIj/1/XYxfRZVmFdsAAAAASUVORK5CYII=
 ">
 </div>
@@ -1535,7 +1360,7 @@ header {
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">linear_model</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="k">import</span> <span class="n">linear_model</span>
 
 <span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
@@ -1593,7 +1418,7 @@ header {
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAa4AAAEHCAYAAAD25qK8AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXeYVNX5+D+3Td+drcCuVAGVZkFQQFAUULAbexRLjDGK
 xPwsIV81imKUxFhiBGyYYjciir3EioASUREhKGClLWzfnXLb+f1xd9Zh3AYCs+uez/PcZ2bOPefM
@@ -2282,7 +2107,7 @@ qwizGMlT5/L8bk2UuhgrxDRMyhMXJshtJU9dLU+fA0DJJf5PJcDyYI72bP8JP0zP7sKEfzrvJQv8
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
 
 <span class="n">logreg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">fit_intercept</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">logreg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">data_x</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">data_y</span><span class="p">);</span>
@@ -2313,7 +2138,7 @@ Estimated beta0:
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
 <span class="n">fig</span><span class="o">.</span><span class="n">patch</span><span class="o">.</span><span class="n">set_alpha</span><span class="p">(</span><span class="mf">0.0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xkcd</span><span class="p">(</span><span class="n">scale</span><span class="o">=</span><span class="mf">0.1</span><span class="p">,</span> <span class="n">length</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">gcf</span><span class="p">()</span><span class="o">.</span><span class="n">subplots_adjust</span><span class="p">(</span><span class="n">bottom</span><span class="o">=</span><span class="mf">0.20</span><span class="p">,</span> <span class="n">left</span> <span class="o">=</span> <span class="mf">0.16</span><span class="p">,</span> <span class="n">right</span><span class="o">=</span><span class="mf">0.86</span><span class="p">)</span>
@@ -2336,7 +2161,7 @@ Estimated beta0:
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAXgAAAEHCAYAAACk6V2yAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXmYFMX5xz99zbk3C7sLCAiCgIiKgorgDXgkHigoXiFq
 FE/U/IxJTAx4YDBGE4+IZ/AAkSiCGEiMolGCeIHciKDAslzL3rtz9VG/P3pnXMY92V0Wlvo8Tz8z
@@ -2977,14 +2802,16 @@ Uv4PWIrEKm6Kl/wAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Multiple-Logistic-Regression">Multiple Logistic Regression<a class="anchor-link" href="#Multiple-Logistic-Regression">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Just like in linear regression, the logistic regression model can be extended to incorporate multiple predictors/features.  The logistic model (written in the log-odds format) can then be written as:
 $$ \ln\left(\frac{P(Y=1)}{1-P(Y=1)}\right) = \beta_0+\beta_1 X_1+\dots+\beta_p X_p .$$
@@ -2997,7 +2824,7 @@ Maximum likelihood methods can still be used to generate estimates for the $p+1$
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data_x</span> <span class="o">=</span> <span class="n">df_heart</span><span class="p">[[</span><span class="s1">'MaxHR'</span><span class="p">,</span><span class="s1">'Sex'</span><span class="p">]]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data_x</span> <span class="o">=</span> <span class="n">df_heart</span><span class="p">[[</span><span class="s1">'MaxHR'</span><span class="p">,</span><span class="s1">'Sex'</span><span class="p">]]</span>
 <span class="n">data_y</span> <span class="o">=</span> <span class="n">df_heart</span><span class="p">[</span><span class="s1">'AHD'</span><span class="p">]</span>
 
 <span class="n">logreg</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">100000</span><span class="p">,</span> <span class="n">fit_intercept</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -3026,7 +2853,8 @@ Estimated beta0:
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Regularization-in-Logistic-Regression">Regularization in Logistic Regression<a class="anchor-link" href="#Regularization-in-Logistic-Regression">¶</a></h2>
 </div>
@@ -3037,7 +2865,7 @@ Estimated beta0:
 <div class="prompt input_prompt">In [104]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">beta1_l1</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">beta1_l1</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">beta1_l2</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">Cs</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">data_x</span> <span class="o">=</span> <span class="n">df_heart</span><span class="p">[[</span><span class="s1">'MaxHR'</span><span class="p">]]</span>
@@ -3066,7 +2894,7 @@ Estimated beta0:
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAaYAAAEdCAYAAABHfMO1AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XlcVNX7B/DPDPu+KJsoCLigIoqCu2JuIO5lKqWW5fIz
 06xMLS0xtyy/mWZ+NbfU1DKzXDNzC3dFEFFwV2RRkR1hEIY5vz/udzYYGGDmzh3web9e8+LeO2fm
@@ -3443,7 +3271,7 @@ ExERhRQGExERhRQGExERhRQGExERhZR/AHhvsdaDxAymAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [93]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Cs</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mf">1.0</span><span class="o">/</span><span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">Cs</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -3560,14 +3388,16 @@ ExERhRQGExERhRQGExERhRQGExERhZR/AHhvsdaDxAymAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Logistic-Regression-for-$Y$-with-more-than-2-Categories">Logistic Regression for $Y$ with more than 2 Categories<a class="anchor-link" href="#Logistic-Regression-for-$Y$-with-more-than-2-Categories">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>There are several extensions to standard logistic regression when the response variable $Y$ has more than 2 categories.  The two most common are ordinal logistic regression and multinomial logistic regression.  Ordinal logistic regression is used when the categories have a specific hierarchy (like class year: Freshman, Sophomore, Junior, Senior; or a 7-point rating scale from strongly disagree to strongly agree).  Multinomial logistic regression is used when the categories have no inherent order (like eye color: blue, green, brown, hazel, et...).</p>
 </div>
@@ -3578,7 +3408,7 @@ ExERhRQGExERhRQGExERhRQGExERhZR/AHhvsdaDxAymAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#read the NFL play-by-play data</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#read the NFL play-by-play data</span>
 <span class="n">nfldata</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"NFLplaybyplay-2015.csv"</span><span class="p">)</span>
 
 <span class="c1"># shuffle the data</span>
@@ -3623,7 +3453,7 @@ Estimated beta0:
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">X</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">100</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">logitm</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">,:])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">logitm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)))</span>
 </pre></div>
@@ -3659,7 +3489,7 @@ Estimated beta0:
 <div class="prompt input_prompt">In [43]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#read in party ID data</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#read in party ID data</span>
 <span class="n">party_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"gsspartyid.csv"</span><span class="p">)</span>
 <span class="n">party_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -3750,7 +3580,7 @@ Estimated beta0:
 <div class="prompt input_prompt">In [46]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#quick summaries of party ID data</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#quick summaries of party ID data</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">party_df</span><span class="p">[</span><span class="s1">'politicalparty'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">())</span>
 <span class="n">party_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
@@ -3865,7 +3695,7 @@ Name: politicalparty, dtype: int64
 <div class="prompt input_prompt">In [49]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#estimating logistic regression for party ID classification</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#estimating logistic regression for party ID classification</span>
 
 <span class="n">party_df</span><span class="p">[</span><span class="s1">'logincome'</span><span class="p">]</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">party_df</span><span class="p">[</span><span class="s1">'income'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
 
@@ -3902,7 +3732,7 @@ Estimated beta0:
 <div class="prompt input_prompt">In [61]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#calculating confusion matrices</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#calculating confusion matrices</span>
 <span class="kn">import</span> <span class="nn">sklearn.metrics</span> <span class="k">as</span> <span class="nn">met</span>
 
 <span class="n">yhat</span> <span class="o">=</span> <span class="n">logitm</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">train_x</span><span class="p">)[:,</span><span class="mi">0</span><span class="p">]</span>
@@ -3930,7 +3760,7 @@ Estimated beta0:
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYoAAAEKCAYAAAAMzhLIAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJztnXl8U8Xax38nabpBS/tKWzYRkKUghVoWEUUKaEFEBZQL
 vHpREURQBGRRwKWyKFwuWgGvKJsoCvhaVOAiIKAsIquK0LJJASmlUCiFtrRpmzzvHyWHpknTpFkm
@@ -4207,7 +4037,7 @@ AABJRU5ErkJggg==
 <div class="prompt input_prompt">In [82]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#ROC curve on the train set</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#ROC curve on the train set</span>
 <span class="n">fpr</span><span class="p">,</span> <span class="n">tpr</span><span class="p">,</span> <span class="n">thresholds</span> <span class="o">=</span> <span class="n">met</span><span class="o">.</span><span class="n">roc_curve</span><span class="p">(</span><span class="n">party_df</span><span class="p">[</span><span class="s1">'republican'</span><span class="p">],</span> <span class="n">yhat</span><span class="p">)</span>
 
 <span class="n">x</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">100</span><span class="p">)</span><span class="o">/</span><span class="mi">100</span>
@@ -4230,7 +4060,7 @@ AABJRU5ErkJggg==
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAb4AAAEpCAYAAADs7kcSAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXdcFMf7xz9X6L13FEVRQRR7IbZoNPYSv2rUxBZNNFFj
 okZjrBE1xiT2GI0k0WgsMcaCBRWNXQQRERS79N7hOO72+f3B71aOO45iQZd5v173gp2dmZ3d2X2e

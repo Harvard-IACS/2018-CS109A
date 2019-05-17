@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,7 +1061,8 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px">CS109A Introduction to Data Science</h1>
 <h2 id="Standard-Section-2:-Prediction-using-kNN-and-Linear-Regression">Standard Section 2: Prediction using kNN and Linear Regression<a class="anchor-link" href="#Standard-Section-2:-Prediction-using-kNN-and-Linear-Regression">¶</a></h2><p><strong>Harvard University</strong><br>
@@ -1254,7 +1078,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"http://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1330,7 +1154,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For this section, our goal is to get you familiarized with k-Nearest Neighbors and Linear. These methods find powerful applications in all walks of life and are centered around prediction.</p>
 <p>Specifically, we will:</p>
@@ -1345,7 +1170,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For this section we will be using the following packages:</p>
 </div>
@@ -1356,7 +1182,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Check Python Version</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Check Python Version</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="k">assert</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">major</span><span class="o">==</span><span class="mi">3</span><span class="p">),</span><span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
 
@@ -1392,14 +1218,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Review-–-Python-:-List,-Dictionary-Comprehensions-and-Zip">Review – Python : List, Dictionary Comprehensions and Zip<a class="anchor-link" href="#Review-–-Python-:-List,-Dictionary-Comprehensions-and-Zip">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"> **Exercise**</div>
 </div>
@@ -1410,7 +1238,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Makes a list of all the even numbers from 0 to 20 with a For Loop</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Makes a list of all the even numbers from 0 to 20 with a For Loop</span>
 
 <span class="c1">##Your Code Here</span>
 </pre></div>
@@ -1419,7 +1247,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Solution</strong></p>
 </div>
@@ -1430,14 +1259,15 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol1</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol1</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"> **Exercise**</div>
 </div>
@@ -1448,7 +1278,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Create a dictionary with the list A elements as keys and list B elements </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Create a dictionary with the list A elements as keys and list B elements </span>
 <span class="c1">#as values using Zip and Dictionary Comprehension</span>
 
 <span class="n">list_a</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'a'</span><span class="p">,</span><span class="s1">'b'</span><span class="p">,</span><span class="s1">'c'</span><span class="p">,</span><span class="s1">'d'</span><span class="p">,</span><span class="s1">'e'</span><span class="p">]</span>
@@ -1465,21 +1295,23 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol2</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol2</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Working-with-Dataframes">Working with Dataframes<a class="anchor-link" href="#Working-with-Dataframes">¶</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Importing-Data">Importing Data<a class="anchor-link" href="#Importing-Data">¶</a></h2>
 </div>
@@ -1490,7 +1322,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Import Data</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Import Data</span>
 <span class="n">data_path</span> <span class="o">=</span> <span class="s1">'data/states.csv'</span>
 <span class="n">states</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">data_path</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">states</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -1500,21 +1332,24 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Data describing the population per state from 1900 to 2010</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Select-Specific-Columns">Select Specific Columns<a class="anchor-link" href="#Select-Specific-Columns">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"> **Exercise**</div>
 </div>
@@ -1525,7 +1360,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Select by Name : Select only '1930','1940','1950','1960' columns.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Select by Name : Select only '1930','1940','1950','1960' columns.</span>
 
 <span class="c1">#Select by Index : Select only the first 3 columns</span>
 
@@ -1537,7 +1372,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Solution</strong></p>
 </div>
@@ -1548,21 +1384,23 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol3.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol3.py</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id='Learn-to-"display",-always!'>Learn to "display", always!<a class="anchor-link" href='#Learn-to-"display",-always!'>¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In the above statements, we use the display function which can be imported using <code>from IPython.display import display</code>. It provides a very aesthetically pleasing representation of the data with great demarcation for row and column information. Let's see a comparison below :</p>
 </div>
@@ -1573,7 +1411,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="n">columns_list</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="n">columns_list</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
@@ -1584,21 +1422,23 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="n">columns_list</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">states</span><span class="p">[</span><span class="n">columns_list</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Select-Specific-Rows">Select Specific Rows<a class="anchor-link" href="#Select-Specific-Rows">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"> **Exercise**</div>
 </div>
@@ -1609,7 +1449,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Filter out by First N Rows</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Filter out by First N Rows</span>
 <span class="n">n</span> <span class="o">=</span> <span class="mi">25</span>
 
 <span class="c1">#Select by Index, rows 5 to 10.</span>
@@ -1623,7 +1463,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Solution</strong></p>
 </div>
@@ -1634,21 +1475,23 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol4.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol4.py</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Load-in-the-Bikeshare-dataset-and-perform-EDA:">Load in the Bikeshare dataset and perform EDA:<a class="anchor-link" href="#Load-in-the-Bikeshare-dataset-and-perform-EDA:">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The specific task is to build a regression model for a bike share system that can predict the total number of bike rentals in a given day, based on attributes about the day. Such a demand forecasting model would be useful in planning the number of bikes that need to be available in the system on any given day, and also in monitoring traffic in the city. The data for this problem was collected from the Capital Bikeshare program in Washington D.C. over two years.</p>
 <p>The data set is provided in the file 'bikeshare.csv'. Each row in these files contains 10 attributes describing a day and its weather:</p>
@@ -1679,7 +1522,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Load the BikeShare dataset</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Load the BikeShare dataset</span>
 <span class="n">bikeshare</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'data/bikeshare.csv'</span><span class="p">)</span>
 <span class="k">del</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">'Unnamed: 0'</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Length of Dataset:"</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">bikeshare</span><span class="p">))</span>
@@ -1694,14 +1537,15 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">bikeshare</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">bikeshare</span><span class="o">.</span><span class="n">describe</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can also use the groupby function to look at mean stats aggregated by month:</p>
 </div>
@@ -1712,14 +1556,15 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikeshare</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'month'</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bikeshare</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'month'</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's plot the variation of count with month? Is  there a seasonal change?</p>
 </div>
@@ -1730,7 +1575,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bikeshare</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'month'</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">'count'</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bikeshare</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'month'</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()[</span><span class="s1">'count'</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Month'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'Count'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Bikeshare Rental Count as a function of Month'</span><span class="p">)</span>
@@ -1741,7 +1586,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What is temp, a_temp, is there a difference?</p>
 </div>
@@ -1752,7 +1598,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bikeshare</span><span class="p">[</span><span class="s1">'temp'</span><span class="p">],</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">'atemp'</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">bikeshare</span><span class="p">[</span><span class="s1">'temp'</span><span class="p">],</span> <span class="n">bikeshare</span><span class="p">[</span><span class="s1">'atemp'</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Temp'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'A-Temp'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'A-Temp vs Temp'</span><span class="p">)</span>
@@ -1763,14 +1609,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>What did we do wrong here? Why does the plot look like this?</strong></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Sorting! Whenever your plot makes zig-zag changes across the scale, it is because <code>matplotlib</code> is trying to connect the points sequentially from the top (using a line plot) and skipping across the scale when $x_{i+1}$ is lower than $x_{i}$. So let's sort.</p>
 </div>
@@ -1781,7 +1629,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'temp'</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">new</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'temp'</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">new</span><span class="p">[</span><span class="s1">'temp'</span><span class="p">],</span> <span class="n">new</span><span class="p">[</span><span class="s1">'atemp'</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Temp'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'A-Temp'</span><span class="p">)</span>
@@ -1793,14 +1641,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>It still looks weird, why?</strong></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's have a closer look at the dataframe:</p>
 </div>
@@ -1811,14 +1661,15 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">new</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">new</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>There are multiple <code>atemp</code> values for each <code>temp</code> value, which if not sorted will bounce around at the same x-value. Thus, we need to sort both axes simultaneously.</p>
 </div>
@@ -1829,7 +1680,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">new</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'temp'</span><span class="p">,</span><span class="s1">'atemp'</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">new</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">'temp'</span><span class="p">,</span><span class="s1">'atemp'</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">new</span><span class="p">[</span><span class="s1">'temp'</span><span class="p">],</span> <span class="n">new</span><span class="p">[</span><span class="s1">'atemp'</span><span class="p">])</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'Temp'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'A-Temp'</span><span class="p">)</span>
@@ -1841,21 +1692,24 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>By plotting efficiently, we found an anomaly we would have otherwise overlooked. It looks like there is a problem with the data around <code>temp greater than 30</code> and <code>atemp less than 10</code>.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"> **Exercise**</div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Solution</strong></p>
 </div>
@@ -1866,14 +1720,15 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol5.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol5.py</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Anomaly! <code>atemp</code> and <code>temp</code> are usually lineary related except at this one datapoint. Now, we get to make a judgement call as to whether we should keep the datapoint? We'll come back to this question after the lecture on Missing Data and Imputation. Worth a thought though.</p>
 </div>
@@ -1884,7 +1739,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikeshare</span><span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">188</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bikeshare</span><span class="o">=</span> <span class="n">bikeshare</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="mi">188</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1895,21 +1750,23 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">bikeshare</span><span class="p">[(</span><span class="n">bikeshare</span><span class="p">[</span><span class="s1">'temp'</span><span class="p">]</span><span class="o">></span><span class="mi">30</span><span class="p">)</span> <span class="o">&</span> <span class="p">(</span><span class="n">bikeshare</span><span class="p">[</span><span class="s1">'atemp'</span><span class="p">]</span><span class="o"><</span><span class="mi">10</span><span class="p">)])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">bikeshare</span><span class="p">[(</span><span class="n">bikeshare</span><span class="p">[</span><span class="s1">'temp'</span><span class="p">]</span><span class="o">></span><span class="mi">30</span><span class="p">)</span> <span class="o">&</span> <span class="p">(</span><span class="n">bikeshare</span><span class="p">[</span><span class="s1">'atemp'</span><span class="p">]</span><span class="o"><</span><span class="mi">10</span><span class="p">)])</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Normalize">Normalize<a class="anchor-link" href="#Normalize">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In general, it is good practice to normalize data before proceeding. As such, we can create the following functions:</p>
 </div>
@@ -1920,7 +1777,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Function to takes in a dataset and normalizes it</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Function to takes in a dataset and normalizes it</span>
 <span class="k">def</span> <span class="nf">normalize</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="c1">#print(x.shape)</span>
     <span class="c1">#print(np.min(x).shape)</span>
@@ -1938,14 +1795,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"> **Exercise**</div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Solution</strong></p>
 </div>
@@ -1956,7 +1815,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol6.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol6.py</span>
 </pre></div>
 </div>
 </div>
@@ -1967,7 +1826,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Adapt the normalization function above to take column names as input</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Adapt the normalization function above to take column names as input</span>
 
 <span class="c1">#Function to takes in a dataset and normalizes it</span>
 <span class="k">def</span> <span class="nf">normalize_cols</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">columns</span><span class="p">):</span>
@@ -1985,7 +1844,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">bikeshare_norm2</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">display</span><span class="p">(</span><span class="n">bikeshare_norm2</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
 <span class="n">bikeshare</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1993,14 +1852,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's see what the describe function <strong>AFTER</strong> normalization:</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Broadcasting">Broadcasting<a class="anchor-link" href="#Broadcasting">¶</a></h2>
 </div>
@@ -2011,7 +1872,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Image</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="k">import</span> <span class="n">Image</span>
 <span class="n">Image</span><span class="p">(</span><span class="s1">'http://www.scipy-lectures.org/_images/numpy_broadcasting.png'</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2019,14 +1880,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>image from Scipy Lecture Notes</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Choose-one-predictor">Choose one predictor<a class="anchor-link" href="#Choose-one-predictor">¶</a></h2>
 </div>
@@ -2037,7 +1900,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikeshare</span><span class="o">.</span><span class="n">columns</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bikeshare</span><span class="o">.</span><span class="n">columns</span>
 <span class="n">bikeshare</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2049,7 +1912,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#sns.pairplot(bikeshare, x_vars=bikeshare.iloc[:,:10] , y_vars =bikeshare['count'])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#sns.pairplot(bikeshare, x_vars=bikeshare.iloc[:,:10] , y_vars =bikeshare['count'])</span>
 </pre></div>
 </div>
 </div>
@@ -2060,7 +1923,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikeshare</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[[</span><span class="s1">'temp'</span><span class="p">,</span> <span class="s1">'count'</span><span class="p">]]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bikeshare</span> <span class="o">=</span> <span class="n">bikeshare</span><span class="p">[[</span><span class="s1">'temp'</span><span class="p">,</span> <span class="s1">'count'</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -2071,7 +1934,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol8.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol8.py</span>
 </pre></div>
 </div>
 </div>
@@ -2082,35 +1945,39 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bikeshare</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bikeshare</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Split-up-the-data-into-a-training-set-and-a-test-set:">Split up the data into a training set and a test set:<a class="anchor-link" href="#Split-up-the-data-into-a-training-set-and-a-test-set:">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now that we have an idea of what the data looks like, we would like to predict count. Therefore, we will be breaking up the data into a <strong>training</strong> and a <strong>testing</strong> set. The <strong>training</strong> set will be used to train the model, while the <strong>testing</strong> set will be used to gauge how well our model does in general. The <strong>testing</strong> set is a way for us to ensure our model doesn't overfit our training data.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us first create a function that will randomly split the data up into a 70-30 split, with 70% of the data going into the <strong>testing</strong> set:</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"> **Exercise**</div>
 </div>
@@ -2121,7 +1988,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Function to Split data into Train and Test Set, Enter Code Here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Function to Split data into Train and Test Set, Enter Code Here</span>
 <span class="k">def</span> <span class="nf">split_data</span><span class="p">(</span><span class="n">data</span><span class="p">):</span>
     
     <span class="c1">#Calculate Length of Dataset</span>
@@ -2142,7 +2009,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Solution</strong></p>
 </div>
@@ -2153,7 +2021,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol6.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol6.py</span>
 </pre></div>
 </div>
 </div>
@@ -2164,7 +2032,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Split data using defined function</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Split data using defined function</span>
 <span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> <span class="n">split_data</span><span class="p">(</span><span class="n">bikeshare</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Length of Training set:"</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">train_data</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Length of Testing set:"</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">))</span>
@@ -2174,7 +2042,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"> **Exercise**</div>
 </div>
@@ -2185,7 +2054,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## Check that the ratio between test and train sets is right</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## Check that the ratio between test and train sets is right</span>
 <span class="c1">#Your Code Here</span>
 </pre></div>
 </div>
@@ -2193,7 +2062,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Solution</strong></p>
 </div>
@@ -2204,14 +2074,15 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol7.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load sol7.py</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Old-vs-new-indices">Old vs new indices<a class="anchor-link" href="#Old-vs-new-indices">¶</a></h2>
 </div>
@@ -2222,7 +2093,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2233,7 +2104,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:</span><span class="mi">5</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2244,7 +2115,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -2255,14 +2126,15 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">3</span><span class="p">:</span><span class="mi">9</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Alternative-approach-using-Standard-'train_test_split'-function-from-sklearn">Alternative approach using Standard 'train_test_split' function from sklearn<a class="anchor-link" href="#Alternative-approach-using-Standard-'train_test_split'-function-from-sklearn">¶</a></h2>
 </div>
@@ -2273,7 +2145,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">bikeshare</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">bikeshare</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.30</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">13</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Length of Training set:"</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">train_data</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Length of Testing set:"</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">))</span>
 </pre></div>
@@ -2282,14 +2154,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Implementing-the-kNN-Algorithm-by-hand:">Implementing the kNN Algorithm by hand:<a class="anchor-link" href="#Implementing-the-kNN-Algorithm-by-hand:">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To really understand how the kNN algorithm works, it helps to go through the algorithm line by line in code.</p>
 </div>
@@ -2300,7 +2174,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#kNN Algorithm</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#kNN Algorithm</span>
 <span class="k">def</span> <span class="nf">knn_algorithm</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">k</span><span class="p">):</span>
     
     <span class="c1">#Create any empty list to store our predictions in</span>
@@ -2347,7 +2221,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now to run the algorithm on our dataset with $k = 5$:</p>
 </div>
@@ -2358,7 +2233,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Run the kNN function </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Run the kNN function </span>
 
 <span class="n">k</span> <span class="o">=</span> <span class="mi">5</span>
 <span class="n">predicted_knn</span> <span class="o">=</span> <span class="n">knn_algorithm</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
@@ -2369,7 +2244,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We want to have a way to evaluate our predictions from the kNN algorithm with $k=5$. One way is to compute the $R^2$ coefficient. Let's create a function for that:</p>
 </div>
@@ -2380,7 +2256,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Test predictions in comparison to true value of test set</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Test predictions in comparison to true value of test set</span>
 <span class="k">def</span> <span class="nf">evaluate</span><span class="p">(</span><span class="n">predicted</span><span class="p">,</span> <span class="n">true</span><span class="p">):</span>
     
     <span class="c1">#Find the squared error:</span>
@@ -2397,7 +2273,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Then let's apply this function to our predictions:</p>
 </div>
@@ -2408,7 +2285,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Length of Test Data:"</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"Length of Test Data:"</span><span class="p">,</span><span class="nb">len</span><span class="p">(</span><span class="n">test_data</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"R^2 Score of kNN - test:"</span><span class="p">,</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">predicted_knn</span><span class="p">,</span> <span class="n">test_data</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -2420,7 +2297,7 @@ header {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">predicted_knn_train</span> <span class="o">=</span> <span class="n">knn_algorithm</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">predicted_knn_train</span> <span class="o">=</span> <span class="n">knn_algorithm</span><span class="p">(</span><span class="n">train_data</span><span class="p">,</span> <span class="n">train_data</span><span class="p">,</span> <span class="n">k</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"R^2 Score of kNN - train:"</span><span class="p">,</span> <span class="n">evaluate</span><span class="p">(</span><span class="n">predicted_knn_train</span><span class="p">,</span> <span class="n">train_data</span><span class="p">))</span>
 </pre></div>
@@ -2429,21 +2306,24 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We see that the coefficient for the Nearest Neighbors implementation with $k=5$ is $R^2 = 0.134$, which should more or less match what we get with the sklearn package.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Now-using-sklearn-to-implement-kNN:">Now using sklearn to implement kNN:<a class="anchor-link" href="#Now-using-sklearn-to-implement-kNN:">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We will now use the <strong>sklearn</strong> package to implement kNN. Then, we can fit the model and use various metrics to assess our accuracy.</p>
 <p><strong>What is sklearn?</strong></p>
@@ -2463,7 +2343,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>General sklearn model fitting code-structure :</strong></p>
 <pre><code>#Split Data into Train and Test Set
@@ -2505,7 +2386,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Set kNN parameter:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Set kNN parameter:</span>
 <span class="n">k</span> <span class="o">=</span> <span class="mi">100</span>
 
 <span class="c1"># Now we can fit the model, predict our variable of interest, and then evaluate our fit:</span>
@@ -2536,7 +2417,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># SubPlots</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># SubPlots</span>
 
 <span class="n">fig</span><span class="p">,</span> <span class="n">axes</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">nrows</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">ncols</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="c1">#axes[0].set_xlim([0.5, 0.7])</span>
@@ -2561,7 +2442,8 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"> **Exercise**</div>
 </div>
@@ -2572,21 +2454,23 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Can you predict what will happen for k=1 and for k = number-of-observations-in-training-set? Try it!</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Can you predict what will happen for k=1 and for k = number-of-observations-in-training-set? Try it!</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Linear-Regression">Linear Regression<a class="anchor-link" href="#Linear-Regression">¶</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We just went over the kNN prediction method. Now, we will fit the same data, but Linear Regression. We will use a the same training/testing dataset as before and create our linear regression objects.</p>
 </div>
@@ -2597,7 +2481,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Split Data into X,Y</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Split Data into X,Y</span>
 <span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span> <span class="o">=</span> <span class="n">train_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'count'</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">train_data</span><span class="p">[</span><span class="s1">'count'</span><span class="p">]</span>
 <span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">test_data</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'count'</span><span class="p">],</span><span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span> <span class="n">test_data</span><span class="p">[</span><span class="s1">'count'</span><span class="p">]</span>
 
@@ -2610,7 +2494,8 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>StatsModels use a Y followed by X structure while feeding data in contrast to sklearn that uses X followed by Y.</p>
 </div>
@@ -2621,7 +2506,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#We must first create the linear regression object from stats model</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#We must first create the linear regression object from stats model</span>
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">x_train_ca</span><span class="p">)</span>
 <span class="n">results</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -2632,7 +2517,8 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, we will compute metrics that can be used to assess fit.</p>
 <p><strong>Note: sklearn.metrics is class of functions that consists of all the metrics we care about to evaluate our models. While it is not hard to implement them yourself, it is helpful to go through <a href="http://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics">http://scikit-learn.org/stable/modules/classes.html#module-sklearn.metrics</a>.</strong></p>
@@ -2644,7 +2530,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#To compute the mean squared error (notice that we are now using the TEST set):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#To compute the mean squared error (notice that we are now using the TEST set):</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"R^2 Score for Linear Regression (Training):"</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train_ca</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"R^2 Score for Linear Regression (Testing) :"</span><span class="p">,</span> <span class="n">metrics</span><span class="o">.</span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_test_ca</span><span class="p">)))</span>
 </pre></div>
@@ -2657,7 +2543,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Find the squared error:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Find the squared error:</span>
 <span class="n">y_pred_train</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x_train_ca</span><span class="p">)</span>
 <span class="n">squared_error_train</span> <span class="o">=</span> <span class="p">(</span><span class="n">y_pred_train</span> <span class="o">-</span> <span class="n">y_train</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span>
  <span class="c1">#Finding the mean squared error:</span>
@@ -2686,7 +2572,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">results</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2697,7 +2583,7 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="s1">'b+'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="s1">'b+'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">,</span> <span class="s1">'r+'</span><span class="p">)</span>
 
 <span class="n">x_forpredict</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
@@ -2709,7 +2595,8 @@ print("Score for Model (Testing) :", r2_test)</code></pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Confidence-Intervals">Confidence Intervals<a class="anchor-link" href="#Confidence-Intervals">¶</a></h3><p>In Data Science, a confidence interval (CI) is a type of interval estimate, computed from the statistics of the observed data, that might contain the true value of an unknown population parameter. Simply speaking, a Confidence Interval is a range of values we are fairly sure our true value lies in.</p>
 <p>It is important to remind ourselves here that Confidence Intervals belong to a parameter and not a statistic. Thus, they represent the window in which the true value exists for the entire population when all we have is a sample.</p>
@@ -2725,7 +2612,7 @@ So there is a 1-in-20 chance (5%) that our Confidence Interval does NOT include 
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Confidence Interval using Stats Model Summary</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Confidence Interval using Stats Model Summary</span>
 <span class="n">thresh</span> <span class="o">=</span> <span class="mf">0.05</span>
 <span class="n">intervals</span> <span class="o">=</span> <span class="n">results</span><span class="o">.</span><span class="n">conf_int</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">thresh</span><span class="p">)</span>
 <span class="n">intervals</span> <span class="o">=</span> <span class="n">intervals</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="nb">str</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="nb">str</span><span class="p">(</span><span class="n">thresh</span><span class="o">/</span><span class="mi">2</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">+</span><span class="s2">"%"</span><span class="p">,</span><span class="mi">1</span><span class="p">:</span><span class="nb">str</span><span class="p">((</span><span class="mi">1</span><span class="o">-</span><span class="n">thresh</span><span class="o">/</span><span class="mi">2</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span><span class="p">)</span><span class="o">+</span><span class="s2">"%"</span><span class="p">})</span>
@@ -2736,7 +2623,8 @@ So there is a 1-in-20 chance (5%) that our Confidence Interval does NOT include 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In the above block of code, <code>results.conf_int(alpha=thresh)</code> returns a dataframe with columns 0 and 1. We explained Confidence Intervals above where because we assume normal symetric distribution of data, the 95% Confidence Interval means there's 2.5% chance of the true value lying below the values in Column 0 and 2.5% chance of the true value lying above Column 1.</p>
 <p>Therefore, for a better understanding, given a constant threshold, you can rename the columns to suit the Confidence Interval values. The syntax is <code>dataframe.rename(index=str, columns={old_col_name1:new_col_name1, old_col_name2:new_col_name2})</code></p>
@@ -2748,7 +2636,7 @@ So there is a 1-in-20 chance (5%) that our Confidence Interval does NOT include 
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_x</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_x</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>

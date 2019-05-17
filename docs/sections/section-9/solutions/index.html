@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,7 +1061,8 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
 <h2 id="Standard-Section-9:-Neural-Networks-Continued">Standard Section 9: Neural Networks Continued<a class="anchor-link" href="#Standard-Section-9:-Neural-Networks-Continued">¶</a></h2><p><strong>Harvard University</strong><br>
@@ -1255,7 +1079,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1335,14 +1159,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this section, we will revisit some of the problems we did in previous sections and try to do them again using Keras. The goal is to familiarize you with building Neural Networks using Keras. The exercises below will help you be able to answer parts of Homework 9.</p>
 <p>Specifically, we will:</p>
@@ -1359,7 +1185,7 @@ header {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="n">random</span><span class="o">.</span><span class="n">seed</span><span class="p">(</span><span class="mi">112358</span><span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1402,21 +1228,24 @@ Using TensorFlow backend.
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Neural Networks are flexible structures that can be used to solve probelms of different complexities.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="1.-Linear-Regression-as-a-Neural-Net">1. Linear Regression as a Neural Net<a class="anchor-link" href="#1.-Linear-Regression-as-a-Neural-Net">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's first load the Titanic dataset from Section 3 and do the same pre-processing, as described before.</p>
 </div>
@@ -1427,7 +1256,7 @@ Using TensorFlow backend.
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Loading dataset and keeping a copy of the original</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Loading dataset and keeping a copy of the original</span>
 <span class="n">titanic</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"titanic"</span><span class="p">)</span>
 
 <span class="c1"># Selecting predictors which are not redundant and don't have missing values</span>
@@ -1449,7 +1278,7 @@ Using TensorFlow backend.
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use 4 predictors</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Use 4 predictors</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[[</span><span class="s1">'age'</span><span class="p">,</span> <span class="s1">'sex_male'</span><span class="p">,</span> <span class="s1">'class_Second'</span><span class="p">,</span> <span class="s1">'class_Third'</span><span class="p">]]</span>
 
 <span class="c1"># Normalising variables (note: this is learning normalization params using test data, but we're just exploring here.)</span>
@@ -1467,7 +1296,7 @@ Using TensorFlow backend.
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">y_reg</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">y_reg</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1482,7 +1311,7 @@ Using TensorFlow backend.
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAecAAAFJCAYAAAChG+XKAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xl0XNWdJ/Dvq3q1bypJJdmyLFmSLa8YLQRCBxMQcQOd
 STIgguRwnHTj6UkzPpPQcdIYQtwEfCzTndPd6QwNJGlPehQWOYSk8fSETowhArPJwjLIu2VbtrWW
@@ -1744,7 +1573,7 @@ huFMRESkMgxnIiIilWE4ExERqQzDmYiISGUYzkRERCrz/wF+Krivj7kWyQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train_reg</span><span class="p">,</span> <span class="n">y_val_reg</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">X_train</span><span class="p">,</span> <span class="n">X_val</span><span class="p">,</span> <span class="n">y_train_reg</span><span class="p">,</span> <span class="n">y_val_reg</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span>
     <span class="n">X</span><span class="p">,</span> <span class="n">y_reg</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mi">1</span><span class="o">/</span><span class="mi">3</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1756,7 +1585,7 @@ huFMRESkMgxnIiIilWE4ExERqQzDmYiISGUYzkRERCrz/wF+Krivj7kWyQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train_reg</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train_reg</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="n">X_train</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1843,7 +1672,8 @@ huFMRESkMgxnIiIilWE4ExERqQzDmYiISGUYzkRERCrz/wF+Krivj7kWyQAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, we fit a multiple linear regression model as before, on our numerical predictors.</p>
 </div>
@@ -1854,7 +1684,7 @@ huFMRESkMgxnIiIilWE4ExERqQzDmYiISGUYzkRERCrz/wF+Krivj7kWyQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">linreg_sm</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y_train_reg</span><span class="p">,</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">linreg_sm</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span><span class="n">y_train_reg</span><span class="p">,</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_train</span><span class="p">))</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">linreg_sm</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1935,28 +1765,32 @@ huFMRESkMgxnIiIilWE4ExERqQzDmYiISGUYzkRERCrz/wF+Krivj7kWyQAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Note: we get an R^2 of 0.58 and, intercept of about 24, and coefficients of about [-2.7, -2.1, -15.5, -21.9].</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now, let's try to build a neural network for this linear regression.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's first answer some questions to make this easier for us.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 1:</strong> What is the input-output size we should use to build our model?</p>
 </div>
@@ -1967,7 +1801,7 @@ huFMRESkMgxnIiIilWE4ExERqQzDmYiISGUYzkRERCrz/wF+Krivj7kWyQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'Each input sample has dimensionality: '</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'Each input sample has dimensionality: '</span><span class="p">,</span> <span class="n">X_train</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'Each output sample has dimensionality: '</span><span class="p">,</span> <span class="n">y_train_reg</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -1987,7 +1821,8 @@ Each output sample has dimensionality:  1
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Do you recall the feed-forward network we made in Section 6?</p>
 <p><strong>Question 2:</strong> What transformation will help us get linear regression?</p>
@@ -1996,7 +1831,8 @@ Each output sample has dimensionality:  1
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Building-a-NN-for-this-linear-transformation">Building a NN for this linear transformation<a class="anchor-link" href="#Building-a-NN-for-this-linear-transformation">¶</a></h3>
 </div>
@@ -2007,7 +1843,7 @@ Each output sample has dimensionality:  1
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">trials</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># We'll keep track of our results here.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">trials</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># We'll keep track of our results here.</span>
 </pre></div>
 </div>
 </div>
@@ -2018,7 +1854,7 @@ Each output sample has dimensionality:  1
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">40</span>
 
 <span class="c1"># reset the model </span>
@@ -2064,14 +1900,16 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question</strong>: Why does the output shape and the number of params make sense?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer</strong>: The output is a single scalar (1) for each input sample (<code>None</code>). To get 1 output from 4 inputs requires $4*1=4$ weights plus one bias term for each output, so 5 params.</p>
 </div>
@@ -2082,7 +1920,7 @@ _________________________________________________________________
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting the train and validation errors</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting the train and validation errors</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trials</span><span class="p">[</span><span class="s1">'linreg'</span><span class="p">]</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">'mean_squared_error'</span><span class="p">],</span> <span class="s1">'-o'</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">'train mse'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">trials</span><span class="p">[</span><span class="s1">'linreg'</span><span class="p">]</span><span class="o">.</span><span class="n">history</span><span class="p">[</span><span class="s1">'val_mean_squared_error'</span><span class="p">],</span> <span class="s1">'-*'</span><span class="p">,</span> <span class="n">label</span> <span class="o">=</span> <span class="s1">'val mse'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'epochs'</span><span class="p">)</span>
@@ -2107,7 +1945,7 @@ _________________________________________________________________
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfIAAAFYCAYAAACoFn5YAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xt8VPWB///XmZnMJDOTG7kCIVwTuWgURSJesFiVVlqr
 rk1r+qXdaqtS7W+hF7X2K/Tbm3W3S+1lW91dt3axSmlprbd6KVpBoCkiigIRCNdwSUJIIDNJ5np+
@@ -2464,7 +2302,8 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question</strong>: When I first tried this, I got validation MSE much lower than train MSE. I checked and they were being computed completely correctly. Why might that have happened? (Hint: both MSEs were around 2000...)</p>
 </div>
@@ -2475,7 +2314,7 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># This happens to be slightly different from the *training* MSE reported in the log. The difference is due to a subtlety in how error is logged *during* an epoch.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># This happens to be slightly different from the *training* MSE reported in the log. The difference is due to a subtlety in how error is logged *during* an epoch.</span>
 <span class="n">train_mse</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">linreg_nn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_train_reg</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 <span class="n">train_mse</span>
 </pre></div>
@@ -2498,7 +2337,7 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">linreg_nn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_val_reg</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">((</span><span class="n">linreg_nn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_val</span><span class="p">)</span> <span class="o">-</span> <span class="n">y_val_reg</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2519,7 +2358,7 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># train R^2</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># train R^2</span>
 <span class="mi">1</span> <span class="o">-</span> <span class="n">train_mse</span> <span class="o">/</span> <span class="n">np</span><span class="o">.</span><span class="n">var</span><span class="p">(</span><span class="n">y_train_reg</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2537,28 +2376,32 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Does that R^2 number look familiar?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Ok, what just happened here?</strong></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We just created a neural network where the input layer takes a 5-dimensional input (4 parameters and 1 constant) and output layer produces a 1-dimensional output (regression value). The mapping is activated by a <code>linear</code> activation function. Optimisation of coeffients are done using <code>sgd</code> or stochastic gradient descent where the <code>mse</code> of fit is optimised.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 3:</strong> Why did we choose the activation function?</p>
 <p><strong>Ans:</strong> We want to produce a linear transformation, which motivates us to pick the <code>linear</code> activation.</p>
@@ -2566,7 +2409,8 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 4:</strong> Why did we normalise our data?</p>
 <p><strong>Ans:</strong> For a single linear layer, it didn't matter much. But when we add a nonlinearity, the scale of whatever gets passed through the nonlinearity will matter a lot.</p>
@@ -2574,7 +2418,8 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 5:</strong> How do we pick the number of epochs and batch size?</p>
 <p><strong>Ans:</strong> The number of epochs usually depends on the complexity of function being fitted and the structure of model. The batch size is often governed by the number of parameters one is trying to fit, since it determines how much memory is required for the backward pass.</p>
@@ -2582,7 +2427,8 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 6:</strong> Why dooes the training MSE keep decreasing with the number of epochs, while the validation MSE flattens out?</p>
 <p><strong>Ans:</strong> The NN is likely overfitting.</p>
@@ -2590,7 +2436,8 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What function is the linear regression actually computing?</p>
 </div>
@@ -2601,7 +2448,7 @@ XvGu5Mv9ejsAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">weights</span><span class="p">,</span> <span class="n">bias</span> <span class="o">=</span> <span class="n">linreg_nn</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">weights</span><span class="p">,</span> <span class="n">bias</span> <span class="o">=</span> <span class="n">linreg_nn</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"NN model weights:"</span><span class="p">,</span> <span class="n">weights</span><span class="o">.</span><span class="n">flatten</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"NN model bias:"</span><span class="p">,</span> <span class="n">bias</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Statsmodels weights:"</span><span class="p">,</span> <span class="n">linreg_sm</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
@@ -2624,7 +2471,8 @@ Statsmodels weights: [ 24.16932019  -2.6490289   -2.14478285 -15.46766422 -21.96
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Question: In what ways are these similar or different? Why?</p>
 </div>
@@ -2635,7 +2483,7 @@ Statsmodels weights: [ 24.16932019  -2.6490289   -2.14478285 -15.46766422 -21.96
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">linreg_sm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">)[:</span><span class="mi">4</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">linreg_sm</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">)[:</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -2656,7 +2504,7 @@ Statsmodels weights: [ 24.16932019  -2.6490289   -2.14478285 -15.46766422 -21.96
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Predict the first 4 outputs</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Predict the first 4 outputs</span>
 <span class="n">linreg_nn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -2681,7 +2529,7 @@ Statsmodels weights: [ 24.16932019  -2.6490289   -2.14478285 -15.46766422 -21.96
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let's do this ourselves in NumPy</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Let's do this ourselves in NumPy</span>
 
 <span class="c1"># output layer</span>
 <span class="n">y_pred</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">weights</span><span class="p">)</span> <span class="o">+</span> <span class="n">bias</span>
@@ -2705,14 +2553,16 @@ Statsmodels weights: [ 24.16932019  -2.6490289   -2.14478285 -15.46766422 -21.96
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="From-linear-regression-to-MLP">From linear regression to MLP<a class="anchor-link" href="#From-linear-regression-to-MLP">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now recall our MLP from section 6: we also had a linear output layer, but we added some hidden nodes. Let's do that in Keras.</p>
 </div>
@@ -2723,7 +2573,7 @@ Statsmodels weights: [ 24.16932019  -2.6490289   -2.14478285 -15.46766422 -21.96
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">40</span>
 <span class="n">n_hidden</span> <span class="o">=</span> <span class="mi">5</span>
 
@@ -2774,7 +2624,8 @@ _________________________________________________________________
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question</strong>: Why do those shapes and #params make sense?</p>
 </div>
@@ -2785,7 +2636,7 @@ _________________________________________________________________
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting the train and validation errors</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting the train and validation errors</span>
 <span class="n">metrics_to_plot</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'mean_squared_error'</span><span class="p">,</span> <span class="s1">'val_mean_squared_error'</span><span class="p">]</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
@@ -2820,7 +2671,7 @@ MLP (5 hidden) Regression     : val_mean_squared_error         = 211.27
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7EAAAGACAYAAAB7muV4AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl4U2Xax/HvydY2abpQyyKbIBRB2ZRFxEFABXRwBhER
 qogjoiI4ggsiyiK7DjI6osI7o6MCIzLiNoujCCqCUBEV0ZFhEZS1bN3TpkvO+0fb0NJSirZNQn6f
@@ -3583,7 +3434,8 @@ AElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>How did our training and validation error compare with the linear model?</p>
 </div>
@@ -3594,7 +3446,7 @@ AElFTkSuQmCC
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">weights_hidden</span><span class="p">,</span> <span class="n">bias_hidden</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">weights_hidden</span><span class="p">,</span> <span class="n">bias_hidden</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
 <span class="n">weights_output</span><span class="p">,</span> <span class="n">bias_output</span> <span class="o">=</span> <span class="n">model</span><span class="o">.</span><span class="n">layers</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">weights_hidden</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">bias_hidden</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
@@ -3621,7 +3473,7 @@ AElFTkSuQmCC
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let's do this ourselves in NumPy</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Let's do this ourselves in NumPy</span>
 
 <span class="c1"># defining activation function</span>
 <span class="n">sigmoid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)))</span>
@@ -3657,7 +3509,7 @@ AElFTkSuQmCC
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Predict the first 4 outputs</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Predict the first 4 outputs</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">model</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">4</span><span class="p">]))</span>
 </pre></div>
 </div>
@@ -3683,7 +3535,7 @@ AElFTkSuQmCC
 <div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">xx</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -3699,7 +3551,7 @@ AElFTkSuQmCC
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeEAAAFJCAYAAACsBZWNAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xt0VOW9N/DvzOyZySST+w0kJISQiIAQAlpRIgrmULzU
 C2oILbSVU1qXfY+2FOV0LTkUETmnteu0Vq129eo5LSjq+4qtaBEUjIIkEDCBBBJCIFySSchtZjLX
@@ -3914,14 +3766,16 @@ RAphCBMRESnk/wMElHivgtkcDwAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Classification">Classification<a class="anchor-link" href="#Classification">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Doing classification instead of regression is as easy as changing the loss!</p>
 </div>
@@ -3932,7 +3786,7 @@ RAphCBMRESnk/wMElHivgtkcDwAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Change the output to a classification task</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Change the output to a classification task</span>
 <span class="n">y_clf</span> <span class="o">=</span> <span class="n">titanic</span><span class="o">.</span><span class="n">alive</span> <span class="o">==</span> <span class="s1">'yes'</span>
 <span class="n">y_clf</span> <span class="o">=</span> <span class="n">y_clf</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
 
@@ -3949,7 +3803,7 @@ RAphCBMRESnk/wMElHivgtkcDwAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">y_train_clf</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">y_train_clf</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -3980,7 +3834,7 @@ Name: alive, dtype: int64</pre>
 <div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Logistic Regression = sigmoid activation + binary-cross-entropy loss.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Logistic Regression = sigmoid activation + binary-cross-entropy loss.</span>
 <span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">500</span>
 
@@ -4030,7 +3884,7 @@ _________________________________________________________________
 <div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting the train and validation errors</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting the train and validation errors</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">plot_data</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">(</span><span class="s1">'Loss'</span><span class="p">,</span> <span class="s1">'loss'</span><span class="p">),</span>
@@ -4061,7 +3915,7 @@ Accuracy: train=0.826
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA64AAAGACAYAAACtPz8dAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl8VOXd///XLJnJMglZCBAIayAguEDU0rQiilKriAWp
 LCrW3vr92rvqo/fX5f7VLtS6UqW11bu1tLeitUpjbVUoWhWQYi2NyiKyQ9gMYDYCZM/MnPP7Y8iQ
@@ -4553,7 +4407,7 @@ rgAAAACAqEZwBQAAAABENYIrAAAAACCqEVwBAAAAAFGN4AoAAAAAiGoEVwAAAABAVPv/u6Q9X8cO
 <div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sklearn_clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span><span class="s1">'multinomial'</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">'lbfgs'</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train_clf</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sklearn_clf</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mf">1e6</span><span class="p">,</span> <span class="n">multi_class</span><span class="o">=</span><span class="s1">'multinomial'</span><span class="p">,</span> <span class="n">solver</span><span class="o">=</span><span class="s1">'lbfgs'</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train_clf</span><span class="p">)</span>
 <span class="n">sklearn_clf</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">y_train_clf</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -4575,7 +4429,7 @@ rgAAAACAqEZwBQAAAABENYIrAAAAACCqEVwBAAAAAFGN4AoAAAAAiGoEVwAAAABAVPv/u6Q9X8cO
 <div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">weights</span><span class="p">,</span> <span class="n">bias</span> <span class="o">=</span> <span class="n">logreg_nn</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">weights</span><span class="p">,</span> <span class="n">bias</span> <span class="o">=</span> <span class="n">logreg_nn</span><span class="o">.</span><span class="n">get_weights</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -4586,7 +4440,7 @@ rgAAAACAqEZwBQAAAABENYIrAAAAACCqEVwBAAAAAFGN4AoAAAAAiGoEVwAAAABAVPv/u6Q9X8cO
 <div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Let's do this ourselves in NumPy</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Let's do this ourselves in NumPy</span>
 
 <span class="c1"># defining activation function</span>
 <span class="n">sigmoid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)))</span>
@@ -4618,7 +4472,7 @@ rgAAAACAqEZwBQAAAABENYIrAAAAACCqEVwBAAAAAFGN4AoAAAAAiGoEVwAAAABAVPv/u6Q9X8cO
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">logreg_nn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">logreg_nn</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_train</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -4642,7 +4496,7 @@ rgAAAACAqEZwBQAAAABENYIrAAAAACCqEVwBAAAAAFGN4AoAAAAAiGoEVwAAAABAVPv/u6Q9X8cO
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sklearn_clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sklearn_clf</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_train</span><span class="o">.</span><span class="n">values</span><span class="p">[:</span><span class="mi">4</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -4666,7 +4520,7 @@ rgAAAACAqEZwBQAAAABENYIrAAAAACCqEVwBAAAAAFGN4AoAAAAAiGoEVwAAAABAVPv/u6Q9X8cO
 <div class="prompt input_prompt">In [34]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sklearn_clf</span><span class="o">.</span><span class="n">coef_</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sklearn_clf</span><span class="o">.</span><span class="n">coef_</span>
 </pre></div>
 </div>
 </div>
@@ -4687,7 +4541,7 @@ rgAAAACAqEZwBQAAAABENYIrAAAAACCqEVwBAAAAAFGN4AoAAAAAiGoEVwAAAABAVPv/u6Q9X8cO
 <div class="prompt input_prompt">In [35]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">weights</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">weights</span><span class="o">.</span><span class="n">flatten</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -4704,21 +4558,24 @@ rgAAAACAqEZwBQAAAABENYIrAAAAACCqEVwBAAAAAFGN4AoAAAAAiGoEVwAAAABAVPv/u6Q9X8cO
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Regularization">Regularization<a class="anchor-link" href="#Regularization">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 7:</strong> What happens if we increase the number of hidden nodes in the regression problem above?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Building a model with 100 hidden nodes:</p>
 </div>
@@ -4729,7 +4586,7 @@ rgAAAACAqEZwBQAAAABENYIrAAAAACCqEVwBAAAAAFGN4AoAAAAAiGoEVwAAAABAVPv/u6Q9X8cO
 <div class="prompt input_prompt">In [36]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">40</span>
 <span class="n">n_hidden</span> <span class="o">=</span> <span class="mi">100</span>
 
@@ -4781,7 +4638,7 @@ _________________________________________________________________
 <div class="prompt input_prompt">In [37]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting the train and validation errors</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting the train and validation errors</span>
 <span class="n">metrics_to_plot</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'mean_squared_error'</span><span class="p">,</span> <span class="s1">'val_mean_squared_error'</span><span class="p">]</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
@@ -4819,7 +4676,7 @@ MLP (100 hidden) Regression   : val_mean_squared_error         = 214.37
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7EAAAGACAYAAAB7muV4AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XdgVFXax/HvTGYmyUwmhRiQIr1IB6WjKEVAF95VpAYR
 BQEjsIJCKNKk6wqiooKrLgqugICIu7hIWUAQEFARXRHpRXpJm2RS5r5/JBmIgRBWwkzI7/OP3Hvn
@@ -5783,14 +5640,16 @@ IiIiIiIitqEmVkRERERERGzj/wGo2bQ8yJj+iwAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 8:</strong> What happens if we increase the number of hidden layers?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Building a model with 10 hidden layers having 5 units each (You may need to run this on a GPU - Eg. Google Colab)</p>
 </div>
@@ -5801,7 +5660,7 @@ IiIiIiIitqEmVkRERERERGzj/wGo2bQ8yJj+iwAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [38]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">batch_size</span> <span class="o">=</span> <span class="mi">32</span>
 <span class="n">epochs</span> <span class="o">=</span> <span class="mi">40</span>
 <span class="n">n_hidden</span> <span class="o">=</span> <span class="mi">10</span>
 
@@ -5877,7 +5736,7 @@ _________________________________________________________________
 <div class="prompt input_prompt">In [39]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting the train and validation errors</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting the train and validation errors</span>
 <span class="n">metrics_to_plot</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'mean_squared_error'</span><span class="p">,</span> <span class="s1">'val_mean_squared_error'</span><span class="p">]</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 
@@ -5915,7 +5774,7 @@ MLP (5 hidden, 10 layers) Regression: val_mean_squared_error         = 411.91
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA7EAAAGACAYAAAB7muV4AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3WlAVGXbwPH/mQ2YYVjDfcMFt8QlFZceyyW39M3MFdfc
 SUwp5VHLfc3UtCy1zCz10UytbFXT1DQ1t0wtM3E3xQ0RZmBg4LwfgFECQRNkcK7fF5mZc+5zzYBc
@@ -6862,14 +6721,16 @@ FLdgPgAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>From both the above experiments, we can see that NNs can overfit very quickly.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 9:</strong> Based on the above, what are some obvious methods of regularising NNs?</p>
 <p><strong>Ans:</strong> Choosing the right number of hidden layers and hidden nodes! Unfortunately, picking the right number of parameters is a hard problem itself.</p>
@@ -6877,7 +6738,8 @@ FLdgPgAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 10:</strong> Does this give you a hint of another method to prevent overfitting?</p>
 <p><strong>Ans:</strong> Stopping the process early could likely be helpful. This is known as 'early stopping' and is typically used in combination with other regularisation techniques. As intution suggests, it means 'Stopping the process when the model starts overfitting'.</p>
@@ -6885,7 +6747,8 @@ FLdgPgAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 11:</strong> Think of how we prevented overfitting and helped regularise parameters in regression. Can you remember any? (Hint: Norms)</p>
 <p><strong>Ans:</strong> Using L2 regularisation can be helpful in regularising parameters, like we have observed in regression.</p>
@@ -6893,7 +6756,8 @@ FLdgPgAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 </div>

@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,7 +1061,8 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
 <h2 id="Standard-Section-3:-Predictor-types-and-Feature-Selection">Standard Section 3: Predictor types and Feature Selection<a class="anchor-link" href="#Standard-Section-3:-Predictor-types-and-Feature-Selection">¶</a></h2><p><strong>Harvard University</strong><br>
@@ -1254,7 +1078,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"http://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1330,7 +1154,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For this section, our goal is to discuss the complexities around different types of data features and thinking carefully about how different datatypes and collinearity issues can affect our models, whether our true goal is inference or prediction.</p>
 <p>Specifically, we will:</p>
@@ -1340,7 +1165,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For this section we will be using the following packages:</p>
 </div>
@@ -1351,7 +1177,7 @@ header {
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Check Python Version</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Check Python Version</span>
 <span class="kn">import</span> <span class="nn">sys</span>
 <span class="k">assert</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version_info</span><span class="o">.</span><span class="n">major</span><span class="o">==</span><span class="mi">3</span><span class="p">),</span> <span class="nb">print</span><span class="p">(</span><span class="n">sys</span><span class="o">.</span><span class="n">version</span><span class="p">)</span>
 
@@ -1386,14 +1212,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="1.-Extending-Linear-Regression-by-Transforming-Predictors">1. Extending Linear Regression by Transforming Predictors<a class="anchor-link" href="#1.-Extending-Linear-Regression-by-Transforming-Predictors">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Linear regression works great when our features are all continuous and all linearly affect the output. But often real data have more interesting characteristics. Here, we'll look at how we can extend linear regression to handle:</p>
 <ul>
@@ -1409,7 +1237,7 @@ header {
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Load the dataset from seaborn </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Load the dataset from seaborn </span>
 <span class="n">titanic</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">load_dataset</span><span class="p">(</span><span class="s2">"titanic"</span><span class="p">)</span>
 <span class="n">titanic</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -1422,7 +1250,7 @@ header {
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Keep only a subset of the predictors; some are redundant, others (like deck) have too many missing values.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Keep only a subset of the predictors; some are redundant, others (like deck) have too many missing values.</span>
 <span class="n">titanic</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[[</span><span class="s1">'age'</span><span class="p">,</span> <span class="s1">'sex'</span><span class="p">,</span> <span class="s1">'class'</span><span class="p">,</span> <span class="s1">'embark_town'</span><span class="p">,</span> <span class="s1">'alone'</span><span class="p">,</span> <span class="s1">'fare'</span><span class="p">]]</span>
 </pre></div>
 </div>
@@ -1434,7 +1262,7 @@ header {
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1445,7 +1273,7 @@ header {
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Drop missing data (is this a good idea?)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Drop missing data (is this a good idea?)</span>
 <span class="n">titanic</span> <span class="o">=</span> <span class="n">titanic</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
 <span class="n">titanic</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
@@ -1454,21 +1282,24 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's explore this data. Most people look at differences in survival, which is important but requires knowing how to deal with categorical responses, which we'll learn how to do next week. For this week, let's see if there are systematic differences in what fare people paid.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>First let's look at the distribution of fares.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise">**Exercise 1**: Show the distribution of fares in at least two ways. You may use functions from matplotlib, Pandas, or Seaborn.</div>
 </div>
@@ -1479,7 +1310,7 @@ header {
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1490,14 +1321,15 @@ header {
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What do we learn from each visualization? Which is most helpful?</p>
 <p>What can we say about the fares that passengers paid?</p>
@@ -1505,21 +1337,24 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Your answer here</strong></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Exploring-predictors">Exploring predictors<a class="anchor-link" href="#Exploring-predictors">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Cabin class is probably going to matter for fare, but we might wonder if age and gender also matter. Let's explore them.</p>
 </div>
@@ -1530,7 +1365,7 @@ header {
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">titanic</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="n">rug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rug_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">'alpha'</span><span class="p">:</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'color'</span><span class="p">:</span> <span class="s1">'k'</span><span class="p">})</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">(</span><span class="n">titanic</span><span class="o">.</span><span class="n">age</span><span class="p">,</span> <span class="n">rug</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">rug_kws</span><span class="o">=</span><span class="p">{</span><span class="s1">'alpha'</span><span class="p">:</span> <span class="o">.</span><span class="mi">1</span><span class="p">,</span> <span class="s1">'color'</span><span class="p">:</span> <span class="s1">'k'</span><span class="p">})</span>
 </pre></div>
 </div>
 </div>
@@ -1541,21 +1376,23 @@ header {
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"age"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"fare"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"sex"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">titanic</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">lmplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"age"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"fare"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"sex"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">titanic</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Hmm... the slopes seem to be different for males and females. Remember this for later.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>How about sex and class?</p>
 </div>
@@ -1566,7 +1403,7 @@ header {
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">sex</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">sex</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1577,7 +1414,7 @@ header {
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">titanic</span><span class="p">[</span><span class="s1">'class'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">titanic</span><span class="p">[</span><span class="s1">'class'</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
 <span class="c1"># Why couldn't we write `titanic.class.value_counts()` here?</span>
 </pre></div>
 </div>
@@ -1589,7 +1426,7 @@ header {
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"class"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"sex"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"fare"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">titanic</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">barplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"class"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"sex"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"fare"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">titanic</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1600,14 +1437,15 @@ header {
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"class"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"sex"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"fare"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">titanic</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">violinplot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">"class"</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"sex"</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">"fare"</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">titanic</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Aside:-can-we-replicate-that-violin-plot-without-Seaborn?">Aside: can we replicate that violin plot without Seaborn?<a class="anchor-link" href="#Aside:-can-we-replicate-that-violin-plot-without-Seaborn?">¶</a></h2>
 </div>
@@ -1618,7 +1456,7 @@ header {
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># plt.violinplot takes an array of data arrays, and plots each one as a separate violin.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># plt.violinplot takes an array of data arrays, and plots each one as a separate violin.</span>
 <span class="c1"># The data arrays don't have to be the same length.</span>
 <span class="c1"># It returns Matplotlib objects corresponding to each of the pieces of the visualization.</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">violinplot</span><span class="p">([</span>
@@ -1636,7 +1474,7 @@ header {
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We can use Pandas queries to make datasets for each class.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># We can use Pandas queries to make datasets for each class.</span>
 <span class="c1"># We need to use `.values` to get plain Numpy arrays.</span>
 <span class="n">classes</span> <span class="o">=</span> <span class="s1">'First Second Third'</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">violinplot</span><span class="p">([</span>
@@ -1656,7 +1494,7 @@ header {
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># It gets a little more tricky when we want to plot the two sexes side-by-side.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># It gets a little more tricky when we want to plot the two sexes side-by-side.</span>
 <span class="c1"># Fortunately we can tell violinplot to place the violins at different positions.</span>
 <span class="n">position_array</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span> <span class="c1"># just to show the effect of the position array.</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">violinplot</span><span class="p">([</span>
@@ -1676,7 +1514,7 @@ header {
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># We can use the position array to shift the male and female violins.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># We can use the position array to shift the male and female violins.</span>
 
 <span class="n">sexes</span> <span class="o">=</span> <span class="s1">'male female'</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
 <span class="n">positions_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span> <span class="c1"># this will be [0, 1, 2]</span>
@@ -1699,7 +1537,7 @@ header {
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># But what about a legend? Unfortunately plt.violinplot doesn't support legends, so we</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># But what about a legend? Unfortunately plt.violinplot doesn't support legends, so we</span>
 <span class="c1"># have to do it by hand.</span>
 <span class="n">positions_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
 <span class="n">fake_handles</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1724,7 +1562,7 @@ header {
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Dang, the colors are wrong. We'll have to use some hacky code to pull the color out of the violin...</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Dang, the colors are wrong. We'll have to use some hacky code to pull the color out of the violin...</span>
 <span class="n">positions_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
 <span class="n">fake_handles</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sex</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sexes</span><span class="p">):</span>
@@ -1749,7 +1587,7 @@ header {
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Or explicitly control the colors.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Or explicitly control the colors.</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="n">sns</span><span class="o">.</span><span class="n">color_palette</span><span class="p">(</span><span class="s2">"Set1"</span><span class="p">,</span> <span class="n">n_colors</span><span class="o">=</span><span class="nb">len</span><span class="p">(</span><span class="n">sexes</span><span class="p">),</span> <span class="n">desat</span><span class="o">=.</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">palplot</span><span class="p">(</span><span class="n">colors</span><span class="p">)</span>
 </pre></div>
@@ -1762,7 +1600,7 @@ header {
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">positions_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">positions_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">classes</span><span class="p">))</span>
 <span class="n">fake_handles</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">sex</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">sexes</span><span class="p">):</span>
     <span class="n">offset</span> <span class="o">=</span> <span class="o">.</span><span class="mi">15</span> <span class="o">*</span> <span class="p">(</span><span class="o">-</span><span class="mi">1</span> <span class="k">if</span> <span class="n">i</span> <span class="o">==</span> <span class="mi">0</span> <span class="k">else</span> <span class="mi">1</span><span class="p">)</span>
@@ -1791,14 +1629,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="No-more-digression,-back-to-regressions.">No more digression, back to regressions.<a class="anchor-link" href="#No-more-digression,-back-to-regressions.">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>So it looks like fare varies with class, age, and maybe gender, and the way that fare depends on class and age may be different for male vs female.</p>
 <p>Let's first do a simple linear regression on age.</p>
@@ -1810,7 +1650,7 @@ header {
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">model1</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">model1</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span>
     <span class="n">titanic</span><span class="o">.</span><span class="n">fare</span><span class="p">,</span>
     <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">titanic</span><span class="p">[</span><span class="s1">'age'</span><span class="p">])</span>
 <span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
@@ -1821,7 +1661,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>How do we interpret this?</p>
 <ul>
@@ -1832,14 +1673,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Handling-categorical-variables">Handling categorical variables<a class="anchor-link" href="#Handling-categorical-variables">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Statistical packages generally distinguish between three types of variables:</p>
 <ul>
@@ -1852,7 +1695,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>How do we deal with gender, or class? They're categorical variables. We'll need to use dummy variables to encode them.</p>
 </div>
@@ -1863,14 +1707,15 @@ header {
 <div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">titanic_orig</span> <span class="o">=</span> <span class="n">titanic</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">titanic_orig</span> <span class="o">=</span> <span class="n">titanic</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise">**Exercise 2**: Create a column `sex_male` that is 1 if the passenger is male, 0 otherwise.</div>
 </div>
@@ -1881,28 +1726,31 @@ header {
 <div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise">**Exercise 3**: Do we need a `sex_female` column, or any others? Why or why not?</div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>your answer here</strong></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise">**Exercise 4**: Create columns for `class_`</div>
 </div>
@@ -1913,7 +1761,7 @@ header {
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1924,7 +1772,7 @@ header {
 <div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">titanic</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1935,14 +1783,15 @@ header {
 <div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise">**Exercise 5**: Fit a linear regression including the new sex and class variables.</div>
 </div>
@@ -1953,14 +1802,15 @@ header {
 <div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"> **Exercise 6** How do we interpret these results?</div></p>
 <ul>
@@ -1971,14 +1821,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong> Your answer here </strong></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Interactions">Interactions<a class="anchor-link" href="#Interactions">¶</a></h2>
 </div>
@@ -1989,7 +1841,7 @@ header {
 <div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># It seemed like gender interacted with age and class. Can we put that in our model?</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># It seemed like gender interacted with age and class. Can we put that in our model?</span>
 <span class="n">titanic</span><span class="p">[</span><span class="s1">'sex_male_X_age'</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span> <span class="o">*</span> <span class="n">titanic</span><span class="p">[</span><span class="s1">'sex_male'</span><span class="p">]</span>
 <span class="n">model3</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span>
     <span class="n">titanic</span><span class="o">.</span><span class="n">fare</span><span class="p">,</span>
@@ -2002,7 +1854,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong> What happened to the <code>age</code> and <code>male</code> terms? </strong></p>
 </div>
@@ -2013,7 +1866,7 @@ header {
 <div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># It seemed like gender interacted with age and class. Can we put that in our model?</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># It seemed like gender interacted with age and class. Can we put that in our model?</span>
 <span class="n">titanic</span><span class="p">[</span><span class="s1">'sex_male_X_class_Second'</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span> <span class="o">*</span> <span class="n">titanic</span><span class="p">[</span><span class="s1">'class_Second'</span><span class="p">]</span>
 <span class="n">titanic</span><span class="p">[</span><span class="s1">'sex_male_X_class_Third'</span><span class="p">]</span> <span class="o">=</span> <span class="n">titanic</span><span class="p">[</span><span class="s1">'age'</span><span class="p">]</span> <span class="o">*</span> <span class="n">titanic</span><span class="p">[</span><span class="s1">'class_Third'</span><span class="p">]</span>
 <span class="n">model4</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">OLS</span><span class="p">(</span>
@@ -2027,7 +1880,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What has happened to the $R^2$ as we added more features? Does this mean that the model is better? (What if we kept adding more predictors and interaction terms? We'll explore this in the next homework.)</p>
 </div>
@@ -2038,7 +1892,7 @@ header {
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">model1</span><span class="p">,</span> <span class="n">model2</span><span class="p">,</span> <span class="n">model3</span><span class="p">,</span> <span class="n">model4</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">models</span> <span class="o">=</span> <span class="p">[</span><span class="n">model1</span><span class="p">,</span> <span class="n">model2</span><span class="p">,</span> <span class="n">model3</span><span class="p">,</span> <span class="n">model4</span><span class="p">]</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="n">model</span><span class="o">.</span><span class="n">df_model</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">],</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">rsquared</span> <span class="k">for</span> <span class="n">model</span> <span class="ow">in</span> <span class="n">models</span><span class="p">],</span> <span class="s1">'x-'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"Model df"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"$R^2$"</span><span class="p">);</span>
@@ -2048,14 +1902,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="2.-Model-Selection-via-exhaustive-search-selection">2. Model Selection via exhaustive search selection<a class="anchor-link" href="#2.-Model-Selection-via-exhaustive-search-selection">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The dataset for this problem contains 10 simulated predictors and a response variable.</p>
 </div>
@@ -2066,7 +1922,7 @@ header {
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Import the dataset</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Import the dataset</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'data/dataset3.txt'</span><span class="p">)</span>
 <span class="n">data</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -2075,7 +1931,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>By visually inspecting the data set, do we find that some of the predictors are correlated amongst themselves?</strong></p>
 </div>
@@ -2086,14 +1943,15 @@ header {
 <div class="prompt input_prompt">In [34]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Predictors x1, x2, x3 seem to be perfectly correlated while predictors x4, x5, x6, x7 show very high degrees of correlation.</p>
 </div>
@@ -2104,14 +1962,15 @@ header {
 <div class="prompt input_prompt">In [35]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">corr</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us compute the cofficient of correlation between each pair of predictors, and visualize the matrix of correlation coefficients using a heat map.</p>
 </div>
@@ -2122,7 +1981,7 @@ header {
 <div class="prompt input_prompt">In [36]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># generating heat map</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># generating heat map</span>
 <span class="n">sns</span><span class="o">.</span><span class="n">heatmap</span><span class="p">(</span><span class="n">data</span><span class="o">.</span><span class="n">corr</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -2130,28 +1989,32 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Do the predictors fall naturally into groups based on the correlation values?</strong></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can see that higly correlated predictors fall into dark red groups based on correlation values close to 1. Other correlation values also form differently coloured groups.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise">**If you were asked to select a minimal subset of predictors based on the correlation information in order to build a good regression model, how many predictors will you pick, and which ones will you choose? **</div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong> Your answer here </strong>
 We may choose one predictor from the x1,x2,x3 list - let's pick x1. <br>
@@ -2162,11 +2025,13 @@ Thus, we have picked 5 predictors x1, x6, x8, x9, x10 for our regression model.<
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Model-Selection-Criteria:-Bayesian-Information-Criterion-(BIC)">Model Selection Criteria: Bayesian Information Criterion (BIC)<a class="anchor-link" href="#Model-Selection-Criteria:-Bayesian-Information-Criterion-(BIC)">¶</a></h3><p>Generally BIC = -2 x Log-likehood + 2 x log(K)</p>
 <p>For least-squares regression specifically,</p>
-$$BIC = n \log \Big(\frac{RSS}{n}\Big) + \log(n)*K$$<p>where, <br>
+<p>$$BIC = n \log \Big(\frac{RSS}{n}\Big) + \log(n)*K$$</p>
+<p>where, <br>
 RSS = Residual Sum of Squares <br>
 n = the number of obervations <br>
 K = the number of features in our model</p>
@@ -2174,14 +2039,16 @@ K = the number of features in our model</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Selecting-minimal-subset-of-predictors">Selecting minimal subset of predictors<a class="anchor-link" href="#Selecting-minimal-subset-of-predictors">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us apply the exhaustive search variable selection methods discussed in class to choose a minimal subset of predictors that yield high prediction accuracy. We will use the Bayesian Information Criterion (BIC) to choose the subset size.</p>
 </div>
@@ -2192,7 +2059,7 @@ K = the number of features in our model</p>
 <div class="prompt input_prompt">In [37]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,:</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">data</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
@@ -2205,7 +2072,7 @@ K = the number of features in our model</p>
 <div class="prompt input_prompt">In [38]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_best_subset_of_size</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">num_predictors</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">find_best_subset_of_size</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">num_predictors</span><span class="p">):</span>
     <span class="n">predictors</span> <span class="o">=</span> <span class="n">x</span><span class="o">.</span><span class="n">columns</span>
     
     <span class="n">best_r_squared</span> <span class="o">=</span> <span class="o">-</span><span class="n">np</span><span class="o">.</span><span class="n">inf</span>
@@ -2246,7 +2113,7 @@ K = the number of features in our model</p>
 <div class="prompt input_prompt">In [39]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">find_best_subset_of_size</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">find_best_subset_of_size</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="mi">8</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2257,7 +2124,7 @@ K = the number of features in our model</p>
 <div class="prompt input_prompt">In [40]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">exhaustive_search_selection</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">exhaustive_search_selection</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="sd">"""Exhaustively search predictor combinations</span>
 
 <span class="sd">    Parameters:</span>
@@ -2306,7 +2173,7 @@ K = the number of features in our model</p>
 <div class="prompt input_prompt">In [41]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stats</span><span class="p">,</span> <span class="n">models</span> <span class="o">=</span> <span class="n">exhaustive_search_selection</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">stats</span><span class="p">,</span> <span class="n">models</span> <span class="o">=</span> <span class="n">exhaustive_search_selection</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
 <span class="n">stats</span>
 </pre></div>
 </div>
@@ -2318,7 +2185,7 @@ K = the number of features in our model</p>
 <div class="prompt input_prompt">In [42]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'bic'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'*'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">'bic'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'*'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2329,7 +2196,7 @@ K = the number of features in our model</p>
 <div class="prompt input_prompt">In [43]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">stats</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2340,7 +2207,7 @@ K = the number of features in our model</p>
 <div class="prompt input_prompt">In [44]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">best_stat</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">stats</span><span class="o">.</span><span class="n">bic</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">best_stat</span> <span class="o">=</span> <span class="n">stats</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">stats</span><span class="o">.</span><span class="n">bic</span><span class="o">.</span><span class="n">idxmin</span><span class="p">()]</span>
 <span class="n">best_stat</span>
 </pre></div>
 </div>
@@ -2352,7 +2219,7 @@ K = the number of features in our model</p>
 <div class="prompt input_prompt">In [45]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">best_k</span> <span class="o">=</span> <span class="n">best_stat</span><span class="p">[</span><span class="s1">'k'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">best_k</span> <span class="o">=</span> <span class="n">best_stat</span><span class="p">[</span><span class="s1">'k'</span><span class="p">]</span>
 <span class="n">best_bic</span> <span class="o">=</span> <span class="n">best_stat</span><span class="p">[</span><span class="s1">'bic'</span><span class="p">]</span>
 <span class="n">best_formula</span> <span class="o">=</span> <span class="n">best_stat</span><span class="p">[</span><span class="s1">'formula'</span><span class="p">]</span>
 <span class="n">best_r2</span> <span class="o">=</span> <span class="n">best_stat</span><span class="p">[</span><span class="s1">'r_squared'</span><span class="p">]</span>
@@ -2366,7 +2233,7 @@ K = the number of features in our model</p>
 <div class="prompt input_prompt">In [46]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"The best overall model is `</span><span class="si">{formula}</span><span class="s2">` with bic=</span><span class="si">{bic:.2f}</span><span class="s2"> and R^2=</span><span class="si">{r_squared:.3f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"The best overall model is `</span><span class="si">{formula}</span><span class="s2">` with bic=</span><span class="si">{bic:.2f}</span><span class="s2"> and R^2=</span><span class="si">{r_squared:.3f}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span>
     <span class="n">formula</span><span class="o">=</span><span class="n">best_formula</span><span class="p">,</span> <span class="n">bic</span><span class="o">=</span><span class="n">best_bic</span><span class="p">,</span> <span class="n">r_squared</span><span class="o">=</span><span class="n">best_r2</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -2378,54 +2245,35 @@ K = the number of features in our model</p>
 <div class="prompt input_prompt">In [47]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">models</span><span class="p">[</span><span class="n">best_k</span><span class="p">]</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">models</span><span class="p">[</span><span class="n">best_k</span><span class="p">]</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Do the chosen subsets match the ones you picked using the correlation matrix you had visualized?</strong></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Yes! The predictor subset matches with the ones we picked before.</p>
 </div>
 </div>
 </div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
-</div>
-</div>
-</div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Plotting-multiple-axes-in-a-single-figure">Plotting multiple axes in a single figure<a class="anchor-link" href="#Plotting-multiple-axes-in-a-single-figure">¶</a></h2><p><img alt="" src="https://i.imgur.com/XTzSuoR.png">
 source: <a href="http://matplotlib.org/faq/usage_faq.html">http://matplotlib.org/faq/usage_faq.html</a></p>
 <p>See also <a href="http://matplotlib.org/faq/usage_faq.html">this</a> matplotlib tutorial.</p>
-</div>
-</div>
-</div>
-<div class="cell border-box-sizing code_cell rendered">
-<div class="input">
-<div class="prompt input_prompt">In [ ]:</div>
-<div class="inner_cell">
-<div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span> 
-</pre></div>
-</div>
 </div>
 </div>
 </div>

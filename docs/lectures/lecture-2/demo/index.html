@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,7 +1061,8 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
 <h2 id="Lecture2,-Notebook:--Pandas,-and-the-Grammar-of-Data">Lecture2, Notebook:  Pandas, and the Grammar of Data<a class="anchor-link" href="#Lecture2,-Notebook:--Pandas,-and-the-Grammar-of-Data">¶</a></h2><p>(created with Rahul Dave for cs109)</p>
@@ -1254,7 +1078,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO GET THE RIGHT FORMATTING </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO GET THE RIGHT FORMATTING </span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1322,7 +1146,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We'd like a data structure that:</p>
 <ol>
@@ -1335,7 +1160,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Pandas</strong> is a package/library that does all of this!</p>
 <p>The library is built on top of numpy.  There are two basic pandas objects,</p>
@@ -1350,7 +1176,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="The-basic-EDA-workflow">The basic EDA workflow<a class="anchor-link" href="#The-basic-EDA-workflow">¶</a></h2><p>Below is a basic checklist for the early stages of exploratory data analysis in Python.</p>
 <p>While not universally applicable, the <strong>rubric</strong> covers patterns which recur in several data analysis contexts, so useful to keep it in mind when encountering a new dataset.</p>
@@ -1358,7 +1185,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The basic workflow (enunciated in this form by Chris Beaumont) is as follows:</p>
 <ol>
@@ -1384,7 +1212,7 @@ header {
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># The %... is an iPython thing, and is not part of the Python language.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># The %... is an iPython thing, and is not part of the Python language.</span>
 <span class="c1"># In this case we're just telling the plotting library to draw things on</span>
 <span class="c1"># the notebook, instead of on a separate window.</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline
@@ -1409,7 +1237,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Building-a-dataframe">Building a dataframe<a class="anchor-link" href="#Building-a-dataframe">¶</a></h3><p>The easiest way to build a dataframe is simply to read in a CSV file. We WILL see an example of this here, and we shall see more examples in labs. We'll also see how we may combine multiple data sources into a larger dataframe.</p>
 <p>This example is adapted from: <a href="https://github.com/tthibo/SQL-Tutorial">https://github.com/tthibo/SQL-Tutorial</a></p>
@@ -1417,7 +1246,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The first 3 lines of the file (<code>!head -3 data/candidates.txt</code> on mac/unix) look like this.</p>
 <pre><code>id|first_name|last_name|middle_name|party
@@ -1431,7 +1261,7 @@ header {
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/candidates.txt"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">'|'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/candidates.txt"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s1">'|'</span><span class="p">)</span>
 <span class="n">dfcand</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1557,7 +1387,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>A pandas dataframe is a set of columns pasted together into a spreadsheet, as shown in the schematic below, which is taken from the cheatsheet above.  The columns in pandas are called <em>series</em> objects.</p>
 <p><img alt="" src="images/pandastruct.png"></p>
@@ -1569,7 +1400,7 @@ header {
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#All the columns in this dataframe:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#All the columns in this dataframe:</span>
 <span class="n">dfcand</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
@@ -1587,7 +1418,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And the types of these columns:</p>
 </div>
@@ -1598,7 +1430,7 @@ header {
 <div class="prompt input_prompt">In [37]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">dtypes</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>
 </div>
 </div>
@@ -1620,7 +1452,8 @@ dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Access to a particular column can be obtained by treating the column name as an "attribute" of the dataframe:</p>
 </div>
@@ -1631,7 +1464,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">dfcand</span><span class="p">[</span><span class="s1">'first_name'</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">dfcand</span><span class="p">[</span><span class="s1">'first_name'</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1648,7 +1481,8 @@ dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>But Pandas supports a dictionary like access to columns. This is very useful when column names have spaces: Python variables cannot have spaces in them.</p>
 </div>
@@ -1659,7 +1493,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="p">[[</span><span class="s1">'middle_name'</span><span class="p">,</span><span class="s1">'first_name'</span><span class="p">]]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="p">[[</span><span class="s1">'middle_name'</span><span class="p">,</span><span class="s1">'first_name'</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
@@ -1786,7 +1620,8 @@ dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can also get sub-dataframes by choosing a set of series. We pass a list of the columns we want as "dictionary keys" to the dataframe.</p>
 </div>
@@ -1797,7 +1632,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [40]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">columns_i_want</span><span class="o">=</span><span class="p">[</span><span class="s1">'first_name'</span><span class="p">,</span> <span class="s1">'last_name'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">columns_i_want</span><span class="o">=</span><span class="p">[</span><span class="s1">'first_name'</span><span class="p">,</span> <span class="s1">'last_name'</span><span class="p">]</span>
 <span class="n">dfcand</span><span class="p">[[</span><span class="s1">'first_name'</span><span class="p">,</span> <span class="s1">'last_name'</span><span class="p">]]</span>
 <span class="c1">#dfcand[columns_i_want]</span>
 </pre></div>
@@ -1926,7 +1761,8 @@ dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Categoricals">Categoricals<a class="anchor-link" href="#Categoricals">¶</a></h3><p>Even though <code>party</code> is a string, it takes on only a finite set of values, 'D', and 'R'. We can model this:</p>
 </div>
@@ -1937,7 +1773,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">party</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">party</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1958,7 +1794,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">dtypes</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">dtypes</span>
 <span class="n">dfcand</span><span class="p">[</span><span class="s1">'party'</span><span class="p">]</span> <span class="o">=</span> <span class="n">dfcand</span><span class="p">[</span><span class="s1">'party'</span><span class="p">]</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="s2">"category"</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1970,7 +1806,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">dtypes</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">dtypes</span>
 </pre></div>
 </div>
 </div>
@@ -1996,7 +1832,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [44]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2085,7 +1921,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">dfcand</span><span class="o">.</span><span class="n">party</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">dfcand</span><span class="o">.</span><span class="n">party</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -2106,7 +1942,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [46]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">party</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">party</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">categories</span>
 </pre></div>
 </div>
 </div>
@@ -2127,7 +1963,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [47]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">party</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">ordered</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">party</span><span class="o">.</span><span class="n">cat</span><span class="o">.</span><span class="n">ordered</span>
 </pre></div>
 </div>
 </div>
@@ -2144,7 +1980,8 @@ dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Keep in mind that this is a relatively new feature of Pandas. You dont need to do this, but might find it useful to keep your types straight.</p>
 <p>Using categoricals in machine learning algorithms is more complex and usually involves a process called One Hot Encoding (more on this in the coming labs)</p>
@@ -2152,14 +1989,16 @@ dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Another-piece-of-data">Another piece of data<a class="anchor-link" href="#Another-piece-of-data">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is a file of people who have contributed money to candidates:
 (<code>!head -3 data/contributors_with_candidate_id.txt</code>)</p>
@@ -2174,7 +2013,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/contributors_with_candidate_id.txt"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"|"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"../data/contributors_with_candidate_id.txt"</span><span class="p">,</span> <span class="n">sep</span><span class="o">=</span><span class="s2">"|"</span><span class="p">)</span>
 <span class="n">dfcwci</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2302,7 +2141,8 @@ dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Cleaning-Data">Cleaning Data<a class="anchor-link" href="#Cleaning-Data">¶</a></h2><p>Most of the techniques you will learn about in Pandas are all about getting data in a form that can be used for further analysis. Cleaning usually means:</p>
 <ul>
@@ -2320,7 +2160,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [49]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2451,7 +2291,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">del</span> <span class="n">dfcwci</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">del</span> <span class="n">dfcwci</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span>
 <span class="n">dfcwci</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2573,7 +2413,8 @@ dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can see the size of our data</p>
 </div>
@@ -2584,7 +2425,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [51]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dfcand</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">dfcand</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -2601,28 +2442,32 @@ dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We will do some more cleaning soon but let us see the EDA process as sliced from another angle: data transformation, used both for cleaning and for seeing single column and multiple column properties in the data.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Data-transformation:-Single-Table-Verbs">Data transformation: Single Table Verbs<a class="anchor-link" href="#Data-transformation:-Single-Table-Verbs">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us now focus on core data manipulation commands. These are <em>universal across systems, and by identifying them, we can quickly ask how to do these</em> when we encounter a new system.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>See <a href="https://gist.github.com/TomAugspurger/6e052140eaa5fdb6e8c0/">https://gist.github.com/TomAugspurger/6e052140eaa5fdb6e8c0/</a> which has a comparison of dplyr and pandas. I stole and modified this table from there:</p>
 <p><code>dplyr</code> has a small set of nicely defined verbs, which Hadley Wickham has used to identify core data manipulation commands. Here are listed the closest SQL and Pandas verbs, so we can see the universality of these manipulations.</p>
@@ -2692,14 +2537,16 @@ dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We'll tackle these one by one in Pandas, since these are data manipulations you will do all the time.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="QUERY">QUERY<a class="anchor-link" href="#QUERY">¶</a></h3>
 </div>
@@ -2710,7 +2557,7 @@ dtype: object</pre>
 <div class="prompt input_prompt">In [52]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">400</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">400</span>
 </pre></div>
 </div>
 </div>
@@ -2788,7 +2635,8 @@ Name: amount, Length: 175, dtype: bool</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This gives us Trues and Falses. Such a series is called a <strong>mask</strong>.  A mask  is the basis of filtering. We can do:</p>
 </div>
@@ -2799,7 +2647,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [53]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">400</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">400</span><span class="p">]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2920,7 +2768,8 @@ Name: amount, Length: 175, dtype: bool</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Notice that the dataframe has been filtered down to only include those contributions with amount < 400. The rows with <code>False</code> in the mask have been eliminated, and those with <code>True</code> in the mask have been kept.</p>
 </div>
@@ -2931,7 +2780,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [54]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">400</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">400</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">400</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">400</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2948,7 +2797,8 @@ Name: amount, Length: 175, dtype: bool</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Why did that work? The booleans are coerced to integers as below:</p>
 </div>
@@ -2959,7 +2809,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [55]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">1</span><span class="o">*</span><span class="kc">True</span><span class="p">,</span> <span class="mi">1</span><span class="o">*</span><span class="kc">False</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="mi">1</span><span class="o">*</span><span class="kc">True</span><span class="p">,</span> <span class="mi">1</span><span class="o">*</span><span class="kc">False</span>
 </pre></div>
 </div>
 </div>
@@ -2976,7 +2826,8 @@ Name: amount, Length: 175, dtype: bool</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Or directly, in Pandas, which works since the comparison is a pandas Series.</p>
 </div>
@@ -2987,7 +2838,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [56]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">400</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">400</span><span class="p">)</span><span class="o">.</span><span class="n">mean</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -3008,7 +2859,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [57]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -3099,7 +2950,8 @@ Name: amount, Length: 175, dtype: bool</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can combine queries. Note that we use Python's <code>&</code> operator instead of <code>and</code>. This is because we are "Boolean AND"ing masks to get a series of True's And Falses.</p>
 </div>
@@ -3110,7 +2962,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [58]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[(</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">'VA'</span><span class="p">)</span> <span class="o">&</span> <span class="p">(</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">400</span><span class="p">)]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[(</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">'VA'</span><span class="p">)</span> <span class="o">&</span> <span class="p">(</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">400</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -3217,7 +3069,8 @@ Name: amount, Length: 175, dtype: bool</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Here is another way to write the query:</p>
 </div>
@@ -3228,7 +3081,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[(</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">0</span><span class="p">)]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[(</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">0</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -4095,7 +3948,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[(</span><span class="n">dfcwci</span><span class="p">[</span><span class="s1">'last_name'</span><span class="p">]</span><span class="o">==</span><span class="s1">'BYERS'</span><span class="p">)]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[(</span><span class="n">dfcwci</span><span class="p">[</span><span class="s1">'last_name'</span><span class="p">]</span><span class="o">==</span><span class="s1">'BYERS'</span><span class="p">)]</span>
 </pre></div>
 </div>
 </div>
@@ -4174,7 +4027,8 @@ Name: amount, Length: 175, dtype: bool</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For cleaning, we might want to use this querying ability</p>
 </div>
@@ -4185,7 +4039,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [60]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">isnull</span><span class="p">()]</span>
 </pre></div>
 </div>
 </div>
@@ -4250,7 +4104,8 @@ Name: amount, Length: 175, dtype: bool</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Or the opposite, which is probably more useful in making the selection:</p>
 </div>
@@ -4261,7 +4116,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [61]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">notnull</span><span class="p">()]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -4382,7 +4237,8 @@ Name: amount, Length: 175, dtype: bool</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For categoricals you can use <code>isin</code>. You can use Boolean not on the mask to implement not in.</p>
 </div>
@@ -4393,7 +4249,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [62]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">'VA'</span><span class="p">,</span><span class="s1">'WA'</span><span class="p">])]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">state</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s1">'VA'</span><span class="p">,</span><span class="s1">'WA'</span><span class="p">])]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4556,7 +4412,8 @@ Name: amount, Length: 175, dtype: bool</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And you can chain queries thus.</p>
 </div>
@@ -4567,7 +4424,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [63]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"10 <= amount <= 50"</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"10 <= amount <= 50"</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4758,7 +4615,8 @@ Name: amount, Length: 175, dtype: bool</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="SORT">SORT<a class="anchor-link" href="#SORT">¶</a></h3>
 </div>
@@ -4769,7 +4627,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [64]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">"amount"</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">"amount"</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -4964,7 +4822,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [65]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">0</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o"><</span> <span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -5831,7 +5689,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [66]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">"amount"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="s2">"amount"</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6022,7 +5880,8 @@ Name: amount, Length: 175, dtype: bool</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="SELECT-COLUMNS">SELECT-COLUMNS<a class="anchor-link" href="#SELECT-COLUMNS">¶</a></h3>
 </div>
@@ -6033,7 +5892,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [67]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[[</span><span class="s1">'first_name'</span><span class="p">,</span> <span class="s1">'amount'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[[</span><span class="s1">'first_name'</span><span class="p">,</span> <span class="s1">'amount'</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6125,14 +5984,16 @@ Name: amount, Length: 175, dtype: bool</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="SELECT-DISTINCT">SELECT-DISTINCT<a class="anchor-link" href="#SELECT-DISTINCT">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Selecting a distinct set is useful for cleaning. Here, we might wish to focus on contributors rather than contributions and see how many distinct contributors we have. Of-course we might be wrong, some people have identical names.</p>
 </div>
@@ -6143,7 +6004,7 @@ Name: amount, Length: 175, dtype: bool</pre>
 <div class="prompt input_prompt">In [68]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[[</span><span class="s1">'last_name'</span><span class="p">,</span><span class="s1">'first_name'</span><span class="p">]]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[[</span><span class="s1">'last_name'</span><span class="p">,</span><span class="s1">'first_name'</span><span class="p">]]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -6166,7 +6027,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [69]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[[</span><span class="s1">'last_name'</span><span class="p">,</span><span class="s1">'first_name'</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[[</span><span class="s1">'last_name'</span><span class="p">,</span><span class="s1">'first_name'</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -6189,7 +6050,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [70]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[[</span><span class="s1">'last_name'</span><span class="p">,</span><span class="s1">'first_name'</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[[</span><span class="s1">'last_name'</span><span class="p">,</span><span class="s1">'first_name'</span><span class="p">]]</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">()</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6281,7 +6142,8 @@ dtype: int64</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="ASSIGN">ASSIGN<a class="anchor-link" href="#ASSIGN">¶</a></h3><p>Assignment to a new column is easy.</p>
 </div>
@@ -6292,7 +6154,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [71]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="o">=</span><span class="n">dfcwci</span><span class="p">[</span><span class="s1">'last_name'</span><span class="p">]</span><span class="o">+</span><span class="s2">", "</span><span class="o">+</span><span class="n">dfcwci</span><span class="p">[</span><span class="s1">'first_name'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span><span class="o">=</span><span class="n">dfcwci</span><span class="p">[</span><span class="s1">'last_name'</span><span class="p">]</span><span class="o">+</span><span class="s2">", "</span><span class="o">+</span><span class="n">dfcwci</span><span class="p">[</span><span class="s1">'first_name'</span><span class="p">]</span>
 <span class="n">dfcwci</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -6499,7 +6361,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [72]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">ucname</span><span class="o">=</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">last_name</span><span class="o">+</span><span class="s2">":"</span><span class="o">+</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">first_name</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">ucname</span><span class="o">=</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">last_name</span><span class="o">+</span><span class="s2">":"</span><span class="o">+</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">first_name</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -6636,7 +6498,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [73]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -6763,7 +6625,8 @@ dtype: int64</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Will the above command actually change <code>dfcwci</code>? No, it produces a fresh dataframe.</p>
 <h4 id="What-if-we-wanted-to-change-an-existing-assignment?">What if we wanted to change an existing assignment?<a class="anchor-link" href="#What-if-we-wanted-to-change-an-existing-assignment?">¶</a></h4>
@@ -6775,7 +6638,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [43]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">'VA'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">'VA'</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -6906,7 +6769,7 @@ dtype: int64</pre>
 <div class="prompt input_prompt">In [44]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">'VA'</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">'VA'</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -6932,7 +6795,7 @@ Name: name, dtype: object</pre>
 <div class="prompt input_prompt">In [45]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">'VA'</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">]</span><span class="o">=</span><span class="s2">"junk"</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">state</span><span class="o">==</span><span class="s1">'VA'</span><span class="p">,</span> <span class="s1">'name'</span><span class="p">]</span><span class="o">=</span><span class="s2">"junk"</span>
 </pre></div>
 </div>
 </div>
@@ -6943,7 +6806,7 @@ Name: name, dtype: object</pre>
 <div class="prompt input_prompt">In [46]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"state=='VA'"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"state=='VA'"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7070,7 +6933,8 @@ Name: name, dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Drop-Column">Drop-Column<a class="anchor-link" href="#Drop-Column">¶</a></h3><p>Real simple:</p>
 </div>
@@ -7081,14 +6945,15 @@ Name: name, dtype: object</pre>
 <div class="prompt input_prompt">In [47]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">del</span> <span class="n">dfcwci</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">del</span> <span class="n">dfcwci</span><span class="p">[</span><span class="s1">'name'</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="AGGREGATE">AGGREGATE<a class="anchor-link" href="#AGGREGATE">¶</a></h3>
 </div>
@@ -7099,7 +6964,7 @@ Name: name, dtype: object</pre>
 <div class="prompt input_prompt">In [48]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7194,7 +7059,7 @@ Name: name, dtype: object</pre>
 <div class="prompt input_prompt">In [49]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span><span class="o">.</span><span class="n">max</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -7215,7 +7080,7 @@ Name: name, dtype: object</pre>
 <div class="prompt input_prompt">In [50]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span><span class="o">==</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span><span class="o">==</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span><span class="o">.</span><span class="n">max</span><span class="p">()]</span>
 </pre></div>
 </div>
 </div>
@@ -7284,7 +7149,7 @@ Name: name, dtype: object</pre>
 <div class="prompt input_prompt">In [51]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o">></span> <span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="mi">2300</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span> <span class="o">></span> <span class="n">dfcwci</span><span class="o">.</span><span class="n">amount</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="mi">2300</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -7363,7 +7228,8 @@ Name: name, dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Grouping-using-Pandas-and-split-apply-combine">Grouping using Pandas and split-apply-combine<a class="anchor-link" href="#Grouping-using-Pandas-and-split-apply-combine">¶</a></h2>
 </div>
@@ -7374,7 +7240,7 @@ Name: name, dtype: object</pre>
 <div class="prompt input_prompt">In [52]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">grouped_by_state</span> <span class="o">=</span> <span class="n">dfcwci</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"state"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">grouped_by_state</span> <span class="o">=</span> <span class="n">dfcwci</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"state"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -7385,7 +7251,7 @@ Name: name, dtype: object</pre>
 <div class="prompt input_prompt">In [53]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">grouped_by_state</span><span class="o">.</span><span class="n">amount</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">grouped_by_state</span><span class="o">.</span><span class="n">amount</span>
 </pre></div>
 </div>
 </div>
@@ -7402,14 +7268,16 @@ Name: name, dtype: object</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>How do we get access to these? Standard pandas functions distribute over the <code>groupby</code>, going one by one over the sub-dataframes or sub-series.  This is an example of a paradigm called split-apply-combine.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="GROUP-AGG">GROUP-AGG<a class="anchor-link" href="#GROUP-AGG">¶</a></h3><p>The fourth part of the EDA rubric is to look at properties of the sub-dataframes you get when you make groups. (We'll talk about the graphical aspects of this later). For instance, you might group contributions by state:</p>
 </div>
@@ -7420,7 +7288,7 @@ Name: name, dtype: object</pre>
 <div class="prompt input_prompt">In [54]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"state"</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"state"</span><span class="p">)</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -8466,7 +8334,7 @@ Name: name, dtype: object</pre>
 <div class="prompt input_prompt">In [55]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"state"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"state"</span><span class="p">)</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -8729,7 +8597,7 @@ Name: name, dtype: object</pre>
 <div class="prompt input_prompt">In [56]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mydf</span> <span class="o">=</span> <span class="n">dfcwci</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"state"</span><span class="p">)[</span><span class="s1">'amount'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">mydf</span> <span class="o">=</span> <span class="n">dfcwci</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"state"</span><span class="p">)[</span><span class="s1">'amount'</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
 <span class="n">mydf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -8787,7 +8655,7 @@ Name: amount, dtype: float64</pre>
 <div class="prompt input_prompt">In [57]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"state"</span><span class="p">)[</span><span class="s1">'amount'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"state"</span><span class="p">)[</span><span class="s1">'amount'</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -8840,7 +8708,8 @@ Name: amount, dtype: float64</pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The dictionary-like structure is more obvious in this method of iteration, but it does not do the combining part...</p>
 </div>
@@ -8851,7 +8720,7 @@ Name: amount, dtype: float64</pre>
 <div class="prompt input_prompt">In [58]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">dfcwci</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'state'</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">dfcwci</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'state'</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"State"</span><span class="p">,</span> <span class="n">k</span><span class="p">,</span> <span class="s2">"mean amount"</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">amount</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s2">"std"</span><span class="p">,</span> <span class="n">v</span><span class="o">.</span><span class="n">amount</span><span class="o">.</span><span class="n">std</span><span class="p">())</span>
 </pre></div>
 </div>
@@ -8904,7 +8773,8 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="DELETE">DELETE<a class="anchor-link" href="#DELETE">¶</a></h3>
 </div>
@@ -8915,7 +8785,7 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 <div class="prompt input_prompt">In [59]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -9036,7 +8906,8 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In-place drops</p>
 </div>
@@ -9047,7 +8918,7 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 <div class="prompt input_prompt">In [60]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df2</span><span class="o">=</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df2</span><span class="o">=</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 <span class="n">df2</span><span class="o">.</span><span class="n">set_index</span><span class="p">(</span><span class="s1">'last_name'</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -9181,7 +9052,7 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 <div class="prompt input_prompt">In [61]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'Ahrens'</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'Ahrens'</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -9314,7 +9185,7 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 <div class="prompt input_prompt">In [62]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df2</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">df2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -9436,7 +9307,8 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The recommended way to do it is to create a new dataframe. This might be impractical if things are very large.</p>
 </div>
@@ -9447,7 +9319,7 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 <div class="prompt input_prompt">In [63]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">=</span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">last_name</span><span class="o">!=</span><span class="s1">'Ahrens'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">=</span><span class="n">dfcwci</span><span class="p">[</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">last_name</span><span class="o">!=</span><span class="s1">'Ahrens'</span><span class="p">]</span>
 <span class="n">dfcwci</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -9639,7 +9511,8 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="LIMIT">LIMIT<a class="anchor-link" href="#LIMIT">¶</a></h3>
 </div>
@@ -9650,7 +9523,7 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 <div class="prompt input_prompt">In [64]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># also see loc and iloc from the lab</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">3</span><span class="p">]</span> <span class="c1"># also see loc and iloc from the lab</span>
 </pre></div>
 </div>
 </div>
@@ -9743,14 +9616,16 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Relationships:-JOINs-are-Cartesian-Products.">Relationships: JOINs are Cartesian Products.<a class="anchor-link" href="#Relationships:-JOINs-are-Cartesian-Products.">¶</a></h2><p>Finally, there are many occasions you will want to combine dataframes. We might want to see who contributed to Obama:</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Simple-subselect">Simple subselect<a class="anchor-link" href="#Simple-subselect">¶</a></h3>
 </div>
@@ -9761,7 +9636,7 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 <div class="prompt input_prompt">In [65]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcand</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -9850,7 +9725,7 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 <div class="prompt input_prompt">In [66]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">obamaid</span><span class="o">=</span><span class="n">dfcand</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"last_name=='Obama'"</span><span class="p">)[</span><span class="s1">'id'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">obamaid</span><span class="o">=</span><span class="n">dfcand</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"last_name=='Obama'"</span><span class="p">)[</span><span class="s1">'id'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">obamaid</span>
 </pre></div>
 </div>
@@ -9872,7 +9747,7 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 <div class="prompt input_prompt">In [67]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">myq</span> <span class="o">=</span> <span class="n">dfcand</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">myq</span> <span class="o">=</span> <span class="n">dfcand</span><span class="p">[</span><span class="s1">'id'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">myq</span>
 </pre></div>
 </div>
@@ -9894,7 +9769,7 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 <div class="prompt input_prompt">In [68]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">obamacontrib</span><span class="o">=</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"candidate_id==</span><span class="si">%i</span><span class="s2">"</span> <span class="o">%</span> <span class="n">obamaid</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">obamacontrib</span><span class="o">=</span><span class="n">dfcwci</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s2">"candidate_id==</span><span class="si">%i</span><span class="s2">"</span> <span class="o">%</span> <span class="n">obamaid</span><span class="p">)</span>
 <span class="n">obamacontrib</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -10016,14 +9891,16 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Explicit-INNER-JOIN">Explicit INNER JOIN<a class="anchor-link" href="#Explicit-INNER-JOIN">¶</a></h3><p>This is the one you will want 90% of the time. It will only match keys that are present in both dataframes.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="inner join" src="http://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key_inner.png"></p>
 <p>(from <a href="http://pandas.pydata.org/pandas-docs/stable/merging.html">http://pandas.pydata.org/pandas-docs/stable/merging.html</a>)</p>
@@ -10035,7 +9912,7 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 <div class="prompt input_prompt">In [69]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cols_wanted</span><span class="o">=</span><span class="p">[</span><span class="s1">'last_name_x'</span><span class="p">,</span> <span class="s1">'first_name_x'</span><span class="p">,</span> <span class="s1">'candidate_id'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">,</span> <span class="s1">'last_name_y'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">cols_wanted</span><span class="o">=</span><span class="p">[</span><span class="s1">'last_name_x'</span><span class="p">,</span> <span class="s1">'first_name_x'</span><span class="p">,</span> <span class="s1">'candidate_id'</span><span class="p">,</span> <span class="s1">'id'</span><span class="p">,</span> <span class="s1">'last_name_y'</span><span class="p">]</span>
 <span class="n">dfcwci</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dfcand</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"candidate_id"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"id"</span><span class="p">)[</span><span class="n">cols_wanted</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -10570,28 +10447,32 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If the names of the columns you wanted to merge on were identical, you could simply say <code>on=id</code>, for example, rather than a <code>left_on</code> and a <code>right_on</code>.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Outer-JOIN">Outer JOIN<a class="anchor-link" href="#Outer-JOIN">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="left-outer-(contributors-on-candidates)">left outer (contributors on candidates)<a class="anchor-link" href="#left-outer-(contributors-on-candidates)">¶</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="left outer" src="http://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key_left.png"></p>
 </div>
@@ -10602,7 +10483,7 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 <div class="prompt input_prompt">In [70]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dfcand</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"candidate_id"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"id"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)[</span><span class="n">cols_wanted</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dfcand</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"candidate_id"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"id"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"left"</span><span class="p">)[</span><span class="n">cols_wanted</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -11136,14 +11017,16 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="right-outer-(contributors-on-candidates)-=-left-outer-(candidates-on-contributors)">right outer (contributors on candidates) = left outer (candidates on contributors)<a class="anchor-link" href="#right-outer-(contributors-on-candidates)-=-left-outer-(candidates-on-contributors)">¶</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="right outer" src="http://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key_right.png"></p>
 </div>
@@ -11154,7 +11037,7 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 <div class="prompt input_prompt">In [71]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dfcand</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"candidate_id"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"id"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)[</span><span class="n">cols_wanted</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dfcand</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"candidate_id"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"id"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"right"</span><span class="p">)[</span><span class="n">cols_wanted</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -11688,14 +11571,16 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="full-outer">full outer<a class="anchor-link" href="#full-outer">¶</a></h4>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="outer" src="http://pandas.pydata.org/pandas-docs/stable/_images/merging_merge_on_key_outer.png"></p>
 </div>
@@ -11706,7 +11591,7 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 <div class="prompt input_prompt">In [72]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dfcand</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"candidate_id"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"id"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"outer"</span><span class="p">)[</span><span class="n">cols_wanted</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcwci</span><span class="o">.</span><span class="n">merge</span><span class="p">(</span><span class="n">dfcand</span><span class="p">,</span> <span class="n">left_on</span><span class="o">=</span><span class="s2">"candidate_id"</span><span class="p">,</span> <span class="n">right_on</span><span class="o">=</span><span class="s2">"id"</span><span class="p">,</span> <span class="n">how</span><span class="o">=</span><span class="s2">"outer"</span><span class="p">)[</span><span class="n">cols_wanted</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -12240,7 +12125,8 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>When to use which?</p>
 <p>See this:</p>
@@ -12249,14 +12135,16 @@ State WA mean amount -166.66666666666666 std 461.88021535170066
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Useful-Links">Useful Links<a class="anchor-link" href="#Useful-Links">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ul>
 <li><a href="http://sebastianraschka.com/Articles/sqlite3_database.html">http://sebastianraschka.com/Articles/sqlite3_database.html</a> and  <a href="http://sebastianraschka.com/Articles/2014_sqlite_in_python_tutorial.html#unique_indexes">http://sebastianraschka.com/Articles/2014_sqlite_in_python_tutorial.html#unique_indexes</a></li>

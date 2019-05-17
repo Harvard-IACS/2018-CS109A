@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,7 +1061,8 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="EDA">EDA<a class="anchor-link" href="#EDA">¶</a></h1>
 </div>
@@ -1249,7 +1073,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1262,14 +1086,16 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Italian-Olives">Italian Olives<a class="anchor-link" href="#Italian-Olives">¶</a></h2><p><img alt="" src="Italy.png"></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>I found this data set in the RGGobi book (<a href="http://www.ggobi.org/book/">http://www.ggobi.org/book/</a>), from which the above diagram is taken. It has "the percentage composition of fatty acids
 found in the lipid fraction of Italian olive oils', with oils from 3 regions of Italy: the North, the South, and Sardinia. The regions themselves are subdivided into areas as shown in the map above. The source for this data is:</p>
@@ -1281,7 +1107,8 @@ Publishers, London, pp. 189–214.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Exploratory-Viz">Exploratory Viz<a class="anchor-link" href="#Exploratory-Viz">¶</a></h2>
 </div>
@@ -1292,7 +1119,7 @@ Publishers, London, pp. 189–214.</p>
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"local-olives-cleaned.csv"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"local-olives-cleaned.csv"</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1420,7 +1247,8 @@ Publishers, London, pp. 189–214.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="exploring-globally">exploring globally<a class="anchor-link" href="#exploring-globally">¶</a></h3>
 </div>
@@ -1431,7 +1259,7 @@ Publishers, London, pp. 189–214.</p>
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">areastring</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">regionstring</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">crosstab</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">areastring</span><span class="p">,</span> <span class="n">df</span><span class="o">.</span><span class="n">regionstring</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1538,7 +1366,7 @@ Publishers, London, pp. 189–214.</p>
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">areastring</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"bar"</span><span class="p">);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">areastring</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"bar"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1547,7 +1375,7 @@ Publishers, London, pp. 189–214.</p>
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAeQAAAGECAYAAADnWlOjAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xt8z/X///H77IRtmGxUs6EcMpRy2k+UIj4iEsMyn0/s
 kw6SQ+V8+Diljxz6KJRODsuMKMWnk9JKKvEVrUhMykc25bTNZ8f37w+XvT9DDu/3Nq/n6+V2vVy6
@@ -1785,7 +1613,7 @@ CwAAA1DIAAAYgEIGAMAAFDIAAAagkAEAMMD/B5KLj6TCIpbTAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">regionstring</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"barh"</span><span class="p">);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">value_counts</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">regionstring</span><span class="p">,</span> <span class="n">sort</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"barh"</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -1794,7 +1622,7 @@ CwAAA1DIAAAYgEIGAMAAFDIAAAagkAEAMMD/B5KLj6TCIpbTAAAAAElFTkSuQmCC
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAfgAAAFJCAYAAAB3vj+vAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAEkpJREFUeJzt3X2s13X9//HHBw6IcA7JxhmzvDqabagzRXJtTktn2oUn
 l0PLieYkE9ss8QLwgnkBok2dW1676dzSCUSWumaa08YfpTmnASKYzNEI04PpBEQUef/+YFAqZvk7
@@ -1890,7 +1718,7 @@ QEECDwAFCTwAFCTwAFCQwANAQQIPAAX9P9+Q45Wk7SL5AAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">acidlist</span><span class="o">=</span><span class="p">[</span><span class="s1">'palmitic'</span><span class="p">,</span> <span class="s1">'palmitoleic'</span><span class="p">,</span> <span class="s1">'stearic'</span><span class="p">,</span> <span class="s1">'oleic'</span><span class="p">,</span> <span class="s1">'linoleic'</span><span class="p">,</span> <span class="s1">'linolenic'</span><span class="p">,</span> <span class="s1">'arachidic'</span><span class="p">,</span> <span class="s1">'eicosenoic'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">acidlist</span><span class="o">=</span><span class="p">[</span><span class="s1">'palmitic'</span><span class="p">,</span> <span class="s1">'palmitoleic'</span><span class="p">,</span> <span class="s1">'stearic'</span><span class="p">,</span> <span class="s1">'oleic'</span><span class="p">,</span> <span class="s1">'linoleic'</span><span class="p">,</span> <span class="s1">'linolenic'</span><span class="p">,</span> <span class="s1">'arachidic'</span><span class="p">,</span> <span class="s1">'eicosenoic'</span><span class="p">]</span>
 <span class="n">df</span><span class="p">[</span><span class="n">acidlist</span><span class="p">]</span><span class="o">.</span><span class="n">median</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"bar"</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -1900,7 +1728,7 @@ QEECDwAFCTwAFCTwAFCQwANAQQIPAAX9P9+Q45Wk7SL5AAAAAElFTkSuQmCC
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAd8AAAFvCAYAAAALysEtAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XtUVWXi//HPAbwkgqBiU3kDvGWjNSNhrkbMyrBxzC46
 eMlmjeZk18VgilfIdFDGMG95bWoKUMsmzanWahJrKCxyWtW0zLSMNHNUVBiBFEH39w9/nF+OKajn
@@ -2066,7 +1894,8 @@ YII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Or one can use <code>aggregate</code> to pass an arbitrary function of to the sub-dataframe. The function is applied columnwise.</p>
 </div>
@@ -2077,7 +1906,7 @@ YII=
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfbymean</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"regionstring"</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfbymean</span><span class="o">=</span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">"regionstring"</span><span class="p">)</span><span class="o">.</span><span class="n">aggregate</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">)</span>
 <span class="n">dfbymean</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -2184,7 +2013,7 @@ YII=
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">axes_style</span><span class="p">(</span><span class="s2">"white"</span><span class="p">,</span> <span class="p">{</span><span class="s1">'grid'</span><span class="p">:</span><span class="kc">False</span><span class="p">}):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">axes_style</span><span class="p">(</span><span class="s2">"white"</span><span class="p">,</span> <span class="p">{</span><span class="s1">'grid'</span><span class="p">:</span><span class="kc">False</span><span class="p">}):</span>
     <span class="n">dfbymean</span><span class="p">[</span><span class="n">acidlist</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">'barh'</span><span class="p">,</span> <span class="n">stacked</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
     <span class="n">sns</span><span class="o">.</span><span class="n">despine</span><span class="p">()</span>
 </pre></div>
@@ -2195,7 +2024,7 @@ YII=
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAgYAAAFJCAYAAADg2eWEAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XlYlXX+//HXAWQTAUXF3cBlRMvC0hJLS8qaaWwas9zA
 lknTscUll9wV3FLHvuWSOjWOK4Lpb2wanZKczCw1mwZx14xCRTBRFgWBc//+sD6NI9pROecIPB/X
@@ -2387,7 +2216,8 @@ RU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Figuring-the-dataset-by-Region">Figuring the dataset by Region<a class="anchor-link" href="#Figuring-the-dataset-by-Region">¶</a></h2>
 </div>
@@ -2398,7 +2228,7 @@ RU5ErkJggg==
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">g</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">"region"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">g</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">"region"</span><span class="p">)</span>
 <span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">,</span><span class="s2">"eicosenoic"</span><span class="p">,</span> <span class="s2">"linoleic"</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -2408,7 +2238,7 @@ RU5ErkJggg==
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnwAAADMCAYAAADpuH4KAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XlgU2W+N/Bv9jRN2qZtKktBoFDqwKAsAoIOgijjgqPi
 gAsqojLjNuo4IyJaGZcZlbnOnUGvXnlfR4VB4VVHZXSGexHUkU2WCoJQ9qW0pVvaJm22npz3j5rQ
@@ -2712,7 +2542,8 @@ nZiWhYiIiCjFcUqXiIiIKMUx4CMiIiJKcQz4iIiIiFIcAz4iIiKiFMeAj4iIiCjFMeAjIiIiSnEM
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Clearly, region 1 or the South can visually be separated out by <code>eicosenoic</code> fraction itself.</p>
 </div>
@@ -2723,7 +2554,7 @@ nZiWhYiIiCjFcUqXiIiIKMUx4CMiIiJKcQz4iIiIiFIcAz4iIiKiFMeAj4iIiCjFMeAjIiIiSnEM
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">axes_style</span><span class="p">(</span><span class="s2">"white"</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">with</span> <span class="n">sns</span><span class="o">.</span><span class="n">axes_style</span><span class="p">(</span><span class="s2">"white"</span><span class="p">):</span>
     <span class="n">g</span><span class="o">=</span><span class="n">sns</span><span class="o">.</span><span class="n">FacetGrid</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="n">col</span><span class="o">=</span><span class="s2">"region"</span><span class="p">)</span>
     <span class="n">g</span><span class="o">.</span><span class="n">map</span><span class="p">(</span><span class="n">sns</span><span class="o">.</span><span class="n">distplot</span><span class="p">,</span> <span class="s2">"eicosenoic"</span><span class="p">)</span>
 </pre></div>
@@ -2734,7 +2565,7 @@ nZiWhYiIiCjFcUqXiIiIKMUx4CMiIiJKcQz4iIiIiFIcAz4iIiKiFMeAj4iIiCjFMeAjIiIiSnEM
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnwAAADMCAYAAADpuH4KAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3Xl0VPUd9/HPLJmZZLKhYKkVLCjUqscjQgE3FJfSqmAF
 GxTBrUJd2hpsLagQaOtRa1railpbn2opEZdHOHaxhT6CSgshRYu1olhlky2BEAKTSTLr7/kjmSF7
@@ -2900,7 +2731,8 @@ iyPwAQAAWByBDwAAwOIIfAAAABZH4AMAALA4Ah8AAIDF/X+wIaSLDW90QQAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We make a SPLOM using <code>seaborn</code> to see in what space the regions may be separated. Note that linoleic and oleic seem promising. And perhaps arachidic paired with eicosenoic.</p>
 </div>
@@ -2911,7 +2743,7 @@ iyPwAQAAWByBDwAAwOIIfAAAABZH4AMAALA4Ah8AAIDF/X+wIaSLDW90QQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="n">acidlist</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"regionstring"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s1">'kde'</span><span class="p">);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">df</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="n">acidlist</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"regionstring"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s1">'kde'</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -2920,7 +2752,7 @@ iyPwAQAAWByBDwAAwOIIfAAAABZH4AMAALA4Ah8AAIDF/X+wIaSLDW90QQAAAABJRU5ErkJggg==
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABeMAAAWQCAYAAADZV1/GAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvXlwXNd97/ntfQe6AfQCoNFYCRIECIoEF0GkKJGWpURe
 YzG2ZUfOS2ZeUh69qlRqqpwnL5OMkzynJnFSryKP3yul4kwcPy2W7ViOF8nmKpEgCXHDQizE2mig
@@ -16079,14 +15911,16 @@ CCGEEEIIIYQQQgghhGhj0hgvhBBCCCGEEEIIIYQQQrSx/w+7lHQVnStVtwAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Pandas supports conditional indexing: <a href="http://pandas.pydata.org/pandas-docs/dev/indexing.html#boolean-indexing">documentation</a>. Lets use it to follow up on the clear pattern of Southern oils seeeming to be separable by just the <code>eicosenoic</code> feature.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Indeed this is the case!</strong> Can also be seen using parallel co-ordinates:</p>
 </div>
@@ -16097,7 +15931,7 @@ CCGEEEIIIYQQQgghhGhj0hgvhBBCCCGEEEIIIYQQQrSx/w+7lHQVnStVtwAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [40]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.tools.plotting</span> <span class="k">import</span> <span class="n">parallel_coordinates</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.tools.plotting</span> <span class="k">import</span> <span class="n">parallel_coordinates</span>
 <span class="n">dfna</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">acidlist</span><span class="p">]</span>
 <span class="c1">#normalizing by range</span>
 <span class="n">dfna_norm</span> <span class="o">=</span> <span class="p">(</span><span class="n">dfna</span> <span class="o">-</span> <span class="n">dfna</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span> <span class="o">/</span> <span class="p">(</span><span class="n">dfna</span><span class="o">.</span><span class="n">max</span><span class="p">()</span> <span class="o">-</span> <span class="n">dfna</span><span class="o">.</span><span class="n">min</span><span class="p">())</span>
@@ -16111,7 +15945,7 @@ CCGEEEIIIYQQQgghhGhj0hgvhBBCCCGEEEIIIYQQQrSx/w+7lHQVnStVtwAAAABJRU5ErkJggg==
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAf4AAAFVCAYAAAAOtI0IAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvXmQZUd97/nJPOvdaumq3veWWhIgI1vIWIOtAOOHn8HA
 BEgG2bIwBCbCzJgIW2ALYxtQPIQgbHCEAWGYZ8ueQWMJPBZ+wfgJJFYPZtdGS0hq9V7d1bVX3e2s
@@ -19422,7 +19256,8 @@ oRy/QqFQKBSdiP8Ps1++R6l2YYEAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Figuring-the-South-of-Italy-by-Area">Figuring the South of Italy by Area<a class="anchor-link" href="#Figuring-the-South-of-Italy-by-Area">¶</a></h2>
 </div>
@@ -19433,7 +19268,7 @@ oRy/QqFQKBSdiP8Ps1++R6l2YYEAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfsouth</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">regionstring</span><span class="o">==</span><span class="s1">'South'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfsouth</span><span class="o">=</span><span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">regionstring</span><span class="o">==</span><span class="s1">'South'</span><span class="p">]</span>
 <span class="n">dfsouth</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -19561,7 +19396,8 @@ oRy/QqFQKBSdiP8Ps1++R6l2YYEAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We make a couple of SPLOM's, one with sicily and one without sicily, to see whats separable. Sicily seems to be a problem. As before, see the KDE's first to see if separability exists and then let the eye look for patterns.</p>
 </div>
@@ -19572,7 +19408,7 @@ oRy/QqFQKBSdiP8Ps1++R6l2YYEAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dfsouth</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"areastring"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="n">acidlist</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s1">'kde'</span><span class="p">);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dfsouth</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"areastring"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="n">acidlist</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s1">'kde'</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -19581,7 +19417,7 @@ oRy/QqFQKBSdiP8Ps1++R6l2YYEAAAAASUVORK5CYII=
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABfYAAAWRCAYAAADTjMbPAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvXl0W9d1//vFBXAxEAAJEhNnipJITbYsa6Aoy7aieIqH
 xInT1k3qNv31199qhvXeavpWf/ZLfnaSNo3fale71kvbX9vkJW3T1I6TNHHs2E5sK5I1kZplcRRF
@@ -32063,7 +31899,7 @@ CCGEEEIIIYQQQghhQv4fWfa3tQEcme8AAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dfsouth</span><span class="p">[</span><span class="n">dfsouth</span><span class="o">.</span><span class="n">areastring</span><span class="o">!=</span><span class="s2">"Sicily"</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"areastring"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="n">acidlist</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s1">'kde'</span><span class="p">);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sns</span><span class="o">.</span><span class="n">pairplot</span><span class="p">(</span><span class="n">dfsouth</span><span class="p">[</span><span class="n">dfsouth</span><span class="o">.</span><span class="n">areastring</span><span class="o">!=</span><span class="s2">"Sicily"</span><span class="p">],</span> <span class="n">hue</span><span class="o">=</span><span class="s2">"areastring"</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mf">2.5</span><span class="p">,</span> <span class="nb">vars</span><span class="o">=</span><span class="n">acidlist</span><span class="p">,</span> <span class="n">diag_kind</span><span class="o">=</span><span class="s1">'kde'</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -32072,7 +31908,7 @@ CCGEEEIIIYQQQghhQv4fWfa3tQEcme8AAAAASUVORK5CYII=
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABfYAAAWRCAYAAADTjMbPAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvXl0W9d17//FBXgxEANBDJxHWRMpxbJmyrYsK85g2XGm
 OnGclV+H1ddfa3d1vbr9NfZqatfpEL/VvvatlbR9adomTeLacZImHjJ6lDVwkKyRIkVRBEkAHEEQ
@@ -43265,7 +43101,8 @@ IiIiIiIyjqiwLyIiIiIiIiIiIiIyjvwN4Q8uOGnKdvEAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Seems that combinations of oleic, palmitic, palmitoleic might be useful?</p>
 </div>

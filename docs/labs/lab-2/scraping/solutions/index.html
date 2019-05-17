@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,7 +1061,8 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/styles/iacs.png?raw=true" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
 <h2 id="Lab-2-Scraping">Lab 2 Scraping<a class="anchor-link" href="#Lab-2-Scraping">¶</a></h2><p><strong>Harvard University</strong><br>
@@ -1255,7 +1079,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO GET THE RIGHT FORMATTING </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO GET THE RIGHT FORMATTING </span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="k">def</span> <span class="nf">css_styling</span><span class="p">():</span>
     <span class="n">styles</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="s2">"../../styles/cs109.css"</span><span class="p">,</span> <span class="s2">"r"</span><span class="p">)</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
@@ -1328,7 +1152,7 @@ header {
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1357,14 +1181,15 @@ header {
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">requests</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">time</span><span class="o">,</span> <span class="nn">requests</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this lab, we'll scrape Goodread's Best Books list:</p>
 <p><a href="https://www.goodreads.com/list/show/1.Best_Books_Ever?page=1">https://www.goodreads.com/list/show/1.Best_Books_Ever?page=1</a> .</p>
@@ -1373,7 +1198,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h1><ol start="0">
 <li> Learning Goals </li>
@@ -1386,7 +1212,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Learning-Goals">Learning Goals<a class="anchor-link" href="#Learning-Goals">¶</a></h2><p>Understand the structure of a web page. Use Beautiful soup to scrape content from these web pages.</p>
 <p><em>This lab corresponds to lectures 2, 3 and 4 and maps on to homework 1 and further.</em></p>
@@ -1394,7 +1221,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="1.-Exploring-the-web-pages-and-downloading-them">1. Exploring the web pages and downloading them<a class="anchor-link" href="#1.-Exploring-the-web-pages-and-downloading-them">¶</a></h2><p>We're going to see the structure of Goodread's best books list. We'll use the Developer tools in chrome, safari and firefox have similar tools available</p>
 <p><img alt="" src="images/goodreads1.png"></p>
@@ -1402,7 +1230,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To getch this page we use the <code>requests</code> module. But are we allowed to do this? Lets check:</p>
 <p><a href="https://www.goodreads.com/robots.txt">https://www.goodreads.com/robots.txt</a></p>
@@ -1415,7 +1244,7 @@ header {
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">URLSTART</span><span class="o">=</span><span class="s2">"https://www.goodreads.com"</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">URLSTART</span><span class="o">=</span><span class="s2">"https://www.goodreads.com"</span>
 <span class="n">BESTBOOKS</span><span class="o">=</span><span class="s2">"/list/show/1.Best_Books_Ever?page="</span>
 <span class="n">url</span> <span class="o">=</span> <span class="n">URLSTART</span><span class="o">+</span><span class="n">BESTBOOKS</span><span class="o">+</span><span class="s1">'1'</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
@@ -1437,7 +1266,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can see properties of the page. Most relevant are <code>status_code</code> and <code>text</code>. The former tells us  if the web-page was found, and if found , ok. (See lecture notes.)</p>
 </div>
@@ -1448,7 +1278,7 @@ header {
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">page</span><span class="o">.</span><span class="n">status_code</span> <span class="c1"># 200 is good</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">page</span><span class="o">.</span><span class="n">status_code</span> <span class="c1"># 200 is good</span>
 </pre></div>
 </div>
 </div>
@@ -1469,7 +1299,7 @@ header {
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">page</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">5000</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">page</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">5000</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1486,7 +1316,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us write a loop to fetch 2 pages of "best-books" from goodreads. Notice the use of a format string. This is an example of old-style python format strings</p>
 </div>
@@ -1497,7 +1328,7 @@ header {
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">URLSTART</span><span class="o">=</span><span class="s2">"https://www.goodreads.com"</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">URLSTART</span><span class="o">=</span><span class="s2">"https://www.goodreads.com"</span>
 <span class="n">BESTBOOKS</span><span class="o">=</span><span class="s2">"/list/show/1.Best_Books_Ever?page="</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">bookpage</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
@@ -1526,7 +1357,8 @@ FTW files/page02.html
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="2.-Parse-the-page,-extract-book-urls">2. Parse the page, extract book urls<a class="anchor-link" href="#2.-Parse-the-page,-extract-book-urls">¶</a></h2><p>Notice how we do file input-output, and use beautiful soup in the code below. The <code>with</code> construct ensures that the file being read is closed, something we do explicitly for the file being written. We look for the elements with class <code>bookTitle</code>, extract the urls, and write them into a file</p>
 </div>
@@ -1537,7 +1369,7 @@ FTW files/page02.html
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="k">import</span> <span class="n">BeautifulSoup</span>
 </pre></div>
 </div>
 </div>
@@ -1548,7 +1380,7 @@ FTW files/page02.html
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bookdict</span><span class="o">=</span><span class="p">{}</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bookdict</span><span class="o">=</span><span class="p">{}</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">3</span><span class="p">):</span>
     <span class="n">books</span><span class="o">=</span><span class="p">[]</span>
     <span class="n">stri</span> <span class="o">=</span> <span class="s1">'</span><span class="si">%02d</span><span class="s1">'</span> <span class="o">%</span> <span class="n">i</span>
@@ -1584,7 +1416,8 @@ FTW files/page02.html
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Here is George Orwell's 1984</p>
 </div>
@@ -1595,7 +1428,7 @@ FTW files/page02.html
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">bookdict</span><span class="p">[</span><span class="s1">'02'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">bookdict</span><span class="p">[</span><span class="s1">'02'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1612,21 +1445,24 @@ FTW files/page02.html
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Lets go look at the first URLs on both pages</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="" src="images/goodreads2.png"></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="3.-Parse-a-book-page,-extract-book-properties">3. Parse a book page, extract book properties<a class="anchor-link" href="#3.-Parse-a-book-page,-extract-book-properties">¶</a></h2><p>Ok so now lets dive in and get one of these these files and parse them.</p>
 </div>
@@ -1637,7 +1473,7 @@ FTW files/page02.html
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">furl</span><span class="o">=</span><span class="n">URLSTART</span><span class="o">+</span><span class="n">bookdict</span><span class="p">[</span><span class="s1">'02'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">furl</span><span class="o">=</span><span class="n">URLSTART</span><span class="o">+</span><span class="n">bookdict</span><span class="p">[</span><span class="s1">'02'</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
 <span class="n">furl</span>
 </pre></div>
 </div>
@@ -1655,7 +1491,8 @@ FTW files/page02.html
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="" src="images/goodreads3.png"></p>
 </div>
@@ -1666,7 +1503,7 @@ FTW files/page02.html
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fstuff</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">furl</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fstuff</span><span class="o">=</span><span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">furl</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fstuff</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1689,7 +1526,7 @@ FTW files/page02.html
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">fstuff</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="o">=</span><span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">fstuff</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">'html.parser'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1700,7 +1537,7 @@ FTW files/page02.html
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">d</span><span class="o">.</span><span class="n">prettify</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1732,6 +1569,7 @@ d.select("meta[property='og:title']")[0]['content']
 Out[14]:
 
 '1984'
+
 
 
 
@@ -1775,6 +1613,7 @@ title 1984
  average rating 4.16 
  ratingCount 2402209 
  reviewCount 53335
+
 
 
 
@@ -1850,6 +1689,7 @@ Out[18]:
 
 
 
+
 4. Set up a pipeline for fetching and parsing¶Ok lets get back to the fetching...
 
 
@@ -1908,6 +1748,7 @@ FTW files/2_7171637-clockwork-angel.html
 
 
 
+
 Ok we are off to parse each one of the html pages we fetched. We have provided the skeleton of the code and the code to parse the year, since it is a bit more complex...see the difference in the screenshots above.
 
 
@@ -1930,6 +1771,7 @@ def get_year(d):
         else:
             rowtext="NA"
         return rowtext
+
 
 
 
@@ -2033,6 +1875,7 @@ Out[23]:
  'year': '2008',
  'file': 'files/1_2767052-the-hunger-games.html',
  'genres': '/genres/young-adult|/genres/fiction|/genres/science-fiction|/genres/dystopia|/genres/fantasy|/genres/science-fiction'}
+
 
 
 

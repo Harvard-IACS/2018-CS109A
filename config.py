@@ -64,7 +64,7 @@ PLUGIN_PATHS = ['plugins']
 
 PLUGINS = ['ipynb.markup', 'tipue_search']
 
-IGNORE_FILES = ['.ipynb_checkpoints', 'README.md', "*.html"]
+IGNORE_FILES = ['.ipynb_checkpoints', 'README.md', "*.html", "__pycache__"]
 
 # Uncomment following line if you want document-relative URLs when developing
 RELATIVE_URLS = True

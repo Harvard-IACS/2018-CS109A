@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,7 +1061,8 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS-109A Introduction to Data Science</h1>
 <h2 id="Lab-1:-Introduction-to-Python-and-its-Numerical-Stack">Lab 1: Introduction to Python and its Numerical Stack<a class="anchor-link" href="#Lab-1:-Introduction-to-Python-and-its-Numerical-Stack">¶</a></h2><p><strong>Harvard University</strong><br>
@@ -1255,7 +1079,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO GET THE RIGHT FORMATTING </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO GET THE RIGHT FORMATTING </span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1279,7 +1103,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Programming-Expectations">Programming Expectations<a class="anchor-link" href="#Programming-Expectations">¶</a></h2><p>All assignments for this class will use Python and the browser-based iPython notebook format you are currently viewing. Python experience is not a prerequisite for this course, as long as you are comfortable learning on your own as needed.</p>
 <p>Note though that the <strong>programming at the level of CS 50 is a prerequisite</strong> for this course.   If you have concerns about the prerequisite, please come speak with any of the instructors.</p>
@@ -1288,7 +1113,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ol start="0">
 <li> Learning Goals </li>
@@ -1306,7 +1132,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Learning-Goals">Learning Goals<a class="anchor-link" href="#Learning-Goals">¶</a></h2><p>This introductory lab is a condensed introduction to Python numerical programming.  By the end of this lab, you will feel more comfortable:</p>
 <ul>
@@ -1328,14 +1155,16 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-1:-Getting-Started">Part 1: Getting Started<a class="anchor-link" href="#Part-1:-Getting-Started">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Importing-modules">Importing modules<a class="anchor-link" href="#Importing-modules">¶</a></h3><p>All notebooks should begin with code that imports <em>modules</em>, collections of built-in, commonly-used Python functions.  Below we import the Numpy module, a fast numerical programming library for scientific computing.  Future labs will require additional modules, which we'll import with the same <code>import MODULE_NAME as MODULE_NICKNAME</code> syntax.</p>
 </div>
@@ -1346,14 +1175,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1">#imports a fast numerical programming library</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span> <span class="c1">#imports a fast numerical programming library</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now that Numpy has been imported, we can access some useful functions.  For example, we can use <code>mean</code> to calculate the mean of a set of numbers.</p>
 </div>
@@ -1364,28 +1194,31 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">([</span><span class="mf">1.2</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>to calculate the mean of 1.2, 2, and 3.3.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The code above is not particularly efficient, and efficiency will be important for you when dealing with large data sets. Later and in lab 2 we will see more efficient options.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Calculations-and-variables">Calculations and variables<a class="anchor-link" href="#Calculations-and-variables">¶</a></h3>
 </div>
@@ -1396,7 +1229,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># // is integer division</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># // is integer division</span>
 <span class="mi">1</span><span class="o">/</span><span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="o">//</span><span class="mi">2</span><span class="p">,</span> <span class="mf">1.0</span><span class="o">/</span><span class="mf">2.0</span><span class="p">,</span> <span class="mi">3</span><span class="o">*</span><span class="mf">3.2</span>
 </pre></div>
 </div>
@@ -1404,7 +1237,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The last line in a cell is returned as the output value, as above.  For cells with multiple lines of results, we can display results using <code>print</code>, as can be seen below.</p>
 </div>
@@ -1415,7 +1249,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="mf">3.0</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">7</span><span class="p">)</span>
 <span class="mi">5</span><span class="o">/</span><span class="mi">3</span>
 </pre></div>
 </div>
@@ -1423,7 +1257,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can store integer or floating point values as variables.  The other basic Python data types -- booleans, strings, lists -- can also be stored as variables.</p>
 <p>(more on types here: <a href="http://www.diveintopython3.net/native-datatypes.html">http://www.diveintopython3.net/native-datatypes.html</a>)</p>
@@ -1435,7 +1270,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mf">2.0</span>
 </pre></div>
 </div>
@@ -1443,7 +1278,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Here is the storing of a list (more about what a list is later):</p>
 </div>
@@ -1454,14 +1290,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Think of a variable as a label for a value, not a box in which you put the value</p>
 <p><img alt="" src="images/sticksnotboxes.png"></p>
@@ -1474,7 +1311,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">b</span> <span class="o">=</span> <span class="n">a</span>
 <span class="n">b</span>
 </pre></div>
 </div>
@@ -1482,7 +1319,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This DOES NOT create a new copy of <code>a</code>. It merely puts a new label on the memory at a, as can be seen by the following code:</p>
 </div>
@@ -1493,7 +1331,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"a"</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"b"</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
 <span class="n">a</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"a after change"</span><span class="p">,</span> <span class="n">a</span><span class="p">)</span>
@@ -1504,7 +1342,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Tuples</strong></p>
 <p>Multiple items on one line in the interface are returned as a <em>tuple</em>, an immutable sequence of Python objects.</p>
@@ -1516,7 +1355,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">b</span> <span class="o">=</span> <span class="mf">2.0</span>
 <span class="n">a</span> <span class="o">+</span> <span class="n">a</span><span class="p">,</span> <span class="n">a</span> <span class="o">-</span> <span class="n">b</span><span class="p">,</span> <span class="n">b</span> <span class="o">*</span> <span class="n">b</span><span class="p">,</span> <span class="mi">10</span><span class="o">*</span><span class="n">a</span>
 </pre></div>
@@ -1525,7 +1364,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can obtain the type of a variable, and use boolean comparisons to test these types.</p>
 </div>
@@ -1536,7 +1376,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">float</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">float</span>
 </pre></div>
 </div>
 </div>
@@ -1547,14 +1387,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">)</span> <span class="o">==</span> <span class="nb">int</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For reference, below are common arithmetic and comparison operations.</p>
 <p><img alt="Drawing" src="images/ops1_v2.png" style="width: 600px;"></p>
@@ -1563,7 +1404,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"> <b> EXERCISE**:  Create a tuple called `tup` with the following seven objects: </b></div>.</p>
 <blockquote><ul>
@@ -1583,14 +1425,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-2:-Lists">Part 2: Lists<a class="anchor-link" href="#Part-2:-Lists">¶</a></h2><p>Much of Python is based on the notion of a list.  In Python, a list is a sequence of items separated by commas, all within square brackets.  The items can be integers, floating points, or another type.  Unlike in C arrays, items in a Python list can be different types, so Python lists are more versatile than traditional arrays in C or in other languages.</p>
 <p>Let's start out by creating a few lists.</p>
@@ -1602,7 +1445,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">empty_list</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">empty_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">float_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">3.</span><span class="p">,</span> <span class="mf">5.</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]</span>
 <span class="n">int_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
 <span class="n">mixed_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mf">4.</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
@@ -1615,7 +1458,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Lists in Python are zero-indexed, as in C.  The first entry of the list has index 0, the second has index 1, and so on.</p>
 </div>
@@ -1626,7 +1470,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">int_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">int_list</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">float_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -1634,7 +1478,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What happens if we try to use an index that doesn't exist for that list?  Python will complain!</p>
 </div>
@@ -1645,14 +1490,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">float_list</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">float_list</span><span class="p">[</span><span class="mi">10</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can find the length of a list using the builtin function <code>len</code>:</p>
 </div>
@@ -1663,7 +1509,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">float_list</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">float_list</span><span class="p">)</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">float_list</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1671,14 +1517,16 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Indexing-on-lists">Indexing on lists<a class="anchor-link" href="#Indexing-on-lists">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And since Python is zero-indexed, the last element of <code>float_list</code> is</p>
 </div>
@@ -1689,14 +1537,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">float_list</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">float_list</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">float_list</span><span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">float_list</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It is more idiomatic in python to use -1 for the last element, -2 for the second last, and so on</p>
 </div>
@@ -1707,14 +1556,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">float_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">float_list</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can use the <code>:</code> operator to access a subset of the list.  This is called <em>slicing.</em></p>
 </div>
@@ -1725,7 +1575,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">float_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">float_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:</span><span class="mi">5</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">float_list</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -1733,7 +1583,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Below is a summary of list slicing operations:</p>
 <p><img alt="Drawing" src="images/ops3_v2.png" style="width: 600px;"></p>
@@ -1741,7 +1592,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can slice "backwards" as well:</p>
 </div>
@@ -1752,7 +1604,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">float_list</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># up to second last</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">float_list</span><span class="p">[:</span><span class="o">-</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># up to second last</span>
 </pre></div>
 </div>
 </div>
@@ -1763,14 +1615,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">float_list</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="c1"># up to but not including 5th element</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">float_list</span><span class="p">[:</span><span class="mi">4</span><span class="p">]</span> <span class="c1"># up to but not including 5th element</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can also slice with a stride:</p>
 </div>
@@ -1781,14 +1634,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">float_list</span><span class="p">[:</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># above but skipping every second element</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">float_list</span><span class="p">[:</span><span class="mi">4</span><span class="p">:</span><span class="mi">2</span><span class="p">]</span> <span class="c1"># above but skipping every second element</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can iterate through a list using a loop.  Here's a for loop.</p>
 </div>
@@ -1799,7 +1653,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">float_list</span><span class="p">:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">float_list</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">ele</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1807,7 +1661,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Or, if we like, we can iterate through a list using the indices using a for loop with  <code>in range</code>. This is not idiomatic and is not recommended, but accomplishes the same thing as above.</p>
 </div>
@@ -1818,7 +1673,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">float_list</span><span class="p">)):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">float_list</span><span class="p">)):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">float_list</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -1826,14 +1681,16 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What if you wanted the index as well?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Use the built-in python method <code>enumerate</code>,  which can be used to create a list of tuples with each tuple of the form <code>(index, value)</code>.</p>
 </div>
@@ -1844,7 +1701,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ele</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">float_list</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">ele</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">float_list</span><span class="p">):</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span><span class="n">ele</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1856,7 +1713,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># or make a list from it using the list constructor</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># or make a list from it using the list constructor</span>
 <span class="nb">list</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">float_list</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -1864,14 +1721,16 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Appending-and-deleting">Appending and deleting<a class="anchor-link" href="#Appending-and-deleting">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can also append items to the end of the list using the <code>+</code> operator or with <code>append</code>.</p>
 </div>
@@ -1882,7 +1741,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">float_list</span> <span class="o">+</span> <span class="p">[</span><span class="o">.</span><span class="mi">333</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">float_list</span> <span class="o">+</span> <span class="p">[</span><span class="o">.</span><span class="mi">333</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1893,7 +1752,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">float_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">.</span><span class="mi">444</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">float_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="o">.</span><span class="mi">444</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1904,7 +1763,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">float_list</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">float_list</span><span class="p">)</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">float_list</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1912,7 +1771,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Go and run the cell with <code>float_list.append</code> a second time.  Then run the next line.  What happens?</p>
 <p>To remove an item from the list, use <code>del.</code></p>
@@ -1924,7 +1784,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">del</span><span class="p">(</span><span class="n">float_list</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">del</span><span class="p">(</span><span class="n">float_list</span><span class="p">[</span><span class="mi">2</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">float_list</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1932,7 +1792,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="List-Comprehensions">List Comprehensions<a class="anchor-link" href="#List-Comprehensions">¶</a></h3><p>Lists can be constructed in a compact way using a <em>list comprehension</em>.  Here's a simple example.</p>
 </div>
@@ -1943,7 +1804,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">squaredlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">int_list</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">squaredlist</span> <span class="o">=</span> <span class="p">[</span><span class="n">i</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">int_list</span><span class="p">]</span>
 <span class="n">squaredlist</span>
 </pre></div>
 </div>
@@ -1951,7 +1812,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And here's a more complicated one, requiring a conditional.</p>
 </div>
@@ -1962,7 +1824,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comp_list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">squaredlist</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">comp_list1</span> <span class="o">=</span> <span class="p">[</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">squaredlist</span> <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">comp_list1</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1970,7 +1832,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is entirely equivalent to creating <code>comp_list1</code> using a loop with a conditional, as below:</p>
 </div>
@@ -1981,7 +1844,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [34]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">comp_list2</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">comp_list2</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="n">squaredlist</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">i</span> <span class="o">%</span> <span class="mi">2</span> <span class="o">==</span> <span class="mi">0</span><span class="p">:</span>
         <span class="n">comp_list2</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="o">*</span><span class="n">i</span><span class="p">)</span>
@@ -1993,7 +1856,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The list comprehension syntax</p>
 <pre><code>[expression for item in list if conditional]</code></pre>
@@ -2005,7 +1869,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b> Exercise:  Build a list that contains every prime number between 1 and 100, in two different ways: </b></div></p>
 <ol>
@@ -2020,7 +1885,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [35]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -2031,14 +1896,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [36]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-4:-Simple-Functions">Part 4: Simple Functions<a class="anchor-link" href="#Part-4:-Simple-Functions">¶</a></h2><p>A <em>function</em> object is a reusable block of code that does a specific task.  Functions are all over Python, either on their own or on other objects.  To invoke a function <code>func</code>, you call it as <code>func(arguments)</code>.</p>
 <p>We've seen built-in Python functions and methods.  For example, <code>len</code> and <code>print</code> are built-in Python functions.  And at the beginning, you called <code>np.mean</code> to calculate the mean of three numbers, where <code>mean</code> is a function in the numpy module and numpy was abbreviated as <code>np</code>. This syntax allows us to have multiple "mean" functions in different modules; calling this one as <code>np.mean</code> guarantees that we will pick up numpy's mean function, as opposed to a mean function from a different module.</p>
@@ -2052,7 +1918,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [37]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">float_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.09</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.444</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">float_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.0</span><span class="p">,</span> <span class="mf">2.09</span><span class="p">,</span> <span class="mf">4.0</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">0.444</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">float_list</span><span class="p">)</span>
 <span class="n">float_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mf">56.7</span><span class="p">)</span> 
 <span class="n">float_list</span>
@@ -2062,7 +1928,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="User-defined-functions">User-defined functions<a class="anchor-link" href="#User-defined-functions">¶</a></h3><p>We'll now learn to write our own user-defined functions.  Below is the syntax for defining a basic function with one input argument and one output. You can also define functions with no input or output arguments, or multiple input or output arguments.</p>
 <pre><code>def name_of_function(arg):
@@ -2077,7 +1944,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [38]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">square</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">x_sqr</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
     <span class="k">return</span><span class="p">(</span><span class="n">x_sqr</span><span class="p">)</span>
 
@@ -2092,7 +1959,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What if you want to return two variables at a time? The usual way is to return a tuple:</p>
 </div>
@@ -2103,7 +1971,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [39]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">square_and_cube</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">square_and_cube</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">x_cub</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span><span class="o">*</span><span class="n">x</span>
     <span class="n">x_sqr</span> <span class="o">=</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
     <span class="k">return</span><span class="p">(</span><span class="n">x_sqr</span><span class="p">,</span> <span class="n">x_cub</span><span class="p">)</span>
@@ -2115,7 +1983,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Lambda-functions">Lambda functions<a class="anchor-link" href="#Lambda-functions">¶</a></h3><p>Often we quickly define mathematical functions with a one-line function called a <em>lambda</em> function.  Lambda functions are great because they enable us to write functions without having to name them, ie, they're <em>anonymous</em>.<br>
 No return statement is needed.</p>
@@ -2127,7 +1996,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [40]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create an anonymous function and assign it to the variable square</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># create an anonymous function and assign it to the variable square</span>
 <span class="n">square</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="o">*</span><span class="n">x</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">square</span><span class="p">(</span><span class="mi">3</span><span class="p">))</span>
 
@@ -2146,7 +2015,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Refactoring-using-functions"><em>Refactoring</em> using functions<a class="anchor-link" href="#Refactoring-using-functions">¶</a></h3><p>In an exercise from Lab 0, you wrote code that generated a list of the prime numbers between 1 and 100.  For the excercise below, it may help to revisit that code.</p>
 <div class="exercise"><b>Write a function called `isprime` that takes in a positive integer $N$, and determines whether or not it is prime.  Return `True` if it's prime and return `False` if it isn't. Then, using a list comprehension and `isprime`, create a list `myprimes` that contains all the prime numbers less than 100.</b></div>
@@ -2158,14 +2028,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [41]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-5:-Introduction-to-Numpy">Part 5: Introduction to Numpy<a class="anchor-link" href="#Part-5:-Introduction-to-Numpy">¶</a></h2><p>Scientific Python code uses a fast array structure, called the numpy array. Those who have worked in Matlab will find this very natural.   For reference, the numpy documention can be found <a href="https://docs.scipy.org/doc/numpy/reference/">here</a>.</p>
 <p>Let's make a numpy array.</p>
@@ -2177,7 +2048,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [42]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">])</span>
 <span class="n">my_array</span>
 </pre></div>
 </div>
@@ -2189,7 +2060,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [43]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># works as in lists</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># works as in lists</span>
 <span class="nb">len</span><span class="p">(</span><span class="n">my_array</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2197,7 +2068,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The shape array of an array is very useful (we'll see more of it later when we talk about 2D and higher dimensional arrays).</p>
 </div>
@@ -2208,14 +2080,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [44]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_array</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">my_array</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy arrays are <strong>typed</strong>. This means that by default, all the elements will be assumed to be of one type</p>
 </div>
@@ -2226,14 +2099,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [45]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_array</span><span class="o">.</span><span class="n">dtype</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">my_array</span><span class="o">.</span><span class="n">dtype</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy arrays are listy (i.e. they act like lists)! Below we compute length, slice, and iterate.</p>
 </div>
@@ -2244,7 +2118,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [46]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_array</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">my_array</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">my_array</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">ele</span> <span class="ow">in</span> <span class="n">my_array</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">ele</span><span class="p">)</span>
@@ -2254,7 +2128,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>In general you should manipulate numpy arrays by using numpy module functions</strong> (<code>np.mean</code>, for example). This is for efficiency purposes, and a discussion about this will happen in Lab2.</p>
 <p>You can calculate the mean of the array elements either by calling the method <code>.mean</code> on a numpy array or by applying the function np.mean with the numpy array as an argument.</p>
@@ -2266,7 +2141,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [47]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">my_array</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">my_array</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">my_array</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -2274,7 +2149,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The way we constructed the numpy array above seems redundant. After all we already had a regular python list. Indeed, it is the other ways we have to construct numpy arrays that make them super useful.</p>
 <p>There are many such numpy array <em>constructors</em>. Here are some commonly used constructors. Look them up in the documentation.</p>
@@ -2286,14 +2162,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [48]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># generates 10 floating point ones</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># generates 10 floating point ones</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy gains a lot of its efficiency from being typed. That is, all elements in the array have the same type, such as integer or floating point. The default type, as can be seen above, is a float of size appropriate for the machine (64 bit on a 64 bit machine).</p>
 </div>
@@ -2304,7 +2181,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [49]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">itemsize</span> <span class="c1"># in bytes</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dtype</span><span class="p">(</span><span class="nb">float</span><span class="p">)</span><span class="o">.</span><span class="n">itemsize</span> <span class="c1"># in bytes</span>
 </pre></div>
 </div>
 </div>
@@ -2315,7 +2192,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [50]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'int'</span><span class="p">)</span> <span class="c1"># generates 10 integer ones</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'int'</span><span class="p">)</span> <span class="c1"># generates 10 integer ones</span>
 </pre></div>
 </div>
 </div>
@@ -2326,14 +2203,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [51]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Often you will want random numbers. Use the <code>random</code> constructor!</p>
 </div>
@@ -2344,14 +2222,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [52]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># uniform on [0,1]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># uniform on [0,1]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can generate random numbers from a normal distribution with mean 0 and variance 1:</p>
 </div>
@@ -2362,7 +2241,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [53]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">normal_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">normal_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">1000</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"The sample mean and standard devation are </span><span class="si">%f</span><span class="s2"> and </span><span class="si">%f</span><span class="s2">, respectively."</span> <span class="o">%</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">normal_array</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">normal_array</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -2370,7 +2249,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can sample with and without replacement from an array. Lets first construct a grid:</p>
 </div>
@@ -2381,7 +2261,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [54]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">grid</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">arange</span><span class="p">(</span><span class="mf">0.</span><span class="p">,</span> <span class="mf">1.01</span><span class="p">,</span> <span class="mf">0.1</span><span class="p">)</span>
 <span class="n">grid</span>
 </pre></div>
 </div>
@@ -2389,7 +2269,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Without replacement</p>
 </div>
@@ -2400,7 +2281,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [55]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2411,14 +2292,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [56]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">20</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>With replacement:</p>
 </div>
@@ -2429,14 +2311,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [57]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">grid</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Numpy-supports-vector-operations">Numpy supports vector operations<a class="anchor-link" href="#Numpy-supports-vector-operations">¶</a></h4><p>What does this mean? It means that instead of adding two arrays, element by element, you can just say: add the two arrays. Note that this behavior is very different from python lists.</p>
 </div>
@@ -2447,7 +2330,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [58]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">first</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">second</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">first</span> <span class="o">+</span> <span class="n">second</span>
 </pre></div>
@@ -2460,7 +2343,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [59]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">first_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">first_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]</span>
 <span class="n">second_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]</span>
 <span class="n">first_list</span> <span class="o">+</span> <span class="n">second_list</span> <span class="c1">#not what u want</span>
 </pre></div>
@@ -2469,14 +2352,16 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>On some computer chips this addition actually happens in parallel, so speedups can be high. But even on regular chips, the advantage of greater readability is important.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy supports a concept known as <em>broadcasting</em>, which dictates how arrays of different sizes are combined together. There are too many rules to list here, but importantly, multiplying an array by a number multiplies each element by the number. Adding a number adds the number to each element.</p>
 </div>
@@ -2487,7 +2372,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [60]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">first</span> <span class="o">+</span> <span class="mi">1</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">first</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -2498,14 +2383,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [61]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">first</span><span class="o">*</span><span class="mi">5</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">first</span><span class="o">*</span><span class="mi">5</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This means that if you wanted the distribution $N(5, 7)$ you could do:</p>
 </div>
@@ -2516,7 +2402,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [62]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">normal_5_7</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">7</span><span class="o">*</span><span class="n">normal_array</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">normal_5_7</span> <span class="o">=</span> <span class="mi">5</span> <span class="o">+</span> <span class="mi">7</span><span class="o">*</span><span class="n">normal_array</span>
 <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">normal_5_7</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">normal_5_7</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2524,7 +2410,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Multiplying two arrays multiplies them element-by-element</p>
 </div>
@@ -2535,14 +2422,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [63]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">first</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">first</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">first</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">first</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You might have wanted to compute the dot product instead:</p>
 </div>
@@ -2553,14 +2441,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [64]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">first</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">,</span> <span class="p">(</span><span class="n">first</span><span class="o">*</span><span class="mi">5</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">((</span><span class="n">first</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="p">,</span> <span class="p">(</span><span class="n">first</span><span class="o">*</span><span class="mi">5</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can also use the @ operator for this purpose</p>
 </div>
@@ -2571,14 +2460,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [65]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">first</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">@</span> <span class="p">(</span><span class="n">first</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="p">(</span><span class="n">first</span> <span class="o">+</span><span class="mi">1</span><span class="p">)</span> <span class="o">@</span> <span class="p">(</span><span class="n">first</span><span class="o">*</span><span class="mi">5</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-6:-Probabilitiy-Distributions-from-scipy.stats">Part 6: Probabilitiy Distributions from <code>scipy.stats</code><a class="anchor-link" href="#Part-6:-Probabilitiy-Distributions-from-scipy.stats">¶</a></h2><p>Since we'll be using many distributions, we'll want to access the pdf/pmf functions of these distributions and obtain samples from them. We already saw how to obtain samples from the continuous uniform and normal distributions. But we might want to obtain their pdfs as well.</p>
 <p><code>scipy.stats</code> allows us to obtain the pdf function as well as samples. The programming interface is identical for all the distributions.</p>
@@ -2593,7 +2483,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [66]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 </pre></div>
 </div>
@@ -2601,7 +2491,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Lets get the normal distribution namespace from <code>scipy.stats</code>. Docs <a href="https://docs.scipy.org/doc/scipy/reference/generated/scipy.stats.norm.html">here</a>.</p>
 </div>
@@ -2612,14 +2503,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [67]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">norm</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.stats</span> <span class="k">import</span> <span class="n">norm</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Lets create 1000 points between -10 and 10</p>
 </div>
@@ -2630,7 +2522,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [68]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">1000</span><span class="p">)</span>
 <span class="n">x</span><span class="p">[:</span><span class="mi">10</span><span class="p">],</span> <span class="n">x</span><span class="p">[</span><span class="o">-</span><span class="mi">10</span><span class="p">:]</span>
 </pre></div>
 </div>
@@ -2638,7 +2530,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Lets get the pdf of a normal distribution with a mean of 1 and standard deviation 3 and plot it using the grid points computed before...</p>
 </div>
@@ -2649,7 +2542,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [69]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pdf_x</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pdf_x</span> <span class="o">=</span> <span class="n">norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">pdf_x</span><span class="p">);</span>
 </pre></div>
 </div>
@@ -2657,7 +2550,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And you can get random variables using the <code>rvs</code> function.</p>
 </div>
@@ -2668,14 +2562,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [70]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">loc</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can use a more instance based way of getting both the pdf and samples. The documentation calls this instance a "frozen" distribution:</p>
 </div>
@@ -2686,7 +2581,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [71]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">frozen_norm</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">frozen_norm</span> <span class="o">=</span> <span class="n">norm</span><span class="p">(</span><span class="n">loc</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">scale</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">frozen_norm</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -2698,7 +2593,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [72]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">frozen_norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">frozen_norm</span><span class="o">.</span><span class="n">pdf</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -2709,14 +2604,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [73]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">frozen_norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">frozen_norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can now plot a histogram of the samples using matplotlib:</p>
 <p>(see docs on plt.hist by typing</p>
@@ -2730,14 +2626,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [74]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">frozen_norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">frozen_norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>By default the histogram gives us counts. We can re-normalize these counts to get an approximation to the probability distribution from the samples.</p>
 </div>
@@ -2748,14 +2645,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [75]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">frozen_norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">frozen_norm</span><span class="o">.</span><span class="n">rvs</span><span class="p">(</span><span class="mi">1000</span><span class="p">),</span> <span class="n">bins</span><span class="o">=</span><span class="mi">30</span><span class="p">,</span> <span class="n">normed</span><span class="o">=</span><span class="kc">True</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-7:-Conclusions">Part 7: Conclusions<a class="anchor-link" href="#Part-7:-Conclusions">¶</a></h2><p>For more practice exercises (with solutions) and discussion, see this <a href="http://www.practicepython.org">page</a>.  Some of these exercises are particularly relevant.  Check them out!</p>
 <p>Don't forget to look up <a href="https://jakevdp.github.io/PythonDataScienceHandbook/">Jake's book</a>.</p>
@@ -2764,14 +2662,16 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Additional-Stuff">Additional Stuff<a class="anchor-link" href="#Additional-Stuff">¶</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-1:-Dictionaries">Part 1: Dictionaries<a class="anchor-link" href="#Part-1:-Dictionaries">¶</a></h2><p>A dictionary is another storage container.  Like a list, a dictionary is a sequence of items.  Unlike a list, a dictionary is unordered and its items are accessed with keys and not integer positions.</p>
 <p>Dictionaries are the closest container we have to a database.</p>
@@ -2784,7 +2684,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [76]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">enroll2017_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'CS50'</span><span class="p">:</span> <span class="mi">692</span><span class="p">,</span> <span class="s1">'CS109A / Stat 121A / AC 209A'</span><span class="p">:</span> <span class="mi">352</span><span class="p">,</span> <span class="s1">'Econ1011a'</span><span class="p">:</span> <span class="mi">95</span><span class="p">,</span> <span class="s1">'AM21a'</span><span class="p">:</span> <span class="mi">153</span><span class="p">,</span> <span class="s1">'Stat110'</span><span class="p">:</span> <span class="mi">485</span><span class="p">}</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">enroll2017_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'CS50'</span><span class="p">:</span> <span class="mi">692</span><span class="p">,</span> <span class="s1">'CS109A / Stat 121A / AC 209A'</span><span class="p">:</span> <span class="mi">352</span><span class="p">,</span> <span class="s1">'Econ1011a'</span><span class="p">:</span> <span class="mi">95</span><span class="p">,</span> <span class="s1">'AM21a'</span><span class="p">:</span> <span class="mi">153</span><span class="p">,</span> <span class="s1">'Stat110'</span><span class="p">:</span> <span class="mi">485</span><span class="p">}</span>
 <span class="n">enroll2017_dict</span>
 </pre></div>
 </div>
@@ -2792,7 +2692,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>One can obtain the value corrsponding to a key thus:</p>
 </div>
@@ -2803,14 +2704,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [77]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">enroll2017_dict</span><span class="p">[</span><span class="s1">'CS50'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">enroll2017_dict</span><span class="p">[</span><span class="s1">'CS50'</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Or thus, which allows for the key to not be in the dictionary</p>
 </div>
@@ -2821,7 +2723,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [78]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">enroll2017_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'CS01'</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">enroll2017_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'CS01'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">enroll2017_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'CS01'</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">enroll2017_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'CS01'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -2832,14 +2734,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [79]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">enroll2017_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'CS50'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">enroll2017_dict</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">'CS50'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>All sorts of iterations are supported:</p>
 </div>
@@ -2850,7 +2753,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [80]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">enroll2017_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">enroll2017_dict</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -2861,14 +2764,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [81]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">enroll2017_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">enroll2017_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can iterate over the tuples obtained above:
 (to read more about how the print formatting works , look at <a href="https://docs.python.org/3/library/stdtypes.html#old-string-formatting">https://docs.python.org/3/library/stdtypes.html#old-string-formatting</a> and <a href="https://docs.python.org/3/tutorial/inputoutput.html">https://docs.python.org/3/tutorial/inputoutput.html</a>)</p>
@@ -2880,7 +2784,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [82]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">enroll2017_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">value</span> <span class="ow">in</span> <span class="n">enroll2017_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"</span><span class="si">%s</span><span class="s2">: </span><span class="si">%d</span><span class="s2">"</span> <span class="o">%</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">value</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -2888,7 +2792,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Simply iterating over a dictionary gives us the keys. This is useful when we want to do something with each item:</p>
 </div>
@@ -2899,7 +2804,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [83]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">second_dict</span><span class="o">=</span><span class="p">{}</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">second_dict</span><span class="o">=</span><span class="p">{}</span>
 <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">enroll2017_dict</span><span class="p">:</span>
     <span class="n">second_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="n">enroll2017_dict</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
 <span class="n">second_dict</span>
@@ -2909,14 +2814,16 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The above is an actual copy to another part of memory, unlike, <code>second_dict = enroll2017_dict</code> which would have made both variables label the same memory location.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this example, the keys were strings corresponding to course names.  Keys don't have to be strings though.</p>
 <p>Like lists, you can construct dictionaries using a <em>dictionary comprehension</em>, which is similar to a list comprehension. Notice the brackets {} and the use of <code>zip</code>, which is another iterator that combines two lists together.</p>
@@ -2928,7 +2835,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [84]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">int_list</span><span class="p">,</span> <span class="n">float_list</span><span class="p">)}</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">my_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">int_list</span><span class="p">,</span> <span class="n">float_list</span><span class="p">)}</span>
 <span class="n">my_dict</span>
 </pre></div>
 </div>
@@ -2936,7 +2843,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can also create dictionaries using the <em>constructor</em> function <code>dict</code>.</p>
 </div>
@@ -2947,14 +2855,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [85]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">dict</span><span class="p">(</span><span class="n">a</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">2</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-2:--Introduction-to-Pandas">Part 2:  Introduction to Pandas<a class="anchor-link" href="#Part-2:--Introduction-to-Pandas">¶</a></h2><p>Often data is stored in comma separated values (CSV) files.    For the remainder of this lab, we'll be working with <a href="https://stat.ethz.ch/R-manual/R-devel/library/datasets/html/mtcars.html">automobile data</a>, where we've extracted relevant parts below.</p>
 <p>Note that CSV files can be output by any spreadsheet software, and are plain text, hence are a great way to share data.</p>
@@ -2962,7 +2871,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Importing-data-with-pandas">Importing data with pandas<a class="anchor-link" href="#Importing-data-with-pandas">¶</a></h3><p>Now let's read in our automobile data as a pandas <em>dataframe</em> structure.</p>
 </div>
@@ -2973,7 +2883,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [86]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 </pre></div>
 </div>
 </div>
@@ -2984,7 +2894,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [87]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read in the csv files</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Read in the csv files</span>
 <span class="n">dfcars</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/mtcars.csv"</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">dfcars</span><span class="p">)</span>
 </pre></div>
@@ -2997,14 +2907,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [88]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>What we have now is a spreadsheet with indexed rows and named columns, called a <em>dataframe</em> in pandas.  <code>dfcars</code> is an <em>instance</em> of the pd.DataFrame <em>class</em>, created by calling the pd.read_csv "constructor function".</p>
 <p>The take-away is that <code>dfcars</code> is a dataframe object, and it has methods (functions) belonging to it. For example, <code>df.head()</code> is a method that shows the first 5 rows of the dataframe.</p>
@@ -3014,7 +2925,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's look again at the first five rows of <code>dfcars</code>.</p>
 </div>
@@ -3025,14 +2937,15 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [89]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Notice the poorly named first column: "Unnamed: 0". Why did that happen?</p>
 <p>The first column, which seems to be the name of the car, does not have a name. Here are the first 3 lines of the file:</p>
@@ -3040,7 +2953,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <pre><code>"","mpg","cyl","disp","hp","drat","wt","qsec","vs","am","gear","carb"
 "Mazda RX4",21,6,160,110,3.9,2.62,16.46,0,1,4,4
@@ -3054,7 +2968,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [90]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span> <span class="o">=</span> <span class="n">dfcars</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"Unnamed: 0"</span><span class="p">:</span> <span class="s2">"name"</span><span class="p">})</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span> <span class="o">=</span> <span class="n">dfcars</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">"Unnamed: 0"</span><span class="p">:</span> <span class="s2">"name"</span><span class="p">})</span>
 <span class="n">dfcars</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -3062,7 +2976,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In the above, the argument <code>columns = {"Unnamed: 0": "name"}</code> of <code>rename</code> changed the name of the first column in the dataframe from <code>Unnamed: 0</code> to <code>name</code>.</p>
 <p>Lets save this cleaned dataframe out to a CSV file.</p>
@@ -3074,7 +2989,7 @@ No return statement is needed.</p>
 <div class="prompt input_prompt">In [91]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># dont store the 0,1,2,3,4.. index</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># dont store the 0,1,2,3,4.. index</span>
 <span class="n">dfcars</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s2">"data/cleaned-mtcars.csv"</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">header</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -3082,7 +2997,8 @@ No return statement is needed.</p>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The output will look something like this:</p>
 <pre><code>name,mpg,cyl,disp,hp,drat,wt,qsec,vs,am,gear,carb
@@ -3096,14 +3012,16 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To access a <em>series</em> (column), you can use either dictionary syntax or instance-variable syntax.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Dictionary syntax is very useful when column names have spaces: Python variables cannot have spaces in them.</p>
 </div>
@@ -3114,7 +3032,7 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 <div class="prompt input_prompt">In [92]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span>
 </pre></div>
 </div>
 </div>
@@ -3125,14 +3043,15 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 <div class="prompt input_prompt">In [93]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="p">[</span><span class="s1">'mpg'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="p">[</span><span class="s1">'mpg'</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can get a numpy array of values from the Pandas Series:</p>
 </div>
@@ -3143,14 +3062,15 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 <div class="prompt input_prompt">In [94]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="o">.</span><span class="n">values</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And we can produce a histogram from these values</p>
 </div>
@@ -3161,7 +3081,7 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 <div class="prompt input_prompt">In [95]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># the .values isnt really need, a series behaves like a list for</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># the .values isnt really need, a series behaves like a list for</span>
 <span class="c1"># plotting purposes</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"mpg"</span><span class="p">);</span>
@@ -3173,7 +3093,8 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>But pandas is very cool: you can get a histogram directly:</p>
 </div>
@@ -3184,7 +3105,7 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 <div class="prompt input_prompt">In [96]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"mpg"</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"Frequency"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Miles per Gallon"</span><span class="p">);</span>
@@ -3194,7 +3115,8 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can also get sub-dataframes by choosing a set of series. We  pass a list of the columns we want as "dictionary keys" to the dataframe.</p>
 </div>
@@ -3205,14 +3127,15 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 <div class="prompt input_prompt">In [97]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="p">[[</span><span class="s1">'am'</span><span class="p">,</span> <span class="s1">'mpg'</span><span class="p">]]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">dfcars</span><span class="p">[[</span><span class="s1">'am'</span><span class="p">,</span> <span class="s1">'mpg'</span><span class="p">]]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Scatter-plots">Scatter plots<a class="anchor-link" href="#Scatter-plots">¶</a></h3><p>We often want to see co-variation among our columns, for example, miles/gallon versus weight.  This can be done with a scatter plot.</p>
 </div>
@@ -3223,7 +3146,7 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 <div class="prompt input_prompt">In [98]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfcars</span><span class="o">.</span><span class="n">wt</span><span class="p">,</span> <span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="p">);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">dfcars</span><span class="o">.</span><span class="n">wt</span><span class="p">,</span> <span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"weight"</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"miles per gallon"</span><span class="p">);</span>
 </pre></div>
@@ -3232,7 +3155,8 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You could have used <code>plot</code> instead of <code>scatter</code>.</p>
 </div>
@@ -3243,7 +3167,7 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 <div class="prompt input_prompt">In [99]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfcars</span><span class="o">.</span><span class="n">wt</span><span class="p">,</span> <span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfcars</span><span class="o">.</span><span class="n">wt</span><span class="p">,</span> <span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"weight"</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"miles per gallon"</span><span class="p">);</span>
 </pre></div>
@@ -3252,7 +3176,8 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Usually we use <code>plt.show()</code> at the end of every plot to display the plot. Our magical incantation <code>%matplotlib inline</code> takes care of this for us, and we don't have to do it in the Jupyter notebook. But if you run your Python program from a file, you will need to explicitly have a call to show. We include it for completion.</p>
 </div>
@@ -3263,7 +3188,7 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 <div class="prompt input_prompt">In [100]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfcars</span><span class="o">.</span><span class="n">wt</span><span class="p">,</span> <span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span> <span class="s1">'ko'</span><span class="p">)</span>  <span class="c1">#black dots</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfcars</span><span class="o">.</span><span class="n">wt</span><span class="p">,</span> <span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span> <span class="s1">'ko'</span><span class="p">)</span>  <span class="c1">#black dots</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"weight"</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"miles per gallon"</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
@@ -3273,7 +3198,8 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Suppose we'd like to save a figure to a file.  We do this by including the <code>savefig</code> command in the same cell as the plotting commands.  The file extension tells you how the file will be saved.</p>
 </div>
@@ -3284,7 +3210,7 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 <div class="prompt input_prompt">In [101]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfcars</span><span class="o">.</span><span class="n">wt</span><span class="p">,</span> <span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">dfcars</span><span class="o">.</span><span class="n">wt</span><span class="p">,</span> <span class="n">dfcars</span><span class="o">.</span><span class="n">mpg</span><span class="p">,</span> <span class="s1">'o'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s2">"weight"</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s2">"miles per gallon"</span><span class="p">);</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">'images/foo1.pdf'</span><span class="p">)</span>
@@ -3295,7 +3221,8 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>And this is what the saved png looks like. Code in Markdown to show this is:</p>
 <p><code>![](images/foo1.png)</code></p>
@@ -3304,7 +3231,8 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Below is a summary of the most commonly used <code>matplotlib</code> plotting routines.</p>
 <p><img alt="" src="images/mpl1.png"></p>
@@ -3312,7 +3240,8 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b> Exercise </b></div> Create a scatter plot showing the co-variation between two columns of your choice.  Label the axes.  See if you can do this <em>without</em> copying and pasting code from earlier in the lab.  What can you conclude, if anything, from your scatter plot?</p>
 </div>
@@ -3323,7 +3252,7 @@ Valiant,18.1,6,225.0,105,2.76,3.46,20.22,1,0,3,1</code></pre>
 <div class="prompt input_prompt">In [102]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>

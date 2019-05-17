@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,14 +1061,16 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS-109A Introduction to Data Science</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Lab-4:-Multiple-and-Polynomial-Regression">Lab 4: Multiple and Polynomial Regression<a class="anchor-link" href="#Lab-4:-Multiple-and-Polynomial-Regression">¶</a></h2><p><strong>Harvard University</strong><br>
 <strong>Fall 2018</strong><br>
@@ -1261,7 +1086,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [142]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO GET THE RIGHT FORMATTING </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO GET THE RIGHT FORMATTING </span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1272,7 +1097,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ol start="0">
 <li> Learning Goals </li>
@@ -1284,7 +1110,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Learning-Goals">Learning Goals<a class="anchor-link" href="#Learning-Goals">¶</a></h2><p>After this lab, you should be able to</p>
 <ul>
@@ -1299,7 +1126,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
@@ -1323,7 +1150,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>statsmodels</code> is focused on the <em>inference</em> task: guess good values for the betas and discuss how certain you are in those answers.</p>
 <p><code>sklearn</code> is focused on the <em>prediction</em> task: given [new] data, guess what the response value is. As a result, statsmodels has lots of tools to discuss confidence, but isn't great at dealing with test sets. Sklearn is great at test sets and validations, but can't really discuss uncertainty in the parameters or predictions. In short:</p>
@@ -1335,7 +1163,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Some-terms">Some terms<a class="anchor-link" href="#Some-terms">¶</a></h3><ul>
 <li><strong>R-squared</strong>: An interpretable summary of how well the model did. 1 is perfect, 0 is a trivial baseline model, negative is worse than the trivial model</li>
@@ -1352,7 +1181,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-1:-Polynomial-Regression,-and-Revisiting-the-Cab-Data">Part 1: Polynomial Regression, and Revisiting the Cab Data<a class="anchor-link" href="#Part-1:-Polynomial-Regression,-and-Revisiting-the-Cab-Data">¶</a></h2>
 </div>
@@ -1363,7 +1193,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [34]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># read in the data, break into train and test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># read in the data, break into train and test</span>
 <span class="n">cab_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/dataset_1.txt"</span><span class="p">)</span>
 <span class="n">train_data</span><span class="p">,</span> <span class="n">test_data</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">cab_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=.</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">)</span>
 <span class="n">cab_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -1377,7 +1207,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [35]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">cab_df</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">cab_df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -1388,7 +1218,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [36]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># do some data cleaning</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># do some data cleaning</span>
 <span class="n">X_train</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="s1">'TimeMin'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="mi">60</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">train_data</span><span class="p">[</span><span class="s1">'PickupCount'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 
@@ -1429,7 +1259,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [37]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
 <span class="n">fitted_cab_model0</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">plot_cabs</span><span class="p">(</span><span class="n">fitted_cab_model0</span><span class="p">)</span>
 </pre></div>
@@ -1442,14 +1272,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [39]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fitted_cab_model0</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fitted_cab_model0</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">X_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can see that there's still a lot of variation in cab pickups that's not being caught by a linear fit. And the linear fit is predicting massively more pickups at 11:59pm than at 12:00am. However, we can add columns to our design matrix for $TimeMin^2$ and $TimeMin^3$ and so on, allowing a wigglier polynomial that will better fit the data.</p>
 <p>We'll be using sklearn's <code>PolynomialFeatures</code> to take some of the tedium out of building the new design matrix. In fact, if all we want is a formula like $y \approx \beta_0 + \beta_1 x + \beta_2 x^2 + ...$ it will directly return the new design matrix.</p>
@@ -1461,7 +1292,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [38]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">transformer_3</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">transformer_3</span> <span class="o">=</span> <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="n">include_bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">new_features</span> <span class="o">=</span> <span class="n">transformer_3</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_train</span><span class="p">)</span>
 <span class="n">new_features</span>
 </pre></div>
@@ -1470,7 +1301,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>A few notes on <code>PolynomialFeatures</code>:</p>
 <ul>
@@ -1486,7 +1318,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fitted_cab_model3</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">new_features</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fitted_cab_model3</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">new_features</span><span class="p">,</span> <span class="n">y_train</span><span class="p">)</span>
 <span class="n">plot_cabs</span><span class="p">(</span><span class="n">fitted_cab_model3</span><span class="p">,</span> <span class="n">transformer_3</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1494,7 +1326,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><p><strong>Questions</strong>:</p>
 <ol>
@@ -1506,7 +1339,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>your answer here</em></p>
 </div>
@@ -1517,7 +1351,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1528,7 +1362,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [40]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1539,21 +1373,23 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [41]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Other-features">Other features<a class="anchor-link" href="#Other-features">¶</a></h4><p>Polynomial features are not the only constucted features that help fit the data. Because these data have a 24 hour cycle, we may want to build features that follow such a cycle. For example, $sin(24\frac{x}{2\pi})$, $sin(12\frac{x}{2\pi})$, $sin(8\frac{x}{2\pi})$. Other feature transformations are appropriate to other types of data. For instance certain feature transformations have been developed for geographical data.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><hr style="height:3px"></p>
 <h2 id="Part-2:-Multiple-regression-and-exploring-the-Football-data">Part 2: Multiple regression and exploring the Football data<a class="anchor-link" href="#Part-2:-Multiple-regression-and-exploring-the-Football-data">¶</a></h2><p>Let's move on to a truly interesting dataset. The data imported below were scraped by <a href="https://www.kaggle.com/mauryashubham/linear-regression-to-predict-market-value/data">Shubham Maurya</a> and record various facts about players in the English Premier League. Our goal will be to fit models that predict the players' market value (what the player could earn when hired by a new team), as estimated by transfermrkt.com.</p>
@@ -1584,7 +1420,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [85]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">league_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/league_data.txt"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">league_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/league_data.txt"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">league_df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
 <span class="n">league_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -1597,7 +1433,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [86]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">league_df</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">league_df</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -1608,14 +1444,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [87]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">league_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">league_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="(Stratified)-train/test-split">(Stratified) train/test split<a class="anchor-link" href="#(Stratified)-train/test-split">¶</a></h3><p>We want to make sure that the training and test data have appropriate representation of each region; it would be bad for the training data to entirely miss a region. This is especially important because some regions are rather rare.</p>
 <p><div class="exercise"><b>Exercise</b></div>
@@ -1629,7 +1466,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>your answer here</em>:</p>
 </div>
@@ -1640,7 +1478,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [88]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1651,21 +1489,23 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [89]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_data</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">test_data</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now that we won't be peeking at the test set, let's explore and look for patterns! We'll introduce a number of useful pandas and numpy functions along the way.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Groupby">Groupby<a class="anchor-link" href="#Groupby">¶</a></h3><p>Pandas' <code>.groupby()</code> function is a wonderful tool for data analysis. It allows us to analyze each of several subgroups.</p>
 <p>Many times, <code>.groupby()</code> is combined with <code>.agg()</code> to get a summary statistic for each subgroup. For instance: What is the average market value, median page views, and maximum fpl for each player position?</p>
@@ -1677,7 +1517,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [90]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'position'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">'position'</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
     <span class="s1">'market_value'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
     <span class="s1">'page_views'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">median</span><span class="p">,</span>
     <span class="s1">'fpl_points'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">max</span>
@@ -1692,7 +1532,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [91]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">position</span><span class="o">.</span><span class="n">unique</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1703,7 +1543,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [92]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'big_club'</span><span class="p">,</span> <span class="s1">'position'</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_data</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">'big_club'</span><span class="p">,</span> <span class="s1">'position'</span><span class="p">])</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span>
     <span class="s1">'market_value'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
     <span class="s1">'page_views'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">,</span>
     <span class="s1">'fpl_points'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span>
@@ -1714,11 +1554,13 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><hr style="height:3px"></p>
 <h2 id="Part-2.2:-Linear-regression-on-the-football-data">Part 2.2: Linear regression on the football data<a class="anchor-link" href="#Part-2.2:-Linear-regression-on-the-football-data">¶</a></h2><p>This section of the lab focuses on fitting a model to the football data and interpreting the model results. The model we'll use is</p>
-$$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{age} + \beta_3\text{age}^2 + \beta_4log_2\left(\text{page_views}\right) + \beta_5\text{new_signing} +\beta_6\text{big_club} + \beta_7\text{position_cat}$$<p>We're including a 2nd degree polynomial in age because we expect pay to increase as a player gains experience, but then decrease as they continue aging. We're taking the log of page views because they have such a large, skewed range and the transformed variable will have fewer outliers that could bias the line. We choose the base of the log to be 2 just to make interpretation cleaner.</p>
+<p>$$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{age} + \beta_3\text{age}^2 + \beta_4log_2\left(\text{page_views}\right) + \beta_5\text{new_signing} +\beta_6\text{big_club} + \beta_7\text{position_cat}$$</p>
+<p>We're including a 2nd degree polynomial in age because we expect pay to increase as a player gains experience, but then decrease as they continue aging. We're taking the log of page views because they have such a large, skewed range and the transformed variable will have fewer outliers that could bias the line. We choose the base of the log to be 2 just to make interpretation cleaner.</p>
 <p><div class="exercise"><b>Exercise</b></div>
 <strong>Questions</strong>:</p>
 <ol>
@@ -1739,7 +1581,7 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 <div class="prompt input_prompt">In [93]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
@@ -1750,14 +1592,15 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 <div class="prompt input_prompt">In [94]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>your answer here</em></p>
 </div>
@@ -1768,7 +1611,7 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 <div class="prompt input_prompt">In [95]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">agecoef</span> <span class="o">=</span> <span class="n">fitted_model_1</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">age</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">agecoef</span> <span class="o">=</span> <span class="n">fitted_model_1</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">age</span>
 <span class="n">age2coef</span> <span class="o">=</span> <span class="n">fitted_model_1</span><span class="o">.</span><span class="n">params</span><span class="o">.</span><span class="n">age_squared</span>
 </pre></div>
 </div>
@@ -1780,7 +1623,7 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 <div class="prompt input_prompt">In [96]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x_vals</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mi">100</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">1000</span><span class="p">)</span>
 <span class="n">y_vals</span> <span class="o">=</span> <span class="n">agecoef</span><span class="o">*</span><span class="n">x_vals</span> <span class="o">+</span><span class="n">age2coef</span><span class="o">*</span><span class="n">x_vals</span><span class="o">**</span><span class="mi">2</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x_vals</span><span class="p">,</span> <span class="n">y_vals</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s2">"Effect of Age"</span><span class="p">)</span>
@@ -1793,7 +1636,8 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><hr style="height:3px"></p>
 <h3 id="Part-2.3:-Turning-Categorical-Variables-into-multiple-binary-variables">Part 2.3: Turning Categorical Variables into multiple binary variables<a class="anchor-link" href="#Part-2.3:-Turning-Categorical-Variables-into-multiple-binary-variables">¶</a></h3><p>Of course, we have an error in how we've included player position. Even though the variable is numeric (1,2,3,4) and the model runs without issue, the value we're getting back is garbage. The interpretation, such as it is, is that there is an equal effect of moving from position category 1 to 2, from 2 to 3, and from 3 to 4, and that this effect is about -.61.</p>
@@ -1807,7 +1651,7 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 <div class="prompt input_prompt">In [97]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_design_recoded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">train_design</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'position_cat'</span><span class="p">],</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_design_recoded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">train_design</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'position_cat'</span><span class="p">],</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <span class="n">test_design_recoded</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">get_dummies</span><span class="p">(</span><span class="n">test_design</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">'position_cat'</span><span class="p">],</span> <span class="n">drop_first</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
 <span class="n">train_design_recoded</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
@@ -1817,7 +1661,8 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We've removed the original <code>position_cat</code> column and created three new ones.</p>
 <h4 id="Why-only-three-new-columns?">Why only three new columns?<a class="anchor-link" href="#Why-only-three-new-columns?">¶</a></h4><p>Why does pandas give us the option to drop the first category?</p>
@@ -1835,7 +1680,7 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 <div class="prompt input_prompt">In [109]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">resu</span> <span class="o">=</span> <span class="n">OLS</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">train_design_recoded</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">resu</span> <span class="o">=</span> <span class="n">OLS</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">train_design_recoded</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="n">resu</span><span class="o">.</span><span class="n">summary</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1847,7 +1692,7 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 <div class="prompt input_prompt">In [110]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">resu</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_design_recoded</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">resu</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_design_recoded</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1858,14 +1703,15 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 <div class="prompt input_prompt">In [99]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">train_design_recoded</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">train_design_recoded</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answers</strong>:</p>
 <ol>
@@ -1876,7 +1722,8 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-3:-A-nice-trick-for-forward-backwards">Part 3: A nice trick for forward-backwards<a class="anchor-link" href="#Part-3:-A-nice-trick-for-forward-backwards">¶</a></h2><p>XOR (operator ^) is a logical operation that only returns true when input differ. We can use it to implement forward-or-backwards selection when we want to keep track of whet predictors are "left" from a given list of predictors.</p>
 <p>The set analog is "symmetric difference". From the python docs:</p>
@@ -1889,7 +1736,7 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">set</span><span class="p">()</span> <span class="o">^</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">set</span><span class="p">()</span> <span class="o">^</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1910,7 +1757,7 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span> <span class="o">^</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">])</span> <span class="o">^</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1931,7 +1778,7 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">^</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span> <span class="o">^</span> <span class="nb">set</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">,</span><span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
@@ -1948,14 +1795,16 @@ $$\text{market_value} \approx \beta_0 + \beta_1\text{fpl_points} + \beta_2\text{
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><p>Outline a step-forwards algorithm which uses this idea</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>your answer here</em></p>
 </div>

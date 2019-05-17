@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,14 +1061,16 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Lab-9:-Decision-Trees,-Bagged-Trees,-Random-Forests-and-Boosting---Solutions">Lab 9: Decision Trees, Bagged Trees, Random Forests and Boosting - Solutions<a class="anchor-link" href="#Lab-9:-Decision-Trees,-Bagged-Trees,-Random-Forests-and-Boosting---Solutions">¶</a></h2><p><strong>Harvard University</strong><br>
 <strong>Fall 2018</strong><br>
@@ -1261,7 +1086,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO PROPERLY HIGHLIGHT THE EXERCISES</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO PROPERLY HIGHLIGHT THE EXERCISES</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1341,14 +1166,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We will look here into the practicalities of fitting regression trees, random forests, and boosted trees. These involve out-of-bound estmates and cross-validation, and how you might want to deal with hyperparameters in these models. Along the way we will play a little bit with different loss functions, so that you start thinking about what goes in general into cooking up a machine learning model.</p>
 </div>
@@ -1359,7 +1186,7 @@ header {
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
@@ -1396,7 +1223,8 @@ The text.latex.unicode rcparam was deprecated in Matplotlib 2.2 and will be remo
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Dataset">Dataset<a class="anchor-link" href="#Dataset">¶</a></h2><p>First, the data. We will be attempting to predict the presidential election results (at the county level) from 2016, measured as 'votergap' = (trump - clinton) in percentage points, based mostly on demographic features of those counties.  Let's quick take a peak at the data:</p>
 </div>
@@ -1407,7 +1235,7 @@ The text.latex.unicode rcparam was deprecated in Matplotlib 2.2 and will be remo
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">elect_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/county_level_election.csv"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">elect_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/county_level_election.csv"</span><span class="p">)</span>
 <span class="n">elect_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1575,7 +1403,7 @@ The text.latex.unicode rcparam was deprecated in Matplotlib 2.2 and will be remo
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
 </pre></div>
 </div>
 </div>
@@ -1586,7 +1414,7 @@ The text.latex.unicode rcparam was deprecated in Matplotlib 2.2 and will be remo
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># split 80/20 train-test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># split 80/20 train-test</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">elect_df</span><span class="p">[[</span><span class="s1">'population'</span><span class="p">,</span><span class="s1">'hispanic'</span><span class="p">,</span><span class="s1">'minority'</span><span class="p">,</span><span class="s1">'female'</span><span class="p">,</span><span class="s1">'unemployed'</span><span class="p">,</span><span class="s1">'income'</span><span class="p">,</span><span class="s1">'nodegree'</span><span class="p">,</span><span class="s1">'bachelor'</span><span class="p">,</span><span class="s1">'inactivity'</span><span class="p">,</span><span class="s1">'obesity'</span><span class="p">,</span><span class="s1">'density'</span><span class="p">,</span><span class="s1">'cancer'</span><span class="p">]]</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">elect_df</span><span class="p">[</span><span class="s1">'votergap'</span><span class="p">]</span>
 <span class="n">Xtrain</span><span class="p">,</span> <span class="n">Xtest</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">ytest</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span><span class="n">response</span><span class="p">,</span><span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
@@ -1600,7 +1428,7 @@ The text.latex.unicode rcparam was deprecated in Matplotlib 2.2 and will be remo
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ytrain</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">ytrain</span><span class="p">)</span>
 <span class="n">Xtrain</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">column</span><span class="o">=</span><span class="p">[</span><span class="s1">'minority'</span><span class="p">,</span> <span class="s1">'population'</span><span class="p">,</span><span class="s1">'hispanic'</span><span class="p">,</span><span class="s1">'female'</span><span class="p">]);</span>
 </pre></div>
 </div>
@@ -1610,7 +1438,7 @@ The text.latex.unicode rcparam was deprecated in Matplotlib 2.2 and will be remo
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAwkAAAIGCAYAAAAfusPtAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3X+YVuV9J/738FNnBogJrfEHOsQoEjU60ZCAtQuChqiN
 udxiupFlQSN1N4RtcSImRDFLZHCLGFQEieCaNM0aWQW3utUFNKFVpEEvcrUBRAQRG1ErocwMOPx4
@@ -1854,7 +1682,7 @@ AAAABUICAABQICQAAAAFQgIAAFAgJAAAAAVCAgAAUPD/AfblplfDqhqnAAAAAElFTkSuQmCC
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAxIAAAIsCAYAAABmw5+iAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XtcVVXi///3AbwECJbmpRRRE1RQOHlBNCe8ZuqkVnYZ
 kTQna0yZj+adMS0aEUeZEBUvqZlZaWZqNzOx1FL0k87oZGqNioLfJO8GiEdg//7wx/l0ApQtxOXw
@@ -2413,7 +2241,8 @@ RK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>How would you describe these variables?</p>
 </div>
@@ -2424,7 +2253,7 @@ RK5CYII=
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">elect_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">elect_df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Xtrain</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">Xtest</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
@@ -2446,7 +2275,8 @@ RK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="General-Trees">General Trees<a class="anchor-link" href="#General-Trees">¶</a></h2><p>We could use a simple Decision Tree regressor to predict votergap. Thats not the aim of this lab, so we'll run a few of these models without any cross-validation or 'regularization' just to illustrate what is going on.</p>
 <p>This is what you ought to keep in mind about decision trees.</p>
@@ -2466,7 +2296,7 @@ min_samples_split : int, float, optional (default=2)</code></pre>
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeRegressor</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.tree</span> <span class="k">import</span> <span class="n">DecisionTreeRegressor</span>
 <span class="c1">#x = np.arange(0, 2*np.pi, 0.1)</span>
 <span class="c1">#y = np.sin(x) + 0.1*np.random.normal(size=x.shape[0])</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">Xtrain</span><span class="p">[</span><span class="s1">'minority'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
@@ -2484,7 +2314,7 @@ min_samples_split : int, float, optional (default=2)</code></pre>
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -2493,7 +2323,7 @@ min_samples_split : int, float, optional (default=2)</code></pre>
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAv4AAAILCAYAAACQOpgTAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xt8VPWdP/7XOTOBQEiCAUZDgBIwYEZRqFyEaEuTsG1F
 xW634n51XfHy2z6+XwHr+th6t1VRv4+tKGC3fq1K664taB+2KKEXktQqwXJRudSJJEgsCIGRgEm4
@@ -3500,7 +3330,7 @@ fwAAAMAHCPwBAAAAH/j/wnhzmNC5UOkAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">y</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">);</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">y</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">);</span>
 </pre></div>
 </div>
 </div>
@@ -3509,7 +3339,7 @@ fwAAAMAHCPwBAAAAH/j/wnhzmNC5UOkAAAAASUVORK5CYII=
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAv4AAAILCAYAAACQOpgTAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvXt4VNW9///eM5MLhCQQYDAgSJCAiXJTLkKw0gRbS1Ts
 Teyx9Yjac/qcnwRrfb5FwdaqVHtaUcCeWivSy/GC9tiixFpJUqoEFVC51IlJkCgIgTEJJoFcyMzs
@@ -4851,7 +4681,8 @@ wH8ALGxtl5nHrk4AAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise">**Exercise 0**</div>
 Which of the two versions of 'minority' would be a better choice to use as a predictor for inference?  For prediction?</p>
@@ -4863,7 +4694,7 @@ Which of the two versions of 'minority' would be a better choice to use as a pre
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="s1">'.'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="s1">'.'</span><span class="p">)</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span><span class="mi">2</span><span class="p">]:</span>
     <span class="n">dtree</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
@@ -4878,7 +4709,7 @@ Which of the two versions of 'minority' would be a better choice to use as a pre
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAv4AAAILCAYAAACQOpgTAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXl4VdW5/7/7nJOBhCQQ4GCIIIkETJBJGYRgpQlWS1Ss
 bcVerBWHe3v7k2Ctt1VBbVXU3ioK2NYJ6XCtor22KPFaSSJVggo4APXEJEgUhMAxCSaBDOScs39/
@@ -6300,7 +6131,7 @@ rkJggg==
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="s1">'.'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="s1">'.'</span><span class="p">)</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">20</span><span class="p">]:</span>
     <span class="n">dtree</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">min_samples_split</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
@@ -6315,7 +6146,7 @@ rkJggg==
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAv4AAAILCAYAAACQOpgTAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXt8FOW9/z8zu5tsstkEkhAMBEjEAEEQUUAheooELEIV
 23MULxxKvJ3TvgQ9lKNUvLS2CP0V0gIqiAJH+/MnF49VKtRLEqkYRG4KlEAIGAyEkIUEkmyym92d
@@ -8399,7 +8230,7 @@ x4TDCN8NE/gAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="s1">'.'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">),</span><span class="n">y</span><span class="p">,</span><span class="s1">'.'</span><span class="p">)</span>
 <span class="n">xx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">x</span><span class="p">)</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="p">[</span><span class="mi">500</span><span class="p">,</span><span class="mi">200</span><span class="p">,</span><span class="mi">100</span><span class="p">,</span><span class="mi">20</span><span class="p">]:</span>
     <span class="n">dtree</span> <span class="o">=</span> <span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">6</span><span class="p">,</span> <span class="n">min_samples_split</span><span class="o">=</span><span class="n">i</span><span class="p">)</span>
@@ -8414,7 +8245,7 @@ x4TDCN8NE/gAAAAASUVORK5CYII=
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAv4AAAILCAYAAACQOpgTAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXl4FFW6/7/V3VnICgEaAgQSJEAiW2QzBO9gAg4SFcYZ
 xbkyXOI2M/cR9DI8I4rLjIow90IUUAEVMnqvvwHxOsoYxyXJcIUAAjoCmhACBMMSaJNAVjpLd/3+
@@ -10034,7 +9865,7 @@ AElFTkSuQmCC
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#let's also include logminority as a predictor going forward</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#let's also include logminority as a predictor going forward</span>
 <span class="n">xtemp</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">[</span><span class="s1">'minority'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">)</span>
 <span class="n">Xtrain</span> <span class="o">=</span> <span class="n">Xtrain</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">logminority</span> <span class="o">=</span> <span class="n">xtemp</span><span class="p">)</span>
 <span class="n">Xtest</span> <span class="o">=</span> <span class="n">Xtest</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">logminority</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">Xtest</span><span class="p">[</span><span class="s1">'minority'</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">))</span>
@@ -10171,7 +10002,8 @@ AElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise">**Exercise 1**</div></p>
 <ol>
@@ -10186,7 +10018,7 @@ AElFTkSuQmCC
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
 
 <span class="c1"># your code here</span>
 <span class="n">depths</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">21</span><span class="p">))</span>
@@ -10214,7 +10046,7 @@ AElFTkSuQmCC
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 <span class="c1"># plot means and shade the 2 SD interval</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">depths</span><span class="p">,</span> <span class="n">cvmeans</span><span class="p">,</span> <span class="s1">'*-'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"Mean CV"</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">fill_between</span><span class="p">(</span><span class="n">depths</span><span class="p">,</span> <span class="n">cvmeans</span> <span class="o">-</span> <span class="mi">2</span><span class="o">*</span><span class="n">cvstds</span><span class="p">,</span> <span class="n">cvmeans</span> <span class="o">+</span> <span class="mi">2</span><span class="o">*</span><span class="n">cvstds</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
@@ -10232,7 +10064,7 @@ AElFTkSuQmCC
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAxAAAAIcCAYAAABmTEgyAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xd8lfXd//HXWdmbvfeSPVxI1aLirtY6796KSvVWWwdt
 Rau2dli11iqKpa1bq7XVKrXWFkT94QIXFBBkBMJIgOx59riu3x9XOElIAiEk55yQ9/PxOI+c872u
@@ -11004,21 +10836,24 @@ CwgiIiIiItIYCwgiIiIiItLY/we9T2RAKqh/RQAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Based on the plot above, it's clear that the training $R^2$ increases towards zero as <code>max_depth</code> increases, while the test set's $R^2$ maxes out around 62-63% around a <code>max_depth</code> of 7-9. Any of those values would be reasonable to choose for a best predictive model.  To prevent overfitting and for parsimony, Iwould choose a <code>max_depth</code> of 7.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Ok with this discussion in mind, lets improve this model by Bagging.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Bootstrap-Aggregating-(called-Bagging)">Bootstrap-Aggregating (called Bagging)<a class="anchor-link" href="#Bootstrap-Aggregating-(called-Bagging)">¶</a></h2><p>Whats the basic idea?</p>
 <ul>
@@ -11036,7 +10871,7 @@ CwgiIiIiItIYCwgiIiIiItLY/we9T2RAKqh/RQAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="k">import</span> <span class="n">resample</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.utils</span> <span class="k">import</span> <span class="n">resample</span>
 
 <span class="n">ntrees</span> <span class="o">=</span> <span class="mi">500</span>
 <span class="n">estimators</span> <span class="o">=</span> <span class="p">[]</span>
@@ -11059,7 +10894,7 @@ CwgiIiIiItIYCwgiIiIiItLY/we9T2RAKqh/RQAAAABJRU5ErkJggg==
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAv4AAAILCAYAAACQOpgTAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsvXt8VPWd//86Zy6ZXCYJmTAQECRIgISrlYsItpTg1oJK
 b2r3YeuqdR+//e63oGt9bK32aqW2u60K2K3bqnS769db11YltlWSWgWUmxfQRBIgGiCBIQkkk8vc
@@ -13242,7 +13077,7 @@ AHmAxB8AAADIAyT+AAAAQB74/3i3UJxBxTnUAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">yhats_test</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">yhats_test</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -13259,7 +13094,8 @@ AHmAxB8AAADIAyT+AAAAQB74/3i3UJxBxTnUAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise">**Exercise 2**</div></p>
 <ol>
@@ -13276,7 +13112,7 @@ AHmAxB8AAADIAyT+AAAAQB74/3i3UJxBxTnUAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">r2_score</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">r2_score</span>
 
 
 <span class="n">ntrees</span> <span class="o">=</span> <span class="mi">500</span>
@@ -13314,7 +13150,7 @@ R-squared score of the aggregated trees: 0.631678199922
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAv4AAAIGCAYAAAAspIvNAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzt3XuQVvWZJ/AvF9Hpm8lEY7IF2KgBKQTS4yVp0RFECV42
 6yQD5kKxoNGYibhGEN11DHFQIRnFMEhaMWiMzmY3S7ykSje1A3ghXmICiZmZoDEiItloNqOydINp
@@ -13544,7 +13380,8 @@ d1oBAMB7nd85AQBACQj+AABQAoI/AACUgOAPAAAlIPgDAEAJCP4AAFACgj8AAJSA4A8AACXw/wCO
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <ol>
 <li>Notice that the aggregated results, by averaging the predictions across the 500 different Regression Tree models, scores and $R^2$ in the test set of 64.9% which outperforms all of the separate individual models.  We would expect this to improve further for larger values of <code>max_depth</code>, and in fact should imrpove quite a lot.  This Bagging improves the variability of 'high variance' models by leveraging the law of large numbers, but does not improve bias nearly as much.  Essentially, it is an indirect way of 'smoothing' these discretized step function by essentially jittering where those jumps occur.  See the visual above.  If we do change <code>max_depth</code> to something larger in the code above, we do see quite an improvement in predictive ability in the test set.  A <code>max_depth</code> of 20 led to a test $R^2$ of 78.5%, for example.</li>
@@ -13553,7 +13390,8 @@ d1oBAMB7nd85AQBACQj+AABQAoI/AACUgOAPAAAlIPgDAEAJCP4AAFACgj8AAJSA4A8AACXw/wCO
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Random-Forests">Random Forests<a class="anchor-link" href="#Random-Forests">¶</a></h2><p>What's the basic idea?</p>
 <p>Bagging alone is not enough randomization, because even after bootstrapping, we are mainly training on the same data points using the same variablesn, and will retain much of the overfitting.</p>
@@ -13562,7 +13400,8 @@ d1oBAMB7nd85AQBACQj+AABQAoI/AACUgOAPAAAlIPgDAEAJCP4AAFACgj8AAJSA4A8AACXw/wCO
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Below we create a hyper-param Grid. We are preparing to use the bootstrap points not used in training for validation.</p>
 <pre><code>max_features : int, float, string or None, optional (default=”auto”)
@@ -13580,7 +13419,7 @@ d1oBAMB7nd85AQBACQj+AABQAoI/AACUgOAPAAAlIPgDAEAJCP4AAFACgj8AAJSA4A8AACXw/wCO
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestRegressor</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">RandomForestRegressor</span>
 </pre></div>
 </div>
 </div>
@@ -13591,7 +13430,7 @@ d1oBAMB7nd85AQBACQj+AABQAoI/AACUgOAPAAAlIPgDAEAJCP4AAFACgj8AAJSA4A8AACXw/wCO
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># code from </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># code from </span>
 <span class="c1"># Adventures in scikit-learn's Random Forest by Gregory Saunders</span>
 <span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">product</span>
 <span class="kn">from</span> <span class="nn">collections</span> <span class="k">import</span> <span class="n">OrderedDict</span>
@@ -13617,7 +13456,8 @@ d1oBAMB7nd85AQBACQj+AABQAoI/AACUgOAPAAAlIPgDAEAJCP4AAFACgj8AAJSA4A8AACXw/wCO
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Using-the-OOB-score.">Using the OOB score.<a class="anchor-link" href="#Using-the-OOB-score.">¶</a></h3><p>We have been putting "validate" in quotes. This is because the bootstrap gives us left-over points! So we'll now engage in our very own version of a grid-search, done over the out-of-bag scores that <code>sklearn</code> gives us for free</p>
 </div>
@@ -13628,7 +13468,7 @@ d1oBAMB7nd85AQBACQj+AABQAoI/AACUgOAPAAAlIPgDAEAJCP4AAFACgj8AAJSA4A8AACXw/wCO
 <div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">product</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">itertools</span> <span class="k">import</span> <span class="n">product</span>
 </pre></div>
 </div>
 </div>
@@ -13639,7 +13479,7 @@ d1oBAMB7nd85AQBACQj+AABQAoI/AACUgOAPAAAlIPgDAEAJCP4AAFACgj8AAJSA4A8AACXw/wCO
 <div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#make sure ytrain is the correct data type...in case you have warnings</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#make sure ytrain is the correct data type...in case you have warnings</span>
 <span class="c1">#print(yytrain.shape,ytrain.shape,Xtrain.shape)</span>
 <span class="c1">#ytrain = np.ravel(ytrain)</span>
 
@@ -13675,7 +13515,7 @@ d1oBAMB7nd85AQBACQj+AABQAoI/AACUgOAPAAAlIPgDAEAJCP4AAFACgj8AAJSA4A8AACXw/wCO
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rf1</span> <span class="o">=</span> <span class="n">estimators</span><span class="p">[</span><span class="n">outparams</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">rf1</span> <span class="o">=</span> <span class="n">estimators</span><span class="p">[</span><span class="n">outparams</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -13686,7 +13526,7 @@ d1oBAMB7nd85AQBACQj+AABQAoI/AACUgOAPAAAlIPgDAEAJCP4AAFACgj8AAJSA4A8AACXw/wCO
 <div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">results</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">results</span>
 </pre></div>
 </div>
 </div>
@@ -13718,7 +13558,7 @@ d1oBAMB7nd85AQBACQj+AABQAoI/AACUgOAPAAAlIPgDAEAJCP4AAFACgj8AAJSA4A8AACXw/wCO
 <div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rf1</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">Xtest</span><span class="p">,</span> <span class="n">ytest</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">rf1</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">Xtest</span><span class="p">,</span> <span class="n">ytest</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13735,7 +13575,8 @@ d1oBAMB7nd85AQBACQj+AABQAoI/AACUgOAPAAAlIPgDAEAJCP4AAFACgj8AAJSA4A8AACXw/wCO
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Finally you can find the <strong>feature importance</strong> of each predictor in this random forest model. Whenever a feature is used in a tree in the forest, the algorithm will log the decrease in the splitting criterion (such as gini). This is accumulated over all trees and reported in <code>est.feature_importances_</code></p>
 </div>
@@ -13746,7 +13587,7 @@ d1oBAMB7nd85AQBACQj+AABQAoI/AACUgOAPAAAlIPgDAEAJCP4AAFACgj8AAJSA4A8AACXw/wCO
 <div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">rf1</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">))</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"barh"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">rf1</span><span class="o">.</span><span class="n">feature_importances_</span><span class="p">,</span><span class="n">index</span><span class="o">=</span><span class="nb">list</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">))</span><span class="o">.</span><span class="n">sort_values</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">"barh"</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -13761,7 +13602,7 @@ d1oBAMB7nd85AQBACQj+AABQAoI/AACUgOAPAAAlIPgDAEAJCP4AAFACgj8AAJSA4A8AACXw/wCO
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAzoAAAIGCAYAAACcfvrWAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XlYVeXe//EPg5gooOCYZZrmlmQUh6PhRJkUTqkNj8qp
 4wBK4pCpeJpMSzQ9QJGZJkqWFaaY4uyTmjMqDud0UvKJ6ISmqTgkYoTs3x/+3KcdWmjggsX7dV1e
@@ -14218,7 +14059,8 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Since our response isn't very symmetric, we may want to suppress outliers by using the <code>mean_absolute_error</code> instead.</p>
 </div>
@@ -14229,7 +14071,7 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">mean_absolute_error</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">mean_absolute_error</span>
 <span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">ytest</span><span class="p">,</span> <span class="n">rf1</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xtest</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -14247,7 +14089,8 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise">**Bonus Exercise (we will likely skip this)**</div></p>
 <ol>
@@ -14262,7 +14105,7 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 
 <span class="c1"># Note: there were estimation/convergence issues using MAE with CV, </span>
 <span class="c1"># so just one example is provided below.</span>
@@ -14293,7 +14136,7 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [43]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#rf_mae = estimators[outparams]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#rf_mae = estimators[outparams]</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">mean_absolute_error</span><span class="p">(</span><span class="n">ytest</span><span class="p">,</span> <span class="n">rf_mae</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">Xtest</span><span class="p">)))</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">rf_mae</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">Xtest</span><span class="p">,</span> <span class="n">ytest</span><span class="p">))</span>
 </pre></div>
@@ -14314,14 +14157,16 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This model would be expected to perform better in the test set when measuring mean absolute error, but not as good at mean squared error (but this is not guaranteed).  Here, we do not cross-validate, so that might explain why mean absolute error is worse.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Note: instead of using oob scoring, we could do cross-validation (with GridSearchCV), and a cv of 3 will roughly be comparable (same approximate train-vs.-validation set sizes). But this will take much more time as you are doing the fit 3 times plus the bootstraps. So at least three times as long!</p>
 </div>
@@ -14332,7 +14177,7 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [51]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">param_dict2</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">param_dict2</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
     <span class="n">n_estimators</span> <span class="o">=</span> <span class="p">[</span><span class="mi">400</span><span class="p">,</span><span class="mi">600</span><span class="p">,</span><span class="mi">800</span><span class="p">],</span>
     <span class="n">max_features</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
 <span class="p">)</span>
@@ -14346,7 +14191,7 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [52]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
 <span class="n">est2</span> <span class="o">=</span> <span class="n">RandomForestRegressor</span><span class="p">(</span><span class="n">oob_score</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">gs</span> <span class="o">=</span> <span class="n">GridSearchCV</span><span class="p">(</span><span class="n">est2</span><span class="p">,</span> <span class="n">param_grid</span> <span class="o">=</span> <span class="n">param_dict2</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">3</span><span class="p">,</span> <span class="n">n_jobs</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">gs</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">)</span>
@@ -14380,7 +14225,7 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [53]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">rf2</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">best_estimator_</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">rf2</span> <span class="o">=</span> <span class="n">gs</span><span class="o">.</span><span class="n">best_estimator_</span>
 <span class="n">rf2</span>
 </pre></div>
 </div>
@@ -14406,7 +14251,7 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [54]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">gs</span><span class="o">.</span><span class="n">best_score_</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">gs</span><span class="o">.</span><span class="n">best_score_</span>
 </pre></div>
 </div>
 </div>
@@ -14423,7 +14268,8 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise">**Exercise 3: thinking questions**</div></p>
 <ol>
@@ -14441,7 +14287,8 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Seeing-error-as-a-function-of-the-proportion-of-predictors-at-each-split">Seeing error as a function of the proportion of predictors at each split<a class="anchor-link" href="#Seeing-error-as-a-function-of-the-proportion-of-predictors-at-each-split">¶</a></h3><p>Let's look to see how <code>max_features</code> affects performance on the training set.</p>
 </div>
@@ -14452,7 +14299,7 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [55]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># from http://scikit-learn.org/stable/auto_examples/ensemble/plot_ensemble_oob.html</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># from http://scikit-learn.org/stable/auto_examples/ensemble/plot_ensemble_oob.html</span>
 
 <span class="n">feats</span> <span class="o">=</span> <span class="n">param_dict</span><span class="p">[</span><span class="s1">'max_features'</span><span class="p">]</span>
 <span class="c1"># </span>
@@ -14482,7 +14329,7 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [56]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">feats</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">feats</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -14504,7 +14351,7 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [57]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Generate the "OOB error rate" vs. "n_estimators" plot.</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Generate the "OOB error rate" vs. "n_estimators" plot.</span>
 <span class="k">for</span> <span class="n">label</span><span class="p">,</span> <span class="n">clf_err</span> <span class="ow">in</span> <span class="n">error_rate</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="n">xs</span><span class="p">,</span> <span class="n">ys</span> <span class="o">=</span> <span class="nb">zip</span><span class="p">(</span><span class="o">*</span><span class="n">clf_err</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xs</span><span class="p">,</span> <span class="n">ys</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="n">label</span><span class="p">)</span>
@@ -14522,7 +14369,7 @@ TIdCBwAAAIDp/C8NX5Y6YgYRRAAAAABJRU5ErkJggg==
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAy8AAAIcCAYAAAD/tJGHAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl41OXZ9vHvZJIQsu+QfRLWsENYEwTcqa3gBmgRDWDQ
 AtVaW/r01aqtT6u1VZ82AgqyKVbFBdHWUoqKQECWsAkGELISEpYkZJmss7x/BEbGRAVMmCScn+Pw
@@ -15371,7 +15218,8 @@ QggvUHghhBBCCCGE8AKFF0IIIYQQQggvUHghhBBCCCGE8ML/B49iDYRLgrbtAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Boosting-Regression-Trees">Boosting Regression Trees<a class="anchor-link" href="#Boosting-Regression-Trees">¶</a></h2><p>Adaboost Classification, which you will be doing in your homework, is a special case of a gradient-boosted algorithm. Gradient Bossting is very state of the art, and has major connections to logistic regression, gradient descent in a functional space, and search in information space. See Schapire and Freund's MIT Press book for details (Google is a wonderful thing).</p>
 <p>But briefly, let us cover the idea here. The idea is that we will use a bunch of weak 'learners' (aka, models) which are fit sequentially. The first one fits the signal, the second one the first model's residual, the third the second model's residual, and so on. At each stage we upweight the places that our previous model did badly on. First let us illustrate.</p>
@@ -15383,7 +15231,7 @@ QggvUHghhBBCCCGE8AKFF0IIIYQQQggvUHghhBBCCCGE8ML/B49iDYRLgrbtAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [153]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">AdaBoostRegressor</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="k">import</span> <span class="n">AdaBoostRegressor</span>
 <span class="n">estab</span> <span class="o">=</span> <span class="n">AdaBoostRegressor</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">),</span>
                           <span class="n">n_estimators</span><span class="o">=</span><span class="mi">500</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">estab</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
@@ -15398,7 +15246,7 @@ QggvUHghhBBCCCGE8AKFF0IIIYQQQggvUHghhBBCCCGE8ML/B49iDYRLgrbtAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [59]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># code from http://nbviewer.jupyter.org/github/pprett/pydata-gbrt-tutorial/blob/master/gbrt-tutorial.ipynb</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># code from http://nbviewer.jupyter.org/github/pprett/pydata-gbrt-tutorial/blob/master/gbrt-tutorial.ipynb</span>
 <span class="kn">import</span> <span class="nn">time</span>
 <span class="kn">from</span> <span class="nn">IPython</span> <span class="k">import</span> <span class="n">display</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xx</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">);</span>
@@ -15419,7 +15267,7 @@ QggvUHghhBBCCCGE8AKFF0IIIYQQQggvUHghhBBCCCGE8ML/B49iDYRLgrbtAAAAAElFTkSuQmCC
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAv4AAAILCAYAAACQOpgTAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzsnXt4FdW5/7/7kguEJBBgQ4AgAUJMBITKRQhWmkC1RMVq
 FT1YKqI9PT0SqIdaFNRqRe2vFgW0pSDGtscK6lFRYltJokWCyv1Sd0gCRLkFtkkwCZeQ7L3n98dm
@@ -16850,7 +16698,7 @@ AAAASUVORK5CYII=
 <div class="prompt input_prompt">In [160]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">estab2</span> <span class="o">=</span> <span class="n">AdaBoostRegressor</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">estab2</span> <span class="o">=</span> <span class="n">AdaBoostRegressor</span><span class="p">(</span><span class="n">base_estimator</span><span class="o">=</span><span class="n">DecisionTreeRegressor</span><span class="p">(</span><span class="n">max_depth</span><span class="o">=</span><span class="mi">2</span><span class="p">),</span>
                           <span class="n">n_estimators</span><span class="o">=</span><span class="mi">1000</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
 <span class="n">estab2</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">estab2</span><span class="o">.</span><span class="n">score</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">))</span>
@@ -16879,7 +16727,7 @@ AAAASUVORK5CYII=
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAwsAAAIGCAYAAAAbTxPQAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xd4VGXC/vHvzKT3kEZIoST03qQICIiCq1hQsVdEVFjL
 /nTXd9XVV3dt766KDQsqCjZWwYYVBKRK76RQkpCQnpCeTDIzvz8mOcmY0BRS4P5c114788wpz8zZ
@@ -17460,7 +17308,8 @@ AElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Ok, so this demonstration helps us understand some things about boosting.</p>
 <ul>
@@ -17473,7 +17322,8 @@ AElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise">**Exercise 4**</div></p>
 <ol>
@@ -17485,7 +17335,8 @@ AElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answers</strong></p>
 <ol>
@@ -17501,7 +17352,7 @@ AElFTkSuQmCC
 <div class="prompt input_prompt">In [163]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 <span class="n">param_dict3</span> <span class="o">=</span> <span class="n">OrderedDict</span><span class="p">(</span>
     <span class="n">n_estimators</span> <span class="o">=</span> <span class="p">[</span><span class="mi">200</span><span class="p">],</span>
     <span class="n">learning_rate</span> <span class="o">=</span> <span class="p">[</span><span class="mf">0.2</span><span class="p">,</span> <span class="mf">0.4</span><span class="p">,</span> <span class="mf">0.6</span><span class="p">,</span> <span class="mf">0.8</span><span class="p">]</span>
@@ -17525,7 +17376,7 @@ AElFTkSuQmCC
 <div class="prompt input_prompt">In [164]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">best_scores</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">best_scores</span>
 </pre></div>
 </div>
 </div>
@@ -17542,7 +17393,8 @@ AElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Note:-what's-the-relationship-between-residuals-and-the-gradient?">Note: what's the relationship between residuals and the gradient?<a class="anchor-link" href="#Note:-what's-the-relationship-between-residuals-and-the-gradient?">¶</a></h3><p>Pavlos showed in class that for the squared loss, taking the gradient in the "data point functional space", ie a N-d space for N data points with each variable being $f(x_i)$ just gives us the residuals. It turns out that the gradient descent is a more general idea, and one can use this for different losses. And the upweighting of poorly fit points in AdaBoost is simply a weighing by gradient. If the gradient (or residual) is high it means you are far away from optimum in this functional space, and if you are at 0, you have a flat gradient!</p>
 <p>The ideas from the general theory of gradient descent tell us this: we can slow the learning by shrinking the predictions of each tree by some small number, which is called the learning_rate (learning_rate). This "shrinkage" helps us not overshoot, but for a finite number of iterations also simultaneously ensures we dont overfit by being in the neighboorhood of the minimum rather than just at it! But we might need to increase the iterations some to get into the minimum area.</p>
@@ -17550,7 +17402,8 @@ AElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 </div>

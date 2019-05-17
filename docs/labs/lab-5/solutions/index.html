@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,14 +1061,16 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS-109A Introduction to Data Science</h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Lab-5:-Regularization-and-Cross-Validation">Lab 5: Regularization and Cross-Validation<a class="anchor-link" href="#Lab-5:-Regularization-and-Cross-Validation">¶</a></h2><p><strong>Harvard University</strong><br>
 <strong>Fall 2018</strong><br>
@@ -1257,7 +1082,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h2><ol start="0">
 <li> Learning Goals </li>
@@ -1271,7 +1097,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Learning-Goals">Learning Goals<a class="anchor-link" href="#Learning-Goals">¶</a></h2><p>In this lab, you will work with some noisy data.  You will use  simple linear and ridge regressions to fit linear, high-order polynomial features to the dataset.  You will attempt to figure out what degree polynomial fits the dataset the best and ultimately use cross validation to determine the best polynomial order.  Finally, you will automate the cross validation process using <code>sklearn</code> in order to determine the best regularization paramter for the ridge regression analysis on your dataset.</p>
 <p>By the end of this lab, you should:</p>
@@ -1296,7 +1123,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
@@ -1315,7 +1142,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-1:--Review-of-regularized-regression">Part 1:  Review of regularized regression<a class="anchor-link" href="#Part-1:--Review-of-regularized-regression">¶</a></h2><p>We briefly review the idea of regularization as introduced in lecture.  Recall that in the ordinary least squares problem we find the regression coefficients $\boldsymbol{\beta}\in\mathbb{R}^{m}$ that minimize the loss function 
 \begin{align*}
@@ -1339,7 +1167,8 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Dataset">Dataset<a class="anchor-link" href="#Dataset">¶</a></h3><p>You will work with a synthetic dataset contained in <code>data/noisypopulation.csv</code>.  The data were generated from a specific function $f\left(x\right)$ (the actual form will not be revealed to you in this lab).  Noise was added to the function to generate synthetic, noisy observations via $y = f\left(x\right) + \epsilon$ where $\epsilon$ was drawn from a random distribution.  The idea here is that in real life the data you are working with often comes with noise.  Even if you could make observations at every single value of $x$, the true function may still be obscured.  Of course, the samples you actually take are usually a subset of all the possible observations.  In this lab, we will refer to observations at every single value of $x$ as the <em>population</em> and the subset of observations as <em>in-sample y</em> or simply <em>the observations</em>.</p>
 <p>The dataset contains three columns:</p>
@@ -1356,7 +1185,7 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/noisypopulation.csv"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">df</span><span class="o">=</span><span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/noisypopulation.csv"</span><span class="p">)</span>
 <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -1430,7 +1259,8 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this lab, we will try out some regression methods to fit the data and see how well our model matches the true function <code>f</code>.</p>
 </div>
@@ -1441,7 +1271,7 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Convert f, x, y to numpy array</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Convert f, x, y to numpy array</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">f</span><span class="o">.</span><span class="n">values</span>
 <span class="n">x</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">x</span><span class="o">.</span><span class="n">values</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">y</span><span class="o">.</span><span class="n">values</span>
@@ -1463,7 +1293,8 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's take a quick look at the dataset.  We will plot the true function value and the population.</p>
 </div>
@@ -1474,7 +1305,7 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.8</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'Population'</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'True Response'</span><span class="p">)</span>
@@ -1493,7 +1324,7 @@ where $R(\boldsymbol{\beta})$ is a penalty function and $\lambda$ is a scalar th
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArQAAAGUCAYAAADEerFxAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xd8k+X+//FXRpPuRdktW7GsFooDThmiMlRQPG4QkXUU
 EVBEBP2pXz1KXQiiIIgMD7hQEDguBBVwIRbtYSulQCuztLQ0HWnG74/Y0DRJm6RJk7af5+PBw3KP
@@ -2029,7 +1860,8 @@ ERERCWv/H6JTJHSlkQobAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It is often the case that you just can't make observations at every single value of $x$.  We will simulate this situation by making a random choice of $60$ points from the full $200$ points.  We do it by choosing the indices randomly and then using these indices as a way of getting the appropriate samples.</p>
 </div>
@@ -2040,7 +1872,7 @@ ERERCWv/H6JTJHSlkQobAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">indexes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span> <span class="c1"># Using sort to make plotting easier later</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">indexes</span><span class="o">=</span><span class="n">np</span><span class="o">.</span><span class="n">sort</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">choice</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">size</span><span class="o">=</span><span class="mi">60</span><span class="p">,</span> <span class="n">replace</span><span class="o">=</span><span class="kc">False</span><span class="p">))</span> <span class="c1"># Using sort to make plotting easier later</span>
 <span class="n">indexes</span>
 </pre></div>
 </div>
@@ -2062,14 +1894,16 @@ ERERCWv/H6JTJHSlkQobAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Note:  If you are not familiar with the <code>numpy</code> <code>sort</code> method or the <code>numpy random.choice()</code> method, then please take a moment to look them up in the <code>numpy</code> documentation.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Moving on, let's get the $60$ random samples from our dataset.</p>
 </div>
@@ -2080,7 +1914,7 @@ ERERCWv/H6JTJHSlkQobAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Create a new dataframe from the random points</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Create a new dataframe from the random points</span>
 <span class="n">sample_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x</span><span class="p">[</span><span class="n">indexes</span><span class="p">],</span><span class="n">f</span><span class="o">=</span><span class="n">f</span><span class="p">[</span><span class="n">indexes</span><span class="p">],</span><span class="n">y</span><span class="o">=</span><span class="n">y</span><span class="p">[</span><span class="n">indexes</span><span class="p">]))</span> <span class="c1"># New dataframe</span>
 <span class="n">sample_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -2155,7 +1989,8 @@ ERERCWv/H6JTJHSlkQobAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's take one more look at our data to see which points we've selected.</p>
 </div>
@@ -2166,7 +2001,7 @@ ERERCWv/H6JTJHSlkQobAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">sample_df</span><span class="p">[</span><span class="s1">'x'</span><span class="p">],</span> <span class="n">sample_df</span><span class="p">[</span><span class="s1">'y'</span><span class="p">],</span> <span class="s1">'s'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"in-sample y (observed)"</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="sa">r</span><span class="s1">'Population $y$'</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">f</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'True Response'</span><span class="p">)</span>
@@ -2185,7 +2020,7 @@ ERERCWv/H6JTJHSlkQobAAAAAElFTkSuQmCC
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArQAAAGUCAYAAADEerFxAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl4jOf6wPHvTCYb2Vdr7EtIiFCpHkVjq111O3an1EHp
 4aii7aHV2oqilPKrrUU3pdaq2kqrYguK2GJfs8u+TGZ+f4yMTGYmmeyL+3Ndvcg77/K8M8U993s/
@@ -2831,7 +2666,8 @@ TkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we do our favorite thing and split the sample data into training and testing sets.</p>
 <p>Note that here we are actually getting indices instead of the actual training and test set.  This is okay and is another way of generating train-test splits.</p>
@@ -2843,7 +2679,7 @@ TkSuQmCC
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">train_test_split</span>
 
 <span class="n">datasize</span><span class="o">=</span><span class="n">sample_df</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 
@@ -2863,28 +2699,32 @@ TkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Great!  At this point we've explored our data a little bit, selected a sample of the dataset, and done a train-test split on the sample dataset.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr style="height:2px">
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's move on to the data analysis.  We'll begin with ridge regression.  In particular we'll do ridge regression on a single predictor and compare it with simple linear regression.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To start, let's fit the old classic, linear regression.</p>
 </div>
@@ -2895,7 +2735,7 @@ TkSuQmCC
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LinearRegression</span>
 
 <span class="c1"># fit the model to training data</span>
 <span class="n">simp_reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xtrain</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">ytrain</span><span class="p">)</span>
@@ -2922,14 +2762,16 @@ TkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-2:-Bootstrapping">Part 2: Bootstrapping<a class="anchor-link" href="#Part-2:-Bootstrapping">¶</a></h2><p>But wait! Unlike <code>statsmodels</code>, we don't get confidence intervals for the betas. Fortunately, we can bootstrap to build the confidence intervals</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 1</b></div></p>
 <ol>
@@ -2944,7 +2786,7 @@ TkSuQmCC
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">N</span> <span class="o">=</span> <span class="mi">1000</span>
 <span class="n">bootstrap_beta1s</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N</span><span class="p">)</span>
 <span class="k">for</span> <span class="n">cur_bootstrap_rep</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N</span><span class="p">):</span>
     <span class="c1"># select indices that are in the resample (easiest way to be sure we grab y values that match the x values)</span>
@@ -2984,7 +2826,7 @@ TkSuQmCC
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABKYAAAJ5CAYAAACUpjgmAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XlYVdX+x/EPowiIiDMOOYKioDiDRY44YJqaOWJmat1S
 U69DNuhNM63UMmdyCIfMNFJzTpRsEn9amiYOaU44D0iIyHR+f3g9lyPTAcGD9H49D8+9Z+211v7u
@@ -3605,21 +3447,24 @@ AAAAAAAAYAgaUwAAAAAAADDE/wCIKUZGr1VY1QAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>From the above, we find that the bootstrap $90\%$ confidence interval is well away from $0$. We can confidently say that $\beta_{1}$ is not secretly $0$ and we're being fooled by randomness.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next we'll dive into ridge regression!</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-3:-Ridge-regression-for-Simple-Linear-Regression">Part 3: Ridge regression for Simple Linear Regression<a class="anchor-link" href="#Part-3:-Ridge-regression-for-Simple-Linear-Regression">¶</a></h2><p>To begin, we'll use <code>sklearn</code> to do simple linear regression on the sampled training data.  We'll then do ridge regression with the same data, setting the penalty parameter $\lambda$ to zero.  Setting $\lambda = 0$ reduces the ridge problem to the simple ordinary least squares problem, so we expect the results of these models to be identical.</p>
 <p>We will store the regression coefficients in a dataframe for easy comparison.  The cell below provides some code to set up the dataframe ahead of time.  Notice that we don't know the actual values in the <code>pandas</code> series, so we just set them to <code>NaN</code>.  We will overwrite these later.</p>
@@ -3631,7 +3476,7 @@ AAAAAAAAYAgaUwAAAAAAADDE/wCIKUZGr1VY1QAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [36]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">regression_coeffs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span> <span class="c1"># Store regression coefficients from each model in a dictionary</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">regression_coeffs</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">()</span> <span class="c1"># Store regression coefficients from each model in a dictionary</span>
 
 <span class="n">regression_coeffs</span><span class="p">[</span><span class="s1">'OLS'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span> <span class="c1"># Initialize to NaN</span>
 <span class="n">regression_coeffs</span><span class="p">[</span><span class="sa">r</span><span class="s1">'Ridge $\lambda = 0$'</span><span class="p">]</span> <span class="o">=</span> <span class="p">[</span><span class="n">np</span><span class="o">.</span><span class="n">nan</span><span class="p">]</span><span class="o">*</span><span class="mi">2</span>
@@ -3691,7 +3536,8 @@ AAAAAAAAYAgaUwAAAAAAADDE/wCIKUZGr1VY1QAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We start with simple linear regression to get the ball rolling.</p>
 </div>
@@ -3702,7 +3548,7 @@ AAAAAAAAYAgaUwAAAAAAADDE/wCIKUZGr1VY1QAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [52]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">simp_reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span> <span class="c1"># build the the ordinary least squares model</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">simp_reg</span> <span class="o">=</span> <span class="n">LinearRegression</span><span class="p">()</span> <span class="c1"># build the the ordinary least squares model</span>
 
 <span class="n">simp_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xtrain</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">ytrain</span><span class="p">)</span> <span class="c1"># fit the model to training data</span>
 
@@ -3767,7 +3613,7 @@ AAAAAAAAYAgaUwAAAAAAADDE/wCIKUZGr1VY1QAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [45]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#y_predict = lambda x : beta0_sreg + beta1_sreg*x # make predictions</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#y_predict = lambda x : beta0_sreg + beta1_sreg*x # make predictions</span>
 <span class="n">ypredict_ols</span> <span class="o">=</span> <span class="n">simp_reg</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">x</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 <span class="n">ypredict_ols</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
@@ -3786,7 +3632,8 @@ AAAAAAAAYAgaUwAAAAAAADDE/wCIKUZGr1VY1QAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We will use the above $\boldsymbol\beta$ coefficients as a benchmark for comparision to the ridge method.  The same coefficients can be obtained with ridge regression, which we demonstrate now.</p>
 <p>For reference, here is the ridge regression documentation: <a href="http://scikit-learn.org/stable/modules/generated/sklearn.linear_model.Ridge.html">sklearn.linear_model.Ridge</a>.</p>
@@ -3798,14 +3645,15 @@ AAAAAAAAYAgaUwAAAAAAADDE/wCIKUZGr1VY1QAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">Ridge</span> 
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">Ridge</span> 
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The snippet of code below implements the ridge regression with $\lambda = 0$.</p>
 <p><strong>Note:</strong> The weight $\lambda$ is referred to as <code>alpha</code> in the documentation.</p>
@@ -3818,7 +3666,7 @@ AAAAAAAAYAgaUwAAAAAAADDE/wCIKUZGr1VY1QAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [51]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ridge_reg</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># build the ridge regression model with specified lambda, i.e. alpha</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ridge_reg</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span> <span class="o">=</span> <span class="mi">0</span><span class="p">)</span> <span class="c1"># build the ridge regression model with specified lambda, i.e. alpha</span>
 
 <span class="n">ridge_reg</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">xtrain</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">),</span> <span class="n">ytrain</span><span class="p">)</span> <span class="c1"># fit the model to training data</span>
 
@@ -3881,7 +3729,8 @@ AAAAAAAAYAgaUwAAAAAAADDE/wCIKUZGr1VY1QAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The beta coefficients for linear and ridge regressions coincide for $\lambda = 0$, as expected. We plot the data and fits.</p>
 </div>
@@ -3892,7 +3741,7 @@ AAAAAAAAYAgaUwAAAAAAADDE/wCIKUZGr1VY1QAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [47]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="s1">'s'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.3</span><span class="p">,</span> <span class="n">ms</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"in-sample y (observed)"</span><span class="p">)</span> <span class="c1"># plot in-sample training data</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="s1">'.'</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.4</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s2">"population y"</span><span class="p">)</span> <span class="c1"># plot population data</span>
@@ -3914,7 +3763,7 @@ AAAAAAAAYAgaUwAAAAAAADDE/wCIKUZGr1VY1QAAAABJRU5ErkJggg==
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAArQAAAGUCAYAAADEerFxAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XmcXHWd7//XObVXdXdV73uns6dDEpIAYUkExIiADKMz
 CCozDstF57rPVZlFf+Pc8eFjuOOMonBxRL2KMi644C5CEAghQkIWSEhIyNL7vlR1116nzvn9cXqr
@@ -4700,7 +4549,8 @@ AElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 2</b></div>
 Explore the effect of $\lambda$ on ridge regression.</p>
@@ -4716,7 +4566,7 @@ Explore the effect of $\lambda$ on ridge regression.</p>
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
 
 <span class="n">pen_params</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">]</span>
@@ -4746,7 +4596,7 @@ Explore the effect of $\lambda$ on ridge regression.</p>
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABYQAAAK0CAYAAACz9jlhAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xd0nPWZ9//P9NE09WZZttwtF2yMWUwLGLCxx4SSEEiA
 ALZDkt2EbHazm2yezW5+J/vkgU17QmCTszwI22BKIIFAgmzTwQQMi02Re7fcZHWNZjSaev/+kFFw
@@ -6435,21 +6285,24 @@ AAAAAD7i/wN1luokog+ezQAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Part-3-Recap">Part 3 Recap<a class="anchor-link" href="#Part-3-Recap">¶</a></h3><p>That was nice, but we were just doing simple linear regression.  We really want to do more interesting regression problems like multilinear regression.  We will do so in the next section.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-4:-Ridge-regression-with-polynomial-features-on-a-grid">Part 4: Ridge regression with polynomial features on a grid<a class="anchor-link" href="#Part-4:-Ridge-regression-with-polynomial-features-on-a-grid">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we'll make a more complex model by adding polynomial features.  Instead of building the linear model $y = \beta_0 + \beta_1 x$, we build a polynomial model $y = \beta_0 + \beta_1 x + \beta_2 x^2 + \ldots \beta_d x^d$ for some $d$ to be determined.  This regression will be linear though, since we'll be treating  $x^2, \ldots, x^d$ themselves as predictors in the linear model.</p>
 <p>The design matrix $\mathbf{X}$ contains columns corresponding to $1, x, x^2, \ldots, x^d$. To build it, we use <code>sklearn</code>. (The particular design matrix is also known as the <a href="https://en.wikipedia.org/wiki/Vandermonde_matrix"><em>Vandermonde</em> matrix</a>).  For example, if we have three observations<br><br>
@@ -6473,7 +6326,8 @@ x_3^0 & x_3^1 & x_3^2 & x_3^3 & x_3^4\\
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 3</b></div></p>
 <ol>
@@ -6497,7 +6351,7 @@ x_3^0 & x_3^1 & x_3^2 & x_3^3 & x_3^4\\
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">PolynomialFeatures</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">PolynomialFeatures</span>
 </pre></div>
 </div>
 </div>
@@ -6508,7 +6362,7 @@ x_3^0 & x_3^1 & x_3^2 & x_3^3 & x_3^4\\
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 <span class="n">toy</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
 <span class="n">PolynomialFeatures</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">toy</span><span class="o">.</span><span class="n">reshape</span><span class="p">(</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
@@ -6529,14 +6383,16 @@ x_3^0 & x_3^1 & x_3^2 & x_3^3 & x_3^4\\
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We now continue working with our data.  We write a function to make polynomial features of given degrees and we store the features in a dictionary.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise 4</b></div><p>The code provided below is missing a few lines and it's missing many comments.  Do the following:</p>
 <ol>
@@ -6561,7 +6417,7 @@ x_3^0 & x_3^1 & x_3^2 & x_3^3 & x_3^4\\
 <div class="prompt input_prompt">In [48]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># Maximum polynomial degree</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="mi">20</span> <span class="c1"># Maximum polynomial degree</span>
 <span class="c1"># You will create a grid of plots of this size (7 x 2)</span>
 <span class="n">rows</span> <span class="o">=</span> <span class="mi">7</span>
 <span class="n">cols</span> <span class="o">=</span> <span class="mi">2</span>
@@ -6608,7 +6464,7 @@ x_3^0 & x_3^1 & x_3^2 & x_3^3 & x_3^4\\
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAwgAAAVhCAYAAAAgLqm/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xdck+f6+PFPWA5ARUHBvREFd11172qHx9r6rbbWSrXW
 7al6Ojy1w1btaasWR+vPWa1Vj612OXEr1taNiqAoggIuUAFZCfn9kZPHhJmQhDCu9+vFy/DkGXeC
@@ -9035,14 +8891,16 @@ WAAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>As you can see, as we increase $\lambda$ from 0 to 1, we start out overfitting, then doing well, and then our fits develop a mind of their own irrespective of data, as the penalty term dominates.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 5</b></div>
 What would you expect if you compared a performance metric between these models on a grid?  What performance metric should you use?</p>
@@ -9052,14 +8910,16 @@ What would you expect if you compared a performance metric between these models 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Part-4-Recap">Part 4 Recap<a class="anchor-link" href="#Part-4-Recap">¶</a></h3><p>We did a ridge regression on our dataset where the features were polynomial features.  We also assessed the impact of the regularization parameter on the solution.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-5:-Cross-validation-----Finding-the-best-penalization-parameter">Part 5: Cross-validation --- Finding the best penalization parameter<a class="anchor-link" href="#Part-5:-Cross-validation-----Finding-the-best-penalization-parameter">¶</a></h2><p>Let's use cross-validation to determine the critical value of $\lambda$, which we'll refer to as $\lambda^*$. To do this we use the concept of a <em>meta-estimator</em> from <code>scikit-learn</code>.</p>
 <p>Model selection is supported by two distinct meta-estimators:</p>
@@ -9078,7 +8938,8 @@ The input to these meta-estimators is an estimator, which has some hyperparamete
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Here is a helper function that we will use to get the best Ridge regression.</p>
 </div>
@@ -9089,7 +8950,7 @@ The input to these meta-estimators is an estimator, which has some hyperparamete
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">GridSearchCV</span>
 <span class="k">def</span> <span class="nf">cv_optimize_ridge</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">list_of_lambdas</span><span class="p">:</span> <span class="nb">list</span><span class="p">,</span> <span class="n">n_folds</span><span class="p">:</span> <span class="nb">int</span> <span class="o">=</span><span class="mi">4</span><span class="p">):</span>
     <span class="n">est</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">()</span>
     <span class="n">parameters</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'alpha'</span><span class="p">:</span> <span class="n">list_of_lambdas</span><span class="p">}</span>
@@ -9104,7 +8965,8 @@ The input to these meta-estimators is an estimator, which has some hyperparamete
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 6</b></div>
 Use the function above to fit the model on the training set with $4$-fold cross validation.  Save the fit as the variable <code>fitmodel</code>.</p>
@@ -9116,7 +8978,7 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">lambs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1e-8</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="mf">5e-5</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="mf">5e-4</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1e-1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">lambs</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1e-8</span><span class="p">,</span> <span class="mf">1e-6</span><span class="p">,</span> <span class="mf">1e-5</span><span class="p">,</span> <span class="mf">5e-5</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="mf">5e-4</span><span class="p">,</span> <span class="mf">1e-3</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1e-1</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]</span>
 <span class="c1"># your code here</span>
 <span class="n">fitmodel</span> <span class="o">=</span> <span class="n">cv_optimize_ridge</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">lambs</span><span class="p">,</span> <span class="n">n_folds</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
 </pre></div>
@@ -9129,7 +8991,7 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fitmodel</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">fitmodel</span><span class="o">.</span><span class="n">best_estimator_</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fitmodel</span><span class="o">.</span><span class="n">best_params_</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">fitmodel</span><span class="o">.</span><span class="n">best_score_</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 </pre></div>
@@ -9155,7 +9017,8 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We also output the mean cross-validation error at different $\lambda$ (with a negative sign, as scikit-learn likes to maximize negative error which is equivalent to minimizing error).</p>
 </div>
@@ -9166,7 +9029,7 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 <div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fitmodel</span><span class="o">.</span><span class="n">cv_results_</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fitmodel</span><span class="o">.</span><span class="n">cv_results_</span>
 </pre></div>
 </div>
 </div>
@@ -9254,7 +9117,7 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 <div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fit_lambdas</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s1">'alpha'</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">fitmodel</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s1">'params'</span><span class="p">]]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fit_lambdas</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s1">'alpha'</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">fitmodel</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s1">'params'</span><span class="p">]]</span>
 <span class="n">fit_scores</span> <span class="o">=</span> <span class="n">fitmodel</span><span class="o">.</span><span class="n">cv_results_</span><span class="p">[</span><span class="s1">'mean_test_score'</span><span class="p">]</span>
 </pre></div>
 </div>
@@ -9262,7 +9125,8 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now we make a <code>log-log</code> plot of <code>-fit_scores</code> versus <code>fit_lambdas</code>.</p>
 </div>
@@ -9273,7 +9137,7 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fit_lambdas</span><span class="p">,</span> <span class="o">-</span><span class="n">fit_scores</span><span class="p">,</span> <span class="n">ls</span><span class="o">=</span><span class="s1">'-'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'o'</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xscale</span><span class="p">(</span><span class="s1">'log'</span><span class="p">)</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_yscale</span><span class="p">(</span><span class="s1">'log'</span><span class="p">)</span>
@@ -9287,7 +9151,7 @@ Use the function above to fit the model on the training set with $4$-fold cross 
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAn0AAAGNCAYAAABkCcdJAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xd8VfXh//HXzb1JyAJCgBAgIUFAAgQhzIAKiCLUiVJR
 RkCWVcTaqtRarF9tq/5srVVUWvYSEBFcOJAoQzYJshUEMggbwsi+6/dH4EJkJZDk3PF+Ph4+5H7O
@@ -9648,7 +9512,8 @@ paWlSWL0Aeh4LsMwDLNDAAAAoGNxeRcAAMABGH0AAAAOwOgDAABwAEYfAACAAzD6AAAAHIDRBwAA
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="SK-learn's-cross_val_score:-Easier-Cross-Validation">SK-learn's <code>cross_val_score</code>: Easier Cross Validation<a class="anchor-link" href="#SK-learn's-cross_val_score:-Easier-Cross-Validation">¶</a></h3><p><code>GridSearchCV</code> is an important tool when you are searching over many hyperparameters (and believe us, you will be), but when you only need to get CV scores for a particular model, some students find <code>cross_val_score</code> more intuitive.</p>
 </div>
@@ -9659,7 +9524,7 @@ paWlSWL0Aeh4LsMwDLNDAAAAoGNxeRcAAMABGH0AAAAOwOgDAABwAEYfAACAAzD6AAAAHIDRBwAA
 <div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">cross_val_score</span>
 
 <span class="n">lr_object</span> <span class="o">=</span>  <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 <span class="n">cross_val_score</span><span class="p">(</span><span class="n">lr_object</span><span class="p">,</span> <span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
@@ -9680,7 +9545,8 @@ paWlSWL0Aeh4LsMwDLNDAAAAoGNxeRcAAMABGH0AAAAOwOgDAABwAEYfAACAAzD6AAAAHIDRBwAA
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can loop over particular models and get scores for each (equivalent to GridSearchCV over the given parameter settings).</p>
 </div>
@@ -9691,7 +9557,7 @@ paWlSWL0Aeh4LsMwDLNDAAAAoGNxeRcAAMABGH0AAAAOwOgDAABwAEYfAACAAzD6AAAAHIDRBwAA
 <div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">cur_alpha</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">1e-8</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">for</span> <span class="n">cur_alpha</span> <span class="ow">in</span> <span class="p">[</span><span class="mf">1e-8</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">]:</span>
     <span class="n">lr_object</span> <span class="o">=</span>  <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">cur_alpha</span><span class="p">)</span>
     <span class="n">scores</span> <span class="o">=</span> <span class="n">cross_val_score</span><span class="p">(</span><span class="n">lr_object</span><span class="p">,</span> <span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">,</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">"lambda </span><span class="si">{0}</span><span class="se">\t</span><span class="s2"> R^2 scores: </span><span class="si">{1}</span><span class="se">\t</span><span class="s2"> Mean R^2: </span><span class="si">{2}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">cur_alpha</span><span class="p">,</span><span class="n">scores</span><span class="p">,</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">scores</span><span class="p">)))</span>
@@ -9717,7 +9583,8 @@ lambda 10.0	 R^2 scores: [ 0.43557116  0.504026    0.48162533  0.64633357  0.711
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Built-in-Cross-Validation:-RidgeCV-and-LassoCV">Built-in Cross Validation: <code>RidgeCV</code> and <code>LassoCV</code><a class="anchor-link" href="#Built-in-Cross-Validation:-RidgeCV-and-LassoCV">¶</a></h3><p>Some sklearn models have built-in, automated cross validation to tune their hyper parameters.</p>
 </div>
@@ -9728,7 +9595,7 @@ lambda 10.0	 R^2 scores: [ 0.43557116  0.504026    0.48162533  0.64633357  0.711
 <div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">RidgeCV</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">RidgeCV</span>
 
 <span class="n">ridgeCV_object</span> <span class="o">=</span> <span class="n">RidgeCV</span><span class="p">(</span><span class="n">alphas</span><span class="o">=</span><span class="p">(</span><span class="mf">1e-8</span><span class="p">,</span> <span class="mf">1e-4</span><span class="p">,</span> <span class="mf">1e-2</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">10.0</span><span class="p">),</span> <span class="n">cv</span><span class="o">=</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">ridgeCV_object</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span> <span class="n">ytrain</span><span class="p">)</span>
@@ -9760,7 +9627,8 @@ betas = [ 0.          0.69341921  0.7422217   0.27075073 -0.09947963 -0.28256995
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Important-note:">Important note:<a class="anchor-link" href="#Important-note:">¶</a></h3><ol>
 <li>For any tool more automated than literally using k_fold, just setting <code>cv=5</code> will <strong>NOT</strong> shuffle your data by default.  This can be a problem with time-series data!</li>
@@ -9775,7 +9643,7 @@ betas = [ 0.          0.69341921  0.7422217   0.27075073 -0.09947963 -0.28256995
 <div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># declare and pass a KFold object to properly shuffle the training data, and/or set the random state</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># declare and pass a KFold object to properly shuffle the training data, and/or set the random state</span>
 <span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="k">import</span> <span class="n">KFold</span>
 <span class="n">splitter</span> <span class="o">=</span> <span class="n">KFold</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">42</span><span class="p">,</span> <span class="n">shuffle</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
@@ -9809,14 +9677,16 @@ betas = [ 0.          0.69341921  0.7422217   0.27075073 -0.09947963 -0.28256995
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-5b:-Refitting-on-full-training-set">Part 5b: Refitting on full training set<a class="anchor-link" href="#Part-5b:-Refitting-on-full-training-set">¶</a></h2><p>At this point, we have determined the best penalization parameter for the ridge regression on our current dataset using cross validation.  Let's refit the estimator on the training set and calculate and plot the test set error and the polynomial coefficients. Notice how many of these coefficients have been pushed to lower values or 0.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 7</b></div>
 Assign to variable <code>est</code> the classifier obtained by fitting the entire training set using the best $\lambda$ found above.  Assign the predictions to the variable <code>ypredict_ridge_best</code>.</p>
@@ -9828,7 +9698,7 @@ Assign to variable <code>est</code> the classifier obtained by fitting the entir
 <div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 <span class="n">best_lambda</span> <span class="o">=</span> <span class="n">fitmodel</span><span class="o">.</span><span class="n">best_params_</span><span class="p">[</span><span class="s1">'alpha'</span><span class="p">]</span>
 <span class="n">est</span> <span class="o">=</span> <span class="n">Ridge</span><span class="p">(</span><span class="n">alpha</span><span class="o">=</span><span class="n">best_lambda</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">Xtrain</span><span class="p">,</span><span class="n">ytrain</span><span class="p">)</span>
 <span class="n">ypredict_ridge_best</span> <span class="o">=</span> <span class="n">est</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test_set</span><span class="p">)</span>
@@ -9857,7 +9727,7 @@ Assign to variable <code>est</code> the classifier obtained by fitting the entir
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># code provided from here on</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># code provided from here on</span>
 <span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">12</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
 <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">right</span> <span class="o">=</span> <span class="mi">1</span>
@@ -9887,7 +9757,7 @@ Assign to variable <code>est</code> the classifier obtained by fitting the entir
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAv8AAAEmCAYAAAD1Iv9YAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xt8zuX/wPHX5z7t3nbvYCeH2QzTjI05m0ZCIiUpKuYQ
 kSQpKUlf/dTXsQNNiS85NCqVQymURZFDDi1kyGEzjJ1tu7f7/Pn9cdtttw3DZrLr+Xh4PHZ/7s/h
@@ -10708,7 +10578,7 @@ IYQQG0HJPyGEEEIIITaCkn9CCCGEEEJsBCX/hBBCCCGE2Ij/D6H+aGUd3uDxAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [49]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#One more nice plot:</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#One more nice plot:</span>
 <span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">Lasso</span> 
 
 <span class="n">ridge_coef</span> <span class="o">=</span> <span class="p">[]</span>
@@ -10754,7 +10624,7 @@ IYQQG0HJPyGEEEIIITaCkn9CCCGEEEJsBCX/hBBCCCGE2Ij/D6H+aGUd3uDxAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [50]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">axs</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">16</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
 <span class="n">left</span> <span class="o">=</span> <span class="mi">0</span>
 <span class="n">right</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">axs</span><span class="p">[</span><span class="n">left</span><span class="p">]</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">lambs</span><span class="p">,</span><span class="n">ridge_coef</span><span class="p">)</span>
@@ -10778,7 +10648,7 @@ IYQQG0HJPyGEEEIIITaCkn9CCCGEEEJsBCX/hBBCCCGE2Ij/D6H+aGUd3uDxAAAAAElFTkSuQmCC
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAA8oAAAGLCAYAAAAf9GvUAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl8DOcfwPHP5iSn+4q40m5okMQd4qaK1lVnSChVdVZd
 pY72p7QoSqXqjlJH3HVE1a3uhlJaEbcczsSRe5PN/P5Yu7JyCMKGfN+vl5fMs8/MfJ+Z2Xn2mXnm
@@ -11999,7 +11869,8 @@ rkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>There are Kevin's favorite plots depicting how the $\hat{\beta}$s are affected with an increasing penalty factor.  They need better labels, but there are too many to be labeled nicely.  Presumably the orange line in the Lasso plot is for the linear term (it becomes important as the other terms "drop out").</p>
 </div>

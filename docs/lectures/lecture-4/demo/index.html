@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,7 +1061,8 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science:</h1>
 <h2 id="Lecture-4:-Lecture-Demo">Lecture 4: Lecture Demo<a class="anchor-link" href="#Lecture-4:-Lecture-Demo">¶</a></h2><p><strong>Harvard University</strong><br>
@@ -1249,7 +1073,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The following examples are intended to complement the lecture. They can be used to clarify important steps from the lecture. You are strongly encouraged to do them.</p>
 <p>In the first example below, I give you a lot of the necessary code to help familiarize you with python and its primary libraries.</p>
@@ -1258,14 +1083,16 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><img alt="" src="fig/E1.png"></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Part-1:--Load-Basic-Python-Modules">Part 1:  Load Basic <code>Python</code> Modules<a class="anchor-link" href="#Part-1:--Load-Basic-Python-Modules">¶</a></h3>
 </div>
@@ -1276,7 +1103,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Access to pandas dataframes</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Access to pandas dataframes</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> <span class="c1"># (see https://pandas.pydata.org/ for documentation)</span>
 
 <span class="c1"># Access to matplotlib for plotting capabilities</span>
@@ -1305,7 +1132,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Part-2:--Load-data">Part 2:  Load data<a class="anchor-link" href="#Part-2:--Load-data">¶</a></h3>
 </div>
@@ -1316,7 +1144,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Read data</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Read data</span>
 <span class="n">df_adv</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'../data/Advertising.csv'</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1324,7 +1152,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now get a subset of the data.  The code below is incomplete and will not work.  You need to introduce a stride of data to access.  For example, if you want to access indices $2$ through $5$ of an array called <code>x</code>, you would write</p>
 <div class="highlight"><pre><span></span><span class="n">x</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">5</span><span class="p">]</span>
@@ -1341,7 +1170,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get a subset of the data</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Get a subset of the data</span>
 <span class="n">data_x</span> <span class="o">=</span> <span class="n">df_adv</span><span class="o">.</span><span class="n">TV</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span>
 <span class="n">data_y</span> <span class="o">=</span> <span class="n">df_adv</span><span class="o">.</span><span class="n">sales</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span>
 </pre></div>
@@ -1350,7 +1179,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Part-3:--Sort-the-Data">Part 3:  Sort the Data<a class="anchor-link" href="#Part-3:--Sort-the-Data">¶</a></h3><p>We need to sort the data in order to apply the KNN algorithm.</p>
 </div>
@@ -1361,7 +1191,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Sort the data</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Sort the data</span>
 <span class="n">idx</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">argsort</span><span class="p">(</span><span class="n">data_x</span><span class="p">)</span><span class="o">.</span><span class="n">values</span> <span class="c1"># Get indices ordered from lowest to highest values</span>
 
 <span class="c1"># Note:  You may find it helpful to print out idx to see what's in it</span>
@@ -1375,7 +1205,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Get the actual data in the order from above</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Get the actual data in the order from above</span>
 <span class="n">data_x</span>  <span class="o">=</span> <span class="n">data_x</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
 <span class="n">data_y</span>  <span class="o">=</span> <span class="n">data_y</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span>
 </pre></div>
@@ -1388,7 +1218,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Here's a function that finds the index of the nearest neighbor </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Here's a function that finds the index of the nearest neighbor </span>
 <span class="c1"># and returns the value of the nearest neighbor.  Note that this </span>
 <span class="c1"># is just for k = 1 and the distance function is simply the </span>
 <span class="c1"># absolute value.</span>
@@ -1405,7 +1235,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Note that we have used the idxmin method in our function.  This is </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Note that we have used the idxmin method in our function.  This is </span>
 <span class="c1"># because `array' is a pandas dataframe and idxmin() is designed to </span>
 <span class="c1"># work with pandas dataframes.  If we are working with a numpy array </span>
 <span class="c1"># then the appropriate method would be `argmin()'.</span>
@@ -1425,7 +1255,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Apply the KNN algorithm.  Try to predict the y-value at a given x-value</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Apply the KNN algorithm.  Try to predict the y-value at a given x-value</span>
 <span class="c1"># Note:  You may have tried to use the `range' method in your code.  Enumerate </span>
 <span class="c1"># is far better in this case.  Try to understand why.</span>
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">xi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
@@ -1440,7 +1270,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plot your solution    </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Plot your solution    </span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span><span class="n">y</span><span class="p">,</span> <span class="s1">'-.'</span><span class="p">)</span>
 <span class="c1"># Plot the original data using black x's.</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">df_adv</span><span class="o">.</span><span class="n">TV</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">13</span><span class="p">],</span> <span class="n">df_adv</span><span class="o">.</span><span class="n">sales</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">13</span><span class="p">],</span> <span class="s1">'kx'</span><span class="p">)</span>
@@ -1459,7 +1289,7 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAYIAAAEKCAYAAAAfGVI8AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMS4wLCBo
 dHRwOi8vbWF0cGxvdGxpYi5vcmcvpW3flQAAIABJREFUeJzt3Xl8XHW9//HXJ0uTJt2btNB9oeyr
@@ -1665,14 +1495,16 @@ YII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Solutions-to-Exercise-2">Solutions to Exercise 2<a class="anchor-link" href="#Solutions-to-Exercise-2">¶</a></h1>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To derive the result from lecture, take the derivatives with respect to the parameters $\beta_{0}$ and $\beta_{1}$ and set to zero, $\dfrac{\partial L}{\partial \beta_{j}} = 0$.  Remember that the loss function is $$L\left(\beta_{0}, \beta_{1}\right) = \frac{1}{n}\sum_{i=1}^{n}{\left(y_{i} - \left(\beta_{1}x_{1} + \beta_{0}\right)\right)^{2}}.$$  The result of this is,
 $$\dfrac{\partial L}{\partial \beta_{0}} = \frac{2}{n}\sum_{i=1}^{n}{y_{i} - \left(\beta_{1}x_{i} + \beta_{0}\right)} = 0$$ and 
@@ -1681,7 +1513,8 @@ $$\dfrac{\partial L}{\partial \beta_{1}} = -\frac{2}{n}\sum_{i=1}^{n}{x_{i}\left
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This is just two equations in two unknowns.  Solving for $\beta_{0}$ and $\beta_{1}$ gives the desired result:
 $$\widehat{\beta}_{1} = \dfrac{\displaystyle\sum_{i=1}^{n}{\left(x_{i} - \overline{x}\right)\left(y_{i} - \overline{y}\right)}}{\displaystyle\sum_{i=1}^{n}{\left(x_{i} - \overline{x}\right)^{2}}} \quad \textrm{and} \quad \widehat{\beta}_{0} = \overline{y} - \beta_{1}\overline{x}$$
@@ -1691,7 +1524,8 @@ $$\overline{x} = \frac{1}{n}\sum_{i=1}^{n}{x_{i}} \quad \textrm{and} \quad \over
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>To make the desired plot, we need to select some value of $\beta_{0}$ and create a grid over $\beta_{1}$.</p>
 </div>
@@ -1702,7 +1536,7 @@ $$\overline{x} = \frac{1}{n}\sum_{i=1}^{n}{x_{i}} \quad \textrm{and} \quad \over
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="n">beta_0</span> <span class="o">=</span> <span class="mf">7.10</span>
 <span class="n">beta_1</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="mf">0.0</span><span class="p">,</span><span class="mf">0.075</span><span class="p">,</span> <span class="mi">10000</span><span class="p">)</span>
 </pre></div>
@@ -1711,7 +1545,8 @@ $$\overline{x} = \frac{1}{n}\sum_{i=1}^{n}{x_{i}} \quad \textrm{and} \quad \over
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's get the data.</p>
 </div>
@@ -1722,7 +1557,7 @@ $$\overline{x} = \frac{1}{n}\sum_{i=1}^{n}{x_{i}} \quad \textrm{and} \quad \over
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">df_adv</span><span class="o">.</span><span class="n">TV</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">df_adv</span><span class="o">.</span><span class="n">TV</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">y</span> <span class="o">=</span> <span class="n">df_adv</span><span class="o">.</span><span class="n">sales</span><span class="p">[</span><span class="mi">5</span><span class="p">:</span><span class="mi">13</span><span class="p">]</span><span class="o">.</span><span class="n">values</span>
 <span class="n">n</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
@@ -1731,7 +1566,8 @@ $$\overline{x} = \frac{1}{n}\sum_{i=1}^{n}{x_{i}} \quad \textrm{and} \quad \over
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Next, we compute the loss function.</p>
 </div>
@@ -1742,7 +1578,7 @@ $$\overline{x} = \frac{1}{n}\sum_{i=1}^{n}{x_{i}} \quad \textrm{and} \quad \over
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">beta_1</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">beta_1</span><span class="p">))</span>
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">xi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">L</span> <span class="o">+=</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">-</span> <span class="n">beta_1</span> <span class="o">*</span> <span class="n">xi</span> <span class="o">-</span> <span class="n">beta_0</span><span class="p">)</span> <span class="o">**</span> <span class="mf">2.0</span>
 <span class="n">L</span> <span class="o">/=</span> <span class="n">n</span> 
@@ -1764,7 +1600,8 @@ $$\overline{x} = \frac{1}{n}\sum_{i=1}^{n}{x_{i}} \quad \textrm{and} \quad \over
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now plot and save.</p>
 </div>
@@ -1775,7 +1612,7 @@ $$\overline{x} = \frac{1}{n}\sum_{i=1}^{n}{x_{i}} \quad \textrm{and} \quad \over
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">beta_1</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">beta_1</span><span class="p">,</span> <span class="n">L</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$\beta_0 = </span><span class="si">{0:5.3f}</span><span class="s1">$'</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">beta_0</span><span class="p">))</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$L\left(\beta_</span><span class="si">{1}</span><span class="s1">\right)$'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="sa">r</span><span class="s1">'$\beta_</span><span class="si">{1}</span><span class="s1">$'</span><span class="p">)</span>
@@ -1788,7 +1625,7 @@ $$\overline{x} = \frac{1}{n}\sum_{i=1}^{n}{x_{i}} \quad \textrm{and} \quad \over
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAZAAAAEbCAYAAAD0yNLXAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMS4wLCBo
 dHRwOi8vbWF0cGxvdGxpYi5vcmcvpW3flQAAIABJREFUeJzt3Xl4VOXZx/HvnY2EEMKSEJYkJOy7
@@ -2036,7 +1873,8 @@ gBhjjGkQKyDGGGMaxAqIMcaYBrECYowxpkGsgBhjjGmQ/wdOpyIRgsjfdAAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Extra!">Extra!<a class="anchor-link" href="#Extra!">¶</a></h3><p>We can compute the actual values of $\beta_{0}$ and $\beta_{1}$ from the formulas we derived.</p>
 </div>
@@ -2047,7 +1885,7 @@ gBhjjGkQKyDGGGMaxAqIMcaYBrECYowxpkGsgBhjjGmQ/wdOpyIRgsjfdAAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">beta_hat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="k">def</span> <span class="nf">beta_hat</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
     <span class="c1"># Mean of x and y</span>
     <span class="n">xbar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
     <span class="n">ybar</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">y</span><span class="p">)</span> 
@@ -2088,7 +1926,8 @@ gBhjjGkQKyDGGGMaxAqIMcaYBrECYowxpkGsgBhjjGmQ/wdOpyIRgsjfdAAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now calculate the true minimum of $L$.</p>
 </div>
@@ -2099,7 +1938,7 @@ gBhjjGkQKyDGGGMaxAqIMcaYBrECYowxpkGsgBhjjGmQ/wdOpyIRgsjfdAAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="mf">0.0</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">L</span> <span class="o">=</span> <span class="mf">0.0</span>
 <span class="k">for</span> <span class="n">idx</span><span class="p">,</span> <span class="n">xi</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">x</span><span class="p">):</span>
     <span class="n">L</span> <span class="o">+=</span> <span class="p">(</span><span class="n">y</span><span class="p">[</span><span class="n">idx</span><span class="p">]</span> <span class="o">-</span> <span class="n">beta</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">*</span> <span class="n">xi</span> <span class="o">-</span> <span class="n">beta</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="o">**</span> <span class="mf">2.0</span>
 <span class="n">L</span> <span class="o">/=</span> <span class="n">n</span>
@@ -2121,7 +1960,8 @@ gBhjjGkQKyDGGGMaxAqIMcaYBrECYowxpkGsgBhjjGmQ/wdOpyIRgsjfdAAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 </div>

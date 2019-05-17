@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,7 +1061,8 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
 <h2 id="Standard-Section-6:-Feed-Forward-Neural-Networks">Standard Section 6: Feed Forward Neural Networks<a class="anchor-link" href="#Standard-Section-6:-Feed-Forward-Neural-Networks">¶</a></h2><p><strong>Harvard University</strong><br>
@@ -1255,7 +1079,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">HTML</span><span class="p">(</span><span class="s1">'<style>h1{padding-top:25px;padding-bottom:25px;text-align:left;padding-left:10px;background-color:#DDDDDD;color:black}h2{padding-top:10px;padding-bottom:10px;text-align:left;padding-left:5px;background-color:#EEEEEE;color:black}div.exercise{background-color:#ffcccc;border-color:#E9967A;border-left:5px solid #800080;padding:0.5em}div.theme{background-color:#DDDDDD;border-color:#E9967A;border-left:5px solid #800080;padding:0.5em;font-size:18pt}p.q1{padding-top:5px;padding-bottom:5px;text-align:left;padding-left:5px;background-color:#EEEEEE;color:black}header{padding-top:35px;padding-bottom:35px;text-align:left;padding-left:10px;background-color:#DDDDDD;color:black}</style>'</span><span class="p">)</span>
 </pre></div>
@@ -1274,14 +1098,16 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this section we will discover how to create feed-forward neural networks using a fun dataset. The goal is to familiarize you with manual implementations of Neural Networks. The exercises below will help you be able to answer parts of Homework 6.</p>
 <p>Specifically, we will:</p>
@@ -1292,7 +1118,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>For this section we will be using the following packages:</p>
 </div>
@@ -1303,7 +1130,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Data and Stats packages</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Data and Stats packages</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
@@ -1346,14 +1173,16 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Fun-Dataset">Fun Dataset<a class="anchor-link" href="#Fun-Dataset">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us import a fun dataset specially created to show you how to play with neural networks.</p>
 </div>
@@ -1364,7 +1193,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [2]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#Import dataframe</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#Import dataframe</span>
 <span class="n">fun_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">'data/fun_dataset.csv'</span><span class="p">)</span>
 <span class="n">fun_df</span> <span class="o">=</span> <span class="n">fun_df</span><span class="p">[[</span><span class="s1">'x'</span><span class="p">,</span> <span class="s1">'y'</span><span class="p">]]</span>
 <span class="n">display</span><span class="p">(</span><span class="n">fun_df</span><span class="o">.</span><span class="n">head</span><span class="p">())</span>
@@ -1377,7 +1206,7 @@ h6:hover .anchor-link {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_html rendered_html output_subarea ">
+<div class="output_html rendered_html output_subarea">
 <div>
 <style>
     .dataframe thead tr:only-child th {
@@ -1442,7 +1271,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us peek and see how the data is distributed.</p>
 </div>
@@ -1453,7 +1283,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [3]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fun_df</span> <span class="o">=</span> <span class="n">fun_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">'x'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fun_df</span> <span class="o">=</span> <span class="n">fun_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">'x'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">fun_df</span><span class="o">.</span><span class="n">x</span><span class="p">,</span> <span class="n">fun_df</span><span class="o">.</span><span class="n">y</span><span class="p">,</span> <span class="s1">'--'</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -1469,7 +1299,7 @@ h6:hover .anchor-link {
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnEAAAGoCAYAAAApVLNCAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xd8VFXCPvBnWmbSeyckgYRUWhIIoYOA2LCBrnUXdQHd
 4uv+dnXXsq777q676+taVsXu2lGRpiIIUqSHhJpCSQhJII30OpMp9/fHQNZIMSG5c+bOPN/Ph0/M
@@ -1828,14 +1658,16 @@ OvsJVL74fwAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We see that there are two distinct humps in the data. We will try to qualitatively check if our models generalise well on these.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Can-we-model-this-data-using-Logistic-Regression/Polynomial-Regression">Can we model this data using Logistic Regression/Polynomial Regression<a class="anchor-link" href="#Can-we-model-this-data-using-Logistic-Regression/Polynomial-Regression">¶</a></h2>
 </div>
@@ -1846,7 +1678,7 @@ OvsJVL74fwAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [4]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Defining X and Y</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Defining X and Y</span>
 <span class="n">X</span> <span class="o">=</span> <span class="n">fun_df</span><span class="o">.</span><span class="n">x</span>
 <span class="n">Y</span> <span class="o">=</span> <span class="n">fun_df</span><span class="o">.</span><span class="n">y</span>
 </pre></div>
@@ -1859,7 +1691,7 @@ OvsJVL74fwAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [5]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fun_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fun_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1941,7 +1773,8 @@ OvsJVL74fwAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Doing-the-same-old-pre-processing">Doing the same old pre-processing<a class="anchor-link" href="#Doing-the-same-old-pre-processing">¶</a></h3>
 </div>
@@ -1952,7 +1785,7 @@ OvsJVL74fwAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [6]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Splitting into train and test</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Splitting into train and test</span>
 <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span><span class="p">,</span> <span class="n">y_train</span><span class="p">,</span> <span class="n">y_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">Y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.25</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">9001</span><span class="p">)</span>
 
 <span class="c1"># Re-shaping data</span>
@@ -1976,7 +1809,8 @@ OvsJVL74fwAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 1:</strong> Should we normalise/standardise the data here? Why or why not?</p>
 </div>
@@ -1987,7 +1821,7 @@ OvsJVL74fwAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [7]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># standardising values</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># standardising values</span>
 <span class="n">means</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'x'</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">mean</span><span class="p">(),</span> <span class="s1">'y'</span><span class="p">:</span> <span class="n">y_train</span><span class="o">.</span><span class="n">mean</span><span class="p">()}</span>
 <span class="n">stds</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'x'</span><span class="p">:</span> <span class="n">x_train</span><span class="o">.</span><span class="n">std</span><span class="p">(),</span> <span class="s1">'y'</span><span class="p">:</span> <span class="n">y_train</span><span class="o">.</span><span class="n">std</span><span class="p">()}</span>
 
@@ -2002,7 +1836,8 @@ OvsJVL74fwAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote><p><strong>Answer:</strong> Standardising the data helps in faster convergence of optimisation algorithms, especially when building neural networks. Thus, we standardise our data.</p>
 </blockquote>
@@ -2010,14 +1845,16 @@ OvsJVL74fwAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 2:</strong> Would you use Logistic Regression for this data? Why/why not?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote><p><strong>Answer:</strong> The response variable for this dataset is not binary. hence, I would refrain from using Logistic Regression</p>
 </blockquote>
@@ -2025,21 +1862,24 @@ OvsJVL74fwAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Fitting-Polynomial-Regression">Fitting Polynomial Regression<a class="anchor-link" href="#Fitting-Polynomial-Regression">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 3:</strong> Would you use polynomial regression for this data? Why/why not? If yes, what degree of polynomial would you pick? Why?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote><p><strong>Answer:</strong> Looking at the data, it seems that there is a at least a quadratic relation between the predictor and response variables. Thus, I would want to experiment with polynomial regression.</p>
 <p>I can see about 4 trends in the data distribution. So, I'd like to start experimenting with polynomials around degree 4.</p>
@@ -2048,7 +1888,8 @@ OvsJVL74fwAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us try fitting with different degrees of polynomials between 2-15.</p>
 </div>
@@ -2059,7 +1900,7 @@ OvsJVL74fwAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [8]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Fitting model with degree deg</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Fitting model with degree deg</span>
 <span class="n">result_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">'x_train'</span><span class="p">:</span> <span class="n">x_train</span><span class="p">[:,</span><span class="mi">0</span><span class="p">],</span> 
                           <span class="s1">'y_train'</span><span class="p">:</span> <span class="n">y_train</span><span class="p">,</span> 
                          <span class="p">})</span>
@@ -2111,7 +1952,7 @@ OvsJVL74fwAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [9]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting results </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Plotting results </span>
 <span class="n">result_df</span> <span class="o">=</span> <span class="n">result_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">'x_train'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">result_df</span><span class="o">.</span><span class="n">x_train</span><span class="p">,</span> <span class="n">result_df</span><span class="o">.</span><span class="n">y_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'*'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Actual Values'</span><span class="p">)</span>
 
@@ -2135,7 +1976,7 @@ OvsJVL74fwAAAABJRU5ErkJggg==
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAmoAAAG6CAYAAAC4BGrNAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XdcleX7wPHPWWwQ2Q4URAVBQNx74MBtZpalaJqWZmVq
 muXPsqENR840zdLU0tQ0K1PLhXsgCK4UnKAoiOx5xu8PvpxEnCkcxOv9evXK84z7uc59HjgX93oU
@@ -3153,7 +2994,8 @@ JYWaEEIIIYSWkkJNCCGEEEJLSaEmhBBCCKGl/g9jBQA9wGGz3AAAAABJRU5ErkJggg==
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We see that both poynomials of degree 15 does a great job of capturing the data well. We choose the model with degree 15.</p>
 </div>
@@ -3164,7 +3006,7 @@ JYWaEEIIIYSWkkJNCCGEEEJLSaEmhBBCCKGl/g9jBQA9wGGz3AAAAABJRU5ErkJggg==
 <div class="prompt input_prompt">In [10]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">degree_chosen</span> <span class="o">=</span> <span class="mi">15</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">degree_chosen</span> <span class="o">=</span> <span class="mi">15</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Number of features:"</span><span class="p">,</span><span class="n">models_df</span><span class="p">[</span><span class="n">degree_chosen</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Training Set Accuracy:"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">models_df</span><span class="p">[</span><span class="n">degree_chosen</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Testing Set Accuracy:"</span><span class="p">,</span><span class="nb">str</span><span class="p">(</span><span class="n">models_df</span><span class="p">[</span><span class="n">degree_chosen</span><span class="p">][</span><span class="mi">3</span><span class="p">])</span><span class="o">+</span><span class="s1">'%'</span><span class="p">)</span>
@@ -3187,21 +3029,24 @@ Testing Set Accuracy: 100.0%
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We observe that we require 16 features and a polynomial of degree 15 to model the data with nearly perfect accuracy.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Let's-now-try-to-model-this-data-using-a-Feed-Forward-Neural-Network">Let's now try to model this data using a Feed-Forward Neural Network<a class="anchor-link" href="#Let's-now-try-to-model-this-data-using-a-Feed-Forward-Neural-Network">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 4:</strong> What is the shape of input and output arrays to the neural network?</p>
 </div>
@@ -3212,7 +3057,7 @@ Testing Set Accuracy: 100.0%
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">x_train</span><span class="o">.</span><span class="n">shape</span><span class="p">,</span> <span class="n">y_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -3230,7 +3075,8 @@ Testing Set Accuracy: 100.0%
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us construct a network with a single hidden layer. We will now define the parameters of our network. Let us choose the number of hidden layers to be 3.</p>
 </div>
@@ -3241,7 +3087,7 @@ Testing Set Accuracy: 100.0%
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">input_dim</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">input_dim</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">output_dim</span> <span class="o">=</span> <span class="mi">1</span>
 
 <span class="n">num_hidden_layers</span> <span class="o">=</span> <span class="mi">1</span>
@@ -3252,7 +3098,8 @@ Testing Set Accuracy: 100.0%
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 5:</strong> What are the shapes of the weight matrices for the network?</p>
 </div>
@@ -3263,7 +3110,7 @@ Testing Set Accuracy: 100.0%
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"WL0: (</span><span class="si">{0}</span><span class="s2">,</span><span class="si">{1}</span><span class="s2">)"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num_hidden_nodes</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"WL0: (</span><span class="si">{0}</span><span class="s2">,</span><span class="si">{1}</span><span class="s2">)"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">num_hidden_nodes</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"WL1: (</span><span class="si">{0}</span><span class="s2">,</span><span class="si">{1}</span><span class="s2">)"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">output_dim</span><span class="p">,</span> <span class="n">num_hidden_nodes</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
 </pre></div>
 </div>
@@ -3283,21 +3130,24 @@ WL1: (1,4)
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Choosing-an-activation-function">Choosing an activation function<a class="anchor-link" href="#Choosing-an-activation-function">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 6:</strong> How do we pick an activation function for our neural network?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote><p><strong>Answer 6:</strong> Activation functions are chosen based on the nature of the problem. We will cover more about this in lectures.</p>
 </blockquote>
@@ -3305,7 +3155,8 @@ WL1: (1,4)
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We will work with the sigmoid activation function here.</p>
 </div>
@@ -3316,21 +3167,23 @@ WL1: (1,4)
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sigmoid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sigmoid</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="p">(</span><span class="mi">1</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">x</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's now create a feed-forward network with this activation function.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Let-us-assign-all-1s-to-initialise-both-WL0-and-WL1">Let us assign all 1s to initialise both WL0 and WL1<a class="anchor-link" href="#Let-us-assign-all-1s-to-initialise-both-WL0-and-WL1">¶</a></h3>
 </div>
@@ -3341,7 +3194,7 @@ WL1: (1,4)
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ASSIGNING WEIGHTS</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># ASSIGNING WEIGHTS</span>
 
 <span class="c1"># all 1s</span>
 <span class="n">WL0</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">((</span><span class="n">num_hidden_nodes</span><span class="p">,</span> <span class="n">input_dim</span><span class="o">+</span><span class="mi">1</span><span class="p">))</span>
@@ -3376,7 +3229,7 @@ WL1: (1,4)
 <div class="prompt input_prompt">In [16]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># PLOTTING THE MODEL</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># PLOTTING THE MODEL</span>
 <span class="k">def</span> <span class="nf">plot_nn_models</span><span class="p">(</span><span class="n">result_df</span><span class="p">,</span> <span class="n">title</span><span class="p">,</span> <span class="n">sig</span><span class="p">):</span>
     <span class="n">result_df</span> <span class="o">=</span> <span class="n">result_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span> <span class="o">=</span> <span class="s1">'x_train'</span><span class="p">)</span>
     <span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="n">result_df</span><span class="o">.</span><span class="n">x_train</span><span class="p">,</span> <span class="n">result_df</span><span class="o">.</span><span class="n">y_train</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">'k'</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">'*'</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">'Actual Values'</span><span class="p">)</span>
@@ -3399,7 +3252,7 @@ WL1: (1,4)
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAmoAAAG6CAYAAAC4BGrNAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl4Tdf+x/H3yXAyR+YIEiFIIogMFUOipFpDUR3p4Nal
 1dAW9WuvolWEXm1v1VRV2qp7qamUTtoaWtSckCJEzCGReZ5zht8fqV1HgugJGXxfz5Mnzt5r773O
@@ -3904,14 +3757,16 @@ QmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 7:</strong> Does the current NN capture the trends in data? If no, how should we modify our network?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote><p><strong>Answer:</strong> The network is not doing a good job at approximating the function well right now. We need to experiment and find out whether we need to change the weights, number of hidden nodes or number of hidden layers.</p>
 </blockquote>
@@ -3919,7 +3774,8 @@ QmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Let-us-first-adjust-weights-to-try-and-find-a-model-that-matches-our-data-well">Let us first adjust weights to try and find a model that matches our data well<a class="anchor-link" href="#Let-us-first-adjust-weights-to-try-and-find-a-model-that-matches-our-data-well">¶</a></h3>
 </div>
@@ -3930,7 +3786,7 @@ QmCC
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ASSIGNING WEIGHTS</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># ASSIGNING WEIGHTS</span>
 
 <span class="c1"># Obtained using trial and error</span>
 <span class="n">WL0</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'sigmoid'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span><span class="mf">0.01</span><span class="p">],</span> <span class="p">[</span><span class="mi">13</span><span class="p">,</span><span class="o">-</span><span class="mi">10</span><span class="p">],</span> <span class="p">[</span><span class="mf">0.1</span><span class="p">,</span><span class="mi">20</span><span class="p">]])}</span>
@@ -3971,7 +3827,7 @@ QmCC
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnUAAAG6CAYAAABuobCoAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xdc1WX7wPHPYSNDpjMVJyoqoCii4EAMF1pZaZbjp5lY
 JmbD1WOO7PF5ypGaOcqyMMWVmma5crNkiEpquFCRoQwB2ZzfH8R5PAIKMQ7jer9evvR8z33u73Vu
@@ -4556,7 +4412,8 @@ iIi8wP8HA69bT/h4vjUAAAAASUVORK5CYII=
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>With some adjusted weights (obtained by trial and error and logically observing which weight changes which part of approximation), we see that the sigmoid activation functions is doing a really good job at capturing the hump between <code>x=-0.2</code> to <code>x=1</code>.</p>
 <p>The weights obtained by our most suitable model having 3 hidden nodes are given below:</p>
@@ -4568,7 +4425,7 @@ iIi8wP8HA69bT/h4vjUAAAAASUVORK5CYII=
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"WL0: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">WL0</span><span class="p">[</span><span class="s1">'sigmoid'</span><span class="p">],</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"WL0: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">WL0</span><span class="p">[</span><span class="s1">'sigmoid'</span><span class="p">],</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"WL1: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">WL1</span><span class="p">[</span><span class="s1">'sigmoid'</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -4593,7 +4450,8 @@ WL1:
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Let-us-now-increase-the-number-of-hidden-nodes-to-4-and-use-Sigmoid-as-our-activation-function-to-see-if-we-can-find-a-model-that-matches-our-data-better">Let us now increase the number of hidden nodes to 4 and use Sigmoid as our activation function to see if we can find a model that matches our data better<a class="anchor-link" href="#Let-us-now-increase-the-number-of-hidden-nodes-to-4-and-use-Sigmoid-as-our-activation-function-to-see-if-we-can-find-a-model-that-matches-our-data-better">¶</a></h3>
 </div>
@@ -4604,7 +4462,7 @@ WL1:
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Re-defining the number of hidden nodes</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Re-defining the number of hidden nodes</span>
 <span class="n">num_hidden_nodes</span> <span class="o">=</span> <span class="mi">4</span>
 
 <span class="c1"># Printing shape of weight vectors</span>
@@ -4632,7 +4490,7 @@ WL1: (1,5)
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># ASSIGNING WEIGHTS</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># ASSIGNING WEIGHTS</span>
 
 <span class="c1"># Obtained using trial and error</span>
 <span class="n">WL0</span> <span class="o">=</span> <span class="p">{</span><span class="s1">'sigmoid'</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([[</span><span class="mi">10</span><span class="p">,</span><span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="o">-</span><span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mi">14</span><span class="p">,</span><span class="o">-</span><span class="mi">12</span><span class="p">],</span> <span class="p">[</span><span class="o">-</span><span class="mi">5</span><span class="p">,</span><span class="mi">5</span><span class="p">]])}</span>
@@ -4673,7 +4531,7 @@ WL1: (1,5)
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAnUAAAG6CAYAAABuobCoAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3XlYlOX6wPHvDPsqq0uK4IqKCyiKKJgShrmWZprl8tMM
 LBOzxa2s1DqeUy6plUtZFqS4pZZZbrklqIAkSmq4oSKisojIOjO/P4jJEVCIZVjuz3V5deadZ973
@@ -5318,7 +5176,8 @@ ERGRDHCoIyIiIpIBDnVEREREMsChjoiIiEgGONQRERERycD/APqcQlZ2PuyqAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>After several trial and errors, we have found that adding an additional node helps the model generalise well on the second hump between <code>x=-1.5</code> and <code>x=0</code> also, adding to it's generalisation on the other hump as seen before.</p>
 <p>The weights obtained by our most suitable model having 4 hidden nodes are given below:</p>
@@ -5330,7 +5189,7 @@ ERGRDHCoIyIiIpIBDnVEREREMsChjoiIiEgGONQRERERycD/APqcQlZ2PuyqAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">WL0_best</span><span class="p">,</span> <span class="n">WL1_best</span> <span class="o">=</span> <span class="n">WL0</span><span class="p">[</span><span class="s1">'sigmoid'</span><span class="p">],</span> <span class="n">WL1</span><span class="p">[</span><span class="s1">'sigmoid'</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">WL0_best</span><span class="p">,</span> <span class="n">WL1_best</span> <span class="o">=</span> <span class="n">WL0</span><span class="p">[</span><span class="s1">'sigmoid'</span><span class="p">],</span> <span class="n">WL1</span><span class="p">[</span><span class="s1">'sigmoid'</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"WL0: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">WL0_best</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"WL1: </span><span class="se">\n</span><span class="s2">"</span><span class="p">,</span> <span class="n">WL1_best</span><span class="p">)</span>
@@ -5358,28 +5217,32 @@ WL1:
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Similarly, can we improve our function fit by increasing the number of hidden nodes?</strong></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Performance-of-NN">Performance of NN<a class="anchor-link" href="#Performance-of-NN">¶</a></h2>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 8:</strong> So far, we are qualitatively determining if our feed-forward neural network models our data well. Can we quantitaively determine this? How?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote><p><strong>Answer: </strong> Yes! We can quantitatively determine the performance of our model by choose the metric we want to use. Let's use the MSE values to determine the loss from our model (as we have done in cases of regression before). The loss, as we know, indicated how well our model fits the data. Look up other loss functions used by neual networks here: <a href="https://ml-cheatsheet.readthedocs.io/en/latest/loss_functions.html">https://ml-cheatsheet.readthedocs.io/en/latest/loss_functions.html</a></p>
 <p>What metric would you use if the data had categorical target variables?</p>
@@ -5388,7 +5251,8 @@ WL1:
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us calculate the loss from our network.</p>
 </div>
@@ -5399,7 +5263,7 @@ WL1:
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">loss</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">result_df</span><span class="o">.</span><span class="n">y_pred_train_sigmoid</span> <span class="o">-</span> <span class="n">result_df</span><span class="o">.</span><span class="n">y_train</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">loss</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">((</span><span class="n">result_df</span><span class="o">.</span><span class="n">y_pred_train_sigmoid</span> <span class="o">-</span> <span class="n">result_df</span><span class="o">.</span><span class="n">y_train</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">loss</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -5418,14 +5282,16 @@ WL1:
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 9:</strong> Lets transport back in time to our favourite calculus lessons. How do we minimise the loss of any function approximation?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote><p><strong>Answer</strong> One way to do this is by adjusting the function approximation parameters using a technique called gradient descent.</p>
 <p>We have also covred gradient descent in the previous lecture. Look at the slides for Lecture 12 for reference.</p>
@@ -5434,21 +5300,24 @@ WL1:
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us explore gradient descent below.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Gradient-Descent">Gradient Descent<a class="anchor-link" href="#Gradient-Descent">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Theory</strong></p>
 <p>At any point in one dimension, a function's derivative tells us whether increasing the input will increase the function (positive derivative) or decrease the function (negative derivative). The derivative also tells us how much we think the function will increase/decrease for a small change in the input. We're being told which direction we want to move in, and how strongly we want to make that move.</p>
@@ -5457,7 +5326,8 @@ WL1:
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Example showing use of gradient descent to find function minima using approximation</strong></p>
 <p>Let us define a function <code>f(x) = sin(x) + cos(x)</code> and guess that it has a minimum value of <code>f(x) = -1</code> at parameter value <code>x_min = 1</code>. Let us now use gradient descent to optimize the approximation of <code>x_min</code>.</p>
@@ -5469,7 +5339,7 @@ WL1:
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># inline function for f(x)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># inline function for f(x)</span>
 <span class="n">f</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">+</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -5477,7 +5347,8 @@ WL1:
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We calculate the gradient of <code>f(x)</code> wrt <code>x</code> to be <code>f'(x) = cos(x) - sin(x)</code>.</p>
 </div>
@@ -5488,7 +5359,7 @@ WL1:
 <div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># inline function for df/dx</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># inline function for df/dx</span>
 <span class="n">der_f_x</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">cos</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">-</span> <span class="n">np</span><span class="o">.</span><span class="n">sin</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -5496,7 +5367,8 @@ WL1:
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We calculate the gradient at <code>x_min</code> and update its approximation for 1000 iterations to see how the values change.</p>
 </div>
@@ -5507,7 +5379,7 @@ WL1:
 <div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_n_minus_1</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x_n_minus_1</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">f_x_min</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="n">x_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_n_minus_1</span><span class="p">]</span>
 <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
@@ -5550,7 +5422,7 @@ WL1:
 </div>
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABC8AAAGNCAYAAAAxXVt/AAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAIABJREFUeJzs3Xl8VPW9//H3TPaFQAIEDIQtUcCwpVCRRWKD91oRjUpA
 RUG5jZrg0osbVSsiWjeQVUsE8YqgpYXa4lZ3f1gLLoiAhoCkRCQECNk3ZrLM/P4YZmCaAAmczGSS
@@ -6076,7 +5948,8 @@ AAAAAACENMILAAAAAAAQ0ggvAAAAAABASCO8AAAAAAAAIe3/AY1TdKlbHyOqAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>We can observe that the error and <code>x_min</code> approximation values stop changing after around 300 approximations, i.e. the approximated value of <code>x_min</code> has become nearly static. Let us see what these approximated values are.</p>
 </div>
@@ -6087,7 +5960,7 @@ AAAAAACENMILAAAAAAAQ0ggvAAAAAABASCO8AAAAAAAAIe3/AY1TdKlbHyOqAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'x_min = '</span><span class="p">,</span> <span class="n">x_vals</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">'x_min = '</span><span class="p">,</span> <span class="n">x_vals</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="s1">'error = '</span><span class="p">,</span> <span class="n">error</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -6107,14 +5980,16 @@ error =  2.41421356237
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 10:</strong> How do we determine the number of steps taken to reach our optimal weight values?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote><p><strong>Answer:</strong> Another way to perform gradient descent is to define a threshold and stop iterating when the values change becomes smaller than this threshold value. Let us do this to find the number of steps taken to reach the optimal value.</p>
 </blockquote>
@@ -6126,7 +6001,7 @@ error =  2.41421356237
 <div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x_n_minus_1</span> <span class="o">=</span> <span class="mi">1</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x_n_minus_1</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="n">f_x_min</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
 <span class="n">x_vals</span> <span class="o">=</span> <span class="p">[</span><span class="n">x_n_minus_1</span><span class="p">]</span>
 <span class="n">errors</span> <span class="o">=</span> <span class="p">[]</span>
@@ -6168,21 +6043,24 @@ error =  2.41421356237
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Thus, we see that with a learning rate of 0.01, it took us 79 steps to reach optimal values of our parameter.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Question 11:</strong> How was this learning rate chosen?</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <blockquote><p><strong>Answer</strong> Here, the choice of the 'learning rate' (lr) as .01 was arbitrary: bigger values of learning rates let us move more quickly towards the optimal value, but will be less accurate. Small learning rates are safe, but slow, while rates that are too big will fail to converge. Finding the right value is tricky and often times in complex problems, people experiment with many values of lr.</p>
 </blockquote>
@@ -6190,21 +6068,24 @@ error =  2.41421356237
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Gradient descent can performed on weights of neural networks to determine their optimal values that can yield the highest network accuracies.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Testing-on-Unseen-Data">Testing on Unseen Data<a class="anchor-link" href="#Testing-on-Unseen-Data">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let us now check the performance of our NN on unseen test data, using our observations and optimal weight values from above.</p>
 </div>
@@ -6215,7 +6096,7 @@ error =  2.41421356237
 <div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># WL0_best and WL1_best are the best weight values we have obtained</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># WL0_best and WL1_best are the best weight values we have obtained</span>
 <span class="c1"># We have trained the network using x_train above</span>
 <span class="c1"># We now apply the same transformatons on x_test</span>
 
@@ -6246,7 +6127,7 @@ error =  2.41421356237
 <div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Performance Evaluation</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Performance Evaluation</span>
 <span class="n">train_score</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">result_df</span><span class="o">.</span><span class="n">y_pred_train_sigmoid</span><span class="p">)</span><span class="o">*</span><span class="mi">100</span> <span class="c1"># THIS WAS FOUND ABOVE ALREADY</span>
 <span class="n">test_score</span> <span class="o">=</span> <span class="n">r2_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_pred_test</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">*</span><span class="mi">100</span>
 
@@ -6270,14 +6151,16 @@ Testing Set Accuracy: 96.3285378691%
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>We can observe that our manually constructed feed-forward neural network gave us comparable results to the polynomial model constructed before. Here, we adjusted 13 parameters with a single input feature, compared to 16 parameters and 15 features in the polynomial model.</strong></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 </div>

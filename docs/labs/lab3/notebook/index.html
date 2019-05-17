@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,7 +1061,8 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://github.com/Harvard-IACS/2018-CS109A/blob/master/content/styles/iacs.png?raw=true" style="float: left; padding-right: 10px; width: 45px"> CS109A/STAT121A Introduction to Data Science</h1>
 <h2 id="Lab-3:-numpy,-plotting,-K-NN-Regression,-Simple-Linear-Regression">Lab 3: <code>numpy</code>, plotting, K-NN Regression, Simple Linear Regression<a class="anchor-link" href="#Lab-3:-numpy,-plotting,-K-NN-Regression,-Simple-Linear-Regression">¶</a></h2><h2 id="-PRE-LAB-:-DO-THIS-PART-BEFORE-COMING-TO-LAB"><font color="red"> PRE-LAB : DO THIS PART BEFORE COMING TO LAB</font><a class="anchor-link" href="#-PRE-LAB-:-DO-THIS-PART-BEFORE-COMING-TO-LAB">¶</a></h2><p><strong>Harvard University</strong><br>
@@ -1254,7 +1078,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#RUN THIS CELL </span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1265,7 +1089,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Table-of-Contents">Table of Contents<a class="anchor-link" href="#Table-of-Contents">¶</a></h1><ol start="1">
 <li> A revision of `numpy` </li>
@@ -1275,7 +1100,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="1---Numerical-Python:--numpy">1 - Numerical Python:  <code>numpy</code><a class="anchor-link" href="#1---Numerical-Python:--numpy">¶</a></h2><p>Review the concepts on numpy: Scientific <code>Python</code> code uses a fast array structure, called the <code>numpy</code> array. Those who have worked in <code>Matlab</code> will find this very natural.   For reference, the <code>numpy</code> documention can be found here: <a href="http://www.numpy.org/"><code>numpy</code></a>.</p>
 <p>Let's make a numpy array.</p>
@@ -1287,7 +1113,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
 </div>
@@ -1298,7 +1124,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">my_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span><span class="mi">4</span><span class="p">,</span><span class="mi">9</span><span class="p">,</span><span class="mi">16</span><span class="p">])</span>
 <span class="n">my_array</span>
 </pre></div>
 </div>
@@ -1306,7 +1132,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy arrays support the same operations as lists! Below we compute length, slice, and iterate.</p>
 </div>
@@ -1317,7 +1144,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"len(array):"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_array</span><span class="p">))</span> <span class="c1"># Length of array</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">"len(array):"</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">my_array</span><span class="p">))</span> <span class="c1"># Length of array</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"array[2:4]:"</span><span class="p">,</span> <span class="n">my_array</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">])</span> <span class="c1"># A slice of the array</span>
 
@@ -1330,7 +1157,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>In general you should manipulate numpy arrays by using numpy module functions</strong> (e.g. <code>np.mean</code>). This is for efficiency purposes, and a discussion follows below this section.</p>
 <p>You can calculate the mean of the array elements either by calling the method <code>.mean</code> on a numpy array or by applying the function <code>np.mean</code> with the <code>numpy</code> array as an argument.</p>
@@ -1342,7 +1170,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Two ways of calculating the mean</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Two ways of calculating the mean</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">my_array</span><span class="o">.</span><span class="n">mean</span><span class="p">())</span>
 
@@ -1353,7 +1181,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The way we constructed the <code>numpy</code> array above seems redundant. After all we already had a regular <code>python</code> list. Indeed, it is the other ways we have to construct <code>numpy</code> arrays that make them super useful.</p>
 <p>There are many such <code>numpy</code> array <em>constructors</em>. Here are some commonly used constructors. Look them up in the documentation.</p>
@@ -1365,7 +1194,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">zeros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># generates 10 floating point zeros</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">zeros</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># generates 10 floating point zeros</span>
 <span class="n">zeros</span>
 </pre></div>
 </div>
@@ -1373,7 +1202,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>Numpy</code> gains a lot of its efficiency from being strongly typed. That is, all elements in the array have the same type, such as integer or floating point. The default type, as can be seen above, is a float of size appropriate for the machine (64 bit on a 64 bit machine).</p>
 </div>
@@ -1384,7 +1214,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">zeros</span><span class="o">.</span><span class="n">dtype</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">zeros</span><span class="o">.</span><span class="n">dtype</span>
 </pre></div>
 </div>
 </div>
@@ -1395,14 +1225,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'int'</span><span class="p">)</span> <span class="c1"># generates 10 integer ones</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="s1">'int'</span><span class="p">)</span> <span class="c1"># generates 10 integer ones</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>If the elements of an array are of a different type, <code>numpy</code> will force them into the same type (the longest in terms of bytes)</p>
 </div>
@@ -1413,7 +1244,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">mixed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="s1">'eleni'</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">mixed</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mf">2.3</span><span class="p">,</span> <span class="s1">'eleni'</span><span class="p">,</span> <span class="kc">True</span><span class="p">])</span>
 
 <span class="c1">#elements are of different type</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="mf">2.3</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="s1">'eleni'</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="kc">True</span><span class="p">))</span>
@@ -1426,7 +1257,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Often you will want random numbers. Use the <code>random</code> constructor!</p>
 </div>
@@ -1437,14 +1269,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># uniform on [0,1]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span> <span class="c1"># uniform on [0,1]</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can generate random numbers from a normal distribution with mean $0$ and variance $1$ using <code>np.random.randn</code>:</p>
 </div>
@@ -1455,7 +1288,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">normal_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">normal_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">randn</span><span class="p">(</span><span class="mi">10000</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"The sample mean and standard devation are </span><span class="si">{0:17.16f}</span><span class="s2"> and </span><span class="si">{1:17.16f}</span><span class="s2">, respectively."</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">normal_array</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">normal_array</span><span class="p">)))</span>
 </pre></div>
 </div>
@@ -1463,7 +1296,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="numpy-supports-vector-operations"><code>numpy</code> supports vector operations<a class="anchor-link" href="#numpy-supports-vector-operations">¶</a></h4><p>What does this mean? It means that to add two arrays instead of looping ovr each element (e.g. via a list comprehension as in base Python) you get to simply put a plus sign between the two arrays.</p>
 </div>
@@ -1474,7 +1308,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ones_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ones_array</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">twos_array</span> <span class="o">=</span> <span class="mi">2</span><span class="o">*</span><span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">(</span><span class="mi">5</span><span class="p">)</span>
 <span class="n">ones_array</span> <span class="o">+</span> <span class="n">twos_array</span>
 </pre></div>
@@ -1483,7 +1317,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Note that this behavior is very different from <code>python</code> lists, which just get longer when you try to + them.</p>
 </div>
@@ -1494,7 +1329,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">first_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">first_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">,</span> <span class="mf">1.</span><span class="p">]</span>
 <span class="n">second_list</span> <span class="o">=</span> <span class="p">[</span><span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">,</span> <span class="mf">2.</span><span class="p">]</span>
 <span class="n">first_list</span> <span class="o">+</span> <span class="n">second_list</span> <span class="c1"># not what you want</span>
 </pre></div>
@@ -1503,14 +1338,16 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>On some computer chips nunpy's addition actually happens in parallel, so speedups can be high. But even on regular chips, the advantage of greater readability is important.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><code>Numpy</code> supports a concept known as <em>broadcasting</em>, which dictates how arrays of different sizes are combined together. There are too many rules to list all of them here.  Here are two important rules:</p>
 <ol>
@@ -1525,7 +1362,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">ones_array</span> <span class="o">+</span> <span class="mi">1</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">ones_array</span> <span class="o">+</span> <span class="mi">1</span>
 </pre></div>
 </div>
 </div>
@@ -1536,14 +1373,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="mi">5</span> <span class="o">*</span> <span class="n">ones_array</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="mi">5</span> <span class="o">*</span> <span class="n">ones_array</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>This means that if you wanted the distribution $N(5, 7)$ you could do:</p>
 </div>
@@ -1554,7 +1392,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">normal_5_7</span> <span class="o">=</span> <span class="mf">5.0</span> <span class="o">+</span> <span class="mf">7.0</span> <span class="o">*</span> <span class="n">normal_array</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">normal_5_7</span> <span class="o">=</span> <span class="mf">5.0</span> <span class="o">+</span> <span class="mf">7.0</span> <span class="o">*</span> <span class="n">normal_array</span>
 
 <span class="n">np</span><span class="o">.</span><span class="n">mean</span><span class="p">(</span><span class="n">normal_5_7</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">std</span><span class="p">(</span><span class="n">normal_5_7</span><span class="p">)</span>
 </pre></div>
@@ -1563,7 +1401,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now you have seen how to create and work with simple one dimensional arrays in <code>numpy</code>.  You have also been introduced to some important <code>numpy</code> functionality (e.g. <code>mean</code> and <code>std</code>).</p>
 <p>Next, we push ahead to two-dimensional arrays and begin to dive into some of the deeper aspects of <code>numpy</code>.</p>
@@ -1571,7 +1410,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="2D-arrays">2D arrays<a class="anchor-link" href="#2D-arrays">¶</a></h3><p>We can create two-dimensional arrays without too much fuss.</p>
 </div>
@@ -1582,7 +1422,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># create a 2d-array by handing a list of lists</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># create a 2d-array by handing a list of lists</span>
 <span class="n">my_array2d</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> 
     <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">],</span> 
     <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">],</span> 
@@ -1610,7 +1450,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Like lists, <code>numpy</code> arrays are $0$-indexed.  Thus we can access the $n$th row and the $m$th column of a two-dimensional array with the indices $[n - 1, m - 1]$.</p>
 </div>
@@ -1621,7 +1462,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">my_array2d</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">my_array2d</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"element [2,3] is:"</span><span class="p">,</span> <span class="n">my_array2d</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">])</span>
 </pre></div>
 </div>
@@ -1629,7 +1470,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy arrays can be sliced, and can be iterated over with loops.  Below is a schematic illustrating slicing two-dimensional arrays.</p>
 <p><img alt="Drawing" src="images/2dindex_v2.png" style="width: 500px;"></p>
@@ -1640,7 +1482,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy functions will by default work on the entire array:</p>
 </div>
@@ -1651,14 +1494,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ones_2d</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ones_2d</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The axis <code>0</code> is the one going downwards (i.e. the rows), whereas axis <code>1</code> is the one going across (the columns). You will often use functions such as <code>mean</code> or <code>sum</code> along a particular axis. If you <code>sum</code> along axis 0 you are summing across the rows and will end up with one value per column. As a rule, any axis you list in the axis argument will dissapear.</p>
 </div>
@@ -1669,7 +1513,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ones_2d</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ones_2d</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -1680,14 +1524,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ones_2d</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">ones_2d</span><span class="p">,</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise</b></div></p>
 <ul>
@@ -1711,7 +1556,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 <span class="n">A</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">([</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">],</span> <span class="p">[</span><span class="mf">1.1</span><span class="p">,</span> <span class="mf">2.2</span><span class="p">,</span> <span class="mf">3.3</span><span class="p">,</span> <span class="mf">4.4</span><span class="p">,</span> <span class="mf">5.5</span><span class="p">]</span> <span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">A</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
@@ -1732,14 +1577,16 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="numpy-supports-matrix-operations"><code>numpy</code> supports matrix operations<a class="anchor-link" href="#numpy-supports-matrix-operations">¶</a></h4><p>2d arrays are numpy's way of representing matrices. As such there are lots of built-in methods for manipulating them</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Earlier when we generated the one-dimensional arrays of ones and random numbers, we gave <code>ones</code> and <code>random</code>  the number of elements we wanted in the arrays. In two dimensions, we need to provide the shape of the array, i.e., the number of rows and columns of the array.</p>
 </div>
@@ -1750,7 +1597,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">three_by_four</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">three_by_four</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">ones</span><span class="p">([</span><span class="mi">3</span><span class="p">,</span><span class="mi">4</span><span class="p">])</span>
 <span class="n">three_by_four</span>
 </pre></div>
 </div>
@@ -1758,7 +1605,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can transpose the array:</p>
 </div>
@@ -1769,7 +1617,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">three_by_four</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">three_by_four</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
@@ -1780,7 +1628,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">four_by_three</span> <span class="o">=</span> <span class="n">three_by_four</span><span class="o">.</span><span class="n">T</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">four_by_three</span> <span class="o">=</span> <span class="n">three_by_four</span><span class="o">.</span><span class="n">T</span>
 </pre></div>
 </div>
 </div>
@@ -1791,14 +1639,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">four_by_three</span><span class="o">.</span><span class="n">shape</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">four_by_three</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Matrix multiplication is accomplished by <code>np.dot</code>. The <code>*</code> operator will do element-wise multiplication.</p>
 </div>
@@ -1809,7 +1658,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">three_by_four</span><span class="p">,</span> <span class="n">four_by_three</span><span class="p">))</span> <span class="c1"># 3 x 3 matrix</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">three_by_four</span><span class="p">,</span> <span class="n">four_by_three</span><span class="p">))</span> <span class="c1"># 3 x 3 matrix</span>
 <span class="n">np</span><span class="o">.</span><span class="n">dot</span><span class="p">(</span><span class="n">four_by_three</span><span class="p">,</span> <span class="n">three_by_four</span><span class="p">)</span> <span class="c1"># 4 x 4 matrix</span>
 </pre></div>
 </div>
@@ -1817,7 +1666,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Numpy has functions to do the difficult matrix operations that are awful to do by hand.</p>
 </div>
@@ -1828,7 +1678,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># a 4 by 4 matrix</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">rand</span><span class="p">(</span><span class="mi">4</span><span class="p">,</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># a 4 by 4 matrix</span>
 <span class="n">matrix</span>
 </pre></div>
 </div>
@@ -1836,7 +1686,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's get the eigenvalues and eigenvectors!</p>
 </div>
@@ -1847,14 +1698,15 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">eig</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>How about inverses?</p>
 </div>
@@ -1865,7 +1717,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">inv_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="c1"># the invert matrix</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">inv_matrix</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linalg</span><span class="o">.</span><span class="n">inv</span><span class="p">(</span><span class="n">matrix</span><span class="p">)</span> <span class="c1"># the invert matrix</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">inv_matrix</span><span class="p">)</span>
 
 <span class="c1">#prove it's the inverse</span>
@@ -1876,7 +1728,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Notice that there is a bit of 'rounding error' in the inverse calculation. This is becuase the computer can't store the exact values the inverse matrix asks for (they have more decimal places than the computer can hold). Built-in numpy routines manage these errors, which is why it's very important to use pre-built tools whenever possible, and to be very cautious when writing your own.</p>
 <p>(It happens that there are even more advanced numpy functions like <code>np.linalg.solve</code> which are more accurate than just taking the naked inverse)</p>
@@ -1885,7 +1738,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Numpy's-layout-in-the-computer's-memory">Numpy's layout in the computer's memory<a class="anchor-link" href="#Numpy's-layout-in-the-computer's-memory">¶</a></h4><p><strong>Advanced coders</strong>: You should notice that access is row-by-row and one dimensional iteration gives a row. This is because <code>numpy</code> lays out memory row-wise. <br><br>
 <strong>Starting coders</strong>: If you really need a particular section of numpy to run faster, ask an advanced coder to point out improvements in your code. They may have you transpose your arrays. But if your code is fast enough, then it's fast enough.</p>
@@ -1895,7 +1749,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>An often seen idiom allocates a two-dimensional array, and then fills in one-dimensional arrays from some function.  We will discuss why this is a bad design pattern.</p>
 </div>
@@ -1906,7 +1761,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># allocate a 2D array</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># allocate a 2D array</span>
 <span class="n">twod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">zeros</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">])</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">twod</span><span class="p">,</span> <span class="s2">"</span><span class="se">\n</span><span class="s2">"</span><span class="p">)</span>
 
@@ -1920,7 +1775,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>In this and many other cases, it is faster to simply do:</p>
 </div>
@@ -1931,7 +1787,7 @@ h6:hover .anchor-link {
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">twod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">twod</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">random</span><span class="o">.</span><span class="n">random</span><span class="p">(</span><span class="n">size</span><span class="o">=</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span><span class="mi">2</span><span class="p">))</span>
 <span class="n">twod</span>
 </pre></div>
 </div>
@@ -1939,7 +1795,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="NumpyArrays-vs.-Python-Lists?"><code>Numpy</code>Arrays vs. <code>Python</code> Lists?<a class="anchor-link" href="#NumpyArrays-vs.-Python-Lists?">¶</a></h3><ol>
 <li>Why the need for <code>numpy</code> arrays?  Can't we just use <code>Python</code> lists?</li>
@@ -1963,7 +1820,8 @@ You will find them both incredible resources for this class.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1 id="Concept-Check:">Concept Check:<a class="anchor-link" href="#Concept-Check:">¶</a></h1><p>Answer these questions and see the bottom of the lab to check your answers.</p>
 <ol>
@@ -1976,7 +1834,8 @@ You will find them both incredible resources for this class.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="2---Plotting-with-matplot-lib-(and-beyond)">2 - Plotting with matplot lib (and beyond)<a class="anchor-link" href="#2---Plotting-with-matplot-lib-(and-beyond)">¶</a></h2><p>Conveying your findings convincingly is an absolutely crucial part of any analysis. Therefore, you must be able to write well and make compelling visuals.  Creating informative visuals is an involved process and we won't cover that in this lab.  However, part of creating informative data visualizations means generating <em>readable</em> figures.  If people can't read your figures or have a difficult time interpreting them, they won't understand the results of your work.  Here are some non-negotiable commandments for any plot:</p>
 <ul>
@@ -1999,7 +1858,8 @@ You will find them both incredible resources for this class.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Before diving in, one more note should be made.  We will not focus on the internal aspects of <code>matplotlib</code>.  Today's lab will really only focus on the basics and developing good plotting practices.  There are many excellent tutorials out there for <code>matplotlib</code>.  For example,</p>
 <ul>
@@ -2011,21 +1871,24 @@ You will find them both incredible resources for this class.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="matplotlib"><code>matplotlib</code><a class="anchor-link" href="#matplotlib">¶</a></h3>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>First, let's generate some data.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise</b></div>
 Use the following three functions to make some plots:</p>
@@ -2063,7 +1926,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Your code here</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
 <span class="k">def</span> <span class="nf">logistic</span><span class="p">(</span><span class="n">z</span><span class="p">:</span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">,</span> <span class="n">a</span><span class="p">:</span> <span class="nb">float</span><span class="p">,</span> <span class="n">b</span><span class="p">:</span> <span class="nb">float</span><span class="p">)</span> <span class="o">-></span> <span class="n">np</span><span class="o">.</span><span class="n">ndarray</span><span class="p">:</span>
@@ -2106,7 +1969,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now let's make some plots.  First, let's just warm up and plot the logistic function.</p>
 </div>
@@ -2117,7 +1981,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># Equally spaced grid of 100 pts between -5 and 5</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">x</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">linspace</span><span class="p">(</span><span class="o">-</span><span class="mf">5.0</span><span class="p">,</span> <span class="mf">5.0</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="c1"># Equally spaced grid of 100 pts between -5 and 5</span>
 
 <span class="n">f</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span> <span class="c1"># Generate data</span>
 </pre></div>
@@ -2130,7 +1994,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
 
 <span class="c1"># This is only needed in Jupyter notebooks!  Displays the plots for us.</span>
 <span class="o">%</span><span class="k">matplotlib</span> inline 
@@ -2142,7 +2006,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Wonderful!  We have a plot.  It's terribly ugly and uninformative.  Let's clean it up a bit by putting some labels on it.</p>
 </div>
@@ -2153,7 +2018,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'f'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Logistic Function'</span><span class="p">);</span>
@@ -2163,7 +2028,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Okay, it's getting better.  Still super ugly.  I see these kinds of plots at conferences all the time.  Unreadable.  We can do better.  Much, much better.  First, let's throw on a grid.</p>
 </div>
@@ -2174,7 +2040,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">'x'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">'f'</span><span class="p">)</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">'Logistic Function'</span><span class="p">)</span>
@@ -2185,7 +2051,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>At this point, our plot is starting to get a little better but also a little crowded.</p>
 <h4 id="A-note-on-gridlines">A note on gridlines<a class="anchor-link" href="#A-note-on-gridlines">¶</a></h4><p>Gridlines can be very helpful in many scientific disciplines.  They help the reader quickly pick out important points and limiting values.  On the other hand, they can really clutter the plot.  Some people recommend never using gridlines, while others insist on them being present.  The correct approach is probably somewhere in between.  Use gridlines when necessary, but dispense with them when they take away more than they provide.  Ask yourself if they help bring out some important conclusion from the plot.  If not, then best just keep them away.</p>
@@ -2198,7 +2065,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Get figure and axes objects</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">)</span> <span class="c1"># Get figure and axes objects</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">)</span> <span class="c1"># Make a plot</span>
 
@@ -2215,7 +2082,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Wow, it's <em>exactly</em> the same plot!  Notice, however, the use of <code>ax.set_xlabel()</code> instead of <code>plt.xlabel()</code>.  The difference is tiny, but you should be aware of it.  I will use this plotting syntax from now on.</p>
 <p>What else do we need to do to make this figure better?  Here are some options:</p>
@@ -2235,7 +2103,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> <span class="c1"># Make figure bigger</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> <span class="c1"># Make figure bigger</span>
 
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span> <span class="c1"># Linewidth bigger</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">set_xlabel</span><span class="p">(</span><span class="s1">'x'</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">24</span><span class="p">)</span> <span class="c1"># Fontsize bigger</span>
@@ -2248,7 +2116,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Notice:</p>
 <ul>
@@ -2260,7 +2129,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Things are looking good now!  Unfortunately, people still can't read the tick mark labels.  Let's remedy that presently.</p>
 </div>
@@ -2271,7 +2141,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> <span class="c1"># Make figure bigger</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> <span class="c1"># Make figure bigger</span>
 
 <span class="c1"># Make line plot</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -2291,7 +2161,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The only thing remaining to do is to change the $x$ limits.  Clearly these should go from $-5$ to $5$.</p>
 </div>
@@ -2302,7 +2173,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> <span class="c1"># Make figure bigger</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">6</span><span class="p">))</span> <span class="c1"># Make figure bigger</span>
 
 <span class="c1"># Make line plot</span>
 <span class="n">ax</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">lw</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
@@ -2325,7 +2196,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>You can play around with figures forever making them perfect.  At this point, everyone can read and interpret this figure just fine.  Don't spend your life making the perfect figure.  Make it good enough so that you can convey your point to your audience.  Then save if it for later.</p>
 </div>
@@ -2336,14 +2208,15 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">'logistic.png'</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">fig</span><span class="o">.</span><span class="n">savefig</span><span class="p">(</span><span class="s1">'logistic.png'</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Done!  Let's take a look.
 <img alt="" src="logistic.png"></p>
@@ -2351,7 +2224,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Resources">Resources<a class="anchor-link" href="#Resources">¶</a></h4><p>If you want to see all the styles available, please take a look at the documentation.</p>
 <ul>
@@ -2368,7 +2242,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise</b></div><p>Do the following:</p>
 <ul>
@@ -2387,7 +2262,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here</span>
 
 <span class="c1"># First get the data</span>
 <span class="n">f</span> <span class="o">=</span> <span class="n">logistic</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="mf">2.0</span><span class="p">,</span> <span class="mf">1.0</span><span class="p">)</span>
@@ -2427,7 +2302,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>There a many more things you can do to the figure to spice it up.  Remember, there must be a tradeoff between making a figure look good and the time you put into it.</p>
 <p><strong>The guiding principle should be that your audience needs to easily read and understand your figure.</strong></p>
@@ -2450,7 +2326,7 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 <div class="prompt input_prompt">In [ ]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">config</span> <span class="c1"># User-defined config file</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">config</span> <span class="c1"># User-defined config file</span>
 <span class="n">plt</span><span class="o">.</span><span class="n">rcParams</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">config</span><span class="o">.</span><span class="n">pars</span><span class="p">)</span> <span class="c1"># Update rcParams to make nice plots</span>
 
 <span class="c1"># First get the data</span>
@@ -2486,7 +2362,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>That's a good-looking plot!  Notice that we didn't need to have all those annoying <code>fontsize</code> specifications floating around.  If you want to reset the defaults, just use <code>plt.rcdefaults()</code>.</p>
 <p>Now, how in the world did this work?  Obviously, there is something special about the <code>config</code> file.  I didn't give you a config file, but the next exercise requires you to create one.</p>
@@ -2494,7 +2371,8 @@ where $\epsilon < 0$ is a small, positive parameter.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise</b></div></p>
 <ul>
@@ -2511,7 +2389,8 @@ in your <code>config.py</code> file.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="seaborn"><code>seaborn</code><a class="anchor-link" href="#seaborn">¶</a></h3><p>Early on in this plotting section, we mentioned <code>seaborn</code>.  You can use <code>seaborn</code> to make very nice plots of statistical data.  Here is the main website:  <a href="https://seaborn.pydata.org/">seaborn: statistical data visualization</a>.</p>
 <p>We won't dive deep into <code>seaborn</code> here.  It is quite popular in the data science community, but it is ultimately up to you whether or not you choose to use it.</p>
@@ -2520,7 +2399,8 @@ in your <code>config.py</code> file.</li>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="No-Excuses">No Excuses<a class="anchor-link" href="#No-Excuses">¶</a></h3><p>With all of these resourses, there is no reason to have a bad figure. We will take this into account for homework.</p>
 </div>

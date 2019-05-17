@@ -93,124 +93,9 @@
 * IPython notebook
 *
 */
-/* CSS font colors for translated ANSI escape sequences */
-/* The color values are a mix of
-   http://www.xcolors.net/dl/baskerville-ivorylight and
-   http://www.xcolors.net/dl/euphrasia */
-.ansi-black-fg {
-  color: #3E424D;
-}
-.ansi-black-bg {
-  background-color: #3E424D;
-}
-.ansi-black-intense-fg {
-  color: #282C36;
-}
-.ansi-black-intense-bg {
-  background-color: #282C36;
-}
-.ansi-red-fg {
-  color: #E75C58;
-}
-.ansi-red-bg {
-  background-color: #E75C58;
-}
-.ansi-red-intense-fg {
-  color: #B22B31;
-}
-.ansi-red-intense-bg {
-  background-color: #B22B31;
-}
-.ansi-green-fg {
-  color: #00A250;
-}
-.ansi-green-bg {
-  background-color: #00A250;
-}
-.ansi-green-intense-fg {
-  color: #007427;
-}
-.ansi-green-intense-bg {
-  background-color: #007427;
-}
-.ansi-yellow-fg {
-  color: #DDB62B;
-}
-.ansi-yellow-bg {
-  background-color: #DDB62B;
-}
-.ansi-yellow-intense-fg {
-  color: #B27D12;
-}
-.ansi-yellow-intense-bg {
-  background-color: #B27D12;
-}
-.ansi-blue-fg {
-  color: #208FFB;
-}
-.ansi-blue-bg {
-  background-color: #208FFB;
-}
-.ansi-blue-intense-fg {
-  color: #0065CA;
-}
-.ansi-blue-intense-bg {
-  background-color: #0065CA;
-}
-.ansi-magenta-fg {
-  color: #D160C4;
-}
-.ansi-magenta-bg {
-  background-color: #D160C4;
-}
-.ansi-magenta-intense-fg {
-  color: #A03196;
-}
-.ansi-magenta-intense-bg {
-  background-color: #A03196;
-}
-.ansi-cyan-fg {
-  color: #60C6C8;
-}
-.ansi-cyan-bg {
-  background-color: #60C6C8;
-}
-.ansi-cyan-intense-fg {
-  color: #258F8F;
-}
-.ansi-cyan-intense-bg {
-  background-color: #258F8F;
-}
-.ansi-white-fg {
-  color: #C5C1B4;
-}
-.ansi-white-bg {
-  background-color: #C5C1B4;
-}
-.ansi-white-intense-fg {
-  color: #A1A6B2;
-}
-.ansi-white-intense-bg {
-  background-color: #A1A6B2;
-}
-.ansi-default-inverse-fg {
-  color: #FFFFFF;
-}
-.ansi-default-inverse-bg {
-  background-color: #000000;
-}
-.ansi-bold {
-  font-weight: bold;
-}
-.ansi-underline {
-  text-decoration: underline;
-}
-/* The following styles are deprecated an will be removed in a future version */
+/* CSS font colors for translated ANSI colors. */
 .ansibold {
   font-weight: bold;
-}
-.ansi-inverse {
-  outline: 0.5px dotted;
 }
 /* use dark versions for foreground, to improve visibility */
 .ansiblack {
@@ -289,20 +174,12 @@ div.cell {
   /* This acts as a spacer between cells, that is outside the border */
   margin: 0px;
   outline: none;
-  position: relative;
-  overflow: visible;
-}
-div.cell:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: transparent;
+  border-left-width: 1px;
+  padding-left: 5px;
+  background: linear-gradient(to right, transparent -40px, transparent 1px, transparent 1px, transparent 100%);
 }
 div.cell.jupyter-soft-selected {
+  border-left-color: #90CAF9;
   border-left-color: #E3F2FD;
   border-left-width: 1px;
   padding-left: 5px;
@@ -315,39 +192,27 @@ div.cell.jupyter-soft-selected {
     border-color: transparent;
   }
 }
-div.cell.selected,
-div.cell.selected.jupyter-soft-selected {
+div.cell.selected {
   border-color: #ababab;
-}
-div.cell.selected:before,
-div.cell.selected.jupyter-soft-selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #42A5F5;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 5px, transparent 5px, transparent 100%);
 }
 @media print {
-  div.cell.selected,
-  div.cell.selected.jupyter-soft-selected {
+  div.cell.selected {
     border-color: transparent;
   }
 }
+div.cell.selected.jupyter-soft-selected {
+  border-left-width: 0;
+  padding-left: 6px;
+  background: linear-gradient(to right, #42A5F5 -40px, #42A5F5 7px, #E3F2FD 7px, #E3F2FD 100%);
+}
 .edit_mode div.cell.selected {
   border-color: #66BB6A;
-}
-.edit_mode div.cell.selected:before {
-  position: absolute;
-  display: block;
-  top: -1px;
-  left: -1px;
-  width: 5px;
-  height: calc(100% +  2px);
-  content: '';
-  background: #66BB6A;
+  border-left-width: 0px;
+  padding-left: 6px;
+  background: linear-gradient(to right, #66BB6A -40px, #66BB6A 5px, transparent 5px, transparent 100%);
 }
 @media print {
   .edit_mode div.cell.selected {
@@ -543,9 +408,7 @@ div.input_area > div.highlight > pre {
 .CodeMirror-lines {
   /* In CM2, this used to be 0.4em, but in CM3 it went to 4px. We need the em value because */
   /* we have set a different line-height and want this to scale with that. */
-  /* Note that this should set vertical padding only, since CodeMirror assumes
-       that horizontal padding will be set on CodeMirror pre */
-  padding: 0.4em 0;
+  padding: 0.4em;
 }
 .CodeMirror-linenumber {
   padding: 0 8px 0 4px;
@@ -555,24 +418,11 @@ div.input_area > div.highlight > pre {
   border-top-left-radius: 2px;
 }
 .CodeMirror pre {
-  /* In CM3 this went to 4px from 0 in CM2. This sets horizontal padding only,
-    use .CodeMirror-lines for vertical */
-  padding: 0 0.4em;
+  /* In CM3 this went to 4px from 0 in CM2. We need the 0 value because of how we size */
+  /* .CodeMirror-lines */
+  padding: 0;
   border: 0;
   border-radius: 0;
-}
-.CodeMirror-cursor {
-  border-left: 1.4px solid black;
-}
-@media screen and (min-width: 2138px) and (max-width: 4319px) {
-  .CodeMirror-cursor {
-    border-left: 2px solid black;
-  }
-}
-@media screen and (min-width: 4320px) {
-  .CodeMirror-cursor {
-    border-left: 4px solid black;
-  }
 }
 /*
 
@@ -820,9 +670,6 @@ div.output_area img.unconfined,
 div.output_area svg.unconfined {
   max-width: none;
 }
-div.output_area .mglyph > img {
-  max-width: none;
-}
 /* This is needed to protect the pre formating from global settings such
    as that of bootstrap */
 .output {
@@ -861,7 +708,7 @@ div.output_area .mglyph > img {
 }
 div.output_area pre {
   margin: 0;
-  padding: 1px 0 1px 0;
+  padding: 0;
   border: 0;
   vertical-align: baseline;
   color: black;
@@ -983,10 +830,6 @@ div.output_unrecognized a:hover {
 .rendered_html h6:first-child {
   margin-top: 1em;
 }
-.rendered_html ul:not(.list-inline),
-.rendered_html ol:not(.list-inline) {
-  padding-left: 2em;
-}
 
 
 
@@ -1003,24 +846,16 @@ div.output_unrecognized a:hover {
 }
 
 
-
-
-
 .rendered_html pre,
-
 
 
 
 .rendered_html tr,
 .rendered_html th,
 
+.rendered_html td,
 
-.rendered_html tbody tr:nth-child(odd) {
-  background: #f5f5f5;
-}
-.rendered_html tbody tr:hover {
-  background: rgba(66, 165, 245, 0.2);
-}
+
 .rendered_html * + table {
   margin-top: 1em;
 }
@@ -1036,11 +871,6 @@ div.output_unrecognized a:hover {
 
 .rendered_html img.unconfined,
 
-
-.rendered_html * + .alert {
-  margin-top: 1em;
-}
-[dir="rtl"] 
 div.text_cell {
   /* Old browsers */
   display: -webkit-box;
@@ -1091,15 +921,8 @@ h6:hover .anchor-link {
   display: none;
 }
 .text_cell.rendered 
-.text_cell.rendered .rendered_html tr,
-.text_cell.rendered .rendered_html th,
-.text_cell.rendered 
 .text_cell.unrendered .text_cell_render {
   display: none;
-}
-.text_cell .dropzone .input_area {
-  border: 2px dashed #bababa;
-  margin: -1px;
 }
 .cm-header-1,
 .cm-header-2,
@@ -1238,7 +1061,8 @@ h6:hover .anchor-link {
 .ansi-bold { font-weight: bold; }
 </style>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h1><img src="https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/iacs.png" style="float: left; padding-right: 10px; width: 45px"> CS109A Introduction to Data Science</h1>
 <h2 id="Lab-6:-Classification-and-Dimensionality-Reduction">Lab 6: Classification and Dimensionality Reduction<a class="anchor-link" href="#Lab-6:-Classification-and-Dimensionality-Reduction">¶</a></h2><p><strong>Harvard University</strong><br>
@@ -1251,7 +1075,8 @@ h6:hover .anchor-link {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Zoom">Zoom<a class="anchor-link" href="#Zoom">¶</a></h2><p>I will be using zoom during this lab. You can connect to the room using the link<br>
 <a href="https://harvard-dce.zoom.us/j/7607382317">https://harvard-dce.zoom.us/j/7607382317</a>
@@ -1264,7 +1089,7 @@ and when you are ready to share your screen let me know and can share your scree
 <div class="prompt input_prompt">In [1]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO PROPERLY HIGHLIGHT THE EXERCISES</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## RUN THIS CELL TO PROPERLY HIGHLIGHT THE EXERCISES</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">from</span> <span class="nn">IPython.core.display</span> <span class="k">import</span> <span class="n">HTML</span>
 <span class="n">styles</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">"https://raw.githubusercontent.com/Harvard-IACS/2018-CS109A/master/content/styles/cs109.css"</span><span class="p">)</span><span class="o">.</span><span class="n">text</span>
@@ -1344,14 +1169,16 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Learning-Goals">Learning Goals<a class="anchor-link" href="#Learning-Goals">¶</a></h2><p>In this lab, we'll explore different models used to predict which of several labels applies to a new datapoint based on labels observed in the training data. We'll similarly explore PCA as a technique for reducing the number of features in a dataset with as little loss of structure as possible.</p>
 <p>By the end of this lab, you should:</p>
@@ -1374,7 +1201,7 @@ header {
 <div class="prompt input_prompt">In [76]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<div class="highlight hl-ipython3"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 <span class="kn">import</span> <span class="nn">scipy</span> <span class="k">as</span> <span class="nn">sp</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1390,7 +1217,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-1:--The-Wine-Dataset">Part 1:  The Wine Dataset<a class="anchor-link" href="#Part-1:--The-Wine-Dataset">¶</a></h2><p>The dataset contains 11 chemical features of various wines, along with experts' rating of that wine's quality. The quality scale technically runs from 1-10, but only 3-9 are actually used in the data.</p>
 <p>Our goal will be to distinguish good wines from bad wines based on their chemical properties.</p>
@@ -1398,7 +1226,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Read-in-and-checking">Read-in and checking<a class="anchor-link" href="#Read-in-and-checking">¶</a></h3><p>We do the usual read-in and verification of the data:</p>
 </div>
@@ -1409,7 +1238,7 @@ header {
 <div class="prompt input_prompt">In [75]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">wines_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/wines.csv"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">wines_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">"data/wines.csv"</span><span class="p">,</span> <span class="n">index_col</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
 
 <span class="n">wines_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 </pre></div>
@@ -1554,7 +1383,7 @@ header {
 <div class="prompt input_prompt">In [77]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">wines_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">wines_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1744,7 +1573,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h3 id="Building-the-training/test-data">Building the training/test data<a class="anchor-link" href="#Building-the-training/test-data">¶</a></h3><p>As usual, we split the data before we begin our analysis.</p>
 <p>Today, we take the 'quality' variable as our target. There's a debate to be had about the best way to handle this variable. It has 10 categories (1-10), though only 3-9 are used. While the variable is definitely ordinal- we can put the categories in an order everyone agrees on- the variable probably isn't a simple numeric feature; it's not clear whether the gap between a 5 and a 6 wine is the same as the gap between an 8 and a 9.</p>
@@ -1757,7 +1587,7 @@ header {
 <div class="prompt input_prompt">In [78]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">wines_train</span><span class="p">,</span> <span class="n">wines_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">wines_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">wines_df</span><span class="p">[</span><span class="s1">'good'</span><span class="p">])</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">wines_train</span><span class="p">,</span> <span class="n">wines_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">wines_df</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">stratify</span><span class="o">=</span><span class="n">wines_df</span><span class="p">[</span><span class="s1">'good'</span><span class="p">])</span>
 
 <span class="n">x_train</span> <span class="o">=</span> <span class="n">wines_train</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">'quality'</span><span class="p">,</span><span class="s1">'good'</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 <span class="n">y_train</span> <span class="o">=</span> <span class="n">wines_train</span><span class="p">[</span><span class="s1">'good'</span><span class="p">]</span>
@@ -1892,7 +1722,8 @@ header {
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Now that we've split, let's explore some patterns in the data</p>
 </div>
@@ -1903,7 +1734,7 @@ header {
 <div class="prompt input_prompt">In [80]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.plotting</span> <span class="k">import</span> <span class="n">scatter_matrix</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">pandas.plotting</span> <span class="k">import</span> <span class="n">scatter_matrix</span>
 
 <span class="n">scatter_matrix</span><span class="p">(</span><span class="n">wines_train</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span><span class="mi">20</span><span class="p">));</span>
 </pre></div>
@@ -1914,7 +1745,7 @@ header {
 <div class="output">
 <div class="output_area">
 <div class="prompt"></div>
-<div class="output_png output_subarea ">
+<div class="output_png output_subarea">
 <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAABsIAAAR3CAYAAABNHHGnAAAABHNCSVQICAgIfAhkiAAAAAlwSFlz
 AAALEgAACxIB0t1+/AAAADl0RVh0U29mdHdhcmUAbWF0cGxvdGxpYiB2ZXJzaW9uIDIuMS4wLCBo
 dHRwOi8vbWF0cGxvdGxpYi5vcmcvpW3flQAAIABJREFUeJzs3XeQXfeV4Pfvvffl3P26X+eERs4E
@@ -19014,14 +18845,16 @@ dfANMCpJAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>It looks like there aren't any particularly strong correlations among the predictors (maybe sulfur dioxide and free sulfur dioxide) so we're safe to keep them all. It also looks like the different quality categories have roughly the same distribution of most variables, with volatile/fixed acidity and alcohol seeming like the most useful predictors.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-2-(Introduction):-Binary-Logistic-Regression">Part 2 (Introduction): Binary Logistic Regression<a class="anchor-link" href="#Part-2-(Introduction):-Binary-Logistic-Regression">¶</a></h2><p>Linear regression is usually a good baseline model, but since the outcome we're trying to predict only takes values 0 and 1 we'll want to use logistic regression instead of basic linear regression.</p>
 <p>We'll begin with <code>statsmodels</code>, because <code>cs109</code> likes confidence intervals and checking that coefficients make sense.</p>
@@ -19033,7 +18866,7 @@ dfANMCpJAAAAAElFTkSuQmCC
 <div class="prompt input_prompt">In [81]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">import</span> <span class="nn">statsmodels.api</span> <span class="k">as</span> <span class="nn">sm</span>
 <span class="n">sm_fitted_logit</span> <span class="o">=</span> <span class="n">sm</span><span class="o">.</span><span class="n">Logit</span><span class="p">(</span><span class="n">y_train</span><span class="p">,</span> <span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x_train</span><span class="p">))</span><span class="o">.</span><span class="n">fit</span><span class="p">()</span>
 <span class="c1">#sm_fitted_logit.summary() ### ORIGINAL VERSION.  GAVE AttributeError: module 'scipy.stats' has no attribute 'chisqprob'</span>
 <span class="n">sm_fitted_logit</span><span class="o">.</span><span class="n">summary2</span><span class="p">()</span> <span class="c1">### WORKS</span>
@@ -19131,7 +18964,8 @@ dfANMCpJAAAAAElFTkSuQmCC
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Let's talk about the output:<br>
 First, "optimization terminated successfully". Recall that linear regression and its simple formula for the optimal betas is a rarity in machine learning and statistics: most models are fit to the data algorithmically, not via a formula. This message is letting us know that the algorithm seems to have worked.</p>
@@ -19155,7 +18989,8 @@ First, "optimization terminated successfully". Recall that linear regression and
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="discussion"><b>Discussion</b></div></p>
 <ol>
@@ -19165,7 +19000,8 @@ First, "optimization terminated successfully". Recall that linear regression and
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Prediction">Prediction<a class="anchor-link" href="#Prediction">¶</a></h4><p>One of the really cool features of logistic regression is that it hands back <em>probabilities</em> of a given case being 1 or 0, rather than just 1s and 0s. That lets us do neat things like set different cutoffs for what counts as a 1 and do ROC analysis and so on. Here, we'll just set the cutoff at 0.5: if a 1 is reported as more likely, predict a 1. (You can play with the cutoff yourself and see if you can make the model do better by trading false positives and false negatives).</p>
 <p>Because this is statsmodels, we'll need to import a tool or do the test set score calculation ourselves. Here, it's easy enough to implement:</p>
@@ -19182,7 +19018,7 @@ First, "optimization terminated successfully". Recall that linear regression and
 <div class="prompt input_prompt">In [82]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">sm_binary_prediction</span> <span class="o">=</span> <span class="n">sm_fitted_logit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x_test</span><span class="p">))</span> <span class="o">>=</span> <span class="o">.</span><span class="mi">5</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">sm_binary_prediction</span> <span class="o">=</span> <span class="n">sm_fitted_logit</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">sm</span><span class="o">.</span><span class="n">add_constant</span><span class="p">(</span><span class="n">x_test</span><span class="p">))</span> <span class="o">>=</span> <span class="o">.</span><span class="mi">5</span>
 <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="n">sm_binary_prediction</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -19200,14 +19036,16 @@ First, "optimization terminated successfully". Recall that linear regression and
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Wow! 80% is a pretty good performance! We can pretty much tell the bad wines from the good.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Here's a sanity check:</p>
 </div>
@@ -19218,7 +19056,7 @@ First, "optimization terminated successfully". Recall that linear regression and
 <div class="prompt input_prompt">In [83]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">y_test</span> <span class="o">==</span> <span class="mi">0</span><span class="p">)</span> <span class="o">/</span> <span class="nb">len</span><span class="p">(</span><span class="n">y_test</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -19235,7 +19073,8 @@ First, "optimization terminated successfully". Recall that linear regression and
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Oh... no... wait. A model that says "all wines are bad" also scores 80% on the test set. Our fancy model isn't really doing that well.</p>
 <p><strong>Moral of the story</strong>: Before you congratulate a model, think of a <strong>truly</strong> trivial model to compare it to.</p>
@@ -19243,7 +19082,8 @@ First, "optimization terminated successfully". Recall that linear regression and
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <div class="exercise"><b>Exercise 1</b></div><ol>
 <li>Re-create the results above but this time work with <code>sklearn</code>.  Use the <code>LogisticRegression</code> class. Follow the usual <code>.fit</code>, <code>.score</code> procedure.  To match <code>statsmodel</code>'s coefficient values (roughly), you will need to adjust the input parameters:<ul>
@@ -19263,7 +19103,7 @@ First, "optimization terminated successfully". Recall that linear regression and
 <div class="prompt input_prompt">In [84]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="k">import</span> <span class="n">LogisticRegression</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"target:</span><span class="se">\n</span><span class="si">{}</span><span class="s2">"</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">sm_fitted_logit</span><span class="o">.</span><span class="n">params</span><span class="p">))</span>
 
 <span class="c1">#fitted_lr = LogisticRegression(C=___, solver=___, ___)</span>
@@ -19298,7 +19138,8 @@ dtype: float64
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer</strong>:</p>
 </div>
@@ -19309,7 +19150,7 @@ dtype: float64
 <div class="prompt input_prompt">In [11]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here </span>
 </pre></div>
 </div>
 </div>
@@ -19320,14 +19161,15 @@ dtype: float64
 <div class="prompt input_prompt">In [12]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/sklearn_logistic.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/sklearn_logistic.py</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Speaker note: When presenting solution, model reading the documentation from the webpage. How does one know where to look?<br>
 Speaker note: Mention the wide variety of solvers and how (some) use different levels of derivatives to converge in fewer steps</p>
@@ -19335,7 +19177,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="The-Decision-Boundary">The Decision Boundary<a class="anchor-link" href="#The-Decision-Boundary">¶</a></h4><p>One powerful way to think about classification models is to consider where and how they draw the line between predicting "class A" and "class B". The code below lets you play with a 2d logistic regression. Points towards yellow will be predicted as 1s, points towards violet will be predicted as 0s.</p>
 </div>
@@ -19346,7 +19189,7 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [13]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="k">import</span> <span class="n">expit</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">scipy.special</span> <span class="k">import</span> <span class="n">expit</span>
 
 <span class="k">def</span> <span class="nf">plot_logistic_contour</span><span class="p">(</span><span class="n">beta0</span><span class="p">,</span> <span class="n">betaX</span><span class="p">,</span> <span class="n">betaY</span><span class="p">,</span> <span class="n">betaXY</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">betaX2</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">betaY2</span><span class="o">=</span><span class="mi">0</span><span class="p">):</span>
     <span class="n">delta</span><span class="o">=.</span><span class="mi">1</span>
@@ -19374,7 +19217,7 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [14]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># Use this cell to experiment</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># Use this cell to experiment</span>
 <span class="n">plot_logistic_contour</span><span class="p">(</span><span class="n">beta0</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">betaX</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">betaY</span><span class="o">=</span><span class="mi">3</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -19382,7 +19225,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 2</b></div></p>
 <ol>
@@ -19396,7 +19240,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answers</strong>:</p>
 <p><em>your answer here</em></p>
@@ -19408,14 +19253,15 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [15]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/boundaries.txt</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/boundaries.txt</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-3-(The-Real-Challenge):-Multiclass-Classification">Part 3 (The Real Challenge): Multiclass Classification<a class="anchor-link" href="#Part-3-(The-Real-Challenge):-Multiclass-Classification">¶</a></h2><p>Before we move on, let's consider a more common use case of logistic regression: predicting not just a binary variable, but what level a categorical variable will take. Instead of breaking the quality variable into 'good' and 'other', let's discretize into 'good, 'medium', and 'bad'.</p>
 </div>
@@ -19426,7 +19272,7 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [36]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># copy the original data so that we're free to make changes</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># copy the original data so that we're free to make changes</span>
 <span class="n">wines_df_recode</span> <span class="o">=</span> <span class="n">wines_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
 <span class="c1"># use the 'cut' function to reduce a variable down to particular bins. Here the lowest bin is 0-4, next is 5-7,</span>
@@ -19447,14 +19293,16 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The <code>cut</code> function obviously stores a lot of extra information for us. It's a very useful tool for discretizing an existing variable.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 3</b></div></p>
 <ol>
@@ -19466,7 +19314,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answers</strong>:</p>
 <p>1.</p>
@@ -19478,7 +19327,7 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [17]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here </span>
 </pre></div>
 </div>
 </div>
@@ -19489,14 +19338,15 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [18]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/multi_logistic.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/multi_logistic.py</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>your answer here</em></p>
 </div>
@@ -19507,14 +19357,15 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [19]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/multi_logistic.txt</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/multi_logistic.txt</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>2.</p>
 </div>
@@ -19525,7 +19376,7 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [20]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here </span>
 </pre></div>
 </div>
 </div>
@@ -19536,21 +19387,23 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [21]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/score1.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/score1.py</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>your answer here</em></p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>3.</p>
 </div>
@@ -19561,7 +19414,7 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [22]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># make a dumb prediction that always guesses 1, the most common class</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># make a dumb prediction that always guesses 1, the most common class</span>
 <span class="c1"># your code here </span>
 </pre></div>
 </div>
@@ -19573,14 +19426,15 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [23]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/trivial_model.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/trivial_model.py</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><em>your solution here</em></p>
 <p>But, a trivial model that guesses the most likely class also does really well on the test set, too.</p>
@@ -19592,14 +19446,15 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [24]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/3.3.txt</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/3.3.txt</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h4><ul>
 <li>Logistic regression extends OLS to work naturally with a dependent variable that's only ever 0 and 1.</li>
@@ -19613,7 +19468,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-4:-Dimensionality-Reduction">Part 4: Dimensionality Reduction<a class="anchor-link" href="#Part-4:-Dimensionality-Reduction">¶</a></h2><p>Our models are clearly struggling, but it's hard to tell why. Let's PCA to shrink the problem down to 2d (with as little loss as possible) and see if that gives us a clue about what makes this problem tough.</p>
 </div>
@@ -19624,7 +19480,7 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [25]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <span class="n">PCA</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="k">import</span> <span class="n">PCA</span>
 <span class="kn">from</span> <span class="nn">sklearn.preprocessing</span> <span class="k">import</span> <span class="n">StandardScaler</span>
 
 <span class="c1"># scale the datasets</span>
@@ -19646,7 +19502,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Some comments:</p>
 <ol>
@@ -19661,7 +19518,7 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [26]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">## plot each group</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">## plot each group</span>
 
 <span class="c1"># notice that we set up lists to track each group's plotting color and label</span>
 <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="s1">'r'</span><span class="p">,</span><span class="s1">'c'</span><span class="p">,</span><span class="s1">'b'</span><span class="p">]</span>
@@ -19682,14 +19539,16 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Well, that gives us some idea of why the problem is difficult: the good wines and bad wines are hiding right among the average wines. It does look like the wines separate into two groups, though, possibly one for reds and one for whites.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 4</b></div></p>
 <ol>
@@ -19700,7 +19559,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer</strong>:</p>
 <p><em>your answer here</em></p>
@@ -19712,14 +19572,15 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [27]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/4.txt</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/4.txt</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 5</b></div></p>
 <ol>
@@ -19729,7 +19590,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer</strong>:</p>
 </div>
@@ -19740,14 +19602,15 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [28]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># your code here </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># your code here </span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Evaluating-PCA----Variance-Explained">Evaluating PCA -  Variance Explained<a class="anchor-link" href="#Evaluating-PCA----Variance-Explained">¶</a></h2><p>One of the criticisms we made of the PCA plot was that it's lost something from the original data.</p>
 <p>Let's actually investigate how much of the original data's structure the 2d PCA captures. We'll look at the <code>explained_variance_ratio_</code> portion of the PCA fit. This lists, in order, the percentage of the x data's total variance that is captured by the nth PCA dimension.</p>
@@ -19759,7 +19622,7 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [29]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">var_explained</span> <span class="o">=</span> <span class="n">pca_transformer</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">var_explained</span> <span class="o">=</span> <span class="n">pca_transformer</span><span class="o">.</span><span class="n">explained_variance_ratio_</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Variance explained by each PCA component:"</span><span class="p">,</span> <span class="n">var_explained</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Total Variance Explained:"</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">sum</span><span class="p">(</span><span class="n">var_explained</span><span class="p">))</span>
 </pre></div>
@@ -19768,14 +19631,16 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>The first PCA dimension captures 33% of the variance in the data, and the second PCA dimension adds another 20%. Together, we've got about half of the total variation in the training data covered with just these two dimensions.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 6</b></div></p>
 <ol>
@@ -19789,7 +19654,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answer</strong>:</p>
 </div>
@@ -19800,14 +19666,15 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [30]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#your code here </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#your code here </span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>3.</p>
 <p><em>your answer here</em></p>
@@ -19819,14 +19686,15 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [31]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/6.3.txt</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/6.3.txt</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>4.</p>
 </div>
@@ -19837,7 +19705,7 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [32]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1">#your code here </span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1">#your code here </span>
 </pre></div>
 </div>
 </div>
@@ -19848,14 +19716,15 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [33]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/6.4.py</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># %load solutions/6.4.py</span>
 </pre></div>
 </div>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>A PCA dimension of 3, 4, or 5 looks good to me. These values are roughly where we hit diminishing returns on variance explained.</p>
 <p>Plots like the one above are called 'Scree' or 'Elbow' plots. They are often used to heuristically select a good number of PCA dimensions.</p>
@@ -19863,7 +19732,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="Summary">Summary<a class="anchor-link" href="#Summary">¶</a></h4><ul>
 <li>PCA maps a high-dimensional space into a lower dimensional space.</li>
@@ -19878,7 +19748,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-5:-Did-we-fail?">Part 5: Did we fail?<a class="anchor-link" href="#Part-5:-Did-we-fail?">¶</a></h2><p>None of the models worked, and we can't tell good wines from bad. Was it all a waste of time and money?</p>
 <p>Not really. All analyses are a roll of the dice. Some analyses fail, like this one did, becuase the data at hand just don't support the task we've set out.</p>
@@ -19894,7 +19765,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h4 id="The-Moral-of-the-Lab">The Moral of the Lab<a class="anchor-link" href="#The-Moral-of-the-Lab">¶</a></h4><ul>
 <li>Sometimes, the data just aren't enough to adequately predict outcomes.</li>
@@ -19909,7 +19781,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <h2 id="Part-6-(Sidebar):-Weighting-the-training-points">Part 6 (Sidebar): Weighting the training points<a class="anchor-link" href="#Part-6-(Sidebar):-Weighting-the-training-points">¶</a></h2><p>Some models can accept weights on the training points to given them greater priority in the model's fitting process. This can be useful if, for instance, certain classes are rare but we want to be sure the model classifies them correctly (e.g. we're trying to classify cancers and one form is rare but very aggressive). In general, weighting training points is like moving along the ROC curve; we change some model parameters to alter the mistakes the model makes to be more in line with our tastes.</p>
 <p>Let's see this in action with a logistic regression:</p>
@@ -19921,7 +19794,7 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [39]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="c1"># copy the original data so that we're free to make changes</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="c1"># copy the original data so that we're free to make changes</span>
 <span class="n">wines_df_recode</span> <span class="o">=</span> <span class="n">wines_df</span><span class="o">.</span><span class="n">copy</span><span class="p">()</span>
 
 <span class="c1"># use the 'cut' function to reduce a variable down to particular bins. Here the lowest bin is 0-4, next is 5-7,</span>
@@ -19946,7 +19819,7 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [49]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="n">unweighted_lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="n">unweighted_lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
 
 <span class="n">weight_dict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">0</span><span class="p">:</span><span class="mi">1000</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span><span class="mi">1</span> <span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">100</span><span class="p">}</span>
 <span class="n">weighted_lr</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">(</span><span class="n">C</span><span class="o">=</span><span class="mi">1000000</span><span class="p">,</span> <span class="n">class_weight</span><span class="o">=</span><span class="n">weight_dict</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span><span class="n">y_train</span><span class="p">)</span>
@@ -19960,7 +19833,7 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 <div class="prompt input_prompt">In [50]:</div>
 <div class="inner_cell">
 <div class="input_area">
-<div class=" highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">confusion_matrix</span>
+<div class="highlight hl-ipython3"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="k">import</span> <span class="n">confusion_matrix</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">"Rows: True Lables (Bad, Medium, Good), </span><span class="se">\n</span><span class="s2">Colummns: Predicted Lables (Bad, Medium, Good)"</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">()</span>
@@ -19974,14 +19847,16 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p>Without weighting, the model plays it safe and predicts that all of the test set wines are medium. With weighting, the model is told to care more about getting the bad and good wines right. The model does as we've asked and correctly IDs 3 good/bad test wines, at the price of 17 falsely bad wines and 16 falsely good wines. However, if identifying bad and good wines is, as implied, 100 times more important than identifying medium wines, we've made a really good trade.</p>
 </div>
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><div class="exercise"><b>Exercise 7</b></div></p>
 <ol>
@@ -19992,7 +19867,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <p><strong>Answers</strong>:</p>
 <ol>
@@ -20003,7 +19879,8 @@ Speaker note: Mention the wide variety of solvers and how (some) use different l
 </div>
 </div>
 <div class="cell border-box-sizing text_cell rendered"><div class="prompt input_prompt">
-</div><div class="inner_cell">
+</div>
+<div class="inner_cell">
 <div class="text_cell_render border-box-sizing rendered_html">
 <hr>
 </div>
