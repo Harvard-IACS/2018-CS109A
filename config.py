@@ -2,6 +2,10 @@ COURSE_NAME = 'CS109A'
 
 AUTHOR = 'Pavlos Protopapas, Kevin Rader'
 
+SEMESTER = "FALL"
+
+YEAR = "2018"
+
 SITEURL = 'https://harvard-iacs.github.io/2018-CS109A'
 
 GITHUB = 'https://github.com/Harvard-IACS/2018-CS109A'
@@ -15,6 +19,9 @@ MENUITEMS = [
     ('GitHub','pages/github.html'),
     ('Projects','pages/projects.html')
 ]
+
+# Uncomment following line if you want document-relative URLs when developing
+RELATIVE_URLS = True
 
 PATH = 'content'
 
@@ -52,6 +59,8 @@ AUTHOR_URL = ''
 
 AUTHOR_SAVE_AS = ''
 
+TAG_SAVE_AS = ''
+
 INDEX_SAVE_AS = 'pages/materials.html'
 
 THEME_STATIC_DIR = 'style'
@@ -64,14 +73,11 @@ PLUGIN_PATHS = ['plugins']
 
 PLUGINS = ['ipynb.markup', 'tipue_search']
 
-IGNORE_FILES = ['.ipynb_checkpoints', 'README.md', "*.html", "__pycache__"]
-
-# Uncomment following line if you want document-relative URLs when developing
-RELATIVE_URLS = True
+IGNORE_FILES = ['.#*', '.ipynb_checkpoints', 'README.md', "*.html", "__pycache__", "*.pdf", "*.pptx", ".placeholder", ".DS_Store", "*.ipynb-meta", "*.csv", "*.json", "*.txt", "*.xmls"]
 
 STATIC_PATHS = ['lectures', 'labs', 'homeworks', 'a-sections', 'sections', 'wiki', 'images', 'projects', 'slides', 'data']
 
-DIRECT_TEMPLATES = ['index', 'category', 'tags', 'search']
+DIRECT_TEMPLATES = ['index', 'search']
 
 import re
 
@@ -80,8 +86,6 @@ JINJA_FILTERS = {
 }
 
 USE_FOLDER_AS_CATEGORY = False
-
-CACHE_CONTENT = True
 
 import logging
 

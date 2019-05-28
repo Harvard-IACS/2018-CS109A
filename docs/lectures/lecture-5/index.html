@@ -2,24 +2,58 @@
 <html lang="en">
   <head>
     <!-- Required meta tags -->
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1, shrink-to-fit=no"
+    />
+    <meta
+      name="description"
+      content="FALL 2018 - Harvard University, Institute for Applied Computational Science. Lecture 5: Linear Regression, Confidence Intervals and Standard Errors"
+    />
+    <meta name="author" content="Pavlos Protopapas, Kevin Rader" />
+<meta
+  name="keywords"
+  content="Multiple Linear Regression, Standard Errors, Model Selection, Polynomial Regression, Categorical Predictors, Collinearity, Hypothesis Testing, Importance of Predictors"
+/>
 
     <!-- Bootstrap CSS -->
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css"
+      integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB"
+      crossorigin="anonymous"
+    />
 
-    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css" integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ" crossorigin="anonymous">
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+      integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+      crossorigin="anonymous"
+    />
 
-    <link href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,700" rel="stylesheet">
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto+Condensed|Roboto:300,400,700"
+      rel="stylesheet"
+    />
 
-    <link href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css">
+    <link
+      href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.0/normalize.min.css"
+    />
 
-    <link rel="stylesheet" href="../../style/tipuesearch/tipuesearch.css">
+    <link
+      rel="stylesheet"
+      href="../../style/tipuesearch/tipuesearch.css"
+    />
 
-    <link rel='shortcut icon' type='image/x-icon' href='../../style/images/favicon.ico' />
-    <link rel="stylesheet" href="../../style/css/hiacs.css">
+    <link
+      rel="shortcut icon"
+      type="image/x-icon"
+      href="../../style/images/favicon.ico"
+    />
+    <link rel="stylesheet" href="../../style/css/iacs.css" />
 
-    <title>CS109A - Lecture 5: Linear Regression, Confidence Intervals and Standard Errors</title>
+    <title>Harvard CS109A | Lecture 5: Linear Regression, Confidence Intervals and Standard Errors</title>
 
     <style>
       .navbar {
@@ -28,14 +62,24 @@
     </style>
   </head>
   <body>
-
 <nav class="navbar navbar-dark navbar-expand-md">
   <div class="container">
     <a class="navbar-brand" href="../..">
-      <img class="navbar-brand-logo" src="../../style/images/logo.png" />
+      <img
+        class="navbar-brand-logo"
+        src="../../style/images/logo.png"
+      />
       <h3 class="course-title">CS109A</h3>
     </a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarsDefault" aria-controls="navbarsDefault" aria-expanded="false" aria-label="Toggle navigation">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-toggle="collapse"
+      data-target="#navbarsDefault"
+      aria-controls="navbarsDefault"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
       <span class="navbar-toggler-icon"></span>
     </button>
 
@@ -62,25 +106,40 @@
           onsubmit="return validateForm(this.elements['q'].value);"
         >
           <div class="input-group input-group-sm">
-            <input class="form-control" type="text" name="q" placeholder="Search Topic">
+            <input
+              class="form-control"
+              type="text"
+              name="q"
+              placeholder="Search Topic"
+            />
             <div class="input-group-append">
               <button class="btn btn-default" type="submit">
                 <i class="fas fa-search"></i>
               </button>
             </div>
-        </div>
-      </form>
+          </div>
+        </form>
       </ul>
-    </div><!-- .collapse navbar-collapse -->
-  </div><!-- .container -->
+    </div>
+    <!-- .collapse navbar-collapse -->
+  </div>
+  <!-- .container -->
 </nav>
     <main id="content" class="container">
-    <h1>Lecture 5: Linear Regression, Confidence Intervals and Standard Errors</h1>
-      <p>Key Word(s):
-        <a href="../../pages/materials.html#Multiple Linear Regression">Multiple Linear Regression</a>,        <a href="../../pages/materials.html#Standard Errors">Standard Errors</a>,        <a href="../../pages/materials.html#Model Selection">Model Selection</a>,        <a href="../../pages/materials.html#Polynomial Regression">Polynomial Regression</a>,        <a href="../../pages/materials.html#Categorical Predictors">Categorical Predictors</a>,        <a href="../../pages/materials.html#Collinearity">Collinearity</a>,        <a href="../../pages/materials.html#Hypothesis Testing">Hypothesis Testing</a>,        <a href="../../pages/materials.html#Importance of Predictors">Importance of Predictors</a>      </p>
-    <br />
-    <hr />
-  <h2>Slides</h2>
+ <h1>Lecture 5: Linear Regression, Confidence Intervals and Standard Errors</h1>
+<p>
+  Key Word(s):   <a href="../../pages/materials.html#Multiple Linear Regression">Multiple Linear Regression</a
+  >,   <a href="../../pages/materials.html#Standard Errors">Standard Errors</a
+  >,   <a href="../../pages/materials.html#Model Selection">Model Selection</a
+  >,   <a href="../../pages/materials.html#Polynomial Regression">Polynomial Regression</a
+  >,   <a href="../../pages/materials.html#Categorical Predictors">Categorical Predictors</a
+  >,   <a href="../../pages/materials.html#Collinearity">Collinearity</a
+  >,   <a href="../../pages/materials.html#Hypothesis Testing">Hypothesis Testing</a
+  >,   <a href="../../pages/materials.html#Importance of Predictors">Importance of Predictors</a
+  > </p>
+ <br />
+<hr />
+ <h2>Slides</h2>
 <ul>
 <li><a href="../../lectures/lecture-5/presentation/lecture5_multi_regression.pdf">PDF | Lecture 5: Linear Regression, Confidence Intervals and Standard Errors</a></li>
 <li><a href="../../lectures/lecture-5/presentation/lecture5_multi_regression.pptx">PPTX | Lecture 5: Linear Regression, Confidence Intervals and Standard Errors</a></li>
@@ -88,11 +147,10 @@
 <h2>Jupyter Notebooks</h2>
 <ul>
 <li><a href="../../sections/section-3/student/">Standard Section 3: Predictor Types and Feature - Student Version</a></li>
-<li><a href="{filename}../../sections/section3/notebook/section_3_solutions.ipynb">Standard Section 3: Predictor Types and Feature - Solutions</a></li>
+<li><a href="../../sections/section-3/solutions/">Standard Section 3: Predictor Types and Feature - Solutions</a></li>
 <li><a href="../../labs/lab-3/student/">Lab 3: Scikit-learn for Regression - Student Version</a></li>
 <li><a href="../../labs/lab-3/solutions/">Lab 3: Scikit-learn for Regression - Solutions</a></li>
-</ul>
-    </main>
+</ul>     </main>
 
 <footer class="footer">
   <div class="container">
@@ -100,11 +158,17 @@
       <a class="text-muted" href="https://iacs.seas.harvard.edu/">Institute for Applied Computational Science</a>
     </span>
   </div>
-</footer>
-
-    <!-- jQuery first, then Popper.js, then Bootstrap JS -->
+</footer>     <!-- jQuery first, then Popper.js, then Bootstrap JS -->
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
-    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <script
+      src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"
+      integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"
+      integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T"
+      crossorigin="anonymous"
+    ></script>
   </body>
 </html>

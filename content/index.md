@@ -1,7 +1,6 @@
-Title: CS109A: Introduction to Data Science <br>
+Title: CS109A: Introduction to Data Science
 Date: 2018-12-09
 save_as: index.html
-
 
 <h5>
 Fall 2018 <br><br>
@@ -47,19 +46,17 @@ pre {
 1. Data Collection ‐ data wrangling, cleaning, and sampling to get a suitable data set <br>
 
 2. Data Management ‐ accessing data quickly and reliably
-<br>
+   <br>
 
 3. Exploratory Data Analysis – generating hypotheses and building intuition
-<br>
+   <br>
 
 4. Prediction or Statistical Learning
-<br>
+   <br>
 5. Communication – summarizing results through visualization, stories, and interpretable summaries
-<br/> <br/>
-
+   <br/> <br/>
 
 Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who have previously taken CS 109, AC 209, or Stat 121 cannot take CS 109a, AC 209a, or Stat 121a for credit.
-
 
 <hr>
 
@@ -72,7 +69,6 @@ Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who
 <strong>Office Hours:</strong> IACS student lobby in Maxwell-Dworkin's ground. Just follow the signs.
 <br/>
 <strong>Online Office Hours zoom link: </strong><a href="https://harvard-dce.zoom.us/j/7607382317">https://harvard-dce.zoom.us/j/7607382317</a>
-
 
 <pre style="backgroundcolor:red">Class meetings have concluded! <br />Thank you all for a great semester!</pre>
 
@@ -99,9 +95,6 @@ Only one of CS 109a, AC 209a, or Stat 121a can be taken for credit. Students who
 </div>
 </div>
 </div>
-
-
-
 
 <br/>
 <br/>

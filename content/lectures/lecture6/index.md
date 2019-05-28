@@ -9,7 +9,7 @@ Tags: Multiple Linear Regression, Feature Selection, Model Selection, Polynomial
 
 - [PDF | Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection]({attach}presentation/Lecture6_MR_ModelSelection.pdf)
 - [PPTX | Lecture 6: Multiple Linear Regression, Polynomial Regression and Model Selection]({attach}presentation/Lecture6_MR_ModelSelection.pptx)
-- [PDF | Standard Section 4: Model selection]({filename}../../sections/section3/presentation/section4_model_selection.html)
+- [PDF | Standard Section 4: Model selection]({static}../../sections/section4/presentation/section4_model_selection.html)
 
 ## Jupyter Notebooks
 
