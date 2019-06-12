@@ -1,0 +1,14 @@
+version: "3.7"
+services:
+  publish:
+    image: richardskim111/iacs:publish
+    volumes:
+      - .:/iacs
+  launch:
+    image: richardskim111/iacs:launch
+    depends_on:
+      - publish
+    ports:
+      - "8000:8000"
+    volumes:
+      - .:/iacs
